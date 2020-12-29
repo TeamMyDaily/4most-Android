@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_daily"
+        android:icon="@drawable/ic_error"
+        android:title="@string/menu_daily" />
+
+    <item
+        android:id="@+id/menu_remind"
+        android:icon="@drawable/ic_error"
+        android:title="@string/menu_remind" />
+
+    <item
+        android:id="@+id/menu_my"
+        android:icon="@drawable/ic_error"
+        android:title="@string/menu_my" />
+
+</menu>

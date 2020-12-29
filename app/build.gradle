@@ -54,6 +54,7 @@ dependencies {
 
     //lifecycle
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     androidTestImplementation "androidx.arch.core:core-testing:$arch_version"
     implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0'
 
@@ -69,7 +70,6 @@ dependencies {
 
     //viewpager2
     implementation "androidx.viewpager2:viewpager2:$viewpager2_version"
-    implementation 'me.relex:circleindicator:2.1.4'
 
     // koin
     implementation "org.koin:koin-androidx-scope:$koin_version"
