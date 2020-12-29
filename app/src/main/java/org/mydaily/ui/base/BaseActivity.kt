@@ -1,4 +1,4 @@
-package org.mydaily.ui.view.base
+package org.mydaily.ui.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

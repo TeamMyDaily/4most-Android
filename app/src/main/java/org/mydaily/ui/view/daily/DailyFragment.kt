@@ -3,7 +3,7 @@ package org.mydaily.ui.view.daily
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.FragmentDailyBinding
-import org.mydaily.ui.view.base.BaseFragment
+import org.mydaily.ui.base.BaseFragment
 import org.mydaily.ui.viewmodel.DailyViewModel
 
 

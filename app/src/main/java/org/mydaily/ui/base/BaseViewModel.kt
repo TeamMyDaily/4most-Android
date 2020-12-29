@@ -1,4 +1,4 @@
-package org.mydaily.ui.view.base
+package org.mydaily.ui.base
 
 import androidx.lifecycle.ViewModel
 

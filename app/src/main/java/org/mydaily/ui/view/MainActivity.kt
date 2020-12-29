@@ -4,7 +4,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityMainBinding
 import org.mydaily.extension.replace
-import org.mydaily.ui.view.base.BaseActivity
+import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.view.daily.DailyFragment
 import org.mydaily.ui.view.mypage.MyPageFragment
 import org.mydaily.ui.view.remind.RemindFragment
