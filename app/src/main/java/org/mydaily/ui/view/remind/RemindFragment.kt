@@ -1,21 +1,16 @@
 package org.mydaily.ui.view.remind
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.FragmentRemindBinding
 import org.mydaily.ui.view.base.BaseFragment
-import org.mydaily.ui.viewmodel.MainViewModel
+import org.mydaily.ui.viewmodel.RemindViewModel
 
 
-class RemindFragment : BaseFragment<FragmentRemindBinding, MainViewModel>() {
+class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_remind
-    override val viewModel: MainViewModel
-        get() = MainViewModel()
+    override val viewModel: RemindViewModel by viewModel()
 
     override fun initView() {
 
