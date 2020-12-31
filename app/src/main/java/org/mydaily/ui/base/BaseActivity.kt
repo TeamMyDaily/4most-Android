@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
 abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatActivity(){
-    lateinit var dataBinding: T
+    lateinit var binding: T
 
     abstract val layoutResourceId: Int
 
@@ -30,7 +30,7 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        dataBinding = DataBindingUtil.setContentView(this, layoutResourceId)
+        binding = DataBindingUtil.setContentView(this, layoutResourceId)
 
         initView()
         initBeforeBinding()

@@ -1,4 +1,4 @@
-package org.mydaily.extension
+package org.mydaily.util.extension
 
 import android.content.Context
 import android.widget.Toast
