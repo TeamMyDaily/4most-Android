@@ -34,23 +34,22 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private fun initBottomNavigation() {
         setSupportActionBar(binding.tbMain)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         binding.bnvMain.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_daily -> {
                     replace(R.id.container_main, dailyFragment)
-                    binding.tvToolbarTitle.text = getString(R.string.menu_daily)
+                    supportActionBar?.title = getString(R.string.menu_daily)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_remind -> {
                     replace(R.id.container_main, remindFragment)
-                    binding.tvToolbarTitle.text = getString(R.string.menu_remind)
+                    supportActionBar?.title = getString(R.string.menu_remind)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_my -> {
                     replace(R.id.container_main, myFragment)
-                    binding.tvToolbarTitle.text = getString(R.string.menu_my)
+                    supportActionBar?.title = getString(R.string.menu_my)
                     return@setOnNavigationItemSelectedListener true
                 }
             }
