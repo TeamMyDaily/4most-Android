@@ -34,26 +34,40 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private fun initBottomNavigation() {
         setSupportActionBar(binding.tbMain)
+        replaceDailyFragment()
 
         binding.bnvMain.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_daily -> {
-                    replace(R.id.container_main, dailyFragment)
-                    supportActionBar?.title = getString(R.string.menu_daily)
+                    replaceDailyFragment()
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_remind -> {
-                    replace(R.id.container_main, remindFragment)
-                    supportActionBar?.title = getString(R.string.menu_remind)
+                    replaceRemindFragment()
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_my -> {
-                    replace(R.id.container_main, myFragment)
-                    supportActionBar?.title = getString(R.string.menu_my)
+                    replaceMyPageFragment()
                     return@setOnNavigationItemSelectedListener true
                 }
             }
             false
         }
     }
+
+    private fun replaceDailyFragment() {
+        replace(R.id.container_main, dailyFragment)
+        supportActionBar?.title = getString(R.string.menu_daily)
+    }
+
+    private fun replaceRemindFragment() {
+        replace(R.id.container_main, remindFragment)
+        supportActionBar?.title = getString(R.string.menu_remind)
+    }
+
+    private fun replaceMyPageFragment() {
+        replace(R.id.container_main, myFragment)
+        supportActionBar?.title = getString(R.string.menu_my)
+    }
+
 }
