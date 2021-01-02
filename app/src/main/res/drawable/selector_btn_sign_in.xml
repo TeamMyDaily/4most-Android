@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:drawable="@drawable/rectangle_fill_gray_radius_15"
+        android:state_active="false" />
+
+    <item
+        android:drawable="@drawable/rectangle_fill_orange_radius_15"
+        android:state_active="true" />
+
+</selector>

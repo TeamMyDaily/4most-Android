@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">MyDaily</string>
-    
+
     <!--Main Menu-->
     <string name="menu_daily">하루의 기록</string>
     <string name="menu_remind">평가 및 회고</string>
@@ -8,6 +8,15 @@
 
     <!--Daily Fragment-->
     <string name="weekly_goal">이번 주의 목표</string>
+
+    <!--Sign In-->
+    <string name="sign_in">로그인</string>
+    <string name="sign_up">회원가입</string>
+    <string name="auto_sign_in">자동로그인</string>
+    <string name="email">이메일</string>
+    <string name="password">비밀번호</string>
+    <string name="find_id">아이디 찾기</string>
+    <string name="find_password">비밀번호 찾기</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
