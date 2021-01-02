@@ -17,6 +17,7 @@
     <string name="password">비밀번호</string>
     <string name="find_id">아이디 찾기</string>
     <string name="find_password">비밀번호 찾기</string>
+    <string name="msg_sign_in_error">이메일과 비밀번호를 확인해주세요</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

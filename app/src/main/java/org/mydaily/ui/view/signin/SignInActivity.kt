@@ -5,6 +5,7 @@ import org.mydaily.R
 import org.mydaily.databinding.ActivitySignInBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.viewmodel.SignInViewModel
+import org.mydaily.util.LoginPatternCheckUtil
 import org.mydaily.util.extension.shortToast
 
 class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
@@ -29,7 +30,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
         binding.ibAutoLogin.isSelected = true
         binding.ibAutoLogin.setOnClickListener {
             it.isSelected = !it.isSelected
-            shortToast(this, "자동로그인 버튼 클릭"+it.isSelected)
+            shortToast(this, "자동로그인 버튼 클릭" + it.isSelected)
         }
         binding.tvFindId.setOnClickListener {
             shortToast(this, "아이디찾기 버튼 클릭")
@@ -41,8 +42,14 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
             shortToast(this, "회원가입 버튼 클릭")
         }
         binding.btnSignIn.setOnClickListener {
-            shortToast(this, "로그인 버튼 클릭")
-            //viewModel.signIn(binding.etEmail.toString(), binding.etPassword.toString())
+            val email = binding.etPassword.toString()
+            val password = binding.etPassword.toString()
+
+            if (LoginPatternCheckUtil.isNotValidEmailAndPassword(email, password)) {
+                shortToast(this, R.string.msg_sign_in_error)
+            }else {
+                viewModel.signIn(email, password)
+            }
         }
     }
 }
