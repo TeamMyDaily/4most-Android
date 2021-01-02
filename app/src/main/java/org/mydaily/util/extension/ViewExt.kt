@@ -12,18 +12,18 @@ fun AppCompatActivity.replace(@IdRes frameId: Int, fragment: androidx.fragment.a
         .commit()
 }
 
-fun shortToast(context: Context, message: String) {
-    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+fun Context.shortToast(message: String) {
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
 
-fun shortToast(context: Context, resourceId: Int) {
-    Toast.makeText(context, resourceId, Toast.LENGTH_SHORT).show()
+fun Context.shortToast(resourceId: Int) {
+    Toast.makeText(this, resourceId, Toast.LENGTH_SHORT).show()
 }
 
-fun longToast(context: Context, message: String) {
-    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+fun Context.longToast(message: String) {
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
 
-fun longToast(context: Context, resourceId: Int) {
-    Toast.makeText(context, resourceId, Toast.LENGTH_SHORT).show()
+fun Context.longToast(resourceId: Int) {
+    Toast.makeText(this, resourceId, Toast.LENGTH_SHORT).show()
 }
