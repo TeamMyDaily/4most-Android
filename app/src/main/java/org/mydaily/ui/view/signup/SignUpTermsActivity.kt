@@ -1,5 +1,6 @@
 package org.mydaily.ui.view.signup
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import org.koin.android.ext.android.bind
@@ -16,6 +17,7 @@ class SignUpTermsActivity : BaseActivity<ActivitySignUpTermsBinding, SignUpViewM
     override val viewModel: SignUpViewModel by viewModel()
 
     override fun initView() {
+        initStartView()
         initClickEvent()
     }
 
@@ -27,13 +29,29 @@ class SignUpTermsActivity : BaseActivity<ActivitySignUpTermsBinding, SignUpViewM
 
     }
 
+    private fun initStartView() {
+        binding.btnSignUp.isEnabled = false
+    }
 
     private fun initClickEvent() {
-        binding.btnSignUp.isActivated = false
         binding.tbSignUpTerms.setNavigationOnClickListener {
             finish()
         }
+        binding.ibAllowPersonalInformation.setOnClickListener {
+            it.isSelected = !it.isSelected
+            checkTermsSelected()
+        }
+        binding.ibAllowServiceTerms.setOnClickListener {
+            it.isSelected = !it.isSelected
+            checkTermsSelected()
+        }
+        binding.btnSignUp.setOnClickListener {
+            startActivity(Intent(this, SignUpActivity::class.java))
+            finish()
+        }
+    }
 
-
+    private fun checkTermsSelected() {
+        binding.btnSignUp.isEnabled = binding.ibAllowPersonalInformation.isSelected && binding.ibAllowServiceTerms.isSelected
     }
 }

@@ -3,10 +3,10 @@
 
     <item
         android:drawable="@drawable/rectangle_fill_gray_radius_15"
-        android:state_active="false" />
+        android:state_enabled="false"/>
 
     <item
         android:drawable="@drawable/rectangle_fill_light_orange_radius_15"
-        android:state_active="true" />
+        android:state_enabled="true" />
 
 </selector>
