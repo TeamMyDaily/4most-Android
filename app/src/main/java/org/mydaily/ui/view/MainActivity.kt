@@ -24,7 +24,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private val myFragment: MyPageFragment by lazy { MyPageFragment() }
 
     override fun initView() {
+        initToolbar()
         initBottomNavigation()
+
+        replaceDailyFragment()
     }
 
     override fun initBeforeBinding() {
@@ -35,11 +38,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     }
 
-    private fun initBottomNavigation() {
+    private fun initToolbar() {
         setSupportActionBar(binding.tbMain)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        replaceDailyFragment()
+    }
 
+    private fun initBottomNavigation() {
         binding.bnvMain.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_daily -> {
