@@ -8,5 +8,11 @@
     <color name="gray">#C9C9C9</color>
     <color name="orange">#EC684A</color>
 
+    <color name="mainOrange">#FF7556</color>
+    <color name="mainLightOrange">#FEC7BA</color>
+    <color name="mainBlack">#333333</color>
+    <color name="mainAlto">#E0E0E0</color>
+    <color name="mainConcrete">#F2F2F2</color>
+
 
 </resources>
