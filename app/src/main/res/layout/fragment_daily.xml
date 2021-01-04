@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="date"
+            type="String" />
 
     </data>
 
@@ -55,7 +58,7 @@
                         android:id="@+id/ib_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_calendar_on"
+                        android:src="@drawable/selector_btn_calendar"
                         android:background="@android:color/transparent"
                         android:layout_marginEnd="8dp"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_daily_report"
@@ -66,7 +69,8 @@
                         android:id="@+id/tv_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="20년 12월 20일"
+                        android:text="@{date}"
+                        tools:text="20년 12월 20일"
                         android:textColor="@color/mainOrange"
                         android:textSize="12sp"
                         android:layout_marginEnd="16dp"

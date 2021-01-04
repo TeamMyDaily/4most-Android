@@ -1,18 +1,21 @@
 package org.mydaily.ui.view.daily
 
+import android.app.DatePickerDialog
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.skydoves.expandablelayout.ExpandableLayout
-import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.FragmentDailyBinding
 import org.mydaily.ui.adapter.DailyKeywordAdapter
 import org.mydaily.ui.base.BaseFragment
 import org.mydaily.ui.viewmodel.DailyViewModel
+import org.mydaily.util.CalendarUtil
+import org.mydaily.util.CalendarUtil.compareDateTo
+import java.util.*
 
 
 /**
@@ -22,6 +25,10 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_daily
     override val viewModel: DailyViewModel by viewModel()
+
+    companion object {
+        val nowCalendar: Calendar = Calendar.getInstance()
+    }
 
     private val dailyKeywordAdapter = listOf(
         DailyKeywordAdapter(), DailyKeywordAdapter(), DailyKeywordAdapter(), DailyKeywordAdapter()
@@ -38,6 +45,7 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
     }
 
     override fun initAfterBinding() {
+        /* TODO(통신) : 해당 날짜의 키워드, task 데이터 가져오는 부분 */
         observeKeywordData(binding.elFirst, 1)
         observeKeywordData(binding.elSecond, 2)
         observeKeywordData(binding.elThird, 3)
@@ -45,8 +53,36 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
     }
 
     private fun initDateView() {
-        binding.ibDate.setOnClickListener {
+        binding.date = CalendarUtil.convertCalendarToString(nowCalendar)
+        binding.ibDate.isSelected = true
 
+
+        binding.ibDate.setOnClickListener {
+            DatePickerDialog(
+                requireContext(),
+                { _, year, month, day ->
+                    val newCalendar: Calendar = Calendar.getInstance().apply {
+                        set(year, month, day)
+                    }
+                    binding.date = CalendarUtil.convertCalendarToString(newCalendar)
+
+                    //만약 오늘날짜가 아니라면
+                    nowCalendar.compareDateTo(newCalendar).run {
+                        //(1) 버튼 색깔 변경
+                        it.isSelected = this
+
+                        //(2)
+                        // TODO :  오늘로 돌아가는 버튼 띄우기
+                    }
+                    /* TODO(통신) : 날짜 선택 시 그 날짜의 data 가져오는 부분 */
+
+
+                },
+                nowCalendar.get(Calendar.YEAR),
+                nowCalendar.get(Calendar.MONTH),
+                nowCalendar.get(Calendar.DAY_OF_MONTH)
+            )
+                .show()
         }
     }
 
@@ -84,7 +120,7 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
 
     private fun initExpandableSecondComponent(expandableLayout: ExpandableLayout, number: Int) {
         expandableLayout.secondLayout.findViewById<RecyclerView>(R.id.rv_weekly_goal).apply {
-            adapter = dailyKeywordAdapter[number-1]
+            adapter = dailyKeywordAdapter[number - 1]
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
         }
@@ -97,7 +133,7 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
                 "${it.taskList.size}"
             expandableLayout.parentLayout.findViewById<TextView>(R.id.tv_report_name).text =
                 it.keyword + number
-            dailyKeywordAdapter[number-1].data = it.taskList
+            dailyKeywordAdapter[number - 1].data = it.taskList
         })
     }
 
