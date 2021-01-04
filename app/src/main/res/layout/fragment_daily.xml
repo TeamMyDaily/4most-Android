@@ -71,6 +71,7 @@
                 tools:text="20년 12월 20일" />
 
             <androidx.core.widget.NestedScrollView
+                android:id="@+id/nsv_daily"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="16dp"
@@ -141,10 +142,21 @@
                         app:expandable_parentLayout="@layout/layout_daily_goal_parent"
                         app:expandable_secondLayout="@layout/layout_daily_goal_second"/>
 
-
                 </LinearLayout>
 
             </androidx.core.widget.NestedScrollView>
+
+
+            <ImageView
+                android:id="@+id/iv_today"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_today"
+                android:layout_marginBottom="16dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
