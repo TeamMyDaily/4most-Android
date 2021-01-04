@@ -24,7 +24,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="152dp"
-                android:src="@color/orange"
+                android:src="@color/mainOrange"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tb_daily" />
@@ -52,7 +52,7 @@
                         android:layout_marginStart="16dp"/>
 
                     <ImageButton
-                        android:id="@+id/imageButton"
+                        android:id="@+id/ib_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_calendar_on"
@@ -78,7 +78,8 @@
                         android:id="@+id/el_first"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="16dp"
+                        app:expandable_duration="150"
                         app:expandable_parentLayout="@layout/layout_daily_goal_parent"
                         app:expandable_secondLayout="@layout/layout_daily_goal_second"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -89,6 +90,7 @@
                         android:id="@+id/line1"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:layout_marginTop="32dp"
                         android:background="@color/mainConcrete"
                         app:layout_constraintTop_toBottomOf="@+id/el_first"
                         android:layout_marginHorizontal="16dp"/>
@@ -97,7 +99,7 @@
                         android:id="@+id/el_second"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        app:expandable_duration="150"
                         app:expandable_parentLayout="@layout/layout_daily_goal_parent"
                         app:expandable_secondLayout="@layout/layout_daily_goal_second"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -108,6 +110,7 @@
                         android:id="@+id/line2"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:layout_marginTop="32dp"
                         android:background="@color/mainConcrete"
                         app:layout_constraintTop_toBottomOf="@+id/el_second"
                         android:layout_marginHorizontal="16dp"/>
@@ -116,7 +119,7 @@
                         android:id="@+id/el_third"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        app:expandable_duration="150"
                         app:expandable_parentLayout="@layout/layout_daily_goal_parent"
                         app:expandable_secondLayout="@layout/layout_daily_goal_second"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -127,6 +130,7 @@
                         android:id="@+id/line3"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:layout_marginTop="32dp"
                         android:background="@color/mainConcrete"
                         app:layout_constraintTop_toBottomOf="@+id/el_third"
                         android:layout_marginHorizontal="16dp"/>
@@ -135,12 +139,14 @@
                         android:id="@+id/el_fourth"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="32dp"
+                        app:expandable_duration="150"
                         app:expandable_parentLayout="@layout/layout_daily_goal_parent"
                         app:expandable_secondLayout="@layout/layout_daily_goal_second"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/line3" />
+                        app:layout_constraintTop_toBottomOf="@+id/line3"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
