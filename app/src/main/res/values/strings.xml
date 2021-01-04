@@ -8,6 +8,7 @@
 
     <!--Daily Fragment-->
     <string name="weekly_goal">이번 주의 목표</string>
+    <string name="daily_report">하루 기록</string>
 
     <!--Sign In-->
     <string name="sign_in">로그인</string>
