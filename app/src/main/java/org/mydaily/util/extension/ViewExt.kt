@@ -4,9 +4,17 @@ import android.content.Context
 import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 
 fun AppCompatActivity.replace(@IdRes frameId: Int, fragment: androidx.fragment.app.Fragment) {
     supportFragmentManager
+        .beginTransaction()
+        .replace(frameId, fragment, null)
+        .commit()
+}
+
+fun Fragment.replace(@IdRes frameId: Int, fragment: androidx.fragment.app.Fragment) {
+    requireActivity().supportFragmentManager
         .beginTransaction()
         .replace(frameId, fragment, null)
         .commit()
