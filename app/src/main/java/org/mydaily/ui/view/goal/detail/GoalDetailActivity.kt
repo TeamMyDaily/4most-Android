@@ -1,5 +1,7 @@
 package org.mydaily.ui.view.goal.detail
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.view.View
 import androidx.core.widget.addTextChangedListener
 import org.koin.android.ext.android.bind
@@ -95,7 +97,7 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
             etGoal.setText(intentGoal)
 
             btnModifySave.isEnabled = false
-            btnDelete.isEnabled = false
+            btnDelete.isEnabled = true
 
             btnAddSave.visibility = View.GONE
             btnModifySave.visibility = View.VISIBLE
@@ -103,7 +105,21 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
         }
 
         binding.btnDelete.setOnClickListener {
-            //삭제
+            AlertDialog.Builder(this)
+                .setTitle("이 목표를 삭제하시겠어요?")
+                .setMessage("목표를 삭제 하면 다시 되돌릴 수 없어요.\n" +
+                        "그래도 삭제 하시겠어요??")
+                .setPositiveButton("삭제하기") { _, _ ->
+                    // 삭제
+                    // do something
+                    shortToast("삭제 클릭됨")
+                }
+                .setNegativeButton("다음에하기") { _, _ ->
+                    //취소
+                    shortToast("다음에하기 클릭됨")
+                }
+                .create()
+                .show()
         }
 
         binding.btnModifySave.setOnClickListener {
