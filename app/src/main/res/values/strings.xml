@@ -30,4 +30,39 @@
     <string name="msg_delete">삭제할래요</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--KeywordListActivity-->
+    <string name="keyword_setting">키워드 설정하기</string>
+    <string name="what_is">살면서 중요하게</string>
+    <string name="important_thing_to_you">생각하는 것은 무엇입니까?</string>
+    <string name="choose_eight">먼저 8개를 골라보세요</string>
+    <string name="attitude_for_life">삶을 대하는 자세</string>
+    <string name="life1">진정성</string>
+    <string name="life2">용기</string>
+    <string name="life3">열정</string>
+    <string name="life4">꾸준함</string>
+    <string name="life5">배움</string>
+    <string name="life6">선한영향력</string>
+    <string name="life7">아웃풋</string>
+    <string name="life8">행복</string>
+    <string name="life9">즐거움</string>
+    <string name="life10">현명</string>
+    <string name="life11">타당성</string>
+    <string name="life12">정당성</string>
+
+    <string name="attitude_for_work">일을 대하는 자세</string>
+    <string name="work1">친절함</string>
+    <string name="work2">경청</string>
+    <string name="work3">대충</string>
+    <string name="work4">진실성</string>
+    <string name="work5">존중</string>
+    <string name="work6">신뢰</string>
+    <string name="work7">의심</string>
+    <string name="work8">신속성</string>
+    <string name="work9">돈</string>
+
+    <string name="no_word">찾고 있는 가치(단어)가 없으세요?</string>
+
+    <string name="select_finish">선택완료!</string>
+    <string name="image_error">이미지가 열리지 않습니다.</string>
 </resources>
