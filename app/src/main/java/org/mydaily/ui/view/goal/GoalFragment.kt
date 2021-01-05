@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
+import org.mydaily.data.model.Goal
 import org.mydaily.databinding.FragmentGoalBinding
 import org.mydaily.ui.adapter.GoalReportAdapter
 import org.mydaily.ui.base.BaseFragment
@@ -41,14 +42,14 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
         goalReportAdapter.setPlusButtonClickListener {
             requireContext().shortToast("+ 버튼 클릭 -> ${it.keyword}: 목표 존재=${it.isGoalExist}")
             /* 목표 상세 페이지로 이동(설정/추가) */
-            startGoalDetailActivityWithAction("ADD")
+            startGoalDetailActivityWithAction("ADD", it)
 
         }
 
         goalReportAdapter.setGoalClickListener {
             requireContext().shortToast("목표 클릭 -> ${it.keyword}: 목표 존재=${it.isGoalExist}")
             /* 목표 상세 페이지로 이동(수정) */
-            startGoalDetailActivityWithAction("MODIFY")
+            startGoalDetailActivityWithAction("MODIFY", it)
         }
     }
 
@@ -60,9 +61,12 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
         })
     }
 
-    private fun startGoalDetailActivityWithAction(action : String) {
-        val intent = Intent(requireActivity(), GoalDetailActivity::class.java)
-        intent.action = action
+    private fun startGoalDetailActivityWithAction(action: String, goal: Goal) {
+        val intent: Intent = Intent(requireActivity(), GoalDetailActivity::class.java).apply {
+            this.action = action
+            putExtra("keyword", goal.keyword)
+            putExtra("goal", goal.goal)
+        }
         startActivity(intent)
     }
 }

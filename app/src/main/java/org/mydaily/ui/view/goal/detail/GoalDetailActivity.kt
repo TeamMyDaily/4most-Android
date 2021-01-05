@@ -2,6 +2,7 @@ package org.mydaily.ui.view.goal.detail
 
 import android.view.View
 import androidx.core.widget.addTextChangedListener
+import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityGoalDetailBinding
@@ -15,6 +16,8 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
     override val viewModel: GoalViewModel by viewModel()
 
     private var intentAction: String? = null
+    private var intentKeyword: String? = null
+    private var intentGoal: String? = null
 
     override fun initView() {
         getIntentData()
@@ -32,7 +35,10 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
 
     private fun getIntentData() {
         intentAction = intent.action
-        shortToast("action = $intentAction")
+        intentKeyword = intent.getStringExtra("keyword")
+        intentGoal = intent.getStringExtra("goal")
+
+        shortToast("action = $intentAction, keyword = $intentKeyword, goal = $intentGoal")
     }
 
     private fun initToolbar() {
@@ -57,6 +63,7 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
 
     /* 목표 설정 */
     private fun stateAdd() {
+        binding.tvKeyword.text = intentKeyword
         binding.tvInfo1.text = "에"
         binding.tvInfo2.text = "가까워지기 위한 목표"
         binding.btnAddSave.isEnabled = false
@@ -79,8 +86,11 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
 
     /* 목표 수정 */
     private fun stateModify() {
+        binding.tvKeyword.text = intentKeyword
         binding.tvInfo1.text = "에"
         binding.tvInfo2.text = "목표를 수정하시겠어요?"
+        binding.etGoal.setText(intentGoal)
+
         binding.btnModifySave.isEnabled = false
         binding.btnDelete.isEnabled = false
 
