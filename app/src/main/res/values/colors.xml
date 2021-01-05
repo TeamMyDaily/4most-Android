@@ -14,6 +14,9 @@
     <color name="mainAlto">#E0E0E0</color>
     <color name="mainConcrete">#F2F2F2</color>
 
+    <color name="report_gray">#E5E5E5</color>
+    <color name = "report_container_gray">#EAEAEA</color>
+
     <color name="silver">#C1C1C1</color>
 
 
