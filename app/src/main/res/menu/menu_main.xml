@@ -7,6 +7,11 @@
         android:title="@string/menu_daily" />
 
     <item
+        android:id="@+id/menu_goal"
+        android:icon="@drawable/ic_error"
+        android:title="@string/menu_goal" />
+
+    <item
         android:id="@+id/menu_remind"
         android:icon="@drawable/ic_error"
         android:title="@string/menu_remind" />
@@ -15,5 +20,4 @@
         android:id="@+id/menu_my"
         android:icon="@drawable/ic_error"
         android:title="@string/menu_my" />
-
 </menu>

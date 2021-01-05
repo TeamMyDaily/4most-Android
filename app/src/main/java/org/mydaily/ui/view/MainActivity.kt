@@ -9,6 +9,7 @@ import org.mydaily.databinding.ActivityMainBinding
 import org.mydaily.util.extension.replace
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.view.daily.DailyFragment
+import org.mydaily.ui.view.goal.GoalFragment
 import org.mydaily.ui.view.mypage.MyPageFragment
 import org.mydaily.ui.view.remind.RemindFragment
 import org.mydaily.ui.viewmodel.MainViewModel
@@ -22,6 +23,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private val dailyFragment: DailyFragment by lazy { DailyFragment() }
     private val remindFragment: RemindFragment by lazy { RemindFragment() }
     private val myFragment: MyPageFragment by lazy { MyPageFragment() }
+    private val goalFragment: GoalFragment by lazy { GoalFragment() }
 
     override fun initView() {
         initToolbar()
@@ -58,6 +60,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                     replaceMyPageFragment()
                     return@setOnNavigationItemSelectedListener true
                 }
+                R.id.menu_goal -> {
+                    replaceGoalFragment()
+                    return@setOnNavigationItemSelectedListener true
+                }
             }
             false
         }
@@ -80,6 +86,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private fun replaceMyPageFragment() {
         replace(R.id.container_main, myFragment)
         binding.tvTitle.text = getString(R.string.menu_my)
+        binding.tvTitle.setTextColor(ContextCompat.getColor(this, R.color.mainBlack))
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    }
+
+    private fun replaceGoalFragment() {
+        replace(R.id.container_main, goalFragment)
+        binding.tvTitle.text = getString(R.string.menu_goal)
         binding.tvTitle.setTextColor(ContextCompat.getColor(this, R.color.mainBlack))
         supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
