@@ -84,17 +84,17 @@
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <TextView
-            android:id="@+id/tv_byte"
+            android:id="@+id/tv_title_byte"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
             android:textColor="@color/silver"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/tv_byte_info"
+            app:layout_constraintEnd_toStartOf="@+id/tv_title_byte_info"
             app:layout_constraintTop_toBottomOf="@+id/et_title" />
 
         <TextView
-            android:id="@+id/tv_byte_info"
+            android:id="@+id/tv_title_byte_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="/20자"
@@ -113,22 +113,43 @@
             android:gravity="start"
             android:maxLength="500"
             android:padding="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_byte" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_byte" />
+
+        <TextView
+            android:id="@+id/tv_desc_byte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/silver"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_desc_byte_info"
+            app:layout_constraintTop_toBottomOf="@+id/et_description" />
+
+        <TextView
+            android:id="@+id/tv_desc_byte_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/500자"
+            android:textColor="@color/mainOrange"
+            android:textSize="12sp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_description" />
 
         <TextView
             android:id="@+id/tv_satisfaction_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:text="@string/msg_rate_satisfaction"
             android:textColor="@color/mainBlack"
             android:textSize="16sp"
-            android:layout_marginTop="24dp"
-            android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_description" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_desc_byte" />
 
         <TextView
             android:id="@+id/tv_satisfaction_score"
@@ -159,36 +180,37 @@
             android:id="@+id/bubbleSeekBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:bsb_track_size="3dp"
-            app:bsb_second_track_size="3dp"
-            app:bsb_track_color="@color/mainConcrete"
+            android:layout_marginHorizontal="16dp"
             app:bsb_bubble_color="@color/mainOrange"
             app:bsb_bubble_text_color="@color/white"
             app:bsb_max="5"
             app:bsb_min="1"
-            app:bsb_progress="3"
-            app:bsb_seek_step_section="true"
+            app:bsb_progress="1"
             app:bsb_second_track_color="@color/mainOrange"
+            app:bsb_second_track_size="3dp"
             app:bsb_section_count="4"
+            app:bsb_seek_step_section="true"
             app:bsb_show_section_mark="true"
             app:bsb_thumb_radius="12dp"
             app:bsb_thumb_radius_on_dragging="24dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="32dp"
+            app:bsb_track_color="@color/mainConcrete"
+            app:bsb_track_size="3dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_save"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_satisfaction_info" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_save"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="21dp"
             android:background="@drawable/selector_btn_sign_in"
-            android:text="저장할래요!"
+            android:text="@string/msg_store"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

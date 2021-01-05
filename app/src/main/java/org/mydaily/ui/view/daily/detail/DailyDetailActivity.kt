@@ -14,11 +14,16 @@ class DailyDetailActivity : BaseActivity<ActivityDailyDetailBinding, DailyViewMo
         get() = R.layout.activity_daily_detail
     override val viewModel: DailyViewModel by viewModel()
 
+    private var isTitleEntered = false
+    private var isDescriptionEntered = false
+
     override fun initView() {
+        initState()
         getIntentData()
         initToolbar()
         initEditText()
         initBubbleSeekBar()
+        initSaveButton()
     }
 
     override fun initBeforeBinding() {
@@ -33,7 +38,12 @@ class DailyDetailActivity : BaseActivity<ActivityDailyDetailBinding, DailyViewMo
         val num = intent.getIntExtra("keyword", 0)
         shortToast("$num 번째 키워드 클릭해서 들어옴")
 
-        binding.tvKeyword.text = "열정"+num
+        binding.tvKeyword.text = "열정" + num
+    }
+
+    private fun initState() {
+        binding.btnSave.isEnabled = false
+        binding.tvSatisfactionScore.text = binding.bubbleSeekBar.progress.toString()
     }
 
     private fun initToolbar() {
@@ -46,9 +56,17 @@ class DailyDetailActivity : BaseActivity<ActivityDailyDetailBinding, DailyViewMo
     }
 
     private fun initEditText() {
-        binding.etTitle.addTextChangedListener{
-            val length = binding.etTitle.length().toString()
-            binding.tvByte.text = length
+        binding.etTitle.addTextChangedListener {
+            val length = binding.etTitle.length()
+            isTitleEntered = length > 0
+            binding.tvTitleByte.text = length.toString()
+            binding.btnSave.isEnabled = isSaveButtonEnabled()
+        }
+        binding.etDescription.addTextChangedListener {
+            val length = binding.etDescription.length()
+            isDescriptionEntered = length > 0
+            binding.tvDescByte.text = length.toString()
+            binding.btnSave.isEnabled = isSaveButtonEnabled()
         }
     }
 
@@ -56,7 +74,16 @@ class DailyDetailActivity : BaseActivity<ActivityDailyDetailBinding, DailyViewMo
         binding.bubbleSeekBar.onProgressChangedListener = bubbleSeekBarListener
     }
 
-    private val bubbleSeekBarListener = object: BubbleSeekBar.OnProgressChangedListener{
+    private fun initSaveButton() {
+        /* TODO : 저장 버튼 */
+        binding.btnSave.setOnClickListener {
+
+        }
+    }
+
+    private fun isSaveButtonEnabled(): Boolean = isTitleEntered && isDescriptionEntered
+
+    private val bubbleSeekBarListener = object : BubbleSeekBar.OnProgressChangedListener {
         override fun onProgressChanged(
             bubbleSeekBar: BubbleSeekBar?,
             progress: Int,
@@ -84,5 +111,6 @@ class DailyDetailActivity : BaseActivity<ActivityDailyDetailBinding, DailyViewMo
         }
 
     }
+
 
 }
