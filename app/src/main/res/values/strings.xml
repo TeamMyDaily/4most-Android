@@ -6,7 +6,7 @@
     <string name="menu_daily">기록</string>
     <string name="menu_goal">목표</string>
     <string name="menu_remind">회고</string>
-    <string name="menu_my">My</string>
+    <string name="menu_my">마이페이지</string>
 
     <!--Daily Fragment-->
     <string name="weekly_goal">이번 주의 목표</string>

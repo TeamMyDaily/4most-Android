@@ -73,7 +73,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         replace(R.id.container_main, dailyFragment)
         binding.tvTitle.text = getString(R.string.four_most)
         binding.tvTitle.setTextColor(ContextCompat.getColor(this, R.color.white))
-        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#FF7556")))
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.mainOrange)))
     }
 
     private fun replaceRemindFragment() {
@@ -86,8 +86,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private fun replaceMyPageFragment() {
         replace(R.id.container_main, myFragment)
         binding.tvTitle.text = getString(R.string.menu_my)
-        binding.tvTitle.setTextColor(ContextCompat.getColor(this, R.color.mainBlack))
-        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        binding.tvTitle.setTextColor(ContextCompat.getColor(this, R.color.white))
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.mainOrange)))
     }
 
     private fun replaceGoalFragment() {
