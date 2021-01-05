@@ -9,6 +9,15 @@ class MyPageViewModel : BaseViewModel() {
     val keywordList: LiveData<List<String>>
         get() = _keywordList
 
+    private val _userName = MutableLiveData<String>()
+    val userName: LiveData<String>
+        get() = _userName
+
+    fun getUser() {
+        /* 임시 데이터 */
+        _userName.value = "김슬기"
+    }
+
     fun getKeywordData() {
         /* 임시 데이터 */
         val tempList = listOf(

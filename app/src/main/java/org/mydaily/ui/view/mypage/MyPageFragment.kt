@@ -1,6 +1,5 @@
 package org.mydaily.ui.view.mypage
 
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -29,13 +28,15 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
     override fun initBeforeBinding() {
         binding.lifecycleOwner = viewLifecycleOwner
         viewModel.getKeywordData()
+        viewModel.getUser()
     }
 
     override fun initAfterBinding() {
         observeKeywordData()
+        observeUserName()
     }
 
-    private fun initRecyclerView(){
+    private fun initRecyclerView() {
         binding.rvMyKeyword.apply {
             adapter = myPageKeywordAdapter
             layoutManager = LinearLayoutManager(context)
@@ -52,9 +53,15 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
         }
     }
 
-    private fun observeKeywordData(){
+    private fun observeKeywordData() {
         viewModel.keywordList.observe(viewLifecycleOwner, {
             myPageKeywordAdapter.data = it
+        })
+    }
+
+    private fun observeUserName() {
+        viewModel.userName.observe(viewLifecycleOwner, {
+            binding.tvUser.text = it + getString(R.string.of_user)
         })
     }
 
