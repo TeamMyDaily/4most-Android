@@ -76,8 +76,14 @@ dependencies {
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
     testImplementation "org.koin:koin-test:$koin_version"
 
+
+    /* Third Party Library */
+
     //expandable layout
     implementation "com.github.skydoves:expandablelayout:1.0.6"
+
+    //bubble seekbar
+    implementation 'com.xw.repo:bubbleseekbar:3.20-lite'
 
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
