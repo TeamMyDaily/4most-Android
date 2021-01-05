@@ -1,7 +1,9 @@
 package org.mydaily.ui.view.daily
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -13,6 +15,7 @@ import org.mydaily.R
 import org.mydaily.databinding.FragmentDailyBinding
 import org.mydaily.ui.adapter.DailyKeywordAdapter
 import org.mydaily.ui.base.BaseFragment
+import org.mydaily.ui.view.daily.detail.DailyDetailActivity
 import org.mydaily.ui.viewmodel.DailyViewModel
 import org.mydaily.util.CalendarUtil
 import org.mydaily.util.CalendarUtil.compareDateTo
@@ -67,7 +70,9 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
                         stateNotCurrentDate(newCalendar)
                     }
                 },
-                nowCalendar.get(Calendar.YEAR), nowCalendar.get(Calendar.MONTH), nowCalendar.get(Calendar.DAY_OF_MONTH)
+                nowCalendar.get(Calendar.YEAR), nowCalendar.get(Calendar.MONTH), nowCalendar.get(
+                    Calendar.DAY_OF_MONTH
+                )
             ).show()
         }
 
@@ -119,6 +124,12 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
                 parentLayout.findViewById<ImageView>(R.id.iv_spinner).isSelected = true
                 expandableLayout.expand()
             }
+        }
+        parentLayout.findViewById<ImageButton>(R.id.ib_plus).setOnClickListener {
+            val intent = Intent(requireActivity(), DailyDetailActivity::class.java).apply {
+                putExtra("keyword", number)
+            }
+            startActivity(intent)
         }
     }
 
