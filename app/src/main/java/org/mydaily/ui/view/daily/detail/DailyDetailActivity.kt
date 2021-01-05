@@ -1,8 +1,7 @@
 package org.mydaily.ui.view.daily.detail
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.util.Log
+import androidx.core.widget.addTextChangedListener
+import com.xw.repo.BubbleSeekBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityDailyDetailBinding
@@ -18,6 +17,8 @@ class DailyDetailActivity : BaseActivity<ActivityDailyDetailBinding, DailyViewMo
     override fun initView() {
         getIntentData()
         initToolbar()
+        initEditText()
+        initBubbleSeekBar()
     }
 
     override fun initBeforeBinding() {
@@ -29,7 +30,7 @@ class DailyDetailActivity : BaseActivity<ActivityDailyDetailBinding, DailyViewMo
     }
 
     private fun getIntentData() {
-        val num = intent.getIntExtra("keyword",0)
+        val num = intent.getIntExtra("keyword", 0)
         shortToast("$num 번째 키워드 클릭해서 들어옴")
 
         binding.tvKeyword.text = "열정"+num
@@ -44,7 +45,43 @@ class DailyDetailActivity : BaseActivity<ActivityDailyDetailBinding, DailyViewMo
         }
     }
 
-    private fun initIntentData() {
+    private fun initEditText() {
+        binding.etTitle.addTextChangedListener{
+            val length = binding.etTitle.length().toString()
+            binding.tvByte.text = length
+        }
+    }
+
+    private fun initBubbleSeekBar() {
+        binding.bubbleSeekBar.onProgressChangedListener = bubbleSeekBarListener
+    }
+
+    private val bubbleSeekBarListener = object: BubbleSeekBar.OnProgressChangedListener{
+        override fun onProgressChanged(
+            bubbleSeekBar: BubbleSeekBar?,
+            progress: Int,
+            progressFloat: Float,
+            fromUser: Boolean
+        ) {
+            binding.tvSatisfactionScore.text = progress.toString()
+        }
+
+        override fun getProgressOnActionUp(
+            bubbleSeekBar: BubbleSeekBar?,
+            progress: Int,
+            progressFloat: Float
+        ) {
+
+        }
+
+        override fun getProgressOnFinally(
+            bubbleSeekBar: BubbleSeekBar?,
+            progress: Int,
+            progressFloat: Float,
+            fromUser: Boolean
+        ) {
+
+        }
 
     }
 

@@ -74,7 +74,11 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
             android:hint="@string/msg_what_happend_today"
+            android:textColorHint="@color/gray"
+            android:textColor="@color/mainBlack"
             android:maxLength="20"
+            android:maxLines="1"
+            android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -105,11 +109,14 @@
             android:layout_width="match_parent"
             android:layout_height="247dp"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
             android:background="@drawable/rectangle_fill_light_gray_radius_15"
+            android:gravity="start"
+            android:maxLength="500"
+            android:padding="16dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_byte" />
 
         <TextView
             android:id="@+id/tv_satisfaction_info"
@@ -123,13 +130,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_description" />
 
-
         <TextView
             android:id="@+id/tv_satisfaction_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/mainOrange"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_satisfaction_score_info"
+            app:layout_constraintEnd_toStartOf="@+id/tv_satisfaction_score_info"
+            app:layout_constraintTop_toTopOf="@+id/tv_satisfaction_score_info" />
+
+        <TextView
+            android:id="@+id/tv_satisfaction_score_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="0점"
+            android:text="점"
             android:textColor="@color/gray"
             android:textStyle="bold"
             android:textSize="16sp"
@@ -137,9 +155,32 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_satisfaction_info" />
 
-
+        <com.xw.repo.BubbleSeekBar
+            android:id="@+id/bubbleSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bsb_track_size="3dp"
+            app:bsb_second_track_size="3dp"
+            app:bsb_track_color="@color/mainConcrete"
+            app:bsb_bubble_color="@color/mainOrange"
+            app:bsb_bubble_text_color="@color/white"
+            app:bsb_max="5"
+            app:bsb_min="1"
+            app:bsb_progress="3"
+            app:bsb_seek_step_section="true"
+            app:bsb_second_track_color="@color/mainOrange"
+            app:bsb_section_count="4"
+            app:bsb_show_section_mark="true"
+            app:bsb_thumb_radius="12dp"
+            app:bsb_thumb_radius_on_dragging="24dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_satisfaction_info" />
 
         <Button
+            android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginHorizontal="16dp"
