@@ -63,20 +63,22 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
 
     /* 목표 설정 */
     private fun stateAdd() {
-        binding.tvKeyword.text = intentKeyword
-        binding.tvInfo1.text = "에"
-        binding.tvInfo2.text = "가까워지기 위한 목표"
-        binding.btnAddSave.isEnabled = false
+        binding.apply {
+            tvKeyword.text = intentKeyword
+            tvInfo1.text = "에"
+            tvInfo2.text = "가까워지기 위한 목표"
+            btnAddSave.isEnabled = false
+
+            btnAddSave.visibility = View.VISIBLE
+            btnModifySave.visibility = View.GONE
+            btnDelete.visibility = View.GONE
+        }
 
         binding.etGoal.addTextChangedListener {
             val length = binding.etGoal.length()
             binding.tvByte.text = length.toString()
             binding.btnAddSave.isEnabled = length > 0
         }
-
-        binding.btnAddSave.visibility = View.VISIBLE
-        binding.btnModifySave.visibility = View.GONE
-        binding.btnDelete.visibility = View.GONE
 
         binding.btnAddSave.setOnClickListener {
             //저장 후 종료
@@ -86,22 +88,24 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
 
     /* 목표 수정 */
     private fun stateModify() {
-        binding.tvKeyword.text = intentKeyword
-        binding.tvInfo1.text = "에"
-        binding.tvInfo2.text = "목표를 수정하시겠어요?"
-        binding.etGoal.setText(intentGoal)
+        binding.apply {
+            tvKeyword.text = intentKeyword
+            tvInfo1.text = "에"
+            tvInfo2.text = "목표를 수정하시겠어요?"
+            etGoal.setText(intentGoal)
 
-        binding.btnModifySave.isEnabled = false
-        binding.btnDelete.isEnabled = false
+            btnModifySave.isEnabled = false
+            btnDelete.isEnabled = false
 
-        binding.btnAddSave.visibility = View.GONE
-        binding.btnModifySave.visibility = View.VISIBLE
-        binding.btnDelete.visibility = View.VISIBLE
+            btnAddSave.visibility = View.GONE
+            btnModifySave.visibility = View.VISIBLE
+            btnDelete.visibility = View.VISIBLE
+        }
 
         binding.btnDelete.setOnClickListener {
-            //저장 후 종료
-            finish()
+            //삭제
         }
+
         binding.btnModifySave.setOnClickListener {
             //저장 후 종료
             finish()
