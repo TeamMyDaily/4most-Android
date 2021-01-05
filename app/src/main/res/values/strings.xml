@@ -10,6 +10,8 @@
     <!--Daily Fragment-->
     <string name="weekly_goal">이번 주의 목표</string>
     <string name="daily_report">하루 기록</string>
+    <string name="msg_what_happend_today">오늘 하루 무슨 일이 있었나요?</string>
+    <string name="msg_rate_satisfaction">만족도를 평가해주세요!</string>
 
     <!--Sign In-->
     <string name="sign_in">로그인</string>
