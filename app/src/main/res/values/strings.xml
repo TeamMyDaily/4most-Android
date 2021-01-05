@@ -27,6 +27,7 @@
 
     <!--Goal-->
     <string name="msg_goal_has_not_been_set">개의 목표가 미설정 되었어요!</string>
+    <string name="msg_delete">삭제할래요</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
