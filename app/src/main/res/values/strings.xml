@@ -3,10 +3,10 @@
 
     <!--Main Menu-->
     <string name="four_most">4most</string>
-    <string name="menu_daily">하루의 기록</string>
-    <string name="menu_remind">평가 및 회고</string>
-    <string name="menu_my">My</string>
+    <string name="menu_daily">기록</string>
     <string name="menu_goal">목표</string>
+    <string name="menu_remind">회고</string>
+    <string name="menu_my">My</string>
 
     <!--Daily Fragment-->
     <string name="weekly_goal">이번 주의 목표</string>
