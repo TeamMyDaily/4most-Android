@@ -1,4 +1,4 @@
-# MyDaily (2021/01/06 Ver.)
+# ​:memo:​MyDaily:heart:​ (2021/01/06 Ver.)
 
 > 대충 로고 넣을 예정
 
@@ -9,27 +9,27 @@
 
 <br>
 
-# Project
-- SOPT 27th AppJam MyDaily
+# :computer:​Project
+- SOPT 27th AppJam **MyDaily​:seedling:​**
 - 프로젝트 기간 : `2020.12.26` ~ `2021.01.16`
 
 
 <br>
 
-# Contents
+# :green_book:​Contents
 
-* [1. Specification](#1-specification)
-* [2. Flow Chart](#2-flow-chart)
-* [3. Package Structure](#3-package-structure)
-* [4. WIKI](#4-wiki)
-* [5. 핵심 기능 구현 방법 설명](#5-핵심-기능-구현-방법-설명)
-* [6. Contributor](#6-contributor)
+* [1. Specification](#​:one:​-specification)
+* [2. Flow Chart](#:two:​-flow-chart)
+* [3. Package Structure](#:three:​-package-structure)
+* [4. WIKI](#:four:​-wiki)
+* [5. 핵심 기능 구현 방법 설명](#:five:​-핵심-기능-구현-방법-설명)
+* [6. Contributor](#:six:​-contributor)
 
 
 
 <br>
 
-## 1. Specification
+## ​:one:​ Specification
 
 <table class="tg">
 <tbody>
@@ -74,7 +74,7 @@
 
 <br>
 
-## 2. Flow Chart
+## :two:​ Flow Chart
 
 ![img](/wiki/image/210104_flowchart.svg)
 
@@ -82,7 +82,7 @@
 
 <br>
 
-## 3. Package Structure
+## :three:​ Package Structure
 
 ```
 📦 org.mydaily
@@ -106,7 +106,7 @@
 
 <br>
 
-## 4. WIKI
+## :four:​ WIKI
 
 ```
 👉 회의록 및 Project Rule(Git, Coding Convention)
@@ -122,7 +122,7 @@
 
 <br>
 
-## 5. 핵심 기능 구현 방법 설명
+## :five:​ 핵심 기능 구현 방법 설명
 
 ```
 👉 WIKI에 핵심 기능 구현 코드 및 방법 정리
@@ -139,7 +139,7 @@
 
 <br>
 
-## 6. Contributor
+## :six:​ Contributor
 
 ```
 👉 팀원 소개와 역할 분담
