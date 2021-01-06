@@ -1,16 +1,9 @@
-# ​:memo:​MyDaily:heart:​ (2021/01/06 Ver.)
+# ​🧡​4most 🧡
 
-> 대충 로고 넣을 예정
-
-기록은 더 쉽게<br>
-회고는 더 깊게<br>
-어제보다 나은 하루의 시작, 마이데일리<br>
+<img src="/wiki/4most_logo_1.png" width="200px"/>
 
 
-<br>
-
-# :computer:​Project
-- SOPT 27th AppJam **MyDaily​:seedling:​**
+- SOPT 27th AppJam **Team MyDaily**​:seedling:
 - 프로젝트 기간 : `2020.12.26` ~ `2021.01.16`
 
 
@@ -18,12 +11,13 @@
 
 # :green_book:​Contents
 
-* [1. Specification](#​:one:​-specification)
-* [2. Flow Chart](#:two:​-flow-chart)
-* [3. Package Structure](#:three:​-package-structure)
-* [4. WIKI](#:four:​-wiki)
-* [5. 핵심 기능 구현 방법 설명](#:five:​-핵심-기능-구현-방법-설명)
-* [6. Contributor](#:six:​-contributor)
+[:one:​ Specification](#one-specification)<br>
+[:two:​ Flow Chart](#two-flow-chart)<br>
+[:three:​ Package Structure](#three-package-structure)<br>
+[:four:​ WIKI](#four-wiki)<br>
+[:five:​ 핵심 기능 구현 방법 설명](#five-핵심-기능-구현-방법-설명)<br>
+[:six:​ Contributor](#six-contributor)<br>
+
 
 
 
@@ -60,8 +54,8 @@
 
 <tr>
     <td><b>Third Party Library</b></td>
-<td><a href="https://github.com/skydoves/ExpandableLayout">ExpandableLayout</a>
-, <a href="https://github.com/woxingxiao/BubbleSeekBar">BubbleSeekBar</a></td>
+<td><a href="https://github.com/skydoves/ExpandableLayout">ExpandableLayout</a>,
+ <a href="https://github.com/woxingxiao/BubbleSeekBar">BubbleSeekBar</a></td>
 </tr>
 <tr>
     <td><b>Other Tool</b></td>
@@ -76,7 +70,7 @@
 
 ## :two:​ Flow Chart
 
-![img](/wiki/image/210104_flowchart.svg)
+![img](/wiki/image/210104_flowchart.png)
 
 
 
@@ -111,11 +105,11 @@
 ```
 👉 회의록 및 Project Rule(Git, Coding Convention)
 ```
-- [HOME](https://github.com/TeamMyDaily/MyDaily_Android/wiki)
-  - [1. Git 사용법](/TeamMyDaily/MyDaily_Android/wiki/1.-Git-사용법)
-  - [2. Git Commit Message Convention](/TeamMyDaily/MyDaily_Android/wiki/2.-Git-Commit-Message-Convention)
-  - [3. Android Coding Convention](/TeamMyDaily/MyDaily_Android/wiki/3.-Android-Coding-Convention)
-  - [4. 회의록](/TeamMyDaily/MyDaily_Android/wiki/4.-회의록)
+- [HOME](https://github.com/TeamMyDaily/4most-Android/wiki)
+  - [1. Git 사용법](https://github.com/TeamMyDaily/4most-Android/wiki/1.-Git-%EC%82%AC%EC%9A%A9%EB%B2%95)
+  - [2. Git Commit Message Convention](https://github.com/TeamMyDaily/4most-Android/wiki/2.-Git-Commit-Message-Convention)
+  - [3. Android Coding Convention](https://github.com/TeamMyDaily/4most-Android/wiki/3.-Android-Coding-Convention)
+  - [4. 회의록](https://github.com/TeamMyDaily/4most-Android/wiki/4.-%ED%9A%8C%EC%9D%98%EB%A1%9D)
 
 
 
@@ -128,11 +122,11 @@
 👉 WIKI에 핵심 기능 구현 코드 및 방법 정리
 ```
 
-- [키워드](https://github.com/TeamMyDaily/MyDaily_Android/wiki/5.1.-%ED%82%A4%EC%9B%8C%EB%93%9C)
-- [평가 및 회고](https://github.com/TeamMyDaily/MyDaily_Android/wiki/5.2.-%ED%8F%89%EA%B0%80-%EB%B0%8F-%ED%9A%8C%EA%B3%A0)
-- [기록](https://github.com/TeamMyDaily/MyDaily_Android/wiki/5.3.-%EA%B8%B0%EB%A1%9D)
-- [목표](https://github.com/TeamMyDaily/MyDaily_Android/wiki/5.4.-%EB%AA%A9%ED%91%9C)
-- [마이페이지](https://github.com/TeamMyDaily/MyDaily_Android/wiki/5.5.-%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80)
+- [키워드](https://github.com/TeamMyDaily/4most-Android/wiki/5.1.-%ED%82%A4%EC%9B%8C%EB%93%9C)
+- [평가 및 회고](https://github.com/TeamMyDaily/4most-Android/wiki/5.2.-%ED%8F%89%EA%B0%80-%EB%B0%8F-%ED%9A%8C%EA%B3%A0)
+- [기록](https://github.com/TeamMyDaily/4most-Android/wiki/5.3.-%EA%B8%B0%EB%A1%9D)
+- [목표](https://github.com/TeamMyDaily/4most-Android/wiki/5.4.-%EB%AA%A9%ED%91%9C)
+- [마이페이지](https://github.com/TeamMyDaily/4most-Android/wiki/5.5.-%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80)
 
 
 
