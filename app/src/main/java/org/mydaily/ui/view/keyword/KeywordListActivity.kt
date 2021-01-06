@@ -1,14 +1,17 @@
 package org.mydaily.ui.view.keyword
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_keyword_list.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipDrawable
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordListBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
+import org.mydaily.util.extension.shortToast
+
 
 class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordViewModel>() {
     override val layoutResourceId: Int
@@ -16,13 +19,83 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     override val viewModel: KeywordViewModel by viewModel()
 
     override fun initView() {
-        supportActionBar?.setDisplayShowTitleEnabled(false)
+        initToolbar()
     }
 
     override fun initBeforeBinding() {
+        binding.lifecycleOwner = this
+        viewModel.getLifeWord()
+        viewModel.getWorkWord()
+        viewModel.getMyWord()
     }
 
     override fun initAfterBinding() {
+        observeLifeWordList()
+        observeWorkWordList()
+        observeMyWordList()
+    }
+
+    private fun initToolbar() {
+        setSupportActionBar(binding.tbKeywordAddActivity)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+    }
+
+    private fun observeLifeWordList() {
+        viewModel.lifeWordList.observe(this, { list ->
+            for(str in list){
+                binding.cgLife.addView(createChip(str))
+            }
+        })
+    }
+
+    private fun observeWorkWordList() {
+        viewModel.workWordList.observe(this, { list ->
+            for(str in list){
+                binding.cgWork.addView(createChip(str))
+            }
+        })
+    }
+
+    private fun observeMyWordList() {
+        viewModel.myWordList.observe(this, { list ->
+            for(str in list){
+                binding.cgMyWord.addView(createChip(str))
+            }
+        })
+    }
+
+    private fun createChip(str: String): Chip {
+        val chipDrawable = ChipDrawable.createFromAttributes(
+            this,
+            null,
+            0,
+            R.style.Widget_MaterialComponents_Chip_Choice
+        )
+        return Chip(this).apply {
+            text = str
+            setChipDrawable(chipDrawable)
+            setChipBackgroundColorResource(R.color.selector_chip)
+            setTextAppearance(R.style.MyDailyChipTextStyleAppearance)
+            setOnClickListener {
+                // Click Event 처리
+                shortToast("CHIP 클릭됨")
+            }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_help -> {
+                shortToast("도움말 버튼 클릭됨")
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_keyword_list, menu)
+        return true
     }
 
 }
