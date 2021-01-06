@@ -115,6 +115,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_no_space_five_word" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_keyword_input_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="16dp"
@@ -122,11 +123,14 @@
             android:layout_marginTop="16dp"
             android:hint="@string/input_value"
             android:textColorHint="@color/alto"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
             app:boxStrokeColor="@color/selector_edittext"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
             app:boxStrokeErrorColor="@color/guardsman_red"
             app:boxStrokeWidth="1dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:hintTextColor="@color/persimmon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -136,8 +140,7 @@
                 android:id="@+id/et_keyword_input"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:drawableEnd="@drawable/ic_error"
-                android:textCursorDrawable="@drawable/selector_edittext_cursor" />
+                android:textCursorDrawable="@drawable/edittext_cursor_cod_gray" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
