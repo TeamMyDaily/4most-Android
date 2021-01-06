@@ -18,6 +18,11 @@
     <color name = "report_container_gray">#EAEAEA</color>
 
     <color name="silver">#C1C1C1</color>
-
+    <color name="gallery">#EAEAEA</color>
+    <color name="alto">#D2D2D2</color>
+    <color name="persimmon">#FF7556</color>
+    <color name="guardsman_red">#CA0101</color>
+    <color name="cod_gray">#121212</color>
+    <color name="pumpkin">#ff8022</color>
 
 </resources>
