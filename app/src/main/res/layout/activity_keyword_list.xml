@@ -1,582 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tb_keyword_add_activity"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <data>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/keyword_setting"
-            android:textColor="@color/cod_gray"
-            android:textSize="21sp"
-            android:textStyle="bold" />
-
-    </androidx.appcompat.widget.Toolbar>
-
-    <ImageView
-        android:id="@+id/btn_question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@null"
-        app:layout_constraintBottom_toBottomOf="@+id/tb_keyword_add_activity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_error" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_keyword_list"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/cl_finish"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tb_keyword_add_activity">
+        android:layout_height="match_parent">
 
-        <ScrollView
-            android:id="@+id/sv_keywordlist"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_keyword_add_activity"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/menu_keyword_list">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/keyword_setting"
+                android:textColor="@color/cod_gray"
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <ScrollView
+            android:id="@+id/sv_keyword_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_select_finish"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tb_keyword_add_activity">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_in_sv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_text"
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/tv_what_is_important"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="48dp"
+                    android:text="@string/what_is_important_thing_to_you"
+                    android:textColor="@color/cod_gray"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/tv_what_is"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="48dp"
-                        android:text="@string/what_is"
-                        android:textColor="@color/cod_gray"
-                        android:textSize="25sp"
-                        app:layout_constraintStart_toStartOf="@id/cl_text"
-                        app:layout_constraintTop_toTopOf="@id/cl_text" />
-                    <TextView
-                        android:id="@+id/tv_important_thing"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/important_thing_to_you"
-                        android:textColor="@color/cod_gray"
-                        android:textSize="25sp"
-                        app:layout_constraintStart_toStartOf="@id/cl_text"
-                        app:layout_constraintTop_toBottomOf="@id/tv_what_is"/>
-
-                    <TextView
-                        android:id="@+id/tv_sub"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/choose_eight"
-                        android:textColor="@color/pumpkin"
-                        android:textSize="15sp"
-                        app:layout_constraintStart_toStartOf="@id/cl_text"
-                        app:layout_constraintTop_toBottomOf="@id/tv_important_thing" />
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_life"
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/tv_sub"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cl_text">
+                    android:layout_marginTop="16dp"
+                    android:text="@string/choose_eight"
+                    android:textColor="@color/mainOrange"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_what_is_important"
+                    app:layout_constraintTop_toBottomOf="@id/tv_what_is_important" />
 
-                    <TextView
-                        android:id="@+id/tv_life"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="48dp"
-                        android:text="@string/attitude_for_life"
-                        android:textColor="@color/cod_gray"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="@id/cl_life"
-                        app:layout_constraintTop_toTopOf="@id/cl_life" />
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/cg_life_first"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_life">
-
-                        <com.google.android.material.chip.Chip
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/life1"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            app:chipBackgroundColor="@color/selector_chip" />
-
-                        <com.google.android.material.chip.Chip
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/life2"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            app:chipBackgroundColor="@color/selector_chip" />
-
-                        <com.google.android.material.chip.Chip
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/life3"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            app:chipBackgroundColor="@color/selector_chip" />
-
-                        <com.google.android.material.chip.Chip
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/life4"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            app:chipBackgroundColor="@color/selector_chip" />
-                    </com.google.android.material.chip.ChipGroup>
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/cg_life_second"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/cg_life_first">
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/life5"
-                            android:textColor="@color/white"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/selector_chip"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/life6"
-                            android:textColor="@color/white"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/selector_chip"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/life7"
-                            android:textColor="@color/white"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/selector_chip"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/life8"
-                            android:textColor="@color/white"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/selector_chip"
-                            android:textSize="16sp" />
-                    </com.google.android.material.chip.ChipGroup>
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/cg_life_third"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/cg_life_second">
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/life9"
-                            android:textColor="@color/white"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/selector_chip"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/life10"
-                            android:textColor="@color/white"
-                            app:chipBackgroundColor="@color/selector_chip"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/life11"
-                            android:textColor="@color/white"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/selector_chip"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/life12"
-                            android:textColor="@color/white"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/selector_chip"
-                            android:textSize="16sp" />
-                    </com.google.android.material.chip.ChipGroup>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_work"
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/tv_life"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cl_life">
+                    android:layout_marginTop="48dp"
+                    android:text="@string/attitude_for_life"
+                    android:textColor="@color/cod_gray"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/tv_sub"
+                    app:layout_constraintTop_toBottomOf="@id/tv_sub" />
 
-                    <TextView
-                        android:id="@+id/tv_work"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="48dp"
-                        android:text="@string/attitude_for_work"
-                        android:textSize="16sp"
-                        android:textColor="@color/cod_gray"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/cg_work_first"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_work">
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textColor="@color/white"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/selector_chip"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work2"
-                            android:textColor="@color/white"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/selector_chip"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work3"
-                            android:textColor="@color/white"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/selector_chip"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work4"
-                            android:textColor="@color/white"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/selector_chip"
-                            android:textSize="16sp" />
-                    </com.google.android.material.chip.ChipGroup>
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/cg_work_second"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/cg_work_first">
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work5"
-                            android:textColor="@color/white"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/selector_chip"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work6"
-                            android:textColor="@color/white"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/selector_chip"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work7"
-                            android:textColor="@color/white"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/selector_chip"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work8"
-                            android:textColor="@color/white"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/selector_chip"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work9"
-                            android:textColor="@color/white"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/selector_chip"
-                            android:textSize="16sp" />
-                    </com.google.android.material.chip.ChipGroup>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_add"
-                    android:layout_width="0dp"
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/cg_life"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_life"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cl_work">
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
-                    <TextView
-                        android:id="@+id/tv_no_word"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="48dp"
-                        android:text="@string/no_word"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/tv_work"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/attitude_for_work"
+                    android:textColor="@color/cod_gray"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/cg_life"
+                    app:layout_constraintTop_toBottomOf="@id/cg_life" />
 
-                    <ImageButton
-                        android:id="@+id/btn_add_word"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:contentDescription="@string/image_error"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_no_word"
-                        app:srcCompat="@android:drawable/ic_menu_add" />
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/cg_work"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_work"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
+                <TextView
+                    android:id="@+id/tv_my_word"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/my_word"
+                    android:textColor="@color/cod_gray"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/cg_work"
+                    app:layout_constraintTop_toBottomOf="@id/cg_work" />
 
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/cg_add"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/btn_add_word">
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textColor="@color/white"
-                            app:chipBackgroundColor="@color/silver"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textColor="@color/white"
-                            app:chipBackgroundColor="@color/silver"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textColor="@color/white"
-                            app:chipBackgroundColor="@color/silver"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textColor="@color/white"
-                            app:chipBackgroundColor="@color/silver"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            app:chipBackgroundColor="@color/silver"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            app:chipBackgroundColor="@color/silver"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work1"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work2"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work3"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/work4"
-                            android:textSize="16sp" />
-                    </com.google.android.material.chip.ChipGroup>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/cg_my_word"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_my_word"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </ScrollView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_finish"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_select_finish"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
             android:text="@string/select_finish"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:background="@drawable/selector_btn_sign_in"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/cl_finish" />
+            app:layout_constraintStart_toStartOf="parent" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
