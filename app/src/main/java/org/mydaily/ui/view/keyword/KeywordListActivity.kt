@@ -20,6 +20,7 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
 
     override fun initView() {
         initToolbar()
+        initAddButton()
     }
 
     override fun initBeforeBinding() {
@@ -38,6 +39,13 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     private fun initToolbar() {
         setSupportActionBar(binding.tbKeywordAddActivity)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+    }
+
+    private fun initAddButton() {
+        binding.ibAdd.setOnClickListener {
+            shortToast("추가 버튼 클릭됨")
+            //여기서 키워드 추가 Activity로 이동
+        }
     }
 
     private fun observeLifeWordList() {

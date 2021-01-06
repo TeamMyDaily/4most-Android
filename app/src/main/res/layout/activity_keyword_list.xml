@@ -137,6 +137,15 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
+                <ImageButton
+                    android:id="@+id/ib_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_add"
+                    app:layout_constraintStart_toStartOf="@+id/tv_my_word"
+                    app:layout_constraintTop_toBottomOf="@+id/cg_my_word" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </ScrollView>
