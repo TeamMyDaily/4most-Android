@@ -11,8 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDaily">
         <activity
-            android:name=".ui.view.keyword.detail.KeywordPopupActivity"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:name=".ui.view.keyword.KeywordListActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:exported="true" >
+        </activity>
         <activity
             android:name=".ui.view.daily.detail.DailyDetailActivity"
             android:windowSoftInputMode="adjustPan" />

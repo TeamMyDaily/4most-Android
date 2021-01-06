@@ -6,7 +6,7 @@
     <string name="menu_daily">기록</string>
     <string name="menu_goal">목표</string>
     <string name="menu_remind">회고</string>
-    <string name="menu_my">My</string>
+    <string name="menu_my">마이페이지</string>
 
     <!--Daily Fragment-->
     <string name="weekly_goal">이번 주의 목표</string>
@@ -29,5 +29,25 @@
     <string name="msg_goal_has_not_been_set">개의 목표가 미설정 되었어요!</string>
     <string name="msg_delete">삭제할래요</string>
 
+
+    <!--My Page-->
+    <string name="of_user">님의</string>
+    <string name="lets_find_destination">목적지를 찾아봐요!</string>
+    <string name="modify_keyword">키워드 수정</string>
+    <string name="my_current_keyword">나의 현재 키워드</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--KeywordListActivity-->
+    <string name="keyword_setting">키워드 설정하기</string>
+    <string name="what_is_important_thing_to_you">살면서 중요하게\n생각하는 것은 무엇인가요?</string>
+    <string name="choose_eight">먼저 8개를 골라보세요</string>
+    <string name="attitude_for_life">삶을 대하는 자세</string>
+    <string name="attitude_for_work">일을 대하는 자세</string>
+    <string name="my_word">내가 추가한 단어</string>
+
+    <string name="no_word">찾고 있는 가치(단어)가 없으세요?</string>
+
+    <string name="select_finish">선택완료!</string>
+    <string name="image_error">이미지가 열리지 않습니다.</string>
 </resources>
