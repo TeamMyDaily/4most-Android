@@ -42,9 +42,12 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     }
 
     private fun initAddButton() {
-        binding.ibAdd.setOnClickListener {
+        binding.chipAdd.setOnClickListener {
             shortToast("추가 버튼 클릭됨")
             //여기서 키워드 추가 Activity로 이동
+
+            //예시 : 키워드 추가 시 맨 앞에 chip 생성
+            binding.cgMyWord.addView(createChip("추가된 샘플"),binding.cgMyWord.childCount-1)
         }
     }
 
@@ -84,6 +87,7 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
             setChipDrawable(chipDrawable)
             setChipBackgroundColorResource(R.color.selector_chip)
             setTextAppearance(R.style.MyDailyChipTextStyleAppearance)
+            setRippleColorResource(android.R.color.transparent)
             setOnClickListener {
                 // Click Event 처리
                 shortToast("CHIP 클릭됨")
