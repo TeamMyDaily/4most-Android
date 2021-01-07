@@ -91,7 +91,7 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
     private fun stateNotCurrentDate(calendar: Calendar) {
         binding.date = CalendarUtil.convertCalendarToString(calendar)
         binding.ibDate.isSelected = false
-        binding.tvDate.setTextColor(ContextCompat.getColor(requireContext(), R.color.gray))
+        binding.tvDate.setTextColor(ContextCompat.getColor(requireContext(), R.color.mainGray))
         binding.ivToday.visibility = View.VISIBLE
     }
 

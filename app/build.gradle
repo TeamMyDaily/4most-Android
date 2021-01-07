@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "org.mydaily"
-        minSdkVersion 24
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0.0"
@@ -75,6 +75,9 @@ dependencies {
     implementation "org.koin:koin-androidx-scope:$koin_version"
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
     testImplementation "org.koin:koin-test:$koin_version"
+
+    //chip
+    implementation 'com.google.android.material:material:1.0.0'
 
 
     /* Third Party Library */
