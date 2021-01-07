@@ -28,7 +28,7 @@ object BindingAdapter {
         val color = if (goal.isGoalExist) {
             textView.resources.getColor(R.color.mainBlack, null)
         } else {
-            textView.resources.getColor(R.color.gray, null)
+            textView.resources.getColor(R.color.mainGray, null)
         }
         textView.setTextColor(color)
         textView.text = goal.keyword
@@ -73,7 +73,7 @@ object BindingAdapter {
             color = textView.resources.getColor(R.color.mainBlack, null)
             text = goal.goal!!
         } else {
-            color = textView.resources.getColor(R.color.gray, null)
+            color = textView.resources.getColor(R.color.mainGray, null)
             text = textView.resources.getString(R.string.msg_set_goal)
         }
         textView.setTextColor(color)

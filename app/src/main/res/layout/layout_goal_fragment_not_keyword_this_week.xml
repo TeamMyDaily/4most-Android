@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="@string/msg_keyword_not_exist_this_week"
-            android:textColor="@color/gray"
+            android:textColor="@color/mainGray"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
