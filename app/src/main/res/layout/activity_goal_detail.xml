@@ -67,6 +67,18 @@
             app:layout_constraintStart_toStartOf="@+id/tv_keyword"
             app:layout_constraintTop_toBottomOf="@+id/tv_keyword" />
 
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20년 12월 3주"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_keyword" />
+
         <EditText
             android:id="@+id/et_goal"
             android:layout_width="match_parent"
@@ -74,7 +86,7 @@
             android:layout_marginHorizontal="16dp"
             android:background="@drawable/rectangle_fill_light_gray_radius_15"
             android:gravity="start"
-            android:maxLength="30"
+            android:maxLength="25"
             android:padding="16dp"
             android:layout_marginTop="80dp"
             android:textColor="#121212"
@@ -97,7 +109,7 @@
             android:id="@+id/tv_byte_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="/30자"
+            android:text="/25자"
             android:textColor="@color/mainOrange"
             android:textSize="12sp"
             android:layout_marginEnd="16dp"
@@ -105,7 +117,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_goal" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_add_save"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -116,26 +128,27 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_delete"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/selector_btn_sign_in"
+            android:background="@drawable/rectangle_gray_radius_15"
             android:text="@string/msg_delete"
-            android:textColor="@color/white"
+            android:textColor="@color/gray"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:padding="18dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_modify_save"
             android:layout_width="0dp"
             android:layout_height="60dp"
@@ -146,6 +159,7 @@
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_delete" />

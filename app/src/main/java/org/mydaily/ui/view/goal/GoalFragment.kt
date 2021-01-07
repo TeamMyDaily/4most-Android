@@ -10,7 +10,7 @@ import org.mydaily.ui.adapter.GoalReportAdapter
 import org.mydaily.ui.base.BaseFragment
 import org.mydaily.ui.view.goal.detail.GoalDetailActivity
 import org.mydaily.ui.viewmodel.GoalViewModel
-import org.mydaily.util.extension.shortToast
+import java.util.*
 
 
 class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
@@ -26,6 +26,7 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
 
     override fun initBeforeBinding() {
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.calendar = Calendar.getInstance()
         viewModel.getGoalData()
     }
 
@@ -34,30 +35,32 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
     }
 
     private fun initRecyclerView() {
-        binding.rvGoal.apply {
+        binding.layoutKeywordExist.rvGoal.apply {
             adapter = goalReportAdapter
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
         }
-        goalReportAdapter.setPlusButtonClickListener {
-            requireContext().shortToast("+ 버튼 클릭 -> ${it.keyword}: 목표 존재=${it.isGoalExist}")
-            /* 목표 상세 페이지로 이동(설정/추가) */
+        goalReportAdapter.setAddButtonClickListener {
+            //requireContext().shortToast("+ 버튼 클릭 -> ${it.keyword}: 목표 존재=${it.isGoalExist}")
+            //목표 상세 페이지로 이동(설정/추가)
             startGoalDetailActivityWithAction("ADD", it)
 
         }
 
         goalReportAdapter.setGoalClickListener {
-            requireContext().shortToast("목표 클릭 -> ${it.keyword}: 목표 존재=${it.isGoalExist}")
-            /* 목표 상세 페이지로 이동(수정) */
-            startGoalDetailActivityWithAction("MODIFY", it)
+            //requireContext().shortToast("목표 클릭 -> ${it.keyword}: 목표 존재=${it.isGoalExist}")
+            //목표 상세 페이지로 이동(수정)
+            if (it.isGoalExist) {
+                startGoalDetailActivityWithAction("MODIFY", it)
+            } else {
+                startGoalDetailActivityWithAction("ADD", it)
+            }
         }
     }
 
     private fun observeGoalData() {
-        viewModel.goalList.observe(viewLifecycleOwner, {
+        viewModel.goalList.observe(this, {
             goalReportAdapter.data = it
-            val info = "3" + getString(R.string.msg_goal_has_not_been_set)
-            binding.tvGoalNumAlert.text = info
         })
     }
 
@@ -66,6 +69,7 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
             this.action = action
             putExtra("keyword", goal.keyword)
             putExtra("goal", goal.goal)
+            putExtra("id", goal.id)
         }
         startActivity(intent)
     }
