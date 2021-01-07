@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:text="4"
-            android:textColor="@color/mainLightOrange"
+            android:textColor="@color/mainPaleOrange"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/fl_number"
             app:layout_constraintTop_toTopOf="@+id/fl_number" />
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="개의 기록"
-            android:textColor="@color/mainLightOrange"
+            android:textColor="@color/mainPaleOrange"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_number_of_task"
             app:layout_constraintStart_toEndOf="@+id/tv_number_of_task"
