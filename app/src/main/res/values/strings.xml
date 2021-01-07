@@ -26,8 +26,14 @@
     <string name="msg_sign_in_error">이메일과 비밀번호를 확인해주세요</string>
 
     <!--Goal-->
+    <string name="msg_plz_set_goal_by_keyword">키워드에 따른\n목표를 설정해주세요!</string>
     <string name="msg_goal_has_not_been_set">개의 목표가 미설정 되었어요!</string>
     <string name="msg_delete">삭제할래요</string>
+    <string name="msg_set_goal">목표를 세워주세요.</string>
+    <string name="msg_goal_achieved">달성</string>
+    <string name="msg_goal_not_achieved">미달성</string>
+    <string name="msg_keyword_not_exist">키워드가 존재 하지 않아 목표를 생성 할 수 없어요.😢 \n + 버튼을 눌러 키워드를 생성 해 보세요!</string>
+    <string name="msg_keyword_not_exist_this_week">이 주에는 키워드가 없어요.😢</string>
 
 
     <!--My Page-->

@@ -56,7 +56,7 @@
         <View
             android:layout_width="0dp"
             android:layout_height="3dp"
-            android:background="@color/mainConcrete"
+            android:background="@color/mainLightGray"
             android:layout_marginStart="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/frameLayout"
