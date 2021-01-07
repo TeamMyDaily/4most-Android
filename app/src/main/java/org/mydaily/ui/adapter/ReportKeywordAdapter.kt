@@ -2,6 +2,7 @@ package org.mydaily.ui.adapter
 
 import android.content.Context
 import android.graphics.Color
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -11,11 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import org.mydaily.R
 import org.mydaily.data.model.ReportListData
 import org.mydaily.databinding.KeywordListItemBinding
-import org.mydaily.ui.view.remind.ReportFragment
+import org.mydaily.ui.view.remind.OnItemClick
 
-class ReportKeywordAdapter(private val context: Context) : RecyclerView.Adapter<ReportKeywordAdapter.ViewHolder>() {
+class ReportKeywordAdapter(private val context: Context, listener : OnItemClick) : RecyclerView.Adapter<ReportKeywordAdapter.ViewHolder>() {
     private lateinit var binding: KeywordListItemBinding
     var data = mutableListOf<ReportListData>()
+    private val mCallback = listener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         binding = DataBindingUtil.inflate(LayoutInflater.from(context),
@@ -24,7 +26,7 @@ class ReportKeywordAdapter(private val context: Context) : RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(data[position])
+        holder.bind(data[position], position)
     }
 
     override fun getItemCount(): Int = data.size
@@ -32,7 +34,7 @@ class ReportKeywordAdapter(private val context: Context) : RecyclerView.Adapter<
     inner class ViewHolder(private val binding: KeywordListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(data: ReportListData) {
+        fun bind(data: ReportListData, pos : Int) {
             val tasknum = data.task_num.toString()
             binding.reportlistdata = data
             binding.tvTasknum.text = "총 "+tasknum+"개"
@@ -49,7 +51,11 @@ class ReportKeywordAdapter(private val context: Context) : RecyclerView.Adapter<
                 override fun onTouch(v: View, event: MotionEvent): Boolean {
                     return true
                 }
-            })//프로그레스바 터치 prevent
+            })//시크바 터치 prevent
+
+            binding.root.setOnClickListener{
+                mCallback.onClick(pos)
+            }
 
         }
     }

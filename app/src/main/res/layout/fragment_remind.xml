@@ -51,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/ic_arrow_back" />
+                    app:srcCompat="@drawable/ic_arrow_report_back" />
 
                 <TextView
                     android:id="@+id/tv_date"
@@ -70,7 +70,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/ic_arrow_forward" />
+                    app:srcCompat="@drawable/ic_arrow_report_forward" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

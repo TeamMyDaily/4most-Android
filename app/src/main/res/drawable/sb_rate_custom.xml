@@ -13,7 +13,7 @@
         <clip>
             <shape android:shape="line" >
                 <corners android:radius="8dp"/>
-                <stroke android:width="8dp" android:color="@color/orange"/>
+                <stroke android:width="8dp" android:color="@color/mainOrange"/>
             </shape>
         </clip>
     </item>

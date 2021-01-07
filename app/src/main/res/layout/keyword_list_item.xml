@@ -30,13 +30,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="11dp"
-                android:layout_marginTop="48dp"
-                android:text="총 5개"
-                android:textColor="#C9C9C9"
-                android:textSize="12sp"
+                android:layout_marginBottom="5dp"
                 android:gravity="center"
-                app:layout_constraintStart_toEndOf="@+id/tv_rate"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="총 5개"
+                android:textColor="@color/mainGray"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_rate"
+                app:layout_constraintStart_toEndOf="@+id/tv_rate" />
 
             <TextView
                 android:id="@+id/tv_rate"
@@ -58,7 +58,7 @@
                 android:layout_marginEnd="16dp"
                 android:lineHeight="40sp"
                 android:text="@{reportlistdata.keyword}"
-                android:textColor="@color/black"
+                android:textColor="@color/mainBlack"
                 android:textSize="21sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -69,10 +69,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@{reportlistdata.keyword_goal}"
-                android:textSize="12sp"
                 android:gravity="right"
-                android:textColor="#C9C9C9"
+                android:maxWidth="163sp"
+                android:text="@{reportlistdata.keyword_goal}"
+                android:textColor="@color/mainGray"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/tv_keyword"
                 app:layout_constraintTop_toBottomOf="@+id/tv_keyword" />
 
@@ -84,7 +85,6 @@
                 android:layout_marginBottom="13dp"
                 android:max="50"
                 android:progress="25"
-
                 android:progressDrawable="@drawable/sb_rate_custom"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

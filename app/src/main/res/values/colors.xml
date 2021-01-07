@@ -17,6 +17,11 @@
     <color name="report_gray">#E5E5E5</color>
 
     <color name="mainAlto">#E0E0E0</color>
+    <color name = "daily_record_divider">#FFF1EE</color>
+    <color name = "daily_record_container">#FEC7BA</color>
+    <color name = "achivement_container_gray">#C4C4C4</color>
+    <color name = "remind_textbox_gray">#F2F2F2</color>
+
     <color name="silver">#C1C1C1</color>
     <color name="gallery">#EAEAEA</color>
     <color name="alto">#D2D2D2</color>

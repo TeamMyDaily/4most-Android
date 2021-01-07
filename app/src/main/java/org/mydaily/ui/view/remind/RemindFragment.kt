@@ -2,6 +2,7 @@ package org.mydaily.ui.view.remind
 
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_remind.*
+import kotlinx.android.synthetic.main.fragment_remind_write.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.FragmentRemindBinding

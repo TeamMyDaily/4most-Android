@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.FragmentRemindBinding
@@ -28,4 +29,5 @@ class RemindWriteFragment: BaseFragment<FragmentRemindWriteBinding, RemindViewMo
     override fun initAfterBinding() {
 
     }
+
 }

@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"
             android:layout_marginTop="32dp"
-            android:textColor="@color/black"
+            android:textColor="@color/mainBlack"
             android:textStyle="bold"
             android:text="이번 주 키워드와\n얼마나 가까워졌나요?"
             android:textSize="25sp"

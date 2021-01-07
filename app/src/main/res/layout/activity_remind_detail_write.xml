@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.view.remind.RemindDetailWriteActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_remind_detail_write"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                android:textColor="@color/mainBlack"
+                android:layout_gravity="center"
+                tools:text="회고"/>
+        </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/tv_remind_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:textColor="@color/mainBlack"
+            android:text="이번주의 잘 한 점"
+            android:textStyle="bold"
+            android:textSize="21sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tb_remind_detail_write" />
+
+        <EditText
+            android:id="@+id/et_remind_text"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="24dp"
+            android:ems="10"
+            android:hint="이번주, 어떤 내 모습을 칭찬 해 주고 싶나요?"
+            android:scrollbars="vertical"
+            android:gravity="top"
+            android:textColor="@color/mainBlack"
+            android:textSize="15sp"
+            android:inputType="text"
+            android:padding="16dp"
+            android:background="@drawable/remind_write_textbox"
+            app:layout_constraintBottom_toTopOf="@+id/bt_write_complete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.292"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_remind_title" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bt_write_complete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="작성완료"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:background="@drawable/btn_write_incomplete"
+            android:textSize="18sp"
+            android:paddingVertical="19dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_remind_limit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="/800자"
+            app:layout_constraintBottom_toTopOf="@+id/et_remind_text"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_remind_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/mainOrange"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_remind_limit"
+            app:layout_constraintEnd_toStartOf="@+id/tv_remind_limit" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
