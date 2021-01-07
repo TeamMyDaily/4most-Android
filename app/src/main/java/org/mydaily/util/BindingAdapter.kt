@@ -5,8 +5,22 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import org.mydaily.R
 import org.mydaily.data.model.Goal
+import org.mydaily.util.CalendarUtil.isWeekSame
+import java.util.*
 
 object BindingAdapter {
+
+    @JvmStatic
+    @BindingAdapter("setDateByCalendar")
+    fun setDateByCalendar(textView: TextView, calendar: Calendar) {
+        val color = if (Calendar.getInstance().isWeekSame(calendar)) {
+            textView.resources.getColor(R.color.mainOrange, null)
+        } else {
+            textView.resources.getColor(R.color.mainBlack, null)
+        }
+        textView.setTextColor(color)
+        textView.text = CalendarUtil.convertCalendarToWeekString(calendar)
+    }
 
     @JvmStatic
     @BindingAdapter("setKeywordWithGoal")
@@ -30,7 +44,6 @@ object BindingAdapter {
         }
     }
 
-
     @JvmStatic
     @BindingAdapter("setBackgroundWithGoalCompleted")
     fun setBackgroundWithGoalCompleted(view: View, isGoalCompleted: Boolean) {
@@ -50,7 +63,6 @@ object BindingAdapter {
             view.visibility = View.VISIBLE
         }
     }
-
 
     @JvmStatic
     @BindingAdapter("setGoalWithGoal")

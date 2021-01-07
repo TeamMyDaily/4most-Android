@@ -7,6 +7,9 @@
         <variable
             name="temp"
             type="int" />
+        <variable
+            name="calendar"
+            type="java.util.Calendar" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,6 +32,7 @@
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            setDateByCalendar="@{calendar}"
             android:text="20년 12월 3주"
             android:textColor="#121212"
             android:textSize="12sp"
