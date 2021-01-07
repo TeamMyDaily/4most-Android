@@ -44,7 +44,6 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-<<<<<<< HEAD
     <!--KeywordAddActivity-->
     <string name="keyword_add">키워드 추가</string>
     <string name="is_there">찾으시는 가치(단어)가</string>
@@ -55,7 +54,7 @@
     <string name="recommend_noun">명사 형태를 추천해요.</string>
     <string name="btn_add">추가할래요!</string>
     <string name="input_value">가치를 입력해주세요</string>
-=======
+
     <!--KeywordListActivity-->
     <string name="keyword_setting">키워드 설정하기</string>
     <string name="what_is_important_thing_to_you">살면서 중요하게\n생각하는 것은 무엇인가요?</string>
@@ -68,5 +67,4 @@
 
     <string name="select_finish">선택완료!</string>
     <string name="image_error">이미지가 열리지 않습니다.</string>
->>>>>>> 5da1f2fa168bbccf10fde204b7b01838cb377237
 </resources>
