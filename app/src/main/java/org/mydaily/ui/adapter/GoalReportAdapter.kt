@@ -30,9 +30,7 @@ class GoalReportAdapter: RecyclerView.Adapter<GoalReportAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemKeywordGoalBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(goal: Goal) {
             binding.goal = goal
-            binding.ivPlus.setOnClickListener {
-                plusButtonClickListener?.invoke(goal)
-            }
+
             binding.tvGoal.setOnClickListener {
                 goalClickListener?.invoke(goal)
             }

@@ -34,7 +34,7 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
     }
 
     private fun initRecyclerView() {
-        binding.rvGoal.apply {
+        binding.layoutKeywordExist.rvGoal.apply {
             adapter = goalReportAdapter
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
@@ -57,7 +57,6 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
         viewModel.goalList.observe(viewLifecycleOwner, {
             goalReportAdapter.data = it
             val info = "3" + getString(R.string.msg_goal_has_not_been_set)
-            binding.tvGoalNumAlert.text = info
         })
     }
 
