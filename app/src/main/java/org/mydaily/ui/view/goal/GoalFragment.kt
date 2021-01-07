@@ -39,24 +39,24 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
         }
-        goalReportAdapter.setPlusButtonClickListener {
+        goalReportAdapter.setAddButtonClickListener {
             requireContext().shortToast("+ 버튼 클릭 -> ${it.keyword}: 목표 존재=${it.isGoalExist}")
-            /* 목표 상세 페이지로 이동(설정/추가) */
-            startGoalDetailActivityWithAction("ADD", it)
+/*            *//* 목표 상세 페이지로 이동(설정/추가) *//*
+            startGoalDetailActivityWithAction("ADD", it)*/
 
         }
 
         goalReportAdapter.setGoalClickListener {
             requireContext().shortToast("목표 클릭 -> ${it.keyword}: 목표 존재=${it.isGoalExist}")
-            /* 목표 상세 페이지로 이동(수정) */
-            startGoalDetailActivityWithAction("MODIFY", it)
+/*            *//* 목표 상세 페이지로 이동(수정) *//*
+            startGoalDetailActivityWithAction("MODIFY", it)*/
         }
     }
 
     private fun observeGoalData() {
-        viewModel.goalList.observe(viewLifecycleOwner, {
+
+        viewModel.goalList.observe(this, {
             goalReportAdapter.data = it
-            val info = "3" + getString(R.string.msg_goal_has_not_been_set)
         })
     }
 

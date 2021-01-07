@@ -16,11 +16,11 @@ class GoalReportAdapter: RecyclerView.Adapter<GoalReportAdapter.ViewHolder>() {
             notifyDataSetChanged()
         }
 
-    private var plusButtonClickListener: ((Goal)-> Unit) ?= null
+    private var addButtonClickListener: ((Goal)-> Unit) ?= null
     private var goalClickListener: ((Goal)-> Unit) ?= null
 
-    fun setPlusButtonClickListener(listener : (Goal)-> Unit) {
-        this.plusButtonClickListener = listener
+    fun setAddButtonClickListener(listener : (Goal)-> Unit) {
+        this.addButtonClickListener = listener
     }
 
     fun setGoalClickListener(listener : (Goal)-> Unit) {
@@ -31,7 +31,10 @@ class GoalReportAdapter: RecyclerView.Adapter<GoalReportAdapter.ViewHolder>() {
         fun bind(goal: Goal) {
             binding.goal = goal
 
-            binding.tvGoal.setOnClickListener {
+            binding.tvAddBtn.setOnClickListener {
+                addButtonClickListener?.invoke(goal)
+            }
+            binding.clParent.setOnClickListener {
                 goalClickListener?.invoke(goal)
             }
         }
