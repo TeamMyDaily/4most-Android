@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.FragmentKeywordPopupFirstBinding
-import org.mydaily.databinding.FragmentKeywordPopupSecondBinding
+import org.mydaily.databinding.FragmentKeywordPopupThirdBinding
 import org.mydaily.ui.base.BaseFragment
 import org.mydaily.ui.viewmodel.KeywordViewModel
 
-class Keyword_Popup_SecondFragment : BaseFragment<FragmentKeywordPopupSecondBinding, KeywordViewModel>() {
+class KeywordPopupThirdFragment : BaseFragment<FragmentKeywordPopupThirdBinding, KeywordViewModel>() {
     override val layoutResourceId: Int
-        get() = R.layout.fragment_keyword_popup_second
+        get() = R.layout.fragment_keyword_popup_third
     override val viewModel: KeywordViewModel by viewModel()
 
     override fun initView() {

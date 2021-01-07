@@ -7,7 +7,7 @@ import org.mydaily.ui.base.BaseFragment
 import org.mydaily.ui.viewmodel.GoalViewModel
 import org.mydaily.ui.viewmodel.KeywordViewModel
 
-class Keyword_Popup_FirstFragment : BaseFragment<FragmentKeywordPopupFirstBinding, KeywordViewModel>() {
+class KeywordPopupFirstFragment : BaseFragment<FragmentKeywordPopupFirstBinding, KeywordViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_keyword_popup_first
     override val viewModel: KeywordViewModel by viewModel()
