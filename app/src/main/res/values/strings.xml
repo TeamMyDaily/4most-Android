@@ -50,4 +50,15 @@
 
     <string name="select_finish">선택완료!</string>
     <string name="image_error">이미지가 열리지 않습니다.</string>
+
+    <!--KeywordPopupActivity-->
+    <string name="who_is_your_role_model_why">당신이 선망하는 사람은 누구인가요?\n그 이유는 무엇인가요?</string>
+    <string name="example">예시</string>
+    <string name="example_stevejobs">스티브 잡스\n우리가 이룬 것 만큼 이루지 못한 것도\n자랑스럽습니다 라고 말하는 자신감</string>
+    <string name="popup_skip">건너뛰기</string>
+    <string name="popup_finish">알겠어요</string>
+    <string name="imagine_your_perfect_day">당신의 완벽한 하루를 상상해 보세요!\n어떤 것을 하고 있나요?</string>
+    <string name="example_plan">계획한대로 하루를 분 단위로 쪼개서 바쁘게 살았을 때\n하루를 알차게 보냈다는 뿌듯함에서 오는 자랑스러움\n그것이 나의 완벽한 하루다</string>
+    <string name="how_do_you_want_to_remembered">남들에게 어떤 사람으로 기억되고 싶으신가요?</string>
+    <string name="example_tmi">항상 가식없는 사람, 미담이 가득한 사람이 되고 싶다.\n어려운 일이라는 것을 알고 누군가를 나를 싫어하는 사람이 있\n을테지만 싫어 할 수가 없는 진정성 있는 사람이 되고싶다.</string>
 </resources>
