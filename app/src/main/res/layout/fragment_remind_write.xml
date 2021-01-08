@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.view.remind.RemindWriteFragment">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent">
+
+                        <TextView
+                            android:id="@+id/tv_good_limit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="/800자"
+                            android:textColor="@color/silver"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_good_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/mainOrange"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_good_limit"
+                            app:layout_constraintEnd_toStartOf="@+id/tv_good_limit" />
+
+                        <TextView
+                            android:id="@+id/tv_week_good_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="32dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="이번주의 잘 한 점"
+                            android:textColor="@color/mainBlack"
+                            android:textSize="21sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+
+                        android:id="@+id/tv_week_good_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/remind_write_textbox"
+                        android:maxLines="11"
+                        android:padding="16dp"
+                        android:scrollbars="vertical"
+                        android:lineSpacingExtra="4sp"
+                        android:text="이번 주, 어떤 내모습을 칭찬 해 주고 싶나요?\n\n"
+                        android:textColor="@color/mainGray"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/tv_week_bad_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="32dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="이번주 아쉬운 점"
+                            android:textColor="@color/mainBlack"
+                            android:textSize="21sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_bad_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/mainOrange"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_bad_limit"
+                            app:layout_constraintEnd_toStartOf="@+id/tv_bad_limit" />
+
+                        <TextView
+                            android:id="@+id/tv_bad_limit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="/800자"
+                            android:textColor="@color/silver"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/tv_week_bad_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/remind_write_textbox"
+                        android:maxLines="11"
+                        android:padding="16sp"
+                        android:scrollbars="vertical"
+                        android:text="한 주에 아쉬움이 남은 점이 있을까요?\n\n"
+                        android:lineSpacingExtra="4sp"
+                        android:textColor="@color/mainGray"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_next_week_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="32dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="다음주에 임하는 마음가짐"
+                            android:textColor="@color/mainBlack"
+                            android:textSize="21sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_next_week_limit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="/800자"
+                            android:textColor="@color/silver"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_next_week_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/mainOrange"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_next_week_limit"
+                            app:layout_constraintEnd_toStartOf="@+id/tv_next_week_limit" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/tv_next_week_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/remind_write_textbox"
+                        android:maxLines="11"
+                        android:padding="16sp"
+                        android:lineSpacingExtra="4sp"
+                        android:scrollbars="vertical"
+                        android:text="다음주에는 어떻게 지내고 싶은가요?\n\n"
+                        android:textColor="@color/mainGray"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/remind_complete_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="회고완료!"
+                    android:paddingTop="19dp"
+                    android:paddingBottom="19dp"
+                    android:background="@drawable/btn_write_incomplete"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
