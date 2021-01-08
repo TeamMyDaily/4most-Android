@@ -11,18 +11,30 @@ object FourMostPreference {
     lateinit var preferences: SharedPreferences
 
     fun init(context: Context) {
-        preferences = context.getSharedPreferences("4most", Context.MODE_PRIVATE)
+        preferences = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
     }
 
-    var userToken: String
-        get() = preferences.getString(USER_TOKEN, "4most") ?: ""
-        set(value) = preferences.edit().putString(USER_TOKEN, value).apply()
+    fun getUserToken(): String {
+        return preferences.getString(USER_TOKEN, "4most") ?: ""
+    }
 
-    var userName: String
-        get() = preferences.getString(USER_NAME, "4most") ?: ""
-        set(value) = preferences.edit().putString(USER_NAME, value).apply()
+    fun setUserToken(value: String) {
+        preferences.edit().putString(USER_TOKEN, value).apply()
+    }
 
-    var userEmail: String
-        get() = preferences.getString(USER_EMAIL, "4most@gmail.com") ?: ""
-        set(value) = preferences.edit().putString(USER_EMAIL, value).apply()
+    fun getUserName(): String {
+        return preferences.getString(USER_NAME, "4most") ?: ""
+    }
+
+    fun setUserName(value: String) {
+        preferences.edit().putString(USER_NAME, value).apply()
+    }
+
+    fun getUserEmail(): String {
+        return preferences.getString(USER_EMAIL, "4most@gmail.com") ?: ""
+    }
+
+    fun setUserEmail(value: String) {
+        preferences.edit().putString(USER_EMAIL, value).apply()
+    }
 }

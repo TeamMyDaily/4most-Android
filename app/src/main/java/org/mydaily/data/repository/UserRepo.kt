@@ -9,8 +9,8 @@ import retrofit2.Call
 interface UserRepo {
     fun postSignUp(body: ReqSignUp): Call<ResSignUp>
     fun postSignIn(body: ReqSignIn): Call<ResSignIn>
-    fun postPassword(jwt: String, body: ReqPassword): Call<Response>
-    fun postCurrentPassword(jwt: String, body: ReqPassword): Call<ResCurrentPassword>
-    fun deleteUser(jwt: String, body: ReqPassword): Call<Response>
-    fun getUser(jwt: String): Call<ResUser>
+    fun postPassword(body: ReqPassword): Call<Response>
+    fun postCurrentPassword(body: ReqPassword): Call<ResCurrentPassword>
+    fun deleteUser(body: ReqPassword): Call<Response>
+    fun getUser(): Call<ResUser>
 }

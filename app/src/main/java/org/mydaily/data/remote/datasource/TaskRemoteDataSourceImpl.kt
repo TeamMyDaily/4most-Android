@@ -10,17 +10,17 @@ import org.mydaily.data.remote.api.TaskService
 import retrofit2.Call
 
 class TaskRemoteDataSourceImpl(private val service: TaskService) : TaskRemoteDataSource {
-    override fun getTasks(jwt: String, date: Long): Call<ResTaskGet> =
-        service.getTasks(jwt, date)
+    override fun getTasks(date: Long): Call<ResTaskGet> =
+        service.getTasks(date)
 
-    override fun postTasks(jwt: String, body: ReqTaskAdd): Call<ResTaskAdd> =
-        service.postTasks(jwt, body)
+    override fun postTasks(body: ReqTaskAdd): Call<ResTaskAdd> =
+        service.postTasks(body)
 
-    override fun getTaskById(jwt: String, id: Int): Call<ResTaskDetail> =
-        service.getTaskById(jwt, id)
+    override fun getTaskById(id: Int): Call<ResTaskDetail> =
+        service.getTaskById(id)
 
-    override fun putTask(jwt: String, id: Int, body: ReqTaskPut): Call<Response> =
-        service.putTask(jwt, id, body)
+    override fun putTask(id: Int, body: ReqTaskPut): Call<Response> =
+        service.putTask(id, body)
 
-    override fun deleteTask(jwt: String, id: Int): Call<Response> = service.deleteTask(jwt, id)
+    override fun deleteTask(id: Int): Call<Response> = service.deleteTask(id)
 }

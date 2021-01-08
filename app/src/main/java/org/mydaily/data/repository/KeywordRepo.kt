@@ -7,9 +7,9 @@ import org.mydaily.data.model.network.response.Response
 import retrofit2.Call
 
 interface KeywordRepo {
-    fun postKeywordSelect(jwt: String, body: ReqKeywordSelect): Call<ResKeywordSelect>
-    fun postKeywordAdd(jwt: String, body: ReqKeywordAdd): Call<ResKeywordAdd>
-    fun deleteKeyword(jwt: String, body: ReqKeywordDelete): Call<Response>
-    fun postKeywordDefinition(jwt: String, body: ReqKeywordDefine): Call<Response>
-    fun postKeywordPriority(jwt: String, body: ReqKeywordPriority): Call<Response>
+    fun postKeywordSelect(body: ReqKeywordSelect): Call<ResKeywordSelect>
+    fun postKeywordAdd(body: ReqKeywordAdd): Call<ResKeywordAdd>
+    fun deleteKeyword(body: ReqKeywordDelete): Call<Response>
+    fun postKeywordDefinition(body: ReqKeywordDefine): Call<Response>
+    fun postKeywordPriority(body: ReqKeywordPriority): Call<Response>
 }

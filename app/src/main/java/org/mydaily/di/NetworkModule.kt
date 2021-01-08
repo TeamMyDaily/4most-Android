@@ -1,13 +1,21 @@
 package org.mydaily.di
 
+import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import org.mydaily.data.remote.api.*
+import org.mydaily.network.AuthInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 val networkModule = module {
+    single{
+        OkHttpClient.Builder()
+            .addInterceptor(AuthInterceptor())
+            .build()
+    }
     single<Retrofit>{
         Retrofit.Builder()
+            .client(get())
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl("BASE_URL")
             .build()
@@ -29,8 +37,5 @@ val networkModule = module {
     }
     single<UserService> {
         get<Retrofit>().create(UserService::class.java)
-    }
-    single<SampleService> {
-        get<Retrofit>().create(SampleService::class.java)
     }
 }

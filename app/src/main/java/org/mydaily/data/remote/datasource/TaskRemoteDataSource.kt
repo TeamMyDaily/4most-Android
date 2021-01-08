@@ -12,9 +12,9 @@ import retrofit2.http.Header
 import retrofit2.http.Path
 
 interface TaskRemoteDataSource {
-    fun getTasks(jwt: String, date: Long): Call<ResTaskGet>
-    fun postTasks(jwt: String, body: ReqTaskAdd): Call<ResTaskAdd>
-    fun getTaskById(jwt: String, id: Int): Call<ResTaskDetail>
-    fun putTask(jwt: String, id: Int, body: ReqTaskPut): Call<Response>
-    fun deleteTask(jwt: String, id: Int): Call<Response>
+    fun getTasks(date: Long): Call<ResTaskGet>
+    fun postTasks(body: ReqTaskAdd): Call<ResTaskAdd>
+    fun getTaskById(id: Int): Call<ResTaskDetail>
+    fun putTask(id: Int, body: ReqTaskPut): Call<Response>
+    fun deleteTask(id: Int): Call<Response>
 }

@@ -12,14 +12,14 @@ class UserRepoImpl(private val remoteDataSource: UserRemoteDataSource) : UserRep
 
     override fun postSignIn(body: ReqSignIn): Call<ResSignIn> = remoteDataSource.postSignIn(body)
 
-    override fun postPassword(jwt: String, body: ReqPassword): Call<Response> =
-        remoteDataSource.postPassword(jwt, body)
+    override fun postPassword(body: ReqPassword): Call<Response> =
+        remoteDataSource.postPassword(body)
 
-    override fun postCurrentPassword(jwt: String, body: ReqPassword): Call<ResCurrentPassword> =
-        remoteDataSource.postCurrentPassword(jwt, body)
+    override fun postCurrentPassword(body: ReqPassword): Call<ResCurrentPassword> =
+        remoteDataSource.postCurrentPassword(body)
 
-    override fun deleteUser(jwt: String, body: ReqPassword): Call<Response> =
-        remoteDataSource.deleteUser(jwt, body)
+    override fun deleteUser(body: ReqPassword): Call<Response> =
+        remoteDataSource.deleteUser(body)
 
-    override fun getUser(jwt: String): Call<ResUser> = remoteDataSource.getUser(jwt)
+    override fun getUser(): Call<ResUser> = remoteDataSource.getUser()
 }

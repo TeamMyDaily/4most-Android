@@ -15,7 +15,6 @@ interface TaskService {
     @GET("/tasks")
     @Headers("Content-Type: application/json")
     fun getTasks(
-        @Header("jwt") jwt: String,
         @Query("date") date: Long
     ): Call<ResTaskGet>
 
@@ -23,7 +22,6 @@ interface TaskService {
     @GET("/tasks/{taskId}")
     @Headers("Content-Type: application/json")
     fun getTaskById(
-        @Header("jwt") jwt: String,
         @Path("taskId") id: Int
     ): Call<ResTaskDetail>
 
@@ -31,7 +29,6 @@ interface TaskService {
     @POST("/tasks")
     @Headers("Content-Type: application/json")
     fun postTasks(
-        @Header("jwt") jwt: String,
         @Body body: ReqTaskAdd
     ): Call<ResTaskAdd>
 
@@ -39,7 +36,6 @@ interface TaskService {
     @PUT("/tasks/{taskId}")
     @Headers("Content-Type: application/json")
     fun putTask(
-        @Header("jwt") jwt: String,
         @Path("taskId") id: Int,
         @Body body: ReqTaskPut
     ): Call<Response>
@@ -48,7 +44,6 @@ interface TaskService {
     @DELETE("/tasks/{taskId}")
     @Headers("Content-Type: application/json")
     fun deleteTask(
-        @Header("jwt") jwt: String,
         @Path("taskId") id: Int
     ): Call<Response>
 }

@@ -14,15 +14,15 @@ class UserRemoteDataSourceImpl(private val service: UserService) : UserRemoteDat
     override fun postSignIn(body: ReqSignIn): Call<ResSignIn> =
         service.postSignIn(body)
 
-    override fun postPassword(jwt: String, body: ReqPassword): Call<Response> =
-        service.postPassword(jwt, body)
+    override fun postPassword(body: ReqPassword): Call<Response> =
+        service.postPassword(body)
 
-    override fun postCurrentPassword(jwt: String, body: ReqPassword): Call<ResCurrentPassword> =
-        service.postCurrentPassword(jwt, body)
+    override fun postCurrentPassword(body: ReqPassword): Call<ResCurrentPassword> =
+        service.postCurrentPassword(body)
 
-    override fun deleteUser(jwt: String, body: ReqPassword): Call<Response> =
-        service.deleteUser(jwt, body)
+    override fun deleteUser(body: ReqPassword): Call<Response> =
+        service.deleteUser(body)
 
-    override fun getUser(jwt: String): Call<ResUser> =
-        service.getUser(jwt)
+    override fun getUser(): Call<ResUser> =
+        service.getUser()
 }

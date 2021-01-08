@@ -7,9 +7,9 @@ import org.mydaily.data.remote.api.ReviewService
 import retrofit2.Call
 
 class ReviewRemoteDataSourceImpl(private val service: ReviewService) : ReviewRemoteDataSource {
-    override fun getReviews(jwt: String, start: String, end: String): Call<ResReviewGet> =
-        service.getReviews(jwt, start, end)
+    override fun getReviews(start: String, end: String): Call<ResReviewGet> =
+        service.getReviews(start, end)
 
-    override fun postReviews(jwt: String, body: ReqReviewAdd): Call<ResReviewAdd> =
-        service.postReviews(jwt, body)
+    override fun postReviews(body: ReqReviewAdd): Call<ResReviewAdd> =
+        service.postReviews(body)
 }

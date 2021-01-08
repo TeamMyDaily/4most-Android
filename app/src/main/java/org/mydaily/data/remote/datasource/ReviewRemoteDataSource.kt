@@ -6,7 +6,6 @@ import org.mydaily.data.model.network.response.ResReviewGet
 import retrofit2.Call
 
 interface ReviewRemoteDataSource {
-    fun getReviews(jwt: String, start: String, end: String): Call<ResReviewGet>
-
-    fun postReviews(jwt: String, body: ReqReviewAdd): Call<ResReviewAdd>
+    fun getReviews(start: String, end: String): Call<ResReviewGet>
+    fun postReviews(body: ReqReviewAdd): Call<ResReviewAdd>
 }

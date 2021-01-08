@@ -9,19 +9,19 @@ import org.mydaily.data.remote.datasource.GoalRemoteDataSource
 import retrofit2.Call
 
 class GoalRepoImpl(private val remoteDataSource: GoalRemoteDataSource) : GoalRepo {
-    override fun getGoals(jwt: String, start: String, end: String): Call<ResGoalGet> =
-        remoteDataSource.getGoals(jwt, start, end)
+    override fun getGoals(start: String, end: String): Call<ResGoalGet> =
+        remoteDataSource.getGoals(start, end)
 
-    override fun postGoals(jwt: String, body: ReqGoalPost): Call<ResGoalPost> =
-        remoteDataSource.postGoals(jwt, body)
+    override fun postGoals(body: ReqGoalPost): Call<ResGoalPost> =
+        remoteDataSource.postGoals(body)
 
-    override fun putGoals(jwt: String, id: Int, body: ReqGoalPut): Call<Response> =
-        remoteDataSource.putGoals(jwt, id, body)
+    override fun putGoals(id: Int, body: ReqGoalPut): Call<Response> =
+        remoteDataSource.putGoals(id, body)
 
-    override fun putGoalsCompletion(jwt: String, id: Int): Call<Response> =
-        remoteDataSource.putGoalsCompletion(jwt, id)
+    override fun putGoalsCompletion(id: Int): Call<Response> =
+        remoteDataSource.putGoalsCompletion(id)
 
-    override fun deleteGoal(jwt: String, id: Int): Call<Response> =
-        remoteDataSource.deleteGoal(jwt, id)
+    override fun deleteGoal(id: Int): Call<Response> =
+        remoteDataSource.deleteGoal(id)
 
 }

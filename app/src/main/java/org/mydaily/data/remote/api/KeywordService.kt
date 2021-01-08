@@ -13,7 +13,6 @@ interface KeywordService {
     @POST("/keywords")
     @Headers("Content-Type: application/json")
     fun postKeywordSelect(
-        @Header("jwt") jwt: String,
         @Body body: ReqKeywordSelect
     ): Call<ResKeywordSelect>
 
@@ -21,7 +20,6 @@ interface KeywordService {
     @POST("/keywords")
     @Headers("Content-Type: application/json")
     fun postKeywordAdd(
-        @Header("jwt") jwt: String,
         @Body body: ReqKeywordAdd
     ): Call<ResKeywordAdd>
 
@@ -29,7 +27,6 @@ interface KeywordService {
     @DELETE("/keywords")
     @Headers("Content-Type: application/json")
     fun deleteKeyword(
-        @Header("jwt") jwt: String,
         @Body body: ReqKeywordDelete
     ): Call<Response>
 
@@ -37,7 +34,6 @@ interface KeywordService {
     @POST("/keywords/definition")
     @Headers("Content-Type: application/json")
     fun postKeywordDefinition(
-        @Header("jwt") jwt: String,
         @Body body: ReqKeywordDefine
     ): Call<Response>
 
@@ -45,7 +41,6 @@ interface KeywordService {
     @POST("/keywords/priority")
     @Headers("Content-Type: application/json")
     fun postKeywordPriority(
-        @Header("jwt") jwt: String,
         @Body body: ReqKeywordPriority
     ): Call<Response>
 

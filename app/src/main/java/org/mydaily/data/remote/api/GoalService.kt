@@ -13,7 +13,6 @@ interface GoalService {
     @GET("/goals")
     @Headers("Content-Type: application/json")
     fun getGoals(
-        @Header("jwt") jwt: String,
         @Query("start") start: String,
         @Query("end") end: String
     ): Call<ResGoalGet>
@@ -22,7 +21,6 @@ interface GoalService {
     @POST("/goals")
     @Headers("Content-Type: application/json")
     fun postGoals(
-        @Header("jwt") jwt: String,
         @Body body: ReqGoalPost
     ): Call<ResGoalPost>
 
@@ -30,7 +28,6 @@ interface GoalService {
     @PUT("/goals/{goalId}")
     @Headers("Content-Type: application/json")
     fun putGoals(
-        @Header("jwt") jwt: String,
         @Path("goalId") id: Int,
         @Body body: ReqGoalPut
     ): Call<Response>
@@ -39,7 +36,6 @@ interface GoalService {
     @PUT("/goals/completion/{goalId}")
     @Headers("Content-Type: application/json")
     fun putGoalsCompletion(
-        @Header("jwt") jwt: String,
         @Path("goalId") id: Int
     ): Call<Response>
 
@@ -47,7 +43,6 @@ interface GoalService {
     @DELETE("/goals/{goalId}")
     @Headers("Content-Type: application/json")
     fun deleteGoal(
-        @Header("jwt") jwt: String,
         @Path("goalId") id: Int
     ): Call<Response>
 }

@@ -11,7 +11,6 @@ interface ReviewService {
     @GET("/reviews")
     @Headers("Content-Type: application/json")
     fun getReviews(
-        @Header("jwt") jwt: String,
         @Query("start") start: String,
         @Query("end") end: String
     ): Call<ResReviewGet>
@@ -20,7 +19,6 @@ interface ReviewService {
     @POST("/reviews")
     @Headers("Content-Type: application/json")
     fun postReviews(
-        @Header("jwt") jwt: String,
         @Body body: ReqReviewAdd
     ): Call<ResReviewAdd>
 }

@@ -27,7 +27,6 @@ interface UserService {
     @POST("/users/password")
     @Headers("Content-Type: application/json")
     fun postPassword(
-        @Header("jwt") jwt: String,
         @Body body: ReqPassword
     ): Call<Response>
 
@@ -35,7 +34,6 @@ interface UserService {
     @POST("/users/currentPassword")
     @Headers("Content-Type: application/json")
     fun postCurrentPassword(
-        @Header("jwt") jwt: String,
         @Body body: ReqPassword
     ): Call<ResCurrentPassword>
 
@@ -43,7 +41,6 @@ interface UserService {
     @DELETE("/users")
     @Headers("Content-Type: application/json")
     fun deleteUser(
-        @Header("jwt") jwt: String,
         @Body body: ReqPassword
     ): Call<Response>
 
@@ -51,6 +48,5 @@ interface UserService {
     @GET("/users")
     @Headers("Content-Type: application/json")
     fun getUser(
-        @Header("jwt") jwt: String
     ): Call<ResUser>
 }

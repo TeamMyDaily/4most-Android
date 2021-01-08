@@ -10,7 +10,6 @@ interface ReportService {
     @GET("/reports")
     @Headers("Content-Type: application/json")
     fun getReports(
-        @Header("jwt") jwt: String,
         @Query("start") start: String,
         @Query("end") end: String
     ): Call<ResReportGet>
@@ -19,7 +18,6 @@ interface ReportService {
     @POST("/reports/detail")
     @Headers("Content-Type: application/json")
     fun getReportDetails(
-        @Header("jwt") jwt: String,
         @Query("start") start: String,
         @Query("end") end: String
     ): Call<ResReportDetailGet>
