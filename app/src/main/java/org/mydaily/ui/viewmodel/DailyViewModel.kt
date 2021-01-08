@@ -7,19 +7,19 @@ import org.mydaily.ui.base.BaseViewModel
 
 class DailyViewModel: BaseViewModel() {
 
-    private val _keywordList = MutableLiveData<List<Keyword>>()
-    val keywordList : LiveData<List<Keyword>>
+    private val _keywordList = MutableLiveData<Keyword>()
+    val keywordList : LiveData<Keyword>
         get() = _keywordList
 
     fun getKeywordData() {
         /* 임시 데이터 */
-        val tempList = listOf<Keyword>(
-            Keyword("아웃풋","1"),
-            Keyword("열정","2"),
-            Keyword("선한영향력","3"),
-            Keyword("진정성","4")
+        val tempList = listOf(
+            "IT 기술에 관한 아티클 정리하기",
+            "글감 수집하기",
+            "아티클 5개 이상 읽기",
+            "브런치 개설 하기"
         )
-        _keywordList.value = tempList
+        _keywordList.value = Keyword("아웃풋", tempList)
     }
 
 }

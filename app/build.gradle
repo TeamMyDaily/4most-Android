@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "org.mydaily"
-        minSdkVersion 24
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0.0"
@@ -76,8 +76,17 @@ dependencies {
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
     testImplementation "org.koin:koin-test:$koin_version"
 
+    //chip
+    implementation 'com.google.android.material:material:1.0.0'
+
+
+    /* Third Party Library */
+
     //expandable layout
     implementation "com.github.skydoves:expandablelayout:1.0.6"
+
+    //bubble seekbar
+    implementation 'com.xw.repo:bubbleseekbar:3.20-lite'
 
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

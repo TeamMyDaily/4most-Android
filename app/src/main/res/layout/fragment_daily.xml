@@ -5,85 +5,161 @@
 
     <data>
 
+        <variable
+            name="date"
+            type="String" />
+
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.daily.DailyFragment">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/ll_date"
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingVertical="18dp"
+            android:layout_height="152dp"
+            android:src="@color/mainOrange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/tb_daily" />
 
-            <ImageView
-                android:id="@+id/iv_arrow_left"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="96dp"
+            android:background="@drawable/rectangle_white_radius_40">
+
+            <TextView
+                android:id="@+id/tv_daily_report"
+                android:layout_width="108dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/daily_report"
+                android:textColor="@color/mainBlack"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/ib_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrow_back"
-                app:tint="@color/black" />
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/selector_btn_calendar"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_daily_report"
+                app:layout_constraintEnd_toStartOf="@+id/tv_date"
+                app:layout_constraintTop_toTopOf="@+id/tv_daily_report" />
 
             <TextView
                 android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="14dp"
-                android:text="2021년 1월 1일"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:layout_marginEnd="16dp"
+                android:text="@{date}"
+                android:textColor="@color/mainOrange"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_daily_report"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_daily_report"
+                tools:text="20년 12월 20일" />
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nsv_daily"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_daily_report"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <com.skydoves.expandablelayout.ExpandableLayout
+                        android:id="@+id/el_first"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:expandable_duration="150"
+                        app:expandable_parentLayout="@layout/layout_daily_goal_parent"
+                        app:expandable_secondLayout="@layout/layout_daily_goal_second"/>
+
+                    <View
+                        android:id="@+id/line1"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="32dp"
+                        android:background="@color/mainLightGray"/>
+
+                    <com.skydoves.expandablelayout.ExpandableLayout
+                        android:id="@+id/el_second"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:expandable_duration="150"
+                        app:expandable_parentLayout="@layout/layout_daily_goal_parent"
+                        app:expandable_secondLayout="@layout/layout_daily_goal_second"/>
+
+                    <View
+                        android:id="@+id/line2"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="32dp"
+                        android:background="@color/mainLightGray"/>
+
+                    <com.skydoves.expandablelayout.ExpandableLayout
+                        android:id="@+id/el_third"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:expandable_duration="150"
+                        app:expandable_parentLayout="@layout/layout_daily_goal_parent"
+                        app:expandable_secondLayout="@layout/layout_daily_goal_second"/>
+
+                    <View
+                        android:id="@+id/line3"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="32dp"
+                        android:background="@color/mainLightGray"/>
+
+                    <com.skydoves.expandablelayout.ExpandableLayout
+                        android:id="@+id/el_fourth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="32dp"
+                        app:expandable_duration="150"
+                        app:expandable_parentLayout="@layout/layout_daily_goal_parent"
+                        app:expandable_secondLayout="@layout/layout_daily_goal_second"/>
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
 
             <ImageView
-                android:id="@+id/iv_arrow_right"
+                android:id="@+id/iv_today"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrow_forward"
-                app:tint="@color/black" />
+                android:src="@drawable/ic_today"
+                android:layout_marginBottom="16dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ll_date">
+    </FrameLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.skydoves.expandablelayout.ExpandableLayout
-                    android:id="@+id/el_goal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:expandable_duration="100"
-                    app:expandable_parentLayout="@layout/layout_daily_goal_first"
-                    app:expandable_secondLayout="@layout/layout_daily_goal_second"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_goal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/el_goal"
-                    tools:itemCount="4"
-                    tools:listitem="@layout/item_daily_goal" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.core.widget.NestedScrollView>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

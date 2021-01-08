@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/menu_daily"
-        android:icon="@drawable/ic_error"
+        android:icon="@drawable/ic_daily"
         android:title="@string/menu_daily" />
 
     <item
+        android:id="@+id/menu_goal"
+        android:icon="@drawable/ic_goal"
+        android:title="@string/menu_goal" />
+
+    <item
         android:id="@+id/menu_remind"
-        android:icon="@drawable/ic_error"
+        android:icon="@drawable/ic_report"
         android:title="@string/menu_remind" />
 
     <item
         android:id="@+id/menu_my"
-        android:icon="@drawable/ic_error"
+        android:icon="@drawable/ic_my"
         android:title="@string/menu_my" />
-
 </menu>

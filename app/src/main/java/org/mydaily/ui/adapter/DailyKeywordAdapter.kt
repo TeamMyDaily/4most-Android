@@ -8,8 +8,8 @@ import org.mydaily.databinding.ItemDailyGoalBinding
 
 class DailyKeywordAdapter : RecyclerView.Adapter<DailyKeywordAdapter.ViewHolder>() {
 
-    private val _data = mutableListOf<Keyword>()
-    var data : List<Keyword> = _data
+    private val _data = mutableListOf<String>()
+    var data : List<String> = _data
         set(value) {
             _data.clear()
             _data.addAll(value)
@@ -32,8 +32,8 @@ class DailyKeywordAdapter : RecyclerView.Adapter<DailyKeywordAdapter.ViewHolder>
     inner class ViewHolder(private val binding: ItemDailyGoalBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(keyword: Keyword) {
-            binding.keyword = keyword
+        fun bind(task: String) {
+            binding.task = task
         }
     }
 }

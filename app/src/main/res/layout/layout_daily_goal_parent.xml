@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="task"
+            type="String" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:id="@+id/fl_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_number"
+                android:layout_width="wrap_content"
+                android:layout_height="46dp"
+                android:layout_marginStart="-16dp"
+                android:src="@drawable/ic_01"/>
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_number_of_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="4"
+            android:textColor="@color/mainPaleOrange"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/fl_number"
+            app:layout_constraintTop_toTopOf="@+id/fl_number" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="개의 기록"
+            android:textColor="@color/mainPaleOrange"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_number_of_task"
+            app:layout_constraintStart_toEndOf="@+id/tv_number_of_task"
+            app:layout_constraintTop_toTopOf="@+id/tv_number_of_task" />
+
+
+        <TextView
+            android:id="@+id/tv_report_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{task}"
+            android:textColor="@color/mainBlack"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/fl_number"
+            app:layout_constraintStart_toStartOf="@+id/tv_number_of_task"
+            app:layout_constraintTop_toBottomOf="@+id/tv_number_of_task"
+            tools:text="아웃풋" />
+
+        <ImageView
+            android:id="@+id/iv_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/selector_arrow_down_up"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_report_name"
+            app:layout_constraintStart_toEndOf="@+id/tv_report_name"
+            app:layout_constraintTop_toTopOf="@+id/tv_report_name" />
+
+        <ImageButton
+            android:id="@+id/ib_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_plus"
+            app:layout_constraintBottom_toBottomOf="@+id/fl_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/fl_number" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

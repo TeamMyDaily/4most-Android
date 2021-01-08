@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="temp"
+            type="int" />
+        <variable
+            name="calendar"
+            type="java.util.Calendar" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.view.goal.GoalFragment">
+
+        <ImageView
+            android:id="@+id/iv_arrow_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_light_arrow_left"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_arrow_right"
+            app:layout_constraintEnd_toStartOf="@+id/tv_date"
+            app:layout_constraintTop_toTopOf="@+id/iv_arrow_right"
+            app:tint="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            setDateByCalendar="@{calendar}"
+            android:text="20년 12월 3주"
+            android:textColor="#121212"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_arrow_right"
+            app:layout_constraintEnd_toStartOf="@+id/iv_arrow_right"
+            app:layout_constraintTop_toTopOf="@+id/iv_arrow_right" />
+
+
+       <ImageView
+            android:id="@+id/iv_arrow_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_light_arrow_right"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_alert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:lineHeight="36dp"
+            android:text="@string/msg_plz_set_goal_by_keyword"
+            android:textColor="#121212"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_arrow_left" />
+
+        <include
+            android:id="@+id/layout_keyword_exist"
+            layout="@layout/layout_goal_fragment_keyword_exist"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_alert"
+            app:temp="@{1}"/>
+
+        <include
+            android:id="@+id/layout_keyword_not"
+            layout="@layout/layout_goal_fragment_not_keyword"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_alert"
+            android:visibility="gone"
+            app:temp="@{1}" />
+
+        <include
+            android:id="@+id/layout_keyword_not_this_week"
+            layout="@layout/layout_goal_fragment_not_keyword_this_week"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_alert"
+            android:visibility="gone"
+            app:temp="@{1}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
