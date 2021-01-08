@@ -128,6 +128,7 @@
                         android:maxLength="500"
                         android:padding="16dp"
                         android:textColor="@color/mainBlack"
+                        android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_title_byte" />

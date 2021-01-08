@@ -32,6 +32,8 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
 
     private val dailyExpandableAdapter = DailyExpandableAdapter()
 
+    private var changeableCalendar: Calendar = Calendar.getInstance()
+
     override fun initView() {
         stateCurrentDate()
         initUserData()
@@ -42,6 +44,7 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
     override fun initBeforeBinding() {
         binding.lifecycleOwner = viewLifecycleOwner
         viewModel.getKeywordData()
+        //viewModel.getEmptyKeywordData()
     }
 
     override fun initAfterBinding() {
@@ -84,13 +87,11 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
             DatePickerDialog(
                 requireContext(),
                 { _, year, month, day ->
-                    val newCalendar: Calendar = Calendar.getInstance().apply {
-                        set(year, month, day)
-                    }
-                    if (nowCalendar.compareDateTo(newCalendar)) {
+                    changeableCalendar.set(year, month, day)
+                    if (nowCalendar.compareDateTo(changeableCalendar)) {
                         stateCurrentDate()
                     } else {
-                        stateNotCurrentDate(newCalendar)
+                        stateNotCurrentDate(changeableCalendar)
                     }
                     //통신
                     //viewModel.getTask(newCalendar.timeInMillis)
@@ -123,7 +124,22 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
     private fun observeKeywordData() {
         /* 임시 데이터 */
         viewModel.keywordList.observe(viewLifecycleOwner, {
-            dailyExpandableAdapter.data = it
+            if(it.isEmpty()){
+                if (nowCalendar.compareDateTo(changeableCalendar)) {
+                    binding.isNotKeywordExistThisWeek = true
+                    binding.isNotKeywordExist = false
+                    binding.isKeywordExist = false
+                } else {
+                    binding.isNotKeywordExistThisWeek = false
+                    binding.isNotKeywordExist = true
+                    binding.isKeywordExist = false
+                }
+            }else {
+                binding.isNotKeywordExistThisWeek = false
+                binding.isNotKeywordExist = false
+                binding.isKeywordExist = true
+                dailyExpandableAdapter.data = it
+            }
         })
         /* 서버 데이터 */
 /*        viewModel.taskList.observe(viewLifecycleOwner, {

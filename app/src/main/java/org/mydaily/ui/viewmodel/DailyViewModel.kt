@@ -61,6 +61,12 @@ class DailyViewModel(private val repo: TaskRepo) : BaseViewModel() {
 
     }
 
+
+    fun getEmptyKeywordData() {
+        _keywordList.value =  listOf()
+
+    }
+
     fun getKeywordData() {
         /* 임시 데이터 */
         val tempList = listOf(

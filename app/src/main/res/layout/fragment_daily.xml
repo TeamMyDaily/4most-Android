@@ -4,10 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
 
         <variable
             name="date"
             type="String" />
+
+        <variable
+            name="isNotKeywordExistThisWeek"
+            type="Boolean" />
+
+        <variable
+            name="isNotKeywordExist"
+            type="Boolean" />
+
+
+        <variable
+            name="isKeywordExist"
+            type="Boolean" />
 
     </data>
 
@@ -91,7 +105,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/line"
                 tools:itemCount="4"
-                tools:listitem="@layout/item_daily_expandable" />
+                tools:listitem="@layout/item_daily_expandable"
+                android:visibility="@{isKeywordExist ? View.VISIBLE : View.GONE}"/>
 
 
             <ImageView
@@ -104,6 +119,30 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <include
+                android:id="@+id/layout_keyword_not"
+                layout="@layout/layout_daily_fragment_not_keyword"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line"
+                app:temp="@{1}"
+                android:visibility="@{isNotKeywordExistThisWeek ? View.VISIBLE : View.GONE}"/>
+
+            <include
+                android:id="@+id/layout_keyword_not_this_week"
+                layout="@layout/layout_not_keyword_this_week"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line"
+                android:visibility="@{isNotKeywordExist ? View.VISIBLE : View.GONE}"
+                app:temp="@{1}"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
