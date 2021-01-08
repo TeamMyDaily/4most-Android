@@ -1,6 +1,7 @@
 package org.mydaily.di
 
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import org.mydaily.data.remote.api.*
 import org.mydaily.network.AuthInterceptor
@@ -11,6 +12,7 @@ val networkModule = module {
     single{
         OkHttpClient.Builder()
             .addInterceptor(AuthInterceptor())
+            .addInterceptor(HttpLoggingInterceptor())
             .build()
     }
     single<Retrofit>{
