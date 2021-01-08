@@ -31,6 +31,11 @@ class DailyExpandableAdapter : RecyclerView.Adapter<DailyExpandableAdapter.ViewH
         this.addButtonListener = listener
     }
 
+    private var taskClickListener:((id: Int)-> Unit) ?= null
+    fun setTaskClickListener(listener: ((id: Int)-> Unit)){
+        this.taskClickListener = listener
+    }
+
     private val dailyKeywordAdapter = listOf(
         DailyKeywordAdapter(), DailyKeywordAdapter(), DailyKeywordAdapter(), DailyKeywordAdapter()
     )
@@ -64,6 +69,9 @@ class DailyExpandableAdapter : RecyclerView.Adapter<DailyExpandableAdapter.ViewH
                 setHasFixedSize(true)
             }
             dailyKeywordAdapter[position].data = task.tasks
+            dailyKeywordAdapter[position].setClickListener {
+                taskClickListener?.invoke(it)
+            }
         }
     }
 

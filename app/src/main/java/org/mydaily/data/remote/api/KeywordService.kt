@@ -17,7 +17,7 @@ interface KeywordService {
     ): Call<ResKeywordSelect>
 
     //POST	키워드 추가
-    @POST("/keywords")
+    @POST("/keywords/new")
     @Headers("Content-Type: application/json")
     fun postKeywordAdd(
         @Body body: ReqKeywordAdd

@@ -1,24 +1,93 @@
 package org.mydaily.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import org.mydaily.data.model.Keyword
+import com.google.gson.annotations.SerializedName
 import org.mydaily.data.model.domain.Task
+import org.mydaily.data.model.domain.TaskDetail
+import org.mydaily.data.model.network.request.ReqTaskAdd
+import org.mydaily.data.model.network.response.ResTaskAdd
+import org.mydaily.data.repository.TaskRepo
 import org.mydaily.ui.base.BaseViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class DailyViewModel: BaseViewModel() {
+class DailyViewModel(private val repo: TaskRepo) : BaseViewModel() {
 
     private val _keywordList = MutableLiveData<List<Task>>()
-    val keywordList : LiveData<List<Task>>
+    val keywordList: LiveData<List<Task>>
         get() = _keywordList
+
+    private val _task = MutableLiveData<TaskDetail>()
+    val task: LiveData<TaskDetail>
+        get() = _task
+
+/*    private val _taskList = MutableLiveData<List<Task>>()
+    val taskList: LiveData<List<Task>>
+        get() = _taskList*/
+
+/*    fun getTask(date: Long) {
+        repo.getTasks(date).enqueue(object : Callback<ResTaskGet> {
+            override fun onResponse(call: Call<ResTaskGet>, response: Response<ResTaskGet>) {
+            }
+
+            override fun onFailure(call: Call<ResTaskGet>, t: Throwable) {
+            }
+
+        })
+    }*/
+
+    fun postTask(totalKeywordId: String, title: String, detail: String, satisfaction: Int) {
+        Log.e("DailyViewModel", ""+ReqTaskAdd(totalKeywordId, title, detail, satisfaction))
+/*        repo.postTasks(ReqTaskAdd(totalKeywordId, title, detail, satisfaction))
+            .enqueue(object :Callback<ResTaskAdd>{
+                override fun onResponse(call: Call<ResTaskAdd>, response: Response<ResTaskAdd>) {
+                }
+
+                override fun onFailure(call: Call<ResTaskAdd>, t: Throwable) {
+                }
+            })*/
+    }
+
+    fun getTaskById(taskId: Int) {
+        /* 임시 데이터 */
+        _task.value =
+            TaskDetail(
+                1, 1, "IT 기술에 관한 아티클 정리하기", "드라마 스타트업 따라잡기라는 글을 보고 AI의 미래에 대한 간단한 고찰을 할 수 있었다.\n" +
+                        "이 글을 보고 AI 관련 글을 더 찾아보고 정리했다.", 3
+            )
+
+    }
 
     fun getKeywordData() {
         /* 임시 데이터 */
         val tempList = listOf(
-            Task(1,"아웃풋1",1, listOf("IT 기술에 관한 아티클 정리하기","글감 수집하기")),
-            Task(2, "아웃풋2",2, listOf("브런치 개설 하기")),
-            Task(3, "아웃풋3",3, listOf("글감 수집하기","아티클 5개 이상 읽기","브런치 개설 하기")),
-            Task(4, "아웃풋4",4, listOf("IT 기술에 관한 아티클 정리하기","글감 수집하기","아티클 5개 이상 읽기","브런치 개설 하기")),
+            Task(
+                1, "아웃풋1", 1, listOf(
+                    Task.Title(1, "IT 기술에 관한 아티클 정리하기"),
+                    Task.Title(2, "브런치 개설 하기")
+                )
+            ),
+            Task(
+                2, "아웃풋2", 2, listOf(
+                    Task.Title(3, "IT 기술에 관한 아티클 정리하기"),
+                    Task.Title(4, "브런치 개설 하기")
+                )
+            ),
+            Task(
+                3, "아웃풋3", 3, listOf(
+                    Task.Title(5, "IT 기술에 관한 아티클 정리하기"),
+                    Task.Title(6, "브런치 개설 하기")
+                )
+            ),
+            Task(
+                4, "아웃풋4", 4, listOf(
+                    Task.Title(7, "IT 기술에 관한 아티클 정리하기"),
+                    Task.Title(8, "브런치 개설 하기")
+                )
+            )
         )
         _keywordList.value = tempList
     }

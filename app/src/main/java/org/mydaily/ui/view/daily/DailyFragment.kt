@@ -56,8 +56,19 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
     private fun initTaskRecyclerView() {
         dailyExpandableAdapter.setAddButtonListener {
             requireContext().apply {
-                val intent = Intent(this, DailyDetailActivity::class.java)
-                intent.putExtra("taskId",it)
+                val intent = Intent(this, DailyDetailActivity::class.java).apply {
+                    putExtra("keywordId",it)
+                    action = "WRITE"
+                }
+                startActivity(intent)
+            }
+        }
+        dailyExpandableAdapter.setTaskClickListener {
+            requireContext().apply {
+                val intent = Intent(this, DailyDetailActivity::class.java).apply {
+                    putExtra("taskId",it)
+                    action = "DETAIL"
+                }
                 startActivity(intent)
             }
         }
@@ -76,13 +87,13 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
                     val newCalendar: Calendar = Calendar.getInstance().apply {
                         set(year, month, day)
                     }
-
-                    /* TODO(통신) : 날짜 선택 시 그 날짜의 data 가져오는 부분 */
                     if (nowCalendar.compareDateTo(newCalendar)) {
                         stateCurrentDate()
                     } else {
                         stateNotCurrentDate(newCalendar)
                     }
+                    //통신
+                    //viewModel.getTask(newCalendar.timeInMillis)
                 },
                 nowCalendar.get(Calendar.YEAR), nowCalendar.get(Calendar.MONTH), nowCalendar.get(
                     Calendar.DAY_OF_MONTH
@@ -114,6 +125,10 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
         viewModel.keywordList.observe(viewLifecycleOwner, {
             dailyExpandableAdapter.data = it
         })
+        /* 서버 데이터 */
+/*        viewModel.taskList.observe(viewLifecycleOwner, {
+            dailyExpandableAdapter.data = it
+        })*/
     }
 
     companion object {
