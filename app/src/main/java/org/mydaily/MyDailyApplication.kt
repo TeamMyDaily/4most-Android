@@ -1,6 +1,7 @@
 package org.mydaily
 
 import android.app.Application
+import org.mydaily.data.local.FourMostPreference
 import org.mydaily.di.networkModule
 import org.mydaily.di.remoteDataSourceModule
 import org.mydaily.di.repositoryModule
@@ -17,5 +18,6 @@ class MyDailyApplication : Application() {
             repositoryModule,
             viewModelModule
         )
+        FourMostPreference.init(applicationContext)
     }
 }
