@@ -4,21 +4,30 @@ package org.mydaily.data.model.network.response
 import com.google.gson.annotations.SerializedName
 
 data class ResTaskGet(
-    @SerializedName("data")
-    val `data`: List<Data>,
-    @SerializedName("message")
-    val message: String,
     @SerializedName("status")
     val status: Int,
     @SerializedName("success")
-    val success: Boolean
+    val success: Boolean,
+    @SerializedName("message")
+    val message: String,
+    @SerializedName("data")
+    val `data`: List<Data>
 ) {
     data class Data(
-        @SerializedName("name")
-        val name: String,
+        @SerializedName("TotalKeywordId")
+        val totalKeywordId: Int,
         @SerializedName("priority")
         val priority: Int,
+        @SerializedName("name")
+        val name: String,
         @SerializedName("tasks")
-        val tasks: List<Any>
-    )
+        val tasks: List<Task>
+    ){
+        data class Task(
+            @SerializedName("id")
+            val id: Int,
+            @SerializedName("title")
+            val title: String
+        )
+    }
 }

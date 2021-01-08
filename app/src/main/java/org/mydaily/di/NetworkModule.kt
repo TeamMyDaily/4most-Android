@@ -19,7 +19,7 @@ val networkModule = module {
         Retrofit.Builder()
             .client(get())
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("BASE_URL")
+            .baseUrl("https://sample.com")
             .build()
     }
     single<GoalService> {

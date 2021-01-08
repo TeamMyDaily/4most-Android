@@ -92,7 +92,7 @@
 
         <include
             android:id="@+id/layout_keyword_not_this_week"
-            layout="@layout/layout_goal_fragment_not_keyword_this_week"
+            layout="@layout/layout_not_keyword_this_week"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"

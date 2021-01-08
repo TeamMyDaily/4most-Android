@@ -6,7 +6,7 @@ import org.mydaily.ui.viewmodel.*
 
 val viewModelModule = module {
     viewModel { MainViewModel() }
-    viewModel { DailyViewModel() }
+    viewModel { DailyViewModel(get()) }
     viewModel { RemindViewModel() }
     viewModel { MyPageViewModel() }
     viewModel { ReportViewModel() }

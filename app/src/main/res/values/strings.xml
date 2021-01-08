@@ -10,10 +10,12 @@
 
     <!--Daily Fragment-->
     <string name="weekly_goal">이번 주의 목표</string>
-    <string name="daily_report">하루 기록</string>
+    <string name="your_daily_report">님의 하루 기록</string>
     <string name="msg_what_happend_today">오늘 하루 무슨 일이 있었나요?</string>
     <string name="msg_rate_satisfaction">만족도를 평가해주세요!</string>
     <string name="msg_store">저장할래요!</string>
+    <string name="msg_report_denied_keyword_not_exist">키워드가 존재 하지 않아 기록을 생성 할 수 없어요.😢 \n 버튼을 눌러 키워드를 생성 해 보세요!</string>
+
 
     <!--Sign In-->
     <string name="sign_in">로그인</string>
@@ -32,7 +34,7 @@
     <string name="msg_set_goal">목표를 세워주세요.</string>
     <string name="msg_goal_achieved">달성</string>
     <string name="msg_goal_not_achieved">미달성</string>
-    <string name="msg_keyword_not_exist">키워드가 존재 하지 않아 목표를 생성 할 수 없어요.😢 \n + 버튼을 눌러 키워드를 생성 해 보세요!</string>
+    <string name="msg_goal_denied_keyword_not_exist">키워드가 존재 하지 않아 목표를 생성 할 수 없어요.😢 \n + 버튼을 눌러 키워드를 생성 해 보세요!</string>
     <string name="msg_keyword_not_exist_this_week">이 주에는 키워드가 없어요.😢</string>
 
 
