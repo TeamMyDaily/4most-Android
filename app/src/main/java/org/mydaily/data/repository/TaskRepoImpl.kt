@@ -1,6 +1,7 @@
 package org.mydaily.data.repository
 
 import org.mydaily.data.model.network.request.ReqTaskAdd
+import org.mydaily.data.model.network.request.ReqTaskPut
 import org.mydaily.data.model.network.response.ResTaskAdd
 import org.mydaily.data.model.network.response.ResTaskDetail
 import org.mydaily.data.model.network.response.ResTaskGet
@@ -18,7 +19,8 @@ class TaskRepoImpl(private val remoteDataSource: TaskRemoteDataSource) : TaskRep
     override fun getTaskById(jwt: String, id: Int): Call<ResTaskDetail> =
         remoteDataSource.getTaskById(jwt, id)
 
-    override fun putTask(jwt: String, id: Int): Call<Response> = remoteDataSource.putTask(jwt, id)
+    override fun putTask(jwt: String, id: Int, body: ReqTaskPut): Call<Response> =
+        remoteDataSource.putTask(jwt, id, body)
 
     override fun deleteTask(jwt: String, id: Int): Call<Response> =
         remoteDataSource.deleteTask(jwt, id)

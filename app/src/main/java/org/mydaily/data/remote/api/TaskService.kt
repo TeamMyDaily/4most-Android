@@ -2,6 +2,7 @@ package org.mydaily.data.remote.api
 
 import org.mydaily.data.model.network.request.ReqGoalPut
 import org.mydaily.data.model.network.request.ReqTaskAdd
+import org.mydaily.data.model.network.request.ReqTaskPut
 import org.mydaily.data.model.network.response.ResTaskAdd
 import org.mydaily.data.model.network.response.ResTaskDetail
 import org.mydaily.data.model.network.response.ResTaskGet
@@ -35,12 +36,12 @@ interface TaskService {
     ): Call<ResTaskAdd>
 
     //PUT	나의 기록 수정
-    /*TODO: 나의 기록 수정*/
     @PUT("/tasks/{taskId}")
     @Headers("Content-Type: application/json")
     fun putTask(
         @Header("jwt") jwt: String,
-        @Path("taskId") id: Int
+        @Path("taskId") id: Int,
+        @Body body: ReqTaskPut
     ): Call<Response>
 
     //DELETE	나의 기록 삭제
