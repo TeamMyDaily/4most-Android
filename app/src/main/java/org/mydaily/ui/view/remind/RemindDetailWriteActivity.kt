@@ -1,5 +1,8 @@
 package org.mydaily.ui.view.remind
 
+import android.view.View
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
@@ -11,7 +14,7 @@ class RemindDetailWriteActivity : BaseActivity<ActivityRemindDetailWriteBinding,
     override val layoutResourceId: Int
         get() = R.layout.activity_remind_detail_write
     override val viewModel: RemindViewModel by viewModel()
-    private var isTitleEntered = false
+    private var isContentEntered = false
 
     override fun initView() {
         initToolbar()
@@ -30,7 +33,7 @@ class RemindDetailWriteActivity : BaseActivity<ActivityRemindDetailWriteBinding,
     private fun initToolbar() {
         setSupportActionBar(binding.tbRemindDetailWrite)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        binding.tvTitle.text = "회고"
+        binding.tvTitle.text = getString(R.string.menu_remind)
         binding.tbRemindDetailWrite.setNavigationOnClickListener {
             finish()
         }
@@ -39,18 +42,20 @@ class RemindDetailWriteActivity : BaseActivity<ActivityRemindDetailWriteBinding,
     private fun initEditText() {
         binding.etRemindText.addTextChangedListener {
             val length = binding.etRemindText.length()
-            isTitleEntered = length > 0
+            isContentEntered = length > 0
             binding.tvRemindCount.text = length.toString()
             binding.btWriteComplete.isEnabled = isSaveButtonEnabled()
+            if(isContentEntered)
+                binding.btWriteComplete.setBackgroundResource(R.drawable.btn_write_complete)
         }
     }
 
-    private fun isSaveButtonEnabled(): Boolean = isTitleEntered
+    private fun isSaveButtonEnabled(): Boolean = isContentEntered
 
     private fun initWriteCompleteButton() {
         /* TODO : 저장 버튼 */
         binding.btWriteComplete.setOnClickListener {
-
+            binding.btWriteComplete.visibility = View.INVISIBLE
         }
     }
 }

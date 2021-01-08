@@ -1,9 +1,14 @@
 package org.mydaily.ui.view.remind
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.data.model.ReportListData
@@ -11,6 +16,7 @@ import org.mydaily.databinding.FragmentReportDetailBinding
 import org.mydaily.ui.adapter.ReportDetailAdapter
 import org.mydaily.ui.base.BaseFragment
 import org.mydaily.ui.viewmodel.ReportViewModel
+import org.mydaily.util.extension.shortToast
 
 class ReportDetailFragment: BaseFragment<FragmentReportDetailBinding, ReportViewModel>() {
     override val layoutResourceId: Int
@@ -20,6 +26,7 @@ class ReportDetailFragment: BaseFragment<FragmentReportDetailBinding, ReportView
 
     override fun initView() {
         createDetailAdapter()
+        showBackButton()
     }
 
     override fun initBeforeBinding() {
@@ -49,4 +56,19 @@ class ReportDetailFragment: BaseFragment<FragmentReportDetailBinding, ReportView
             }
         })
     }
+
+    private fun showBackButton() {
+        requireActivity().actionBar?.setDisplayHomeAsUpEnabled(true)
+        this.setHasOptionsMenu(true)
+    }
+
+    private fun disappearBackButton(){
+        requireActivity().actionBar?.setDisplayHomeAsUpEnabled(false)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        disappearBackButton()
+    }
+
 }

@@ -53,6 +53,6 @@ class ReportFragment : BaseFragment<FragmentReportBinding, ReportViewModel>(), O
         activity!!.supportFragmentManager
             .beginTransaction()
             .replace(R.id.container_main, reportDetailFragment)
-            .commit()
+            .addToBackStack(null).commit()
     }
 }
