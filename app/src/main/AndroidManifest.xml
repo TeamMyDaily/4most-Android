@@ -10,21 +10,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDaily">
+        <activity android:name=".ui.view.remind.RemindDetailWriteActivity"></activity>
         <activity
             android:name=".ui.view.keyword.KeywordListActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:exported="true" >
-        </activity>
+            android:exported="true"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
         <activity
             android:name=".ui.view.daily.detail.DailyDetailActivity"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.view.signin.SignInActivity"
             android:exported="true" />
         <activity
             android:name=".ui.view.goal.detail.GoalDetailActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
