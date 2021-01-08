@@ -12,7 +12,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
     override val viewModel: SignUpViewModel by viewModel()
 
     override fun initView() {
-
+        
     }
 
     override fun initBeforeBinding() {

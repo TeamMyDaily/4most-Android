@@ -16,122 +16,282 @@
             android:id="@+id/tb_sign_up"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ic_arrow_back"
             app:title="@string/sign_up"
-            app:titleTextAppearance="@style/ToolbarTitleTextStyle"/>
+            app:titleTextAppearance="@style/ToolbarTitleTextStyle" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_name"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="97dp"
-            app:boxCornerRadiusBottomEnd="15dp"
-            app:boxCornerRadiusBottomStart="15dp"
-            app:boxCornerRadiusTopEnd="15dp"
-            app:boxCornerRadiusTopStart="15dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/selector_et_sign_in"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tb_sign_up"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+            app:layout_constraintTop_toBottomOf="@+id/tb_sign_up">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:hint="이름"
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="null"
+                android:ems="10"
+                android:hint="영문 혹은 한글로 작성해주세요."
+                android:inputType="text"
+                android:paddingVertical="12dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:textSize="12sp"
-                android:inputType="text"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_email"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="57dp"
-            app:boxCornerRadiusBottomEnd="15dp"
-            app:boxCornerRadiusBottomStart="15dp"
-            app:boxCornerRadiusTopEnd="15dp"
-            app:boxCornerRadiusTopStart="15dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/selector_et_sign_in"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/til_name"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+            app:layout_constraintTop_toBottomOf="@+id/cl_name">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:hint="이메일"
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="null"
+                android:ems="10"
+                android:hint="가입 할 이메일의 주소를 입력해 주세요."
+                android:inputType="textEmailAddress"
+                android:paddingVertical="12dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:textSize="12sp"
-                android:inputType="textEmailAddress" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_password"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="57dp"
-            app:boxCornerRadiusBottomEnd="15dp"
-            app:boxCornerRadiusBottomStart="15dp"
-            app:boxCornerRadiusTopEnd="15dp"
-            app:boxCornerRadiusTopStart="15dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/selector_et_sign_in"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/til_email"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+            app:layout_constraintTop_toBottomOf="@+id/cl_email">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:hint="비밀번호"
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="null"
+                android:ems="10"
+                android:hint="영어와 숫자 조합으로 6자리 이상 입력해 주세요."
+                android:inputType="textPassword"
+                android:paddingVertical="12dp"
+                android:paddingStart="16dp"
                 android:textSize="12sp"
-                android:inputType="textPassword" />
+                app:layout_constraintEnd_toStartOf="@+id/iv_visible_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:id="@+id/iv_visible_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_invisible_button" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_password_check"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_password_confirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            app:boxCornerRadiusBottomEnd="15dp"
-            app:boxCornerRadiusBottomStart="15dp"
-            app:boxCornerRadiusTopEnd="15dp"
-            app:boxCornerRadiusTopStart="15dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/selector_et_sign_in"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/til_password"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+            app:layout_constraintTop_toBottomOf="@+id/cl_password">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:hint="비밀번호 확인"
+            <EditText
+                android:id="@+id/et_password_confirm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="null"
+                android:ems="10"
+                android:hint="한번 더 확인 해 주세요."
+                android:inputType="textPassword"
+                android:paddingVertical="12dp"
+                android:paddingStart="16dp"
                 android:textSize="12sp"
-                android:inputType="textPassword" />
+                app:layout_constraintEnd_toStartOf="@+id/iv_visible_button_confirm"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:id="@+id/iv_visible_button_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_invisible_button" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <TextView
+            android:id="@+id/tv_password_confirm_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="*  "
+            android:textColor="@color/mainOrange"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_password_confirm"
+            app:layout_constraintStart_toEndOf="@+id/tv_password_confirm" />
+
+        <TextView
+            android:id="@+id/tv_password_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginBottom="33dp"
+            android:background="@color/white"
+            android:text="  비밀번호 확인"
+            android:textColor="@color/mainBlack"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cl_password_confirm"
+            app:layout_constraintStart_toStartOf="@+id/cl_password_confirm" />
+
+        <TextView
+            android:id="@+id/tv_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginBottom="33dp"
+            android:background="@color/white"
+            android:text="  비밀번호"
+            android:textColor="@color/mainBlack"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cl_password"
+            app:layout_constraintStart_toStartOf="@+id/cl_password" />
+
+        <TextView
+            android:id="@+id/tv_password_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="*  "
+            android:textColor="@color/mainOrange"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_password"
+            app:layout_constraintStart_toEndOf="@+id/tv_password" />
+
+        <TextView
+            android:id="@+id/tv_email_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="*  "
+            android:textColor="@color/mainOrange"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_email"
+            app:layout_constraintStart_toEndOf="@+id/tv_email" />
+
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginBottom="33dp"
+            android:background="@color/white"
+            android:text="  이메일"
+            android:textColor="@color/mainBlack"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cl_email"
+            app:layout_constraintStart_toStartOf="@+id/cl_email" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginBottom="33dp"
+            android:background="@color/white"
+            android:text="  이름"
+            android:textColor="@color/mainBlack"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cl_name"
+            app:layout_constraintStart_toStartOf="@+id/cl_name" />
+
+        <TextView
+            android:id="@+id/tv_name_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="*  "
+            android:textColor="@color/mainOrange"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_name"
+            app:layout_constraintStart_toEndOf="@+id/tv_name" />
+
+
+        <TextView
+            android:id="@+id/tv_notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="58dp"
+            android:textSize="12sp"
+            android:text="항목은 필수 입니다!"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_password_confirm" />
+
+        <TextView
+            android:id="@+id/tv_notice_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_notice"
+            app:layout_constraintEnd_toStartOf="@+id/tv_notice" />
 
         <Button
             android:id="@+id/btn_sign_up"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="64dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="64dp"
             android:background="@drawable/selector_btn_sign_up"
-            android:text="@string/next"
+            android:fitsSystemWindows="true"
+            android:text="다음"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/til_password_check"
-            android:fitsSystemWindows="true"/>
+            app:layout_constraintTop_toBottomOf="@+id/tv_notice" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
