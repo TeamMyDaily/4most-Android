@@ -76,8 +76,6 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
             btnAddSave.isEnabled = false
 
             btnAddSave.visibility = View.VISIBLE
-            btnModifySave.visibility = View.GONE
-            btnDelete.visibility = View.GONE
         }
 
         binding.etGoal.addTextChangedListener {
@@ -101,42 +99,15 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
             etGoal.setText(intentGoal)
             tvByte.text = etGoal.text.length.toString()
 
-            btnModifySave.isEnabled = false
-            btnDelete.isEnabled = true
 
             btnAddSave.visibility = View.GONE
-            btnModifySave.visibility = View.VISIBLE
-            btnDelete.visibility = View.VISIBLE
         }
 
 
         binding.etGoal.addTextChangedListener {
             val length = binding.etGoal.length()
             binding.tvByte.text = length.toString()
-            binding.btnModifySave.isEnabled = length > 0
         }
 
-        binding.btnDelete.setOnClickListener {
-            AlertDialog.Builder(this)
-                .setTitle("이 목표를 삭제하시겠어요?")
-                .setMessage("목표를 삭제 하면 다시 되돌릴 수 없어요.\n" +
-                        "그래도 삭제 하시겠어요??")
-                .setPositiveButton("삭제하기") { _, _ ->
-                    // 삭제
-                    // do something
-                    shortToast("삭제 클릭됨")
-                }
-                .setNegativeButton("다음에하기") { _, _ ->
-                    //취소
-                    shortToast("다음에하기 클릭됨")
-                }
-                .create()
-                .show()
-        }
-
-        binding.btnModifySave.setOnClickListener {
-            //다시 저장 후 종료
-            finish()
-        }
     }
 }

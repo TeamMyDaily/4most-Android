@@ -3,8 +3,6 @@ package org.mydaily.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import org.mydaily.data.model.Goal
-import org.mydaily.data.model.Keyword
 import org.mydaily.databinding.ItemMyPageKeywordListBinding
 
 class MyPageKeywordAdapter : RecyclerView.Adapter<MyPageKeywordAdapter.ViewHolder>() {

@@ -3,7 +3,7 @@ package org.mydaily.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import org.mydaily.data.model.Goal
+import org.mydaily.data.model.domain.Goal
 import org.mydaily.databinding.ItemKeywordGoalBinding
 
 class GoalReportAdapter: RecyclerView.Adapter<GoalReportAdapter.ViewHolder>() {

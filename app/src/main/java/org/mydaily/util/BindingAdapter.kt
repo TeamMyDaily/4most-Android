@@ -4,7 +4,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import org.mydaily.R
-import org.mydaily.data.model.Goal
+import org.mydaily.data.model.domain.Goal
 import org.mydaily.util.CalendarUtil.isWeekSame
 import java.util.*
 
@@ -25,13 +25,13 @@ object BindingAdapter {
     @JvmStatic
     @BindingAdapter("setKeywordWithGoal")
     fun setKeywordWithGoal(textView: TextView, goal: Goal) {
-        val color = if (goal.isGoalExist) {
+        val color = if (goal.isGoalCreated) {
             textView.resources.getColor(R.color.mainBlack, null)
         } else {
             textView.resources.getColor(R.color.mainGray, null)
         }
         textView.setTextColor(color)
-        textView.text = goal.keyword
+        textView.text = goal.name
     }
 
     @JvmStatic
@@ -55,23 +55,13 @@ object BindingAdapter {
     }
 
     @JvmStatic
-    @BindingAdapter("setVisibilityWithGoalExist")
-    fun setVisibilityWithGoalExist(view: View, isGoalExist: Boolean) {
-        if (isGoalExist) {
-            view.visibility = View.GONE
-        } else {
-            view.visibility = View.VISIBLE
-        }
-    }
-
-    @JvmStatic
     @BindingAdapter("setGoalWithGoal")
     fun setGoalWithGoal(textView: TextView, goal: Goal) {
         val color: Int
         val text: String
-        if (goal.isGoalExist) {
+        if (goal.isGoalCreated) {
             color = textView.resources.getColor(R.color.mainBlack, null)
-            text = goal.goal!!
+            text = goal.weekGoal
         } else {
             color = textView.resources.getColor(R.color.mainGray, null)
             text = textView.resources.getString(R.string.msg_set_goal)
