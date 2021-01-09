@@ -14,8 +14,8 @@
 
         <TextView
             android:id="@+id/tv_goal_num_alert"
-            android:layout_width="152dp"
-            android:layout_height="17dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/msg_goal_has_not_been_set"
             android:textColor="#FF8022"
             android:textSize="12sp"
