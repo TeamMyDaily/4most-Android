@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 
-class KeywordPopupVPAdapter (fm : FragmentManager)
+class KeywordPopupViewPagerAdapter (fm : FragmentManager)
     : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
 {
     var fragments = listOf<Fragment>()

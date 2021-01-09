@@ -6,7 +6,7 @@ import kotlinx.android.synthetic.main.activity_keyword_popup.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordPopupBinding
-import org.mydaily.ui.adapter.KeywordPopupVPAdapter
+import org.mydaily.ui.adapter.KeywordPopupViewPagerAdapter
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.view.keyword.KeywordPopupFirstFragment
 import org.mydaily.ui.view.keyword.KeywordPopupSecondFragment
@@ -18,7 +18,7 @@ class KeywordPopupActivity : BaseActivity<ActivityKeywordPopupBinding, KeywordVi
         get() = R.layout.activity_keyword_popup
     override val viewModel: KeywordViewModel by viewModel()
 
-    private lateinit var viewpagerAdapter : KeywordPopupVPAdapter
+    private lateinit var viewpagerAdapter : KeywordPopupViewPagerAdapter
 
 
     override fun initView() {
@@ -42,7 +42,7 @@ class KeywordPopupActivity : BaseActivity<ActivityKeywordPopupBinding, KeywordVi
     }
 
     private fun initViewPager() {
-        viewpagerAdapter = KeywordPopupVPAdapter(supportFragmentManager)
+        viewpagerAdapter = KeywordPopupViewPagerAdapter(supportFragmentManager)
         viewpagerAdapter.fragments = listOf(
             KeywordPopupFirstFragment(),
             KeywordPopupSecondFragment(),
