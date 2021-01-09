@@ -47,34 +47,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="@string/is_there"
+                android:text="@string/is_there_no_word"
                 android:textColor="@color/cod_gray"
                 android:textSize="25sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_no_word_you_find"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@string/no_word_you_find"
-                android:textColor="@color/cod_gray"
-                android:textSize="25sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_is_there" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/please_add_yourself"
                 android:textColor="@color/cod_gray"
                 android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_no_word_you_find" />
+                app:layout_constraintStart_toStartOf="@+id/tv_is_there"
+                app:layout_constraintTop_toBottomOf="@id/tv_is_there" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -92,60 +81,63 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="48dp"
                 android:text="@string/keyword_guide"
-                android:textColor="@color/persimmon"
+                android:textColor="@color/mainGray"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_no_space_five_word"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@string/no_space_five_word"
-                android:textColor="@color/persimmon"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_keyword_guide" />
-
-            <TextView
-                android:id="@+id/tv_recommend_noun"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@string/recommend_noun"
-                android:textColor="@color/persimmon"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_no_space_five_word" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_keyword_input_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="41dp"
+                android:layout_marginRight="16dp"
                 android:hint="@string/input_value"
-                app:hintTextColor="@color/persimmon"
                 android:textColorHint="@color/alto"
-                app:boxStrokeColor="@color/selector_edittext"
-                app:boxCornerRadiusTopEnd="15dp"
-                app:boxCornerRadiusTopStart="15dp"
                 app:boxCornerRadiusBottomEnd="15dp"
                 app:boxCornerRadiusBottomStart="15dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusTopEnd="15dp"
+                app:boxCornerRadiusTopStart="15dp"
+                app:boxStrokeColor="@color/selector_edittext"
+                app:boxStrokeErrorColor="@color/persimmon"
+                app:errorIconDrawable="@null"
+                app:hintTextColor="@color/persimmon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_recommend_noun">
+                app:layout_constraintTop_toBottomOf="@id/tv_keyword_guide">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_keyword_input"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:privateImeOptions='"defaultInputmode=korean"'
                     android:textCursorDrawable="@drawable/edittext_cursor_cod_gray" />
-
             </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_errortext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/persimmon"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/et_keyword_input_layout"
+                app:layout_constraintTop_toBottomOf="@id/et_keyword_input_layout" />
+
+            <ImageButton
+                android:id="@+id/btn_error_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/ic_error_2"
+                android:clickable="false"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/et_keyword_input_layout"
+                app:layout_constraintEnd_toEndOf="@id/et_keyword_input_layout"
+                app:layout_constraintTop_toTopOf="@id/et_keyword_input_layout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
