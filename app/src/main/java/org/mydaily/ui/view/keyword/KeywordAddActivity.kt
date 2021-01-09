@@ -4,6 +4,7 @@ import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
 import android.view.View
+import kotlinx.android.synthetic.main.activity_keyword_add.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordAddBinding
@@ -34,7 +35,6 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
                 ""
             } else null
         }
-        //TODO -> 유니코드 수정해서 a 입력 안되게 막기
         binding.etKeywordInput.filters = arrayOf(filterKorea)
     }
 
@@ -43,12 +43,14 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
         viewModel.getLifeWord()
         viewModel.getWorkWord()
         viewModel.getMyWord()
+        //viewModel.addMyWord(String())
     }
 
     override fun initAfterBinding() {
         observeLifeWordList()
         observeWorkWordList()
         observeMyWordList()
+        //observeAddMyWord(String())
     }
 
     private fun observeLifeWordList() {
@@ -67,6 +69,12 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
         })
     }
 
+    private fun observeAddMyWord(keyword : String) {
+//        viewModel.addMyWord.observe(this, {
+//            keywordAdd().addMyWord(keyword)
+//            keywordList.addAll(it)
+//        })
+    }
     private fun initToolbar() {
         setSupportActionBar(binding.tbKeywordAddActivity)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -103,7 +111,7 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
                     binding.btnErrorIcon.visibility = View.VISIBLE
                     binding.tvErrortext.text = sameKeyword
                 } else if(binding.etKeywordInput.text.toString().contains("a")) {
-                    //TODO -> 알파벳이랑 특수문자 입력됐을 때 공백 들어갔을 때처럼 로직 작성하기
+                    //TODO -> 알파벳이랑 특수문자 입력됐을 때 공백 들어갔을 때처럼 로직 작성하기 -> 아예 입력만 못하게 하면 안되나
                     binding.btnAdd.isEnabled = false
                     binding.tvErrortext.visibility = View.VISIBLE
                     binding.btnErrorIcon.visibility = View.VISIBLE
@@ -121,7 +129,7 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
     }
     private fun keywordAdd() {
         binding.btnAdd.setOnClickListener{
-            //TODO 추가 로직 작성
+            observeAddMyWord(et_keyword_input.text.toString())
             shortToast("키워드 추가 버튼 클릭됨")
             finish()
         }

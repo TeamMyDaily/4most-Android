@@ -1,5 +1,6 @@
 package org.mydaily.ui.view.keyword
 
+import android.content.Intent
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -45,7 +46,8 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
         binding.chipAdd.setOnClickListener {
             shortToast("추가 버튼 클릭됨")
             //여기서 키워드 추가 Activity로 이동
-
+            val intent = Intent(this, KeywordAddActivity::class.java)
+            startActivity(intent)
             //예시 : 키워드 추가 시 맨 앞에 chip 생성
             binding.cgMyWord.addView(createChip("추가된 샘플"),binding.cgMyWord.childCount-1)
         }
