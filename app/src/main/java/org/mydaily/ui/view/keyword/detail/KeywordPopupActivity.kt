@@ -37,7 +37,7 @@ class KeywordPopupActivity : BaseActivity<ActivityKeywordPopupBinding, KeywordVi
     }
 
     private fun initBtnVisibility() {
-        btn_popup_finish.visibility = View.GONE
+        btn_popup_next.visibility = View.GONE
         btn_popup_skip.visibility = View.VISIBLE
     }
 
@@ -56,7 +56,7 @@ class KeywordPopupActivity : BaseActivity<ActivityKeywordPopupBinding, KeywordVi
     private fun btnOnOff() {
         if(vp_keyword_popup.currentItem == 2) {
             btn_popup_skip.visibility = View.GONE
-            btn_popup_finish.visibility = View.VISIBLE
+            btn_popup_next.visibility = View.VISIBLE
         }
     }
 
