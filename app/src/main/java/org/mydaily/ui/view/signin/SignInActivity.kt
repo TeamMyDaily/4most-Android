@@ -1,9 +1,13 @@
 package org.mydaily.ui.view.signin
 
+import android.content.Intent
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivitySignInBinding
 import org.mydaily.ui.base.BaseActivity
+import org.mydaily.ui.view.MainActivity
+import org.mydaily.ui.view.signup.SignUpActivity
+import org.mydaily.ui.view.signup.SignUpTermsActivity
 import org.mydaily.ui.viewmodel.SignInViewModel
 import org.mydaily.util.LoginPatternCheckUtil
 import org.mydaily.util.extension.shortToast
@@ -39,7 +43,9 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
             shortToast("비번찾기 버튼 클릭")
         }
         binding.tvSignUp.setOnClickListener {
-            shortToast("회원가입 버튼 클릭")
+            binding.tvSignUp.setOnClickListener {
+                startActivity(Intent(this, SignUpTermsActivity::class.java))
+            }
         }
         binding.btnSignIn.setOnClickListener {
             val email = binding.etPassword.toString()
@@ -47,6 +53,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
 
             if (LoginPatternCheckUtil.isNotValidEmailAndPassword(email, password)) {
                 shortToast(R.string.msg_sign_in_error)
+                startActivity(Intent(this, MainActivity::class.java))
             }else {
                 viewModel.signIn(email, password)
             }

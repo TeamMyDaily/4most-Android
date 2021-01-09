@@ -27,6 +27,12 @@
     <string name="find_password">비밀번호 찾기</string>
     <string name="msg_sign_in_error">이메일과 비밀번호를 확인해주세요</string>
 
+    <!--Sign Up Terms-->
+    <string name="msg_allow_personal_information">[필수] 개인정보 수집이용 동의</string>
+    <string name="msg_allow_service_terms">[필수] 서비스 이용약관 동의</string>
+    <string name="msg_allow_alert">약관에는 ‘개인정보 수집 목적 및 이용’에 관한 중요\n한 내용이 담겨 있습니다.\n약관동의 체크는 해당 약관\n을 모두 숙지하였으며, 이에 동의함을 의미합니다.</string>
+    <string name="next">다음</string>
+
     <!--Goal-->
     <string name="msg_plz_set_goal_by_keyword">키워드에 따른\n목표를 설정해주세요!</string>
     <string name="msg_goal_has_not_been_set">개의 목표가 미설정 되었어요!</string>

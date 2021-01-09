@@ -16,12 +16,22 @@
             android:id="@+id/tb_sign_up_terms"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            app:navigationIcon="@drawable/ic_arrow_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="@string/sign_up"
-            app:titleTextAppearance="@style/ToolbarTitleTextStyle"/>
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                android:textColor="@color/mainBlack"
+                android:layout_gravity="center"
+                tools:text="회원가입"/>
+        </androidx.appcompat.widget.Toolbar>
 
 
         <ImageView
@@ -148,6 +158,19 @@
             android:layout_marginTop="180dp"
             android:background="@drawable/selector_btn_sign_up"
             android:text="@string/next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/msg_allow_alert"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />

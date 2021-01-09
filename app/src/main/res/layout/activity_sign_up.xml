@@ -16,21 +16,74 @@
             android:id="@+id/tb_sign_up"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="@string/sign_up"
-            app:titleTextAppearance="@style/ToolbarTitleTextStyle" />
+            app:navigationIcon="@drawable/ic_arrow_back">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/mainBlack"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                tools:text="회원가입" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <ImageView
+            android:id="@+id/iv_alert_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_alert_name"
+            app:layout_constraintEnd_toStartOf="@+id/tv_alert_name"
+            app:srcCompat="@drawable/ic_alert_icon" />
+
+        <ImageView
+            android:id="@+id/iv_alert_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_alert_email"
+            app:layout_constraintEnd_toStartOf="@+id/tv_alert_email"
+            app:srcCompat="@drawable/ic_alert_icon" />
+
+        <ImageView
+            android:id="@+id/iv_alert_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_password_alert"
+            app:layout_constraintEnd_toStartOf="@+id/tv_password_alert"
+            app:srcCompat="@drawable/ic_alert_icon" />
+
+        <TextView
+            android:id="@+id/tv_alert_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="형식이 맞지 않습니다!"
+            android:textColor="@color/carrot"
+            android:textSize="12sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/cl_name"
+            app:layout_constraintEnd_toEndOf="@+id/cl_name" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="97dp"
+            android:layout_marginTop="94dp"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/selector_et_sign_in"
+            android:background="@drawable/rectangle_gray_radius_15"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tb_sign_up">
@@ -39,18 +92,30 @@
                 android:id="@+id/et_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="null"
+                android:background="@null"
                 android:ems="10"
                 android:hint="영문 혹은 한글로 작성해주세요."
                 android:inputType="text"
                 android:paddingVertical="12dp"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
+                android:textColor="@color/mainBlack"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_alert_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="입력한 이메일로 본인확인 메일이 전송 됩니다"
+            android:textColor="@color/mainGray"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/cl_email"
+            app:layout_constraintEnd_toEndOf="@+id/cl_email" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_email"
@@ -59,7 +124,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="57dp"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/selector_et_sign_in"
+            android:background="@drawable/rectangle_gray_radius_15"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cl_name">
@@ -68,13 +133,14 @@
                 android:id="@+id/et_email"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="null"
+                android:background="@null"
                 android:ems="10"
                 android:hint="가입 할 이메일의 주소를 입력해 주세요."
                 android:inputType="textEmailAddress"
                 android:paddingVertical="12dp"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
+                android:textColor="@color/mainBlack"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +155,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="57dp"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/selector_et_sign_in"
+            android:background="@drawable/rectangle_gray_radius_15"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cl_email">
@@ -98,8 +164,9 @@
                 android:id="@+id/et_password"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="null"
+                android:background="@null"
                 android:ems="10"
+                android:textColor="@color/mainBlack"
                 android:hint="영어와 숫자 조합으로 6자리 이상 입력해 주세요."
                 android:inputType="textPassword"
                 android:paddingVertical="12dp"
@@ -109,16 +176,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/iv_visible_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:visibility="invisible"
+                android:background="@android:color/transparent"
+                android:src="@drawable/selector_btn_visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_invisible_button" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -128,7 +196,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/selector_et_sign_in"
+            android:background="@drawable/rectangle_gray_radius_15"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cl_password">
@@ -137,27 +205,30 @@
                 android:id="@+id/et_password_confirm"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="null"
+                android:background="@null"
                 android:ems="10"
                 android:hint="한번 더 확인 해 주세요."
                 android:inputType="textPassword"
                 android:paddingVertical="12dp"
                 android:paddingStart="16dp"
+                android:textColor="@color/mainBlack"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toStartOf="@+id/iv_visible_button_confirm"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/iv_visible_button_confirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:visibility="invisible"
+                android:background="@android:color/transparent"
+                android:src="@drawable/selector_btn_visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_invisible_button" />
+                app:srcCompat="@drawable/selector_btn_visible" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -166,7 +237,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:text="*  "
-            android:textColor="@color/mainOrange"
+            android:textColor="@color/carrot"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_password_confirm"
             app:layout_constraintStart_toEndOf="@+id/tv_password_confirm" />
@@ -203,7 +274,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:text="*  "
-            android:textColor="@color/mainOrange"
+            android:textColor="@color/carrot"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_password"
             app:layout_constraintStart_toEndOf="@+id/tv_password" />
@@ -214,7 +285,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:text="*  "
-            android:textColor="@color/mainOrange"
+            android:textColor="@color/carrot"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_email"
             app:layout_constraintStart_toEndOf="@+id/tv_email" />
@@ -273,6 +344,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="*"
+            android:textColor="@color/carrot"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_notice"
             app:layout_constraintEnd_toStartOf="@+id/tv_notice" />
@@ -287,11 +359,23 @@
             android:layout_marginEnd="64dp"
             android:background="@drawable/selector_btn_sign_up"
             android:fitsSystemWindows="true"
-            android:text="다음"
+            android:text="@string/next"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_notice" />
+
+        <TextView
+            android:id="@+id/tv_password_alert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textSize="12sp"
+            android:textColor="@color/carrot"
+            android:visibility="invisible"
+            android:text="비밀번호 조합이 틀려요!"
+            app:layout_constraintBottom_toTopOf="@+id/cl_password"
+            app:layout_constraintEnd_toEndOf="@+id/cl_password" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
