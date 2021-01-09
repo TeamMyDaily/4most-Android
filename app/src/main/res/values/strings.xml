@@ -30,8 +30,26 @@
     <!--Sign Up Terms-->
     <string name="msg_allow_personal_information">[필수] 개인정보 수집이용 동의</string>
     <string name="msg_allow_service_terms">[필수] 서비스 이용약관 동의</string>
-    <string name="msg_allow_alert">약관에는 ‘개인정보 수집 목적 및 이용’에 관한 중요\n한 내용이 담겨 있습니다.\n약관동의 체크는 해당 약관\n을 모두 숙지하였으며, 이에 동의함을 의미합니다.</string>
+    <string name="msg_allow_alert">약관에는 ‘개인정보 수집 목적 및 이용’에 관한 중요\n한 내용이 담겨 있습니다.약관동의 체크는 해당 약관\n을 모두 숙지하였으며, 이에 동의함을 의미합니다.</string>
     <string name="next">다음</string>
+
+    <!--Sign Up-->
+    <string name="email_alert">사용 불가능한 이메일이에요!</string>
+    <string name="name_alert">"특수문자는 사용이 불가합니다"</string>
+    <string name="name_hint">영문 혹은 한글로 작성해주세요.</string>
+    <string name="email_alarm">입력한 이메일로 본인확인 메일이 전송 됩니다</string>
+    <string name="email_hint">가입 할 이메일의 주소를 입력해 주세요.</string>
+    <string name="password_hint">영어와 숫자 조합으로 6자리 이상 입력해 주세요.</string>
+    <string name="star">"*  "</string>
+    <string name="password_confirm_title">"  비밀번호 확인"</string>
+    <string name="password_title">"  비밀번호"</string>
+    <string name="email_title">"  이메일"</string>
+    <string name="name_title">"  이름"</string>
+    <string name="password_confirm_hint">한번 더 확인 해 주세요.</string>
+    <string name="star_not_empty">*</string>
+    <string name="sign_up_alarm">항목은 필수 입니다!</string>
+    <string name="password_alert">비밀번호 조합이 틀려요!</string>
+
 
     <!--Goal-->
     <string name="msg_plz_set_goal_by_keyword">키워드에 따른\n목표를 설정해주세요!</string>

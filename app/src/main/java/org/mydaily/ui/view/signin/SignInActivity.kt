@@ -48,7 +48,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
             }
         }
         binding.btnSignIn.setOnClickListener {
-            val email = binding.etPassword.toString()
+            val email = binding.etEmail.toString()
             val password = binding.etPassword.toString()
 
             if (LoginPatternCheckUtil.isNotValidEmailAndPassword(email, password)) {

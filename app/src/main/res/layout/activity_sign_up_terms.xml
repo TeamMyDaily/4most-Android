@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.signup.SignUpTermsActivity">
+        tools:context=".ui.view.signup.SignUpActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_sign_up_terms"
@@ -28,9 +28,11 @@
                 android:layout_height="wrap_content"
                 android:textSize="21sp"
                 android:textStyle="bold"
+                android:visibility="visible"
                 android:textColor="@color/mainBlack"
                 android:layout_gravity="center"
-                tools:text="회원가입"/>
+                tools:text="@string/sign_up"/>
+
         </androidx.appcompat.widget.Toolbar>
 
 
@@ -71,9 +73,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginStart="32dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/selector_checkbox"
-                android:layout_marginStart="32dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -163,14 +165,15 @@
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
         <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_alert_information"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="72dp"
             android:layout_marginTop="19dp"
             android:layout_marginEnd="32dp"
             android:text="@string/msg_allow_alert"
             android:textSize="12sp"
+            android:textColor="@color/mainGray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
