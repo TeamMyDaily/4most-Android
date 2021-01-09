@@ -4,17 +4,24 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.mydaily.data.model.Keyword
+import org.mydaily.data.model.domain.Task
 import org.mydaily.databinding.ItemDailyGoalBinding
 
 class DailyKeywordAdapter : RecyclerView.Adapter<DailyKeywordAdapter.ViewHolder>() {
 
-    private val _data = mutableListOf<String>()
-    var data : List<String> = _data
+    private val _data = mutableListOf<Task.Title>()
+    var data : List<Task.Title> = _data
         set(value) {
             _data.clear()
             _data.addAll(value)
             notifyDataSetChanged()
         }
+
+
+    private var clickListener:((id: Int)-> Unit) ?= null
+    fun setClickListener(listener: ((id: Int)-> Unit)){
+        this.clickListener = listener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater: LayoutInflater = LayoutInflater.from(parent.context)
@@ -32,8 +39,11 @@ class DailyKeywordAdapter : RecyclerView.Adapter<DailyKeywordAdapter.ViewHolder>
     inner class ViewHolder(private val binding: ItemDailyGoalBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(task: String) {
-            binding.task = task
+        fun bind(task: Task.Title) {
+            binding.task = task.title
+            binding.tvKeyword.setOnClickListener {
+                clickListener?.invoke(task.id)
+            }
         }
     }
 }

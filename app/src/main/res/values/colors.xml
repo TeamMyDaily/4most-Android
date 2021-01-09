@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#EC684A</color>
+    <color name="colorPrimary">#FF7556</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="gray">#C9C9C9</color>
-    <color name="orange">#EC684A</color>
-
+    <!--4most Main Color-->
     <color name="mainOrange">#FF7556</color>
-    <color name="mainLightOrange">#FEC7BA</color>
+    <color name="mainLightOrange">#FF8A7B</color>
+    <color name="mainPaleOrange">#FEC7BA</color>
+
     <color name="mainBlack">#333333</color>
+    <color name="mainGray">#C9C9C9</color>
+    <color name="mainLightGray">#F2F2F2</color>
+
+    <color name="report_gray">#E5E5E5</color>
+
     <color name="mainAlto">#E0E0E0</color>
-    <color name="mainConcrete">#F2F2F2</color>
+    <color name = "daily_record_divider">#FFF1EE</color>
+    <color name = "daily_record_container">#FEC7BA</color>
+    <color name = "achivement_container_gray">#C4C4C4</color>
+    <color name = "remind_textbox_gray">#F2F2F2</color>
 
     <color name="silver">#C1C1C1</color>
     <color name="gallery">#EAEAEA</color>

@@ -18,17 +18,19 @@
             android:id="@+id/fl_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/iv_number"
+            <TextView
+                android:id="@+id/tv_number"
                 android:layout_width="wrap_content"
-                android:layout_height="46dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="-16dp"
-                android:src="@drawable/ic_01"/>
+                android:textColor="#4DE0E0E0"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                tools:text="01" />
 
         </FrameLayout>
 
@@ -36,15 +38,17 @@
             android:id="@+id/tv_number_of_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
             android:text="4"
             android:textColor="@color/mainLightOrange"
             android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/fl_number"
-            app:layout_constraintTop_toTopOf="@+id/fl_number" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_report_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_report_name" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tv_info_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="개의 기록"
@@ -54,19 +58,29 @@
             app:layout_constraintStart_toEndOf="@+id/tv_number_of_task"
             app:layout_constraintTop_toTopOf="@+id/tv_number_of_task" />
 
+        <TextView
+            android:id="@+id/tv_info_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이 당신을 기다리고 있어요"
+            android:textColor="@color/mainGray"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_number_of_task"
+            app:layout_constraintStart_toEndOf="@+id/tv_info_1"
+            app:layout_constraintTop_toTopOf="@+id/tv_number_of_task" />
 
         <TextView
             android:id="@+id/tv_report_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="24dp"
             android:text="@{task}"
             android:textColor="@color/mainBlack"
-            android:textSize="24sp"
+            android:textSize="28sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/fl_number"
-            app:layout_constraintStart_toStartOf="@+id/tv_number_of_task"
-            app:layout_constraintTop_toBottomOf="@+id/tv_number_of_task"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toEndOf="@+id/fl_number"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="아웃풋" />
 
         <ImageView
