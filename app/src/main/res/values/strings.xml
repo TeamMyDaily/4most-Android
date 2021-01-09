@@ -36,6 +36,7 @@
     <string name="msg_goal_not_achieved">미달성</string>
     <string name="msg_goal_denied_keyword_not_exist">키워드가 존재 하지 않아 목표를 생성 할 수 없어요.😢 \n + 버튼을 눌러 키워드를 생성 해 보세요!</string>
     <string name="msg_keyword_not_exist_this_week">이 주에는 키워드가 없어요.😢</string>
+    <string name="msg_check_goal_achievement">목표 달성여부 체크</string>
 
 
     <!--My Page-->
