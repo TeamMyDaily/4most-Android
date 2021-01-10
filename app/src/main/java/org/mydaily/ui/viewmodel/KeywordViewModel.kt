@@ -19,7 +19,10 @@ class KeywordViewModel : BaseViewModel() {
     val myWordList: LiveData<List<String>>
         get() = _myWordList
 
-    lateinit var addMyWord: MutableList<String>
+
+    private val _addMyWordList = mutableListOf<String>()
+    val addMyWordList : List<String>
+        get() = _addMyWordList
 
     //삶을 대하는 자세
     fun getLifeWord() {
@@ -41,13 +44,10 @@ class KeywordViewModel : BaseViewModel() {
 
     //내가 추가한 단어
     fun getMyWord() {
-        //추가한 단어를 어떻게 여기로 불러옴?
-        //addMyWord는 파라미터가 있어서 읽는 함수와 쓰는 함수 분리함
+
     }
 
     fun addMyWord(keyword : String) {
-        val tempList = mutableListOf<String>(
-
-        )
+        _addMyWordList.add(keyword)
     }
 }

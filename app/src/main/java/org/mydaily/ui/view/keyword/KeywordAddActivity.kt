@@ -70,10 +70,8 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
     }
 
     private fun observeAddMyWord(keyword : String) {
-//        viewModel.addMyWord.observe(this, {
-//            keywordAdd().addMyWord(keyword)
-//            keywordList.addAll(it)
-//        })
+        //viewModel.addMyWordList. TODO -> 중복검사 하면됨
+
     }
     private fun initToolbar() {
         setSupportActionBar(binding.tbKeywordAddActivity)
@@ -129,7 +127,7 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
     }
     private fun keywordAdd() {
         binding.btnAdd.setOnClickListener{
-            observeAddMyWord(et_keyword_input.text.toString())
+            viewModel.addMyWord(et_keyword_input.text.toString())
             shortToast("키워드 추가 버튼 클릭됨")
             finish()
         }
