@@ -18,7 +18,7 @@
 
 
     <!--Sign In-->
-    <string name="sign_in">로그인</string>
+    <string name="sign_in">포모스트 입장!</string>
     <string name="sign_up">회원가입</string>
     <string name="auto_sign_in">자동로그인</string>
     <string name="email">이메일</string>
@@ -35,7 +35,7 @@
 
     <!--Sign Up-->
     <string name="email_alert">사용 불가능한 이메일이에요!</string>
-    <string name="name_alert">"특수문자는 사용이 불가합니다"</string>
+    <string name="name_alert">"형식에 맞지 않습니다"</string>
     <string name="name_hint">영문 혹은 한글로 작성해주세요.</string>
     <string name="email_alarm">입력한 이메일로 본인확인 메일이 전송 됩니다</string>
     <string name="email_hint">가입 할 이메일의 주소를 입력해 주세요.</string>
@@ -44,7 +44,7 @@
     <string name="password_confirm_title">"  비밀번호 확인"</string>
     <string name="password_title">"  비밀번호"</string>
     <string name="email_title">"  이메일"</string>
-    <string name="name_title">"  이름"</string>
+    <string name="name_title">"  닉네임"</string>
     <string name="password_confirm_hint">한번 더 확인 해 주세요.</string>
     <string name="star_not_empty">*</string>
     <string name="sign_up_alarm">항목은 필수 입니다!</string>
