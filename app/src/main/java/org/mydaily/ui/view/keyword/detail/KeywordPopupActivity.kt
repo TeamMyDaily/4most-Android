@@ -2,7 +2,6 @@ package org.mydaily.ui.view.keyword.detail
 
 import android.view.View
 import androidx.viewpager.widget.ViewPager
-import kotlinx.android.synthetic.main.activity_keyword_popup.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordPopupBinding
@@ -18,7 +17,8 @@ class KeywordPopupActivity : BaseActivity<ActivityKeywordPopupBinding, KeywordVi
         get() = R.layout.activity_keyword_popup
     override val viewModel: KeywordViewModel by viewModel()
 
-    private lateinit var viewpagerAdapter : KeywordPopupViewPagerAdapter
+    private lateinit var viewpagerAdapter: KeywordPopupViewPagerAdapter
+    private var index: Int = 0
 
 
     override fun initView() {
@@ -26,19 +26,30 @@ class KeywordPopupActivity : BaseActivity<ActivityKeywordPopupBinding, KeywordVi
         initViewPager()
         initTabLayout()
         viewPagerChange()
+        btnPopupFinishClicked()
+        tvPopupSkipClicked()
     }
 
-    override fun initBeforeBinding() {
-
-
+    private fun btnPopupFinishClicked() {
+        binding.btnPopupFinish.setOnClickListener {
+            finish()
+        }
     }
 
-    override fun initAfterBinding() {
+    private fun tvPopupSkipClicked() {
+        binding.tvPopupSkip.setOnClickListener {
+            index++
+            binding.vpKeywordPopup.currentItem = index
+        }
     }
+
+    override fun initBeforeBinding() {}
+
+    override fun initAfterBinding() {}
 
     private fun initBtnVisibility() {
-        btn_popup_next.visibility = View.GONE
-        btn_popup_skip.visibility = View.VISIBLE
+        binding.btnPopupFinish.visibility = View.GONE
+        binding.tvPopupSkip.visibility = View.VISIBLE
     }
 
     private fun initViewPager() {
@@ -48,26 +59,29 @@ class KeywordPopupActivity : BaseActivity<ActivityKeywordPopupBinding, KeywordVi
             KeywordPopupSecondFragment(),
             KeywordPopupThirdFragment()
         )
-        vp_keyword_popup.adapter = viewpagerAdapter
+        binding.vpKeywordPopup.adapter = viewpagerAdapter
     }
+
     private fun initTabLayout() {
-        tl_keyword_popup.setupWithViewPager(vp_keyword_popup)
+        binding.tlKeywordPopup.setupWithViewPager(binding.vpKeywordPopup)
     }
+
     private fun btnOnOff() {
-        if(vp_keyword_popup.currentItem == 2) {
-            btn_popup_skip.visibility = View.GONE
-            btn_popup_next.visibility = View.VISIBLE
+        if (binding.vpKeywordPopup.currentItem == 2) {
+            binding.tvPopupSkip.visibility = View.GONE
+            binding.btnPopupFinish.visibility = View.VISIBLE
         }
     }
 
     private fun viewPagerChange() {
-        vp_keyword_popup?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+        binding.vpKeywordPopup.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
 
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
                 positionOffsetPixels: Int
             ) {
+                btnOnOff()
             }
 
             override fun onPageSelected(position: Int) {
@@ -76,7 +90,6 @@ class KeywordPopupActivity : BaseActivity<ActivityKeywordPopupBinding, KeywordVi
 
             override fun onPageScrollStateChanged(state: Int) {
             }
-
         })
 
     }
