@@ -16,13 +16,13 @@ class KeywordViewModel : BaseViewModel() {
 
 
     private val _myWordList = MutableLiveData<List<String>>()
-    val myWordList: LiveData<List<String>>
-        get() = _myWordList
+    val myWordList: LiveData<List<String>> = _myWordList
 
+    private val _myWordListAdd = MutableLiveData<MutableList<String>>() //mywordlist에 추가하기 위한 livedata
+    val myWordListAdd : LiveData<MutableList<String>> = _myWordListAdd
 
     private val _addMyWordList = mutableListOf<String>()
-    val addMyWordList : List<String>
-        get() = _addMyWordList
+    val addMyWordList : List<String> = _addMyWordList
 
     //삶을 대하는 자세
     fun getLifeWord() {
@@ -37,7 +37,7 @@ class KeywordViewModel : BaseViewModel() {
     fun getWorkWord() {
         /* 임시 데이터 */
         val tempList = listOf(
-            "진정성", "용기", "열정", "꾸준함", "배움", "선한영향력", "아웃풋", "행복", "즐거움", "현명", "타당성", "정당성"
+            "친절함", "경청", "대충", "진실성", "존중", "신뢰", "의심", "신속성", "돈"
         )
         _workWordList.value = tempList
     }
@@ -46,6 +46,12 @@ class KeywordViewModel : BaseViewModel() {
     fun getMyWord() {
 
     }
+
+    fun addMyWordToLiveData() {
+        //그냥 리스트를 라이브 데이터로 변환하는 방법 못찾겠따..
+        //그럼 그냥 mutablelivedata를 그냥 livedata에 넣어주면
+    }
+
 
     fun addMyWord(keyword : String) {
         _addMyWordList.add(keyword)
