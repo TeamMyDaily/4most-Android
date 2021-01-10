@@ -26,8 +26,7 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
     override fun initView() {
         getIntentData()
         initToolbar()
-        initTextView()
-        binding.btnAddSave.isEnabled = false
+        initViewWithAction()
     }
 
     override fun initBeforeBinding() {
@@ -46,11 +45,11 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
         intentWeekGoalId = intent.getIntExtra("weekGoalId", 0)
     }
 
-
     private fun initToolbar() {
         setSupportActionBar(binding.tbGoalAdd)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         binding.tbGoalAdd.setNavigationOnClickListener {
+            //수정 시도했을때
             if (isGoalChanged) {
                 AlertDialog.Builder(this)
                     .setTitle("타이틀")
@@ -69,18 +68,21 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
                     .create()
                     .show()
 
-            } else {
+            }
+            //수정 시도하지 않은 경우
+            else {
                 finish()
             }
         }
     }
 
-    private fun initTextView() {
+    private fun initViewWithAction() {
         binding.tvKeyword.text = intentKeyword
+        binding.btnAddSave.isEnabled = false
 
-        when(intentAction){
-            "ADD" ->stateAdd()
-            "MODIFY"->stateModify()
+        when (intentAction) {
+            "ADD" -> stateAdd()
+            "MODIFY" -> stateModify()
         }
     }
 
@@ -92,7 +94,7 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
             binding.btnAddSave.isEnabled = isGoalChanged && length > 0
         }
         binding.btnAddSave.setOnClickListener {
-            //저장
+            //추가 완료 후 메인으로 돌아감
             viewModel.postGoals(
                 System.currentTimeMillis(),
                 intentTotalKeywordId.toString(),
@@ -112,7 +114,7 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
             binding.btnAddSave.isEnabled = isGoalChanged && length > 0
         }
         binding.btnAddSave.setOnClickListener {
-            //저장
+            //수정 완료 후 메인으로 돌아감
             viewModel.putGoals(
                 intentWeekGoalId,
                 binding.etGoal.text.toString()
