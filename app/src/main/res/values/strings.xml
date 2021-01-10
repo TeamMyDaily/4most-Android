@@ -100,4 +100,9 @@
 
     <string name="select_finish">선택완료!</string>
     <string name="image_error">이미지가 열리지 않습니다.</string>
+
+    <!--KeywordSelectActivity-->
+    <string name="keyword_select">키워드 선택하기</string>
+    <string name="choose_four">8가지를 고르셨군요!\n조금만 더 고민해 볼까요?</string>
+    <string name="maximum_four">최대 4개까지 최종 키워드를 골라주세요!</string>
 </resources>
