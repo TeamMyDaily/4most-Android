@@ -16,12 +16,12 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_sign_up
     override val viewModel: SignUpViewModel by viewModel()
-    var isValidName = false
-    var isValidEmail = false
-    var isValidPassword = false
-    var passwordSame = false
-    var passwordIsVisible = true
-    var passwordConfirmIsVisible = true
+    private var isValidName = false
+    private var isValidEmail = false
+    private var isValidPassword = false
+    private var passwordSame = false
+    private var passwordIsVisible = true
+    private var passwordConfirmIsVisible = true
 
     override fun initView() {
         etColorChange()
@@ -118,14 +118,14 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
         binding.etEmail.addTextChangedListener {
             if (LoginPatternCheckUtil.isNotValidEmail(binding.etEmail.text.toString())) {
                 binding.tvAlertEmail.visibility = View.VISIBLE
-                binding.tvAlertEmail.text = "사용 불가능한 이메일이에요!"
+                binding.tvAlertEmail.text = getString(R.string.email_alert)
                 binding.etEmail.setTextColor(ContextCompat.getColor(this, R.color.mainPaleOrange))
                 binding.tvAlertEmail.setTextColor(ContextCompat.getColor(this, R.color.carrot))
                 binding.ivAlertEmail.visibility = View.VISIBLE
                 isValidEmail = false
             }
             else {
-                binding.tvAlertEmail.text = "입력한 이메일로 본인확인 메일이 전송 됩니다"
+                binding.tvAlertEmail.text = getString(R.string.email_alarm)
                 binding.ivAlertEmail.visibility = View.INVISIBLE
                 binding.tvAlertEmail.setTextColor(ContextCompat.getColor(this, R.color.mainGray))
                 binding.etEmail.setTextColor(ContextCompat.getColor(this, R.color.mainBlack))
@@ -139,7 +139,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
                 isValidPassword = false
                 binding.ivAlertPassword.visibility = View.VISIBLE
                 binding.tvPasswordAlert.visibility = View.VISIBLE
-                binding.tvPasswordAlert.text = "비밀번호 조합이 틀려요!"
+                binding.tvPasswordAlert.text = getString(R.string.password_alert)
             }
             else {
                 isValidPassword = true
@@ -148,7 +148,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
                 if(!LoginPatternCheckUtil.isPasswordCheckSuccess(binding.etPassword.text.toString(), binding.etPasswordConfirm.text.toString())) {
                     binding.ivAlertPassword.visibility = View.VISIBLE
                     binding.tvPasswordAlert.visibility = View.VISIBLE
-                    binding.tvPasswordAlert.text = "비밀번호가 서로 맞지 않아요!"
+                    binding.tvPasswordAlert.text = getString(R.string.password_dismatch)
                     passwordSame = false
                 }
                 else {
@@ -165,7 +165,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
                 if(!LoginPatternCheckUtil.isPasswordCheckSuccess(binding.etPassword.text.toString(), binding.etPasswordConfirm.text.toString())) {
                     binding.ivAlertPassword.visibility = View.VISIBLE
                     binding.tvPasswordAlert.visibility = View.VISIBLE
-                    binding.tvPasswordAlert.text = "비밀번호가 서로 맞지 않아요!"
+                    binding.tvPasswordAlert.text = getString(R.string.password_dismatch)
                     passwordSame = false
                 }
                 else {

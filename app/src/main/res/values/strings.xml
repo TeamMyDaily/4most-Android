@@ -49,6 +49,7 @@
     <string name="star_not_empty">*</string>
     <string name="sign_up_alarm">항목은 필수 입니다!</string>
     <string name="password_alert">비밀번호 조합이 틀려요!</string>
+    <string name="password_dismatch">비밀번호가 서로 맞지 않아요!</string>
 
 
     <!--Goal-->
