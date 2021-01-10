@@ -17,8 +17,8 @@
             android:id="@+id/iv_logo"
             android:layout_width="105dp"
             android:layout_height="105dp"
+            android:layout_marginTop="120dp"
             android:src="@color/black"
-            android:layout_marginTop="96dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,11 +37,13 @@
             app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
         <TextView
+            android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:text="@string/auto_sign_in"
             android:textSize="12sp"
-            android:layout_marginStart="8dp"
+            android:textColor="@color/mainGray"
             app:layout_constraintBottom_toBottomOf="@+id/ib_auto_login"
             app:layout_constraintStart_toEndOf="@+id/ib_auto_login"
             app:layout_constraintTop_toTopOf="@+id/ib_auto_login" />
@@ -49,35 +51,61 @@
         <EditText
             android:id="@+id/et_email"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
-            android:background="@drawable/selector_et_sign_in"
-            android:textSize="12sp"
-            android:hint="@string/email"
             android:layout_marginTop="8dp"
+            android:background="@drawable/selector_et_sign_in"
+            android:paddingVertical="12dp"
+            android:paddingStart="16dp"
             android:gravity="center_vertical"
-            android:paddingHorizontal="16dp"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
+            android:paddingHorizontal="16dp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ib_auto_login" />
 
-        <EditText
-            android:id="@+id/et_password"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_password"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginHorizontal="24dp"
-            android:background="@drawable/selector_et_sign_in"
-            android:textSize="12sp"
-            android:hint="@string/password"
-            android:inputType="textPassword"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="16dp"
-
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/rectangle_gray_radius_15"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_email" />
+            app:layout_constraintTop_toBottomOf="@+id/et_email">
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:ems="10"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:letterSpacing="0.2"
+                android:paddingVertical="12dp"
+                android:paddingStart="16dp"
+                android:textColor="@color/mainBlack"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/iv_visible_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/iv_visible_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/ic_invisible_button"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:id="@+id/ll_other"
@@ -87,18 +115,19 @@
             android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_password">
+            app:layout_constraintTop_toBottomOf="@+id/cl_password">
 
             <TextView
                 android:id="@+id/tv_sign_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sign_up"
+                android:textColor="@color/mainGray"
                 android:textSize="12sp" />
 
             <View
-                android:layout_width="1dp"
-                android:layout_height="16dp"
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:background="#C9C9C9" />
 
@@ -108,6 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="@string/find_id"
+                android:textColor="@color/mainGray"
                 android:textSize="12sp" />
 
             <View
@@ -121,6 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:textColor="@color/mainGray"
                 android:text="@string/find_password"
                 android:textSize="12sp" />
 
@@ -130,10 +161,13 @@
             android:id="@+id/btn_sign_in"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="@drawable/selector_btn_sign_in"
             android:layout_marginHorizontal="22dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="72dp"
+            android:background="@drawable/selector_btn_sign_in"
             android:text="@string/sign_in"
+            android:textFontWeight="700"
+            android:enabled="false"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ll_other" />

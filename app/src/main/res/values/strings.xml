@@ -18,7 +18,7 @@
 
 
     <!--Sign In-->
-    <string name="sign_in">로그인</string>
+    <string name="sign_in">포모스트 입장!</string>
     <string name="sign_up">회원가입</string>
     <string name="auto_sign_in">자동로그인</string>
     <string name="email">이메일</string>
@@ -27,16 +27,44 @@
     <string name="find_password">비밀번호 찾기</string>
     <string name="msg_sign_in_error">이메일과 비밀번호를 확인해주세요</string>
 
+    <!--Sign Up Terms-->
+    <string name="msg_allow_personal_information">[필수] 개인정보 수집이용 동의</string>
+    <string name="msg_allow_service_terms">[필수] 서비스 이용약관 동의</string>
+    <string name="msg_allow_alert">약관에는 ‘개인정보 수집 목적 및 이용’에 관한 중요\n한 내용이 담겨 있습니다.약관동의 체크는 해당 약관\n을 모두 숙지하였으며, 이에 동의함을 의미합니다.</string>
+    <string name="next">다음</string>
+
+    <!--Sign Up-->
+    <string name="email_alert">사용 불가능한 이메일이에요!</string>
+    <string name="name_alert">"형식에 맞지 않습니다"</string>
+    <string name="name_hint">영문 혹은 한글로 작성해주세요.</string>
+    <string name="email_alarm">입력한 이메일로 본인확인 메일이 전송 됩니다</string>
+    <string name="email_hint">가입 할 이메일의 주소를 입력해 주세요.</string>
+    <string name="password_hint">영어와 숫자 조합으로 6자리 이상 입력해 주세요.</string>
+    <string name="star">"*  "</string>
+    <string name="password_confirm_title">"  비밀번호 확인"</string>
+    <string name="password_title">"  비밀번호"</string>
+    <string name="email_title">"  이메일"</string>
+    <string name="name_title">"  닉네임"</string>
+    <string name="password_confirm_hint">한번 더 확인 해 주세요.</string>
+    <string name="star_not_empty">*</string>
+    <string name="sign_up_alarm">항목은 필수 입니다!</string>
+    <string name="password_alert">비밀번호 조합이 틀려요!</string>
+    <string name="password_dismatch">비밀번호가 서로 맞지 않아요!</string>
+
+
     <!--Goal-->
     <string name="msg_plz_set_goal_by_keyword">키워드에 따른\n목표를 설정해주세요!</string>
     <string name="msg_goal_has_not_been_set">개의 목표가 미설정 되었어요!</string>
     <string name="msg_delete">삭제할래요</string>
     <string name="msg_set_goal">목표를 세워주세요.</string>
-    <string name="msg_goal_achieved">달성</string>
-    <string name="msg_goal_not_achieved">미달성</string>
+    <string name="msg_achieved">달성</string>
+    <string name="msg_not_achieved">미달성</string>
     <string name="msg_goal_denied_keyword_not_exist">키워드가 존재 하지 않아 목표를 생성 할 수 없어요.😢 \n + 버튼을 눌러 키워드를 생성 해 보세요!</string>
     <string name="msg_keyword_not_exist_this_week">이 주에는 키워드가 없어요.😢</string>
     <string name="msg_check_goal_achievement">목표 달성여부 체크</string>
+    <string name="msg_to_goal">에 가까워지기 위한 목표</string>
+    <string name="msg_goal_achieve">목표 달성</string>
+    <string name="msg_what_goal_want">이번에는 어떤 목표를 이루고 싶나요?</string>
 
 
     <!--My Page-->

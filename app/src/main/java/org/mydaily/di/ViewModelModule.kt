@@ -11,6 +11,6 @@ val viewModelModule = module {
     viewModel { MyPageViewModel() }
     viewModel { ReportViewModel() }
     viewModel { SignInViewModel(get()) }
-    viewModel { GoalViewModel() }
+    viewModel { GoalViewModel(get()) }
     viewModel { KeywordViewModel() }
 }

@@ -1,15 +1,15 @@
 package org.mydaily.ui.view.goal.detail
 
 import android.app.AlertDialog
-import android.view.View
-import androidx.core.widget.addTextChangedListener
+import android.content.Intent
+import android.view.Menu
+import android.view.MenuItem
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityGoalDetailBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.viewmodel.GoalViewModel
 import org.mydaily.util.CalendarUtil
-import org.mydaily.util.extension.shortToast
 import java.util.*
 
 class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel>() {
@@ -17,16 +17,17 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
         get() = R.layout.activity_goal_detail
     override val viewModel: GoalViewModel by viewModel()
 
-    private var intentAction: String? = null
-    private var intentKeyword: String? = null
-    private var intentGoal: String? = null
-    private var intentId: Int? = null
+    private var intentKeyword: String = ""
+    private var intentTotalKeywordId: Int = 0
+    private var intentWeekGoal: String = ""
+    private var intentWeekGoalId: Int = 0
+    private var intentIsGoalCompleted: Boolean = false
 
     override fun initView() {
         getIntentData()
-        initViewByAction()
         initToolbar()
-        binding.tvDate.text = CalendarUtil.convertCalendarToWeekString(Calendar.getInstance())
+        initViewWithIntent()
+        initClickEvent()
     }
 
     override fun initBeforeBinding() {
@@ -39,12 +40,11 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
     }
 
     private fun getIntentData() {
-        intentAction = intent.action
-        intentKeyword = intent.getStringExtra("keyword")
-        intentGoal = intent.getStringExtra("goal")
-        intentId = intent.getIntExtra("id", 1)
-
-        shortToast("action = $intentAction, keyword = $intentKeyword, goal = $intentGoal")
+        intentKeyword = intent.getStringExtra("keyword") ?: ""
+        intentTotalKeywordId = intent.getIntExtra("keywordId", 0)
+        intentWeekGoal = intent.getStringExtra("weekGoal") ?: ""
+        intentWeekGoalId = intent.getIntExtra("weekGoalId", 0)
+        intentIsGoalCompleted = intent.getBooleanExtra("isGoalCompleted", false)
     }
 
     private fun initToolbar() {
@@ -53,61 +53,53 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
         binding.tbGoalDetail.setNavigationOnClickListener {
             finish()
         }
-        binding.tvTitle.text = when (intentAction) {
-            "ADD" -> "목표 설정"
-            "MODIFY" -> "목표 수정"
-            else -> ""
-        }
     }
 
-    private fun initViewByAction() {
-        when (intentAction) {
-            "ADD" -> stateAdd()
-            "MODIFY" -> stateModify()
-        }
-    }
-
-    /* 목표 설정 */
-    private fun stateAdd() {
+    private fun initViewWithIntent() {
         binding.apply {
+            tvDate.text = CalendarUtil.convertCalendarToWeekString(Calendar.getInstance())
             tvKeyword.text = intentKeyword
-            tvInfo1.text = "에"
-            tvInfo2.text = "가까워지기 위한 목표"
-            btnAddSave.isEnabled = false
-
-            btnAddSave.visibility = View.VISIBLE
-        }
-
-        binding.etGoal.addTextChangedListener {
-            val length = binding.etGoal.length()
-            binding.tvByte.text = length.toString()
-            binding.btnAddSave.isEnabled = length > 0
-        }
-
-        binding.btnAddSave.setOnClickListener {
-            // 추가 후 종료
-            finish()
+            tvGoal.text = intentWeekGoal
+            isGoalCompleted = intentIsGoalCompleted
         }
     }
 
-    /* 목표 수정 */
-    private fun stateModify() {
-        binding.apply {
-            tvKeyword.text = intentKeyword
-            tvInfo1.text = "에 대한"
-            tvInfo2.text = "목표를 수정하시겠어요?"
-            etGoal.setText(intentGoal)
-            tvByte.text = etGoal.text.length.toString()
+    private fun initClickEvent() {
+        binding.btnAchieve.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("타이틀")
+                .setMessage("달성여부 변경할거임?")
+                .setPositiveButton("확인") { _, _ ->
+                    viewModel.putGoalsCompletion(intentWeekGoalId)
+                }
+                .setNegativeButton("취소") { _, _ ->
 
-
-            btnAddSave.visibility = View.GONE
+                }
+                .create()
+                .show()
         }
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_goal_detail, menu)
+        return true
+    }
 
-        binding.etGoal.addTextChangedListener {
-            val length = binding.etGoal.length()
-            binding.tvByte.text = length.toString()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_modify -> {
+                val intent = Intent(this, GoalAddActivity::class.java).apply {
+                    action = "MODIFY"
+                    putExtra("keyword", intentKeyword)
+                    putExtra("keywordId", intentTotalKeywordId)
+                    putExtra("weekGoal", intentWeekGoal)
+                    putExtra("weekGoalId", intentWeekGoalId)
+                }
+                startActivity(intent)
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
-
     }
 }

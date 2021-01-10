@@ -11,4 +11,7 @@
         android:state_checked="true"
         android:state_selected="true"/>
 
+    <item
+        android:drawable="@drawable/ic_goal_off"/>
+
 </selector>
