@@ -1,27 +1,16 @@
 package org.mydaily.ui.adapter
 
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemTouchHelperCallback(private val listener: ItemTouchHelperListener) : ItemTouchHelper.Callback(){
+class ItemTouchHelperCallback(private val listener: ItemTouchHelperListener) :
+    ItemTouchHelper.Callback() {
     override fun getMovementFlags(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder
     ): Int {
-        val dragFlags: Int
-        val swipeFlags: Int
 
-        if (recyclerView.layoutManager is GridLayoutManager) {
-            dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN or
-                    ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
-            swipeFlags = 0
-        } else {
-            dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN
-            swipeFlags = ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
-        }
-
-        return makeMovementFlags(dragFlags, swipeFlags)
+        return makeMovementFlags(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0)
     }
 
     override fun onMove(
@@ -29,7 +18,7 @@ class ItemTouchHelperCallback(private val listener: ItemTouchHelperListener) : I
         viewHolder: RecyclerView.ViewHolder,
         target: RecyclerView.ViewHolder
     ): Boolean {
-        if(viewHolder.itemViewType != target.itemViewType)
+        if (viewHolder.itemViewType != target.itemViewType)
             return false
 
         listener.onItemMoved(viewHolder.adapterPosition, target.adapterPosition)
@@ -37,6 +26,6 @@ class ItemTouchHelperCallback(private val listener: ItemTouchHelperListener) : I
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-        listener.onItemSwiped(viewHolder.adapterPosition)
+
     }
 }

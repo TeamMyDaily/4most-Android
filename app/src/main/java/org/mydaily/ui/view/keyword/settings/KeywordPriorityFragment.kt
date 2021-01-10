@@ -1,5 +1,6 @@
 package org.mydaily.ui.view.keyword.settings
 
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -72,6 +73,8 @@ class KeywordPriorityFragment : BaseFragment<FragmentKeywordPriorityBinding, Key
         binding.btnSetPriority.setOnClickListener {
             //우선순위 지정한거 서버로 보내야함
             replaceAndAddBackStack(R.id.container_keyword_settings, KeywordDefineFragment(), "priority")
+            Log.e("SEULGI", keywordPriorityAdapter.data.toString())
+
         }
     }
 

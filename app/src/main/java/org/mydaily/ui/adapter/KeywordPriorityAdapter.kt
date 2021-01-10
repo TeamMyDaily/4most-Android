@@ -40,11 +40,9 @@ class KeywordPriorityAdapter : RecyclerView.Adapter<KeywordPriorityAdapter.ViewH
 
     override fun onItemMoved(from: Int, to: Int){
         Collections.swap(_data, from, to)
+        for(i in 0 until _data.size){
+            _data[i].priority = i+1
+        }
         notifyItemMoved(from, to)
-    }
-
-    override fun onItemSwiped(position: Int) {
-        _data.removeAt(position)
-        notifyItemRemoved(position)
     }
 }
