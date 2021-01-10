@@ -2,22 +2,30 @@ package org.mydaily.ui.view.keyword.settings
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
+import org.mydaily.data.model.domain.KeywordPriority
 import org.mydaily.databinding.FragmentKeywordDefineBinding
+import org.mydaily.ui.adapter.KeywordDefineAdapter
 import org.mydaily.ui.base.BaseFragment
 import org.mydaily.ui.view.MainActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
 import org.mydaily.util.extension.popBackStack
+import org.mydaily.util.extension.replaceAndAddBackStack
 
 class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, KeywordViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_keyword_define
     override val viewModel: KeywordViewModel by viewModel()
 
+    private val keywordDefineAdapter = KeywordDefineAdapter()
+
     override fun initView() {
         initToolbar()
         initClickListener()
+        initRecyclerView()
     }
 
     override fun initBeforeBinding() {
@@ -53,4 +61,32 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
                 .show()
         }
     }
+
+    private fun initRecyclerView() {
+        binding.rvKeyword.apply {
+            adapter = keywordDefineAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+        }
+        keywordDefineAdapter.setClickListener {
+            val bundle = Bundle().apply {
+                putString("keyword", it)
+            }
+            val keywordDefineAddFragment = KeywordDefineAddFragment().apply {
+                arguments = bundle
+            }
+            replaceAndAddBackStack(R.id.container_keyword_settings, keywordDefineAddFragment, "priority")
+        }
+
+        /** 임시데이터
+        * 나중에 KeywordViewModel에서 data 가져오는걸로 수정해야함
+        */
+        keywordDefineAdapter.data = listOf(
+            KeywordPriority("열정", 1),
+            KeywordPriority("아웃풋", 2),
+            KeywordPriority("영향력", 3),
+            KeywordPriority("경청", 4),
+        )
+    }
+
 }

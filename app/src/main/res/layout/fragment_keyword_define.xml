@@ -48,6 +48,7 @@
             app:layout_constraintTop_toBottomOf="@id/tb_keyword_define" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_keyword"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="48dp"
