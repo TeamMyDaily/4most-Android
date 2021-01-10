@@ -100,4 +100,9 @@
 
     <string name="select_finish">선택완료!</string>
     <string name="image_error">이미지가 열리지 않습니다.</string>
+
+
+    <!--KeywordSettingsActivity-->
+    <string name="msg_set_keyword_priority">키워드에 대한\n우선순위를 세워보세요!</string>
+    <string name="msg_priority_set_complete">우선순위 지정 완료</string>
 </resources>
