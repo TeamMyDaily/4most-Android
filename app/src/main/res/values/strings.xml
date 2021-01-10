@@ -103,6 +103,10 @@
 
 
     <!--KeywordSettingsActivity-->
+    <string name="menu_keyword_priority">키워드 우선순위</string>
+    <string name="menu_keyword_define">키워드 정의</string>
     <string name="msg_set_keyword_priority">키워드에 대한\n우선순위를 세워보세요!</string>
+    <string name="msg_set_keyword_define">최종 선택한 키워드에요\n나만의 정의를 내려보세요!</string>
     <string name="msg_priority_set_complete">우선순위 지정 완료</string>
+    <string name="msg_define_set_complete">정의 작성완료</string>
 </resources>

@@ -16,12 +16,8 @@ class KeywordSettingsActivity : BaseActivity<ActivityKeywordSettingsBinding, Key
         get() = R.layout.activity_keyword_settings
     override val viewModel: KeywordViewModel by viewModel()
 
-    private val keywordPriorityFragment: KeywordPriorityFragment by lazy { KeywordPriorityFragment() }
-    private val keywordDefineFragment: KeywordDefineFragment by lazy { KeywordDefineFragment() }
-    private val keywordDefineAddFragment: KeywordDefineAddFragment by lazy { KeywordDefineAddFragment() }
-
     override fun initView() {
-        replace(R.id.container_keyword_settings, keywordPriorityFragment)
+        replace(R.id.container_keyword_settings, KeywordPriorityFragment())
     }
 
     override fun initBeforeBinding() {

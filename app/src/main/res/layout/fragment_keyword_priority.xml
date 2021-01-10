@@ -13,6 +13,28 @@
         tools:context=".ui.view.keyword.settings.KeywordPriorityFragment">
 
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_keyword_priority"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                android:textColor="@color/mainBlack"
+                android:layout_gravity="center"
+                android:text="@string/menu_keyword_priority"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
         <TextView
             android:id="@+id/tv_set_priority"
             android:layout_width="wrap_content"
@@ -24,7 +46,7 @@
             android:layout_marginTop="48dp"
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/tb_keyword_priority" />
 
         <View
             android:id="@+id/line1"
