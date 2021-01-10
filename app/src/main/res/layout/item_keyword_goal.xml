@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="goal"
-            type="org.mydaily.data.model.Goal" />
+            type="org.mydaily.data.model.domain.Goal" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,16 +20,15 @@
         android:background="@drawable/rectangle_gray_radius_15"
         setBackgroundWithGoalCompleted="@{goal.goalCompleted}">
 
-
         <TextView
             android:id="@+id/tv_keyword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            setKeywordWithGoal="@{goal}"
             tools:text="아웃풋"
-            android:textColor="#121212"
-            android:textSize="18sp"
+            android:textColor="@color/mainBlack"
+            android:textSize="15sp"
             android:textStyle="bold"
+            android:text="@{goal.name}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,10 +40,10 @@
             android:background="@drawable/rectangle_fill_orange_radius_15"
             android:paddingHorizontal="8dp"
             android:paddingVertical="1dp"
-            android:text="@string/msg_goal_achieved"
+            android:text="@string/msg_achieved"
             android:textColor="@color/white"
             android:textSize="12sp"
-            setVisibilityWithGoalCompleted="@{goal.goalCompleted}"
+            android:visibility="@{goal.isGoalCompleted ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="@+id/tv_keyword"
             app:layout_constraintStart_toEndOf="@+id/tv_keyword"
             app:layout_constraintTop_toTopOf="@+id/tv_keyword" />
@@ -56,10 +56,10 @@
             android:background="@drawable/rectangle_fill_gray_radius_15"
             android:paddingHorizontal="8dp"
             android:paddingVertical="1dp"
-            android:text="@string/msg_goal_not_achieved"
+            android:text="@string/msg_not_achieved"
             android:textColor="@color/white"
             android:textSize="12sp"
-            setVisibilityWithGoalCompleted="@{!goal.goalCompleted}"
+            android:visibility="@{goal.isGoalCompleted ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="@+id/tv_keyword"
             app:layout_constraintStart_toEndOf="@+id/tv_keyword"
             app:layout_constraintTop_toTopOf="@+id/tv_keyword" />
@@ -69,12 +69,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            setGoalWithGoal="@{goal}"
             tools:text="@string/msg_set_goal"
             android:textSize="15sp"
-            android:textStyle="bold"
             android:textColor="@color/mainGray"
             android:maxLines="1"
+            setGoalWithGoal="@{goal}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_keyword" />
@@ -85,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_plus"
-            setVisibilityWithGoalExist="@{goal.goalExist}"
+            android:visibility="@{goal.isGoalCreated ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -94,7 +93,7 @@
             android:id="@+id/iv_go_to_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:visibility="@{goal.isGoalCreated ? View.VISIBLE : View.GONE}"
             android:src="@drawable/ic_light_arrow_right"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

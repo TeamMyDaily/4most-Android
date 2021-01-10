@@ -10,13 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDaily">
+        <activity android:name=".ui.view.goal.detail.GoalAddActivity"></activity>
         <activity
             android:name=".ui.view.keyword.KeywordAddActivity"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.view.keyword.KeywordListActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.view.daily.detail.DailyDetailActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -27,6 +28,13 @@
             android:name=".ui.view.goal.detail.GoalDetailActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.view.signup.SignUpActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".ui.view.signup.SignUpTermsActivity"
+            android:exported="true" />
         <activity android:name=".ui.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

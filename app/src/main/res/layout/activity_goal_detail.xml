@@ -4,6 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="isGoalCompleted"
+            type="Boolean" />
 
     </data>
 
@@ -18,6 +21,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"
             app:navigationIcon="@drawable/ic_arrow_back"
+            app:menu="@menu/menu_goal_detail"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -26,144 +30,114 @@
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/menu_goal"
                 android:textSize="21sp"
                 android:textStyle="bold"
                 android:textColor="@color/mainBlack"
-                android:layout_gravity="center"
-                tools:text="목표 설정"/>
+                android:layout_gravity="center"/>
 
         </androidx.appcompat.widget.Toolbar>
 
-        <TextView
-            android:id="@+id/tv_keyword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="아웃풋"
-            android:textColor="@color/mainBlack"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:layout_marginTop="48dp"
-            android:layout_marginStart="16dp"
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#33C4C4C4"
+            android:layout_marginTop="32dp"
+            android:layout_marginHorizontal="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tb_goal_detail" />
-
-        <TextView
-            android:id="@+id/tv_info_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="에"
-            android:textColor="@color/mainBlack"
-            android:textSize="25sp"
-            app:layout_constraintStart_toEndOf="@+id/tv_keyword"
-            app:layout_constraintTop_toTopOf="@+id/tv_keyword" />
-
-        <TextView
-            android:id="@+id/tv_info_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="가까워지기 위한 목표"
-            android:textColor="@color/mainBlack"
-            android:textSize="25sp"
-            app:layout_constraintStart_toStartOf="@+id/tv_keyword"
-            app:layout_constraintTop_toBottomOf="@+id/tv_keyword" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tb_goal_detail"/>
 
         <TextView
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:text="20년 12월 3주"
             android:textColor="@color/mainGray"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/line"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tb_goal_detail" />
+
+        <TextView
+            android:id="@+id/tv_keyword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="아웃풋"
+            android:textColor="@color/mainBlack"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginTop="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line" />
+
+        <TextView
+            android:id="@+id/tv_info_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="에 가까워지기 위한 목표"
+            android:textColor="@color/mainBlack"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_keyword"
             app:layout_constraintTop_toTopOf="@+id/tv_keyword" />
 
-        <EditText
-            android:id="@+id/et_goal"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginHorizontal="16dp"
-            android:background="@drawable/rectangle_fill_light_gray_radius_15"
-            android:gravity="start"
-            android:maxLength="25"
-            android:padding="16dp"
-            android:layout_marginTop="80dp"
-            android:textColor="#121212"
-            android:hint="이번에는 어떤 목표를 이루고 싶나요?"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_info_2" />
-
         <TextView
-            android:id="@+id/tv_byte"
+            android:id="@+id/tv_goal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="@color/silver"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/tv_byte_info"
-            app:layout_constraintTop_toTopOf="@+id/tv_byte_info" />
-
-        <TextView
-            android:id="@+id/tv_byte_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="/25자"
-            android:textColor="@color/mainOrange"
-            android:textSize="12sp"
-            android:layout_marginEnd="16dp"
+            android:textColor="@color/mainBlack"
+            android:text="블로그에 1개이상 퍼블리싱 하기"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:paddingStart="16dp"
+            android:paddingEnd="110dp"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_goal" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_keyword" />
+
+
+        <ImageView
+            android:id="@+id/iv_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/selector_goal"
+            android:layout_marginTop="48dp"
+            android:layout_marginStart="16dp"
+            setCheckBoxImageWithGoalCompleted="@{isGoalCompleted}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_goal" />
+
+        <TextView
+            android:id="@+id/tv_check_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/msg_check_goal_achievement"
+            android:textColor="@color/selector_checked"
+            android:textSize="12sp"
+            android:layout_marginStart="8dp"
+            setTextColorWithGoalCompleted="@{isGoalCompleted}"
+            app:layout_constraintBottom_toBottomOf="@id/iv_check"
+            app:layout_constraintStart_toEndOf="@+id/iv_check"
+            app:layout_constraintTop_toTopOf="@id/iv_check" />
+
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_add_save"
+            android:id="@+id/btn_achieve"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/selector_btn_sign_in"
-            android:text="@string/msg_store"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/msg_goal_achieve"
+            style="@style/MyDailyButtonStyle"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/rectangle_gray_radius_15"
-            android:text="@string/msg_delete"
-            android:textColor="@color/mainGray"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:padding="18dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_modify_save"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/selector_btn_sign_in"
-            android:text="@string/msg_store"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_delete" />
-
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_check" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

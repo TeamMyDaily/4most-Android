@@ -1,10 +1,11 @@
 package org.mydaily.util
 
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import org.mydaily.R
-import org.mydaily.data.model.Goal
+import org.mydaily.data.model.domain.Goal
 import org.mydaily.util.CalendarUtil.isWeekSame
 import java.util.*
 
@@ -23,24 +24,22 @@ object BindingAdapter {
     }
 
     @JvmStatic
-    @BindingAdapter("setKeywordWithGoal")
-    fun setKeywordWithGoal(textView: TextView, goal: Goal) {
-        val color = if (goal.isGoalExist) {
-            textView.resources.getColor(R.color.mainBlack, null)
+    @BindingAdapter("setTextColorWithGoalCompleted")
+    fun setTextColorWithGoalCompleted(view: TextView, isGoalCompleted: Boolean) {
+        if (isGoalCompleted) {
+            view.setTextColor(view.resources.getColor(R.color.mainOrange, null))
         } else {
-            textView.resources.getColor(R.color.mainGray, null)
+            view.setTextColor(view.resources.getColor(R.color.mainGray, null))
         }
-        textView.setTextColor(color)
-        textView.text = goal.keyword
     }
 
     @JvmStatic
-    @BindingAdapter("setVisibilityWithGoalCompleted")
-    fun setVisibilityWithGoalCompleted(view: View, isGoalCompleted: Boolean) {
+    @BindingAdapter("setCheckBoxImageWithGoalCompleted")
+    fun setCheckBoxImageWithGoalCompleted(view: ImageView, isGoalCompleted: Boolean) {
         if (isGoalCompleted) {
-            view.visibility = View.VISIBLE
+            view.setImageResource(R.drawable.ic_goal_on)
         } else {
-            view.visibility = View.GONE
+            view.setImageResource(R.drawable.ic_goal_off)
         }
     }
 
@@ -55,23 +54,13 @@ object BindingAdapter {
     }
 
     @JvmStatic
-    @BindingAdapter("setVisibilityWithGoalExist")
-    fun setVisibilityWithGoalExist(view: View, isGoalExist: Boolean) {
-        if (isGoalExist) {
-            view.visibility = View.GONE
-        } else {
-            view.visibility = View.VISIBLE
-        }
-    }
-
-    @JvmStatic
     @BindingAdapter("setGoalWithGoal")
     fun setGoalWithGoal(textView: TextView, goal: Goal) {
         val color: Int
         val text: String
-        if (goal.isGoalExist) {
+        if (goal.isGoalCreated) {
             color = textView.resources.getColor(R.color.mainBlack, null)
-            text = goal.goal!!
+            text = goal.weekGoal
         } else {
             color = textView.resources.getColor(R.color.mainGray, null)
             text = textView.resources.getString(R.string.msg_set_goal)

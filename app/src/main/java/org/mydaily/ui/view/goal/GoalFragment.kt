@@ -4,10 +4,11 @@ import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
-import org.mydaily.data.model.Goal
+import org.mydaily.data.model.domain.Goal
 import org.mydaily.databinding.FragmentGoalBinding
 import org.mydaily.ui.adapter.GoalReportAdapter
 import org.mydaily.ui.base.BaseFragment
+import org.mydaily.ui.view.goal.detail.GoalAddActivity
 import org.mydaily.ui.view.goal.detail.GoalDetailActivity
 import org.mydaily.ui.viewmodel.GoalViewModel
 import java.util.*
@@ -41,35 +42,47 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
             setHasFixedSize(true)
         }
         goalReportAdapter.setAddButtonClickListener {
-            //requireContext().shortToast("+ 버튼 클릭 -> ${it.keyword}: 목표 존재=${it.isGoalExist}")
-            //목표 상세 페이지로 이동(설정/추가)
-            startGoalDetailActivityWithAction("ADD", it)
-
+            //추가
+            startGoalAddActivityWithAction("ADD", it)
         }
 
         goalReportAdapter.setGoalClickListener {
-            //requireContext().shortToast("목표 클릭 -> ${it.keyword}: 목표 존재=${it.isGoalExist}")
-            //목표 상세 페이지로 이동(수정)
-            if (it.isGoalExist) {
-                startGoalDetailActivityWithAction("MODIFY", it)
+            //상세 및 추가
+            if (it.isGoalCreated) {
+                startGoalDetailActivity(it)
             } else {
-                startGoalDetailActivityWithAction("ADD", it)
+                startGoalAddActivityWithAction("ADD", it)
             }
         }
     }
 
     private fun observeGoalData() {
-        viewModel.goalList.observe(this, {
+        viewModel.goalList.observe(viewLifecycleOwner, {
             goalReportAdapter.data = it
+        })
+        viewModel.notSetGoalCount.observe(viewLifecycleOwner, {
+            val text = "$it"+getString(R.string.msg_goal_has_not_been_set)
+            binding.layoutKeywordExist.tvGoalNumAlert.text = text
         })
     }
 
-    private fun startGoalDetailActivityWithAction(action: String, goal: Goal) {
-        val intent: Intent = Intent(requireActivity(), GoalDetailActivity::class.java).apply {
+    private fun startGoalDetailActivity( goal: Goal) {
+        val intent: Intent = Intent(requireContext(), GoalDetailActivity::class.java).apply {
+            putExtra("keyword", goal.name)
+            putExtra("weekGoal", goal.weekGoal)
+            putExtra("keywordId", goal.totalKeywordId)
+            putExtra("weekGoalId", goal.weekGoalId)
+            putExtra("isGoalCompleted", goal.isGoalCompleted)
+        }
+        startActivity(intent)
+    }
+    private fun startGoalAddActivityWithAction(action: String, goal: Goal) {
+        val intent: Intent = Intent(requireContext(), GoalAddActivity::class.java).apply {
             this.action = action
-            putExtra("keyword", goal.keyword)
-            putExtra("goal", goal.goal)
-            putExtra("id", goal.id)
+            putExtra("keyword", goal.name)
+            putExtra("keywordId", goal.totalKeywordId)
+            putExtra("weekGoal", goal.weekGoal)
+            putExtra("weekGoalId", goal.weekGoalId)
         }
         startActivity(intent)
     }
