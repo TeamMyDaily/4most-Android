@@ -50,4 +50,8 @@
 
     <string name="select_finish">선택완료!</string>
     <string name="image_error">이미지가 열리지 않습니다.</string>
+    <string name="modify">수정</string>
+    <string name="complete">완료</string>
+    <string name="up_to_eight">8개까지 선택 가능해요!</string>
+    <string name="too_many_keyword_selected">키워드를 많이 선택 하셨어요.\n키워드는 8개 까지 선택이 가능합니다.\n좀 더 고민해서 하나를 제외 해 주세요!</string>
 </resources>

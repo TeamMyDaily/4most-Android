@@ -128,6 +128,26 @@
                     app:layout_constraintStart_toStartOf="@id/cg_work"
                     app:layout_constraintTop_toBottomOf="@id/cg_work" />
 
+                <TextView
+                    android:id="@+id/tv_modify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/modify"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cg_work"/>
+
+                <TextView
+                    android:id="@+id/tv_complete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/complete"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cg_work"/>
+
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/cg_my_word"
                     android:layout_width="match_parent"
