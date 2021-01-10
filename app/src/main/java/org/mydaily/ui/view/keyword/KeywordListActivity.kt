@@ -1,11 +1,11 @@
 package org.mydaily.ui.view.keyword
 
 import android.app.AlertDialog
-import android.graphics.Color
-import android.view.*
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
-import kotlinx.android.synthetic.main.activity_keyword_list.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordListBinding
@@ -15,7 +15,12 @@ import org.mydaily.util.extension.shortToast
 
 
 class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordViewModel>() {
-    private var clickedChipCount : Int = 0
+
+    private var clickedChipCount: Int = 0
+    private var selectedLifeWord = mutableListOf<String>()
+    private var selectedWorkWord = mutableListOf<String>()
+    private var selectedMyWord = mutableListOf<String>()
+
     override val layoutResourceId: Int
         get() = R.layout.activity_keyword_list
     override val viewModel: KeywordViewModel by viewModel()
@@ -24,83 +29,65 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
         initToolbar()
         initAddButton()
         initModifyCompleteButton()
+        initSelectFinishButton()
         setModifyState()
         setCompleteState()
-        floatingDialog()
+        onClickModifyButton()
+        onClickCompleteButton()
     }
 
-    private fun onClickCompleteButton() { //이런식
-//        val chipDrawable = ChipDrawable.createFromAttributes( 
-//            this,
-//            null,
-//            0,
-//            R.style.Widget_MaterialComponents_Chip_Choice
-//        )
-//        return Chip(this).apply {
-//            text = str
-//            tag = chipId
-//            setChipDrawable(chipDrawable)
-//            setChipBackgroundColorResource(R.color.selector_chip)
-//            setTextAppearance(R.style.MyDailyChipTextStyleAppearance)
-//            setRippleColorResource(android.R.color.transparent)
-//            setOnClickListener {
-//                if(isChecked) {
-//                    shortToast("$tag CHIP 클릭됨")
-//                } else{
-//                    shortToast("$tag Chip 클릭해제")
-//                }
-//            }
-//        }
+    private fun onClickedCompleteButtonState() {
+        //TODO -> for문 사용해서 viewmodel에 있는 myword 속성 싹 다 변경
+
     }
 
-    private fun onClickModifyButton() { //이런식
-//        val chipDrawable = ChipDrawable.createFromAttributes(
-//            this,
-//            null,
-//            0,
-//            R.style.Widget_MaterialComponents_Chip_Choice
-//        )
-//        return Chip(this).apply {
-//            text = str
-//            tag = chipId
-//            setChipDrawable(chipDrawable)
-//            setChipBackgroundColorResource(R.color.selector_chip)
-//            setTextAppearance(R.style.MyDailyChipTextStyleAppearance)
-//            setRippleColorResource(android.R.color.transparent)
-//            setOnClickListener {
-//                if(isChecked) {
-//                    shortToast("$tag CHIP 클릭됨")
-//                } else{
-//                    shortToast("$tag Chip 클릭해제")
-//                }
-//            }
-//        }
+    private fun onClickModifyButtonState() {
+        //TODO -> for문 사용해서 viewmodel에 있는 myword 속성 싹 다 변경
+    }
+
+    private fun addKeywordList(text: String) {
+        if (viewModel.lifeWordList.value!!.contains(text)) {
+            selectedLifeWord.add(text)
+        } else if (viewModel.workWordList.value!!.contains(text)) {
+            selectedWorkWord.add(text)
+        } else if (viewModel.myWordList.value!!.contains(text)) {
+            selectedMyWord.add(text)
+        }
+    }
+
+    private fun removeKeywordList(text: String) {
+        if (viewModel.lifeWordList.value!!.contains(text)) {
+            selectedLifeWord.remove(text)
+        } else if (viewModel.workWordList.equals(text)) {
+            selectedWorkWord.remove(text)
+        } else if (viewModel.myWordList.equals(text)) {
+            selectedMyWord.remove(text)
+        }
+    }
+
+
+    private fun floatingDialog() {
+        AlertDialog.Builder(this)
+            .setTitle(R.string.up_to_eight)
+            .setMessage(R.string.too_many_keyword_selected)
+            .setPositiveButton("확인", null)
+            .create()
+            .show()
     }
 
     private fun setCompleteState() {
-        tv_complete.visibility = View.VISIBLE
-        tv_modify.visibility = View.GONE
-    }
-
-    private fun floatingDialog() {
-        val builder = AlertDialog.Builder(ContextThemeWrapper(this@KeywordListActivity, R.style.Theme_AppCompat_Light_Dialog))
-        builder.setTitle(R.string.up_to_eight)
-        builder.setMessage(R.string.too_many_keyword_selected)
-        builder.setPositiveButton("확인", null).create()
-
-        builder.show()
-        //TODO -> 확인 버튼 색깔 변경이 안됨..
-
+        binding.tvModify.visibility = View.VISIBLE
+        binding.tvComplete.visibility = View.GONE
     }
 
     private fun setModifyState() {
-        tv_modify.visibility = View.VISIBLE
-        tv_complete.visibility = View.GONE
+        binding.tvModify.visibility = View.VISIBLE
+        binding.tvComplete.visibility = View.GONE
     }
 
     private fun initModifyCompleteButton() {
-        tv_modify.visibility = View.GONE
-        tv_complete.visibility = View.GONE
+        binding.tvModify.visibility = View.GONE
+        binding.tvComplete.visibility = View.GONE
     }
 
     override fun initBeforeBinding() {
@@ -113,7 +100,7 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     override fun initAfterBinding() {
         observeLifeWordList()
         observeWorkWordList()
-        //observeMyWordList() -> 이게 필요한가..?
+        observeMyWordList()
     }
 
     private fun initToolbar() {
@@ -122,60 +109,51 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     }
 
     private fun initAddButton() {
-        val chipId : String = "my_word"
-        var index : Int = 0
         binding.chipAdd.setOnClickListener {
             shortToast("추가 버튼 클릭됨")
-            index++
             clickedChipCount++
-            //여기서 observer pattern 사용해서 추가하면 되나?
 
-            //예시 : 키워드 추가 시 맨 앞에 chip 생성
-            binding.cgMyWord.addView(createChip("추가된 샘플", chipId + index.toString()),binding.cgMyWord.childCount-1)
+            //예시 : 키워드 추가 시 맨 앞에 chip 생성 TODO -> 키워드 추가 뷰에서 작성한 텍스트를
+            //TODO -> Viewmodel에 저장한 후 observe~에서 추가하기
+
         }
-        if(binding.cgMyWord.childCount > 0) {
+        if (binding.cgMyWord.childCount > 0) {
             setModifyState()
         }
     }
 
 
     private fun observeLifeWordList() {
-        val chipId : String = "life_word"
-        var index = 0
         viewModel.lifeWordList.observe(this, { list ->
-            for(str in list){
-                index++
+            for (str in list) {
                 clickedChipCount++
-                binding.cgLife.addView(createChip(str, chipId + index.toString()))
+                binding.cgLife.addView(createChip(str))
             }
         })
     }
 
     private fun observeWorkWordList() {
-        val chipId : String = "work_word"
-        var index = 0
         viewModel.workWordList.observe(this, { list ->
-            for(str in list){
-                index++
+            for (str in list) {
                 clickedChipCount++
-                binding.cgWork.addView(createChip(str, chipId + index.toString()))
+                binding.cgWork.addView(createChip(str))
             }
         })
     }
 
-//    private fun observeMyWordList() {
-//        val chipId : String = "my_word"
-//        var index : Int = 0
-//        viewModel.myWordList.observe(this, { list ->
-//            for(str in list){
-//                index++
-//                binding.cgMyWord.addView(createChip(str, chipId + index.toString()))
-//            }
-//        })
-//    }
+    private fun observeMyWordList() {
+        viewModel.myWordList.observe(this, { list ->
+            for (str in list) {
+                binding.cgMyWord.addView(
+                    createChip(str),
+                    binding.cgMyWord.childCount - 1
+                )
+            }
+        })
+    }
 
-    private fun createChip(str: String, chipId : String): Chip {
-        val chipDrawable = ChipDrawable.createFromAttributes( //TODO -> 뷰 그룹의 자식은 원래 저렇게 속성 적용 가능?
+    private fun createChip(str: String): Chip {
+        val chipDrawable = ChipDrawable.createFromAttributes(
             this,
             null,
             0,
@@ -183,15 +161,17 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
         )
         return Chip(this).apply {
             text = str
-            tag = chipId // TODO -> tag로 해도 상관 없나??
             setChipDrawable(chipDrawable)
             setChipBackgroundColorResource(R.color.selector_chip)
             setTextAppearance(R.style.MyDailyChipTextStyleAppearance)
             setRippleColorResource(android.R.color.transparent)
             setOnClickListener {
-                if(isChecked) {
-                    shortToast("$tag CHIP 클릭됨")
-                } else{
+                it as Chip
+                if (isChecked) {
+                    addKeywordList(it.text as String)
+                    shortToast("${it.text} CHIP 클릭됨")
+                } else {
+                    removeKeywordList(it.text as String)
                     shortToast("$tag Chip 클릭해제")
                 }
             }
@@ -202,6 +182,7 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
         return when (item.itemId) {
             R.id.menu_help -> {
                 shortToast("도움말 버튼 클릭됨")
+                //TODO -> intent 넘겨주기
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -213,7 +194,40 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
         return true
     }
 
-    private fun activeModifyButton() {
-
+    private fun onClickModifyButton() {
+        binding.tvModify.setOnClickListener {
+            setCompleteState()
+            onClickModifyButtonState()
+            binding.btnSelectFinish.visibility = View.GONE
+        }
     }
+
+    private fun onClickCompleteButton() {
+        binding.tvComplete.setOnClickListener {
+            setModifyState()
+            onClickedCompleteButtonState()
+            binding.btnSelectFinish.visibility = View.VISIBLE
+        }
+    }
+
+    private fun initSelectFinishButton() {
+        when {
+            clickedChipCount > 8 -> {
+                binding.btnSelectFinish.isClickable = false
+                floatingDialog()
+            }
+            clickedChipCount == 8 -> {
+                binding.btnSelectFinish.isClickable = true
+                onClickSelectFinishButton()
+            }
+            else -> {
+                binding.btnSelectFinish.isClickable = false
+            }
+        }
+    }
+
+    private fun onClickSelectFinishButton() {
+        //TODO -> intent 넘겨주기기
+    }
+
 }
