@@ -39,6 +39,7 @@
     <string name="msg_check_goal_achievement">목표 달성여부 체크</string>
     <string name="msg_to_goal">에 가까워지기 위한 목표</string>
     <string name="msg_goal_achieve">목표 달성</string>
+    <string name="msg_what_goal_want">이번에는 어떤 목표를 이루고 싶나요?</string>
 
 
     <!--My Page-->

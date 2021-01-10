@@ -70,6 +70,7 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
         val intent: Intent = Intent(requireContext(), GoalDetailActivity::class.java).apply {
             putExtra("keyword", goal.name)
             putExtra("weekGoal", goal.weekGoal)
+            putExtra("keywordId", goal.totalKeywordId)
             putExtra("weekGoalId", goal.weekGoalId)
             putExtra("isGoalCompleted", goal.isGoalCompleted)
         }
@@ -79,9 +80,9 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
         val intent: Intent = Intent(requireContext(), GoalAddActivity::class.java).apply {
             this.action = action
             putExtra("keyword", goal.name)
+            putExtra("keywordId", goal.totalKeywordId)
             putExtra("weekGoal", goal.weekGoal)
             putExtra("weekGoalId", goal.weekGoalId)
-            putExtra("isGoalCompleted", goal.isGoalCompleted)
         }
         startActivity(intent)
     }

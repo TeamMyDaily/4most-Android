@@ -22,6 +22,7 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
     override val viewModel: GoalViewModel by viewModel()
 
     private var intentKeyword: String = ""
+    private var intentTotalKeywordId: Int = 0
     private var intentWeekGoal: String = ""
     private var intentWeekGoalId: Int = 0
     private var intentIsGoalCompleted: Boolean = false
@@ -44,6 +45,7 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
 
     private fun getIntentData() {
         intentKeyword = intent.getStringExtra("keyword") ?: ""
+        intentTotalKeywordId = intent.getIntExtra("keywordId", 0)
         intentWeekGoal = intent.getStringExtra("weekGoal") ?: ""
         intentWeekGoalId = intent.getIntExtra("weekGoalId", 0)
         intentIsGoalCompleted = intent.getBooleanExtra("isGoalCompleted", false)
@@ -93,6 +95,7 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
                 val intent = Intent(this, GoalAddActivity::class.java).apply {
                     action = "MODIFY"
                     putExtra("keyword", intentKeyword)
+                    putExtra("keywordId", intentTotalKeywordId)
                     putExtra("weekGoal", intentWeekGoal)
                     putExtra("weekGoalId", intentWeekGoalId)
                 }

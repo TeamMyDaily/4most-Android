@@ -13,7 +13,7 @@
         tools:context=".ui.view.goal.detail.GoalAddActivity">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tb_goal_detail"
+            android:id="@+id/tb_goal_add"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"
@@ -43,7 +43,7 @@
             android:layout_marginHorizontal="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tb_goal_detail"/>
+            app:layout_constraintTop_toBottomOf="@id/tb_goal_add"/>
 
         <TextView
             android:id="@+id/tv_keyword"
@@ -56,7 +56,7 @@
             android:layout_marginTop="48dp"
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tb_goal_detail" />
+            app:layout_constraintTop_toBottomOf="@+id/tb_goal_add" />
 
         <TextView
             android:id="@+id/tv_info_1"
@@ -91,30 +91,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tb_goal_detail" />
 
-        <ImageButton
-            android:id="@+id/iv_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:src="@drawable/selector_goal"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_info_2"
-            app:layout_constraintEnd_toStartOf="@id/tv_info_check"/>
-
-        <TextView
-            android:id="@+id/tv_info_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="@string/msg_check_goal_achievement"
-            android:textSize="12sp"
-            android:textColor="@color/selector_checked"
-            app:layout_constraintTop_toTopOf="@id/iv_check"
-            app:layout_constraintBottom_toBottomOf="@id/iv_check"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
         <EditText
             android:id="@+id/et_goal"
             android:layout_width="match_parent"
@@ -126,7 +102,7 @@
             android:padding="16dp"
             android:layout_marginTop="80dp"
             android:textColor="#121212"
-            android:hint="이번에는 어떤 목표를 이루고 싶나요?"
+            android:hint="@string/msg_what_goal_want"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_info_2" />

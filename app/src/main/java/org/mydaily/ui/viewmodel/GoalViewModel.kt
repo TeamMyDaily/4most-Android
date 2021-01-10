@@ -3,11 +3,8 @@ package org.mydaily.ui.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import org.mydaily.data.model.domain.Goal
-import org.mydaily.data.model.network.response.Response
 import org.mydaily.data.repository.GoalRepo
 import org.mydaily.ui.base.BaseViewModel
-import retrofit2.Call
-import retrofit2.Callback
 
 class GoalViewModel(private val repo: GoalRepo) : BaseViewModel() {
 
@@ -40,5 +37,19 @@ class GoalViewModel(private val repo: GoalRepo) : BaseViewModel() {
             }
 
         })*/
+    }
+
+    fun postGoals(startDate: Long, totalKeywordId: String, goal: String) {
+/*        repo.postGoals(ReqGoalPost(startDate, totalKeywordId, goal)).enqueue(object : Callback<ResGoalPost>{
+
+        })*/
+    }
+
+    fun putGoals(goalId: Int, goal: String) {
+//        repo.putGoals(goalId, ReqGoalPut(goal))
+    }
+
+    fun deleteGoal(goalId: Int) {
+//        repo.deleteGoal(goalId)
     }
 }
