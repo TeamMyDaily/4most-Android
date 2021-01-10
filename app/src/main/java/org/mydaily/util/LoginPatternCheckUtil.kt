@@ -6,7 +6,8 @@ import java.util.regex.Pattern
 
 object LoginPatternCheckUtil {
     fun isNotValidName(name: String?): Boolean {
-        return name.isNullOrEmpty()
+        val namePattern: Pattern = Pattern.compile("[ㄱ-ㅎ가-힣ㅏ-ㅣa-zA-Z0-9\\!\\@\\#\\$]{0,24}")
+        return name.isNullOrEmpty() || !namePattern.matcher(name).matches()
     }
 
     fun isNotValidEmail(email: String?): Boolean {
@@ -16,10 +17,6 @@ object LoginPatternCheckUtil {
     fun isNotValidPassword(password: String?): Boolean {
         val passwordPattern: Pattern = Pattern.compile("[a-zA-Z0-9\\!\\@\\#\\$]{6,24}")
         return password.isNullOrEmpty() || !passwordPattern.matcher(password).matches()
-    }
-
-    fun isNotValidEmailAndPassword(email: String?, password: String?): Boolean {
-        return isNotValidEmail(email) || isNotValidPassword(password)
     }
 
     /**

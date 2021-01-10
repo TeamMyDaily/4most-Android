@@ -1,12 +1,8 @@
 package org.mydaily.ui.view.signup
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
-import org.mydaily.databinding.ActivitySignUpBinding
 import org.mydaily.databinding.ActivitySignUpTermsBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.viewmodel.SignUpViewModel
