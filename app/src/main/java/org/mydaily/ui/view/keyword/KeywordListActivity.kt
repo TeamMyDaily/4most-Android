@@ -1,6 +1,7 @@
 package org.mydaily.ui.view.keyword
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -17,6 +18,7 @@ import org.mydaily.util.extension.shortToast
 class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordViewModel>() {
 
     private var clickedChipCount: Int = 0
+    private var myWordChipCount: Int = 0
     private var selectedLifeWord = mutableListOf<String>()
     private var selectedWorkWord = mutableListOf<String>()
     private var selectedMyWord = mutableListOf<String>()
@@ -29,19 +31,31 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
         initToolbar()
         initAddButton()
         initModifyCompleteButton()
-        initSelectFinishButton()
-        setModifyState()
-        setCompleteState()
         onClickModifyButton()
         onClickCompleteButton()
+        onClickSelectFinishButton()
+    }
+
+    private fun setSelectFinshButton() {
+        if(clickedChipCount > 8) {
+            binding.btnSelectFinish.isEnabled = false
+
+            floatingDialog()
+        } else if(clickedChipCount == 8) {
+            binding.btnSelectFinish.isEnabled = true
+        } else {
+            binding.btnSelectFinish.isEnabled = false
+        }
     }
 
     private fun onClickedCompleteButtonState() {
+        //TODO -> 완료 버튼 눌렀을 때 상태 세팅
         //TODO -> for문 사용해서 viewmodel에 있는 myword 속성 싹 다 변경
 
     }
 
     private fun onClickModifyButtonState() {
+        //TODO -> 수정 버튼 눌렀을 때 상태 세팅
         //TODO -> for문 사용해서 viewmodel에 있는 myword 속성 싹 다 변경
     }
 
@@ -64,7 +78,6 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
             selectedMyWord.remove(text)
         }
     }
-
 
     private fun floatingDialog() {
         AlertDialog.Builder(this)
@@ -110,23 +123,18 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
 
     private fun initAddButton() {
         binding.chipAdd.setOnClickListener {
-            shortToast("추가 버튼 클릭됨")
-            clickedChipCount++
-
-            //예시 : 키워드 추가 시 맨 앞에 chip 생성 TODO -> 키워드 추가 뷰에서 작성한 텍스트를
-            //TODO -> Viewmodel에 저장한 후 observe~에서 추가하기
-
+            myWordChipCount++
+            //val intent = Intent(this, KeywordAddActivity::class.java
+            //startActivity(intent)
         }
         if (binding.cgMyWord.childCount > 0) {
             setModifyState()
         }
     }
 
-
     private fun observeLifeWordList() {
         viewModel.lifeWordList.observe(this, { list ->
             for (str in list) {
-                clickedChipCount++
                 binding.cgLife.addView(createChip(str))
             }
         })
@@ -135,7 +143,6 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     private fun observeWorkWordList() {
         viewModel.workWordList.observe(this, { list ->
             for (str in list) {
-                clickedChipCount++
                 binding.cgWork.addView(createChip(str))
             }
         })
@@ -168,11 +175,13 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
             setOnClickListener {
                 it as Chip
                 if (isChecked) {
+                    clickedChipCount++
+                    setSelectFinshButton()
                     addKeywordList(it.text as String)
-                    shortToast("${it.text} CHIP 클릭됨")
                 } else {
+                    clickedChipCount--
+                    setSelectFinshButton()
                     removeKeywordList(it.text as String)
-                    shortToast("$tag Chip 클릭해제")
                 }
             }
         }
@@ -181,8 +190,8 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_help -> {
-                shortToast("도움말 버튼 클릭됨")
-                //TODO -> intent 넘겨주기
+//                val intent = Intent(this, KeywordPopupActivity::class.java)
+//                startActivity(intent)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -210,24 +219,12 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
         }
     }
 
-    private fun initSelectFinishButton() {
-        when {
-            clickedChipCount > 8 -> {
-                binding.btnSelectFinish.isClickable = false
-                floatingDialog()
-            }
-            clickedChipCount == 8 -> {
-                binding.btnSelectFinish.isClickable = true
-                onClickSelectFinishButton()
-            }
-            else -> {
-                binding.btnSelectFinish.isClickable = false
-            }
-        }
-    }
+
 
     private fun onClickSelectFinishButton() {
-        //TODO -> intent 넘겨주기기
-    }
+//        val intent = Intent(this, KeywordSelectActivity::class.java)
+//        startActivity(intent)
+//TODO -> selected list 보내줘야함
 
+    }
 }
