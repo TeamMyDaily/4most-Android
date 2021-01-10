@@ -8,4 +8,6 @@
         android:state_checked="false"
         android:state_selected="false"
         android:color="@color/mainGray"  />
+    <item
+        android:color="@color/mainGray"  />
 </selector>

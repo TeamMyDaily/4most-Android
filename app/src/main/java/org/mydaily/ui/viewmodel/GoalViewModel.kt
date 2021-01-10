@@ -3,9 +3,13 @@ package org.mydaily.ui.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import org.mydaily.data.model.domain.Goal
+import org.mydaily.data.model.network.response.Response
+import org.mydaily.data.repository.GoalRepo
 import org.mydaily.ui.base.BaseViewModel
+import retrofit2.Call
+import retrofit2.Callback
 
-class GoalViewModel : BaseViewModel() {
+class GoalViewModel(private val repo: GoalRepo) : BaseViewModel() {
 
     private val _notSetGoalCount = MutableLiveData<Int>()
     val notSetGoalCount: LiveData<Int>
@@ -25,5 +29,16 @@ class GoalViewModel : BaseViewModel() {
         )
         _goalList.value = tempList
         _notSetGoalCount.value = 1
+    }
+
+    fun putGoalsCompletion(goalId: Int) {
+/*        repo.putGoalsCompletion(goalId).enqueue(object : Callback<Response>{
+            override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
+            }
+
+            override fun onFailure(call: Call<Response>, t: Throwable) {
+            }
+
+        })*/
     }
 }

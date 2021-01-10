@@ -1,6 +1,7 @@
 package org.mydaily.util
 
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import org.mydaily.R
@@ -23,24 +24,22 @@ object BindingAdapter {
     }
 
     @JvmStatic
-    @BindingAdapter("setKeywordWithGoal")
-    fun setKeywordWithGoal(textView: TextView, goal: Goal) {
-        val color = if (goal.isGoalCreated) {
-            textView.resources.getColor(R.color.mainBlack, null)
+    @BindingAdapter("setTextColorWithGoalCompleted")
+    fun setTextColorWithGoalCompleted(view: TextView, isGoalCompleted: Boolean) {
+        if (isGoalCompleted) {
+            view.setTextColor(view.resources.getColor(R.color.mainOrange, null))
         } else {
-            textView.resources.getColor(R.color.mainGray, null)
+            view.setTextColor(view.resources.getColor(R.color.mainGray, null))
         }
-        textView.setTextColor(color)
-        textView.text = goal.name
     }
 
     @JvmStatic
-    @BindingAdapter("setVisibilityWithGoalCompleted")
-    fun setVisibilityWithGoalCompleted(view: View, isGoalCompleted: Boolean) {
+    @BindingAdapter("setCheckBoxImageWithGoalCompleted")
+    fun setCheckBoxImageWithGoalCompleted(view: ImageView, isGoalCompleted: Boolean) {
         if (isGoalCompleted) {
-            view.visibility = View.VISIBLE
+            view.setImageResource(R.drawable.ic_goal_on)
         } else {
-            view.visibility = View.GONE
+            view.setImageResource(R.drawable.ic_goal_off)
         }
     }
 
