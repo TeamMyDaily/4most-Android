@@ -1,5 +1,7 @@
 package org.mydaily.ui.view.keyword
 
+import android.content.Intent
+import android.os.Parcelable
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -7,6 +9,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
+import org.mydaily.data.model.Keyword
 import org.mydaily.databinding.ActivityKeywordListBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
@@ -17,6 +20,8 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     override val layoutResourceId: Int
         get() = R.layout.activity_keyword_list
     override val viewModel: KeywordViewModel by viewModel()
+
+    private var myKeywordList = arrayListOf<String>("ah", "bn")
 
     override fun initView() {
         initToolbar()
@@ -109,5 +114,7 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
         menuInflater.inflate(R.menu.menu_keyword_list, menu)
         return true
     }
+
+
 
 }

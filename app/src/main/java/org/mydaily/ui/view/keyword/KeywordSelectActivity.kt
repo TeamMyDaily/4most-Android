@@ -1,5 +1,6 @@
 package org.mydaily.ui.view.keyword
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -8,6 +9,7 @@ import org.mydaily.databinding.ActivityKeywordListBinding
 import org.mydaily.databinding.ActivityKeywordSelectBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
+import org.mydaily.util.extension.shortToast
 
 class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, KeywordViewModel>() {
     override val layoutResourceId: Int
@@ -15,8 +17,11 @@ class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, Keyword
 
     override val viewModel: KeywordViewModel by viewModel()
 
+
+
     override fun initView() {
         initToolbar()
+        getkeywordlistIntent()
     }
     private fun initToolbar() {
         setSupportActionBar(binding.tbKeywordSelectActivity)
@@ -32,7 +37,14 @@ class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, Keyword
 
     override fun initAfterBinding() {
     }
-    //TODO -> 굳이 뷰 모델 사용안하고 리스트 별로 startactivityforresult로 리스트 넘겨줘서 해도 되지 않나
+
+    private fun getkeywordlistIntent() {
+        var mykeywordlist = arrayListOf<String>()
+        val intent = intent
+        mykeywordlist = intent.getStringArrayListExtra("keywordList") as ArrayList<String>
+        shortToast(mykeywordlist[0])
+
+    }
 
 
 
