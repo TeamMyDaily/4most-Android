@@ -5,12 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.mydaily.data.model.Keyword
 import org.mydaily.data.model.domain.Task
+import org.mydaily.data.model.network.response.ResTaskGet
 import org.mydaily.databinding.ItemDailyGoalBinding
 
 class DailyKeywordAdapter : RecyclerView.Adapter<DailyKeywordAdapter.ViewHolder>() {
 
-    private val _data = mutableListOf<Task.Title>()
-    var data : List<Task.Title> = _data
+    private val _data = mutableListOf<ResTaskGet.Data.Task>()
+    var data : List<ResTaskGet.Data.Task> = _data
         set(value) {
             _data.clear()
             _data.addAll(value)
@@ -39,7 +40,7 @@ class DailyKeywordAdapter : RecyclerView.Adapter<DailyKeywordAdapter.ViewHolder>
     inner class ViewHolder(private val binding: ItemDailyGoalBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(task: Task.Title) {
+        fun bind(task: ResTaskGet.Data.Task) {
             binding.task = task.title
             binding.tvKeyword.setOnClickListener {
                 clickListener?.invoke(task.id)

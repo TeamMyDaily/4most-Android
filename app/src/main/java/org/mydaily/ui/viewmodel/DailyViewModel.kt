@@ -8,6 +8,7 @@ import org.mydaily.data.model.domain.Task
 import org.mydaily.data.model.domain.TaskDetail
 import org.mydaily.data.model.network.request.ReqTaskAdd
 import org.mydaily.data.model.network.response.ResTaskAdd
+import org.mydaily.data.model.network.response.ResTaskGet
 import org.mydaily.data.repository.TaskRepo
 import org.mydaily.ui.base.BaseViewModel
 import retrofit2.Call
@@ -16,8 +17,8 @@ import retrofit2.Response
 
 class DailyViewModel(private val repo: TaskRepo) : BaseViewModel() {
 
-    private val _keywordList = MutableLiveData<List<Task>>()
-    val keywordList: LiveData<List<Task>>
+    private val _keywordList = MutableLiveData<List<ResTaskGet.Data>>()
+    val keywordList: LiveData<List<ResTaskGet.Data>>
         get() = _keywordList
 
     private val _task = MutableLiveData<TaskDetail>()
@@ -61,41 +62,20 @@ class DailyViewModel(private val repo: TaskRepo) : BaseViewModel() {
 
     }
 
-
-    fun getEmptyKeywordData() {
-        _keywordList.value =  listOf()
-
+    fun getTasks(date: Long) {
+        repo.getTasks(date).enqueue(object : Callback<ResTaskGet>{
+            override fun onResponse(call: Call<ResTaskGet>, response: Response<ResTaskGet>) {
+                if(response.isSuccessful){
+                    _keywordList.postValue(response.body()?.data)
+                }
+            }
+            override fun onFailure(call: Call<ResTaskGet>, t: Throwable) {
+                Log.e(TAG, "getTasks", t)
+            }
+        })
     }
 
-    fun getKeywordData() {
-        /* 임시 데이터 */
-        val tempList = listOf(
-            Task(
-                1, "아웃풋1", 1, listOf(
-                    Task.Title(1, "IT 기술에 관한 아티클 정리하기"),
-                    Task.Title(2, "브런치 개설 하기")
-                )
-            ),
-            Task(
-                2, "아웃풋2", 2, listOf(
-                    Task.Title(3, "IT 기술에 관한 아티클 정리하기"),
-                    Task.Title(4, "브런치 개설 하기")
-                )
-            ),
-            Task(
-                3, "아웃풋3", 3, listOf(
-                    Task.Title(5, "IT 기술에 관한 아티클 정리하기"),
-                    Task.Title(6, "브런치 개설 하기")
-                )
-            ),
-            Task(
-                4, "아웃풋4", 4, listOf(
-                    Task.Title(7, "IT 기술에 관한 아티클 정리하기"),
-                    Task.Title(8, "브런치 개설 하기")
-                )
-            )
-        )
-        _keywordList.value = tempList
+    companion object{
+        private val TAG = DailyViewModel::class.java.simpleName
     }
-
 }

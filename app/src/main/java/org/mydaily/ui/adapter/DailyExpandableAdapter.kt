@@ -1,6 +1,5 @@
 package org.mydaily.ui.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,28 +10,28 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.skydoves.expandablelayout.ExpandableLayout
 import org.mydaily.R
-import org.mydaily.data.model.domain.Task
+import org.mydaily.data.model.network.response.ResTaskGet
 
 /**
  * Expandable Layout does not support Databinding
  */
 class DailyExpandableAdapter : RecyclerView.Adapter<DailyExpandableAdapter.ViewHolder>() {
 
-    private val _data = mutableListOf<Task>()
-    var data: List<Task> = _data
+    private val _data = mutableListOf<ResTaskGet.Data>()
+    var data: List<ResTaskGet.Data> = _data
         set(value) {
             _data.clear()
             _data.addAll(value)
             notifyDataSetChanged()
         }
 
-    private var addButtonListener:((id: Int)-> Unit) ?= null
-    fun setAddButtonListener(listener: ((id: Int)-> Unit)){
+    private var addButtonListener: ((id: Int) -> Unit)? = null
+    fun setAddButtonListener(listener: ((id: Int) -> Unit)) {
         this.addButtonListener = listener
     }
 
-    private var taskClickListener:((id: Int)-> Unit) ?= null
-    fun setTaskClickListener(listener: ((id: Int)-> Unit)){
+    private var taskClickListener: ((id: Int) -> Unit)? = null
+    fun setTaskClickListener(listener: ((id: Int) -> Unit)) {
         this.taskClickListener = listener
     }
 
@@ -46,9 +45,10 @@ class DailyExpandableAdapter : RecyclerView.Adapter<DailyExpandableAdapter.ViewH
         private val parentLayout: View = expandableLayout.parentLayout
         private val secondLayout: View = expandableLayout.secondLayout
 
-        fun bind(task: Task, position: Int) {
-            parentLayout.findViewById<TextView>(R.id.tv_number_of_task).text = task.tasks.size.toString()
-            parentLayout.findViewById<TextView>(R.id.tv_number).text = "0${position+1}"
+        fun bind(task: ResTaskGet.Data, position: Int) {
+            parentLayout.findViewById<TextView>(R.id.tv_number_of_task).text =
+                task.tasks.size.toString()
+            parentLayout.findViewById<TextView>(R.id.tv_number).text = "0${position + 1}"
             parentLayout.findViewById<TextView>(R.id.tv_report_name).text = task.name
             parentLayout.setOnClickListener {
                 if (expandableLayout.isExpanded) {
@@ -60,7 +60,7 @@ class DailyExpandableAdapter : RecyclerView.Adapter<DailyExpandableAdapter.ViewH
                 }
             }
             parentLayout.findViewById<ImageButton>(R.id.ib_plus).setOnClickListener {
-                addButtonListener?.invoke(task.id)
+                addButtonListener?.invoke(task.totalKeywordId)
             }
 
             secondLayout.findViewById<RecyclerView>(R.id.rv_weekly_goal).apply {

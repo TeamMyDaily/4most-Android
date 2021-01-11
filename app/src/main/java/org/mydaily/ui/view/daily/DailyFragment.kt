@@ -43,12 +43,10 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
 
     override fun initBeforeBinding() {
         binding.lifecycleOwner = viewLifecycleOwner
-        viewModel.getKeywordData()
-        //viewModel.getEmptyKeywordData()
+        viewModel.getTasks(System.currentTimeMillis())
     }
 
     override fun initAfterBinding() {
-        /* TODO(통신) : 해당 날짜의 키워드, task 데이터 가져오는 부분 */
         observeKeywordData()
     }
 
