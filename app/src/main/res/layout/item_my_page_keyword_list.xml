@@ -5,9 +5,6 @@
 
     <data>
         <variable
-            name="number"
-            type="String" />
-        <variable
             name="keyword"
             type="String" />
     </data>
@@ -18,58 +15,49 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp">
 
-        <FrameLayout
-            android:id="@+id/frameLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/iv_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="-16dp"
-                android:text="@{number}"
-                tools:text="01"
-                android:textColor="#FEC7BA"
-                android:textSize="60sp"
-                android:textStyle="bold" />
-
-        </FrameLayout>
-
         <TextView
             android:id="@+id/tv_keyword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="@{keyword}"
-            tools:text="아웃풋"
             android:textColor="@color/mainBlack"
-            android:textSize="34sp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginStart="56dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/frameLayout"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/iv_pin_icon"
+            app:layout_constraintStart_toEndOf="@+id/iv_pin_icon"
+            tools:text="아웃풋" />
 
         <View
             android:layout_width="0dp"
-            android:layout_height="3dp"
+            android:layout_height="1px"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:background="@color/mainLightGray"
-            android:layout_marginStart="48dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/frameLayout"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_keyword" />
 
         <ImageView
+            android:id="@+id/iv_pin_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_light_arrow_right"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_pin_off" />
+
+        <ImageButton
+            android:id="@+id/ib_more_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/ic_more_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

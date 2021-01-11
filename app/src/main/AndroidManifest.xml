@@ -21,9 +21,13 @@
             android:name=".ui.view.keyword.KeywordAddActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui.view.keyword.KeywordListActivity"
+            android:name=".ui.view.keyword.detail.KeywordListActivity"
             android:exported="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".ui.view.keyword.detail.KeywordPopupActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:exported="true"/>
         <activity
             android:name=".ui.view.daily.detail.DailyDetailActivity"
             android:windowSoftInputMode="adjustPan" />
