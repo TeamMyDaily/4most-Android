@@ -53,11 +53,15 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
     override fun initBeforeBinding() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.calendar = Calendar.getInstance()
-        viewModel.getGoals(startCalendar.timeInMillis, endCalendar.timeInMillis)
     }
 
     override fun initAfterBinding() {
         observeGoalData()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.getGoals(startCalendar.timeInMillis, endCalendar.timeInMillis)
     }
 
     private fun initClickEvent() {
@@ -145,6 +149,7 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
             putExtra("keywordId", goal.totalKeywordId)
             putExtra("weekGoal", goal.weekGoal)
             putExtra("weekGoalId", goal.weekGoalId)
+            putExtra("startDate", startCalendar.timeInMillis)
         }
         startActivity(intent)
     }

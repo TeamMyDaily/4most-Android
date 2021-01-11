@@ -1,8 +1,11 @@
 package org.mydaily.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import org.mydaily.data.model.network.request.ReqGoalPost
 import org.mydaily.data.model.network.response.ResGoalGet
+import org.mydaily.data.model.network.response.ResGoalPost
 import org.mydaily.data.model.network.response.Response
 import org.mydaily.data.repository.GoalRepo
 import org.mydaily.ui.base.BaseViewModel
@@ -62,9 +65,20 @@ class GoalViewModel(private val repo: GoalRepo) : BaseViewModel() {
     }
 
     fun postGoals(startDate: Long, totalKeywordId: String, goal: String) {
-/*        repo.postGoals(ReqGoalPost(startDate, totalKeywordId, goal)).enqueue(object : Callback<ResGoalPost>{
-
-        })*/
+        repo.postGoals(ReqGoalPost(startDate, totalKeywordId, goal))
+            .enqueue(object : Callback<ResGoalPost>{
+                override fun onResponse(
+                    call: Call<ResGoalPost>,
+                    response: retrofit2.Response<ResGoalPost>
+                ) {
+                    if(response.isSuccessful){
+                        Log.i(TAG, response.body().toString())
+                    }
+                }
+                override fun onFailure(call: Call<ResGoalPost>, t: Throwable) {
+                    Log.e(TAG, "postGoals", t)
+                }
+            })
     }
 
     fun putGoals(goalId: Int, goal: String) {
@@ -73,5 +87,10 @@ class GoalViewModel(private val repo: GoalRepo) : BaseViewModel() {
 
     fun deleteGoal(goalId: Int) {
 //        repo.deleteGoal(goalId)
+    }
+
+
+    companion object{
+        private val TAG = GoalViewModel::class.java.simpleName
     }
 }

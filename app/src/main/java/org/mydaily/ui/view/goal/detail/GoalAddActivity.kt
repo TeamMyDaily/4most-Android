@@ -20,6 +20,7 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
     private var intentTotalKeywordId: Int = 0
     private var intentWeekGoal: String = ""
     private var intentWeekGoalId: Int = 0
+    private var intentStartDate: Long = 0
 
     private var isGoalChanged: Boolean = false
 
@@ -43,6 +44,7 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
         intentTotalKeywordId = intent.getIntExtra("keywordId", 0)
         intentWeekGoal = intent.getStringExtra("weekGoal") ?: ""
         intentWeekGoalId = intent.getIntExtra("weekGoalId", 0)
+        intentStartDate = intent.getLongExtra("startDate", 0)
     }
 
     private fun initToolbar() {
@@ -96,7 +98,7 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
         binding.btnAddSave.setOnClickListener {
             //추가 완료 후 메인으로 돌아감
             viewModel.postGoals(
-                System.currentTimeMillis(),
+                intentStartDate,
                 intentTotalKeywordId.toString(),
                 binding.etGoal.text.toString()
             )
