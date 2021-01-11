@@ -8,7 +8,7 @@ import org.mydaily.data.model.network.response.ResGoalPost
 import retrofit2.Call
 
 interface GoalRemoteDataSource {
-    fun getGoals(start: String, end: String): Call<ResGoalGet>
+    fun getGoals(start: Long, end: Long): Call<ResGoalGet>
     fun postGoals(body: ReqGoalPost): Call<ResGoalPost>
     fun putGoals(id: Int, body: ReqGoalPut): Call<Response>
     fun putGoalsCompletion(id: Int): Call<Response>

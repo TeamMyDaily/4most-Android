@@ -5,7 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import org.mydaily.R
-import org.mydaily.data.model.domain.Goal
+import org.mydaily.data.model.network.response.ResGoalGet
 import org.mydaily.util.CalendarUtil.isWeekSame
 import java.util.*
 
@@ -55,7 +55,7 @@ object BindingAdapter {
 
     @JvmStatic
     @BindingAdapter("setGoalWithGoal")
-    fun setGoalWithGoal(textView: TextView, goal: Goal) {
+    fun setGoalWithGoal(textView: TextView, goal: ResGoalGet.Data.Keyword) {
         val color: Int
         val text: String
         if (goal.isGoalCreated) {
