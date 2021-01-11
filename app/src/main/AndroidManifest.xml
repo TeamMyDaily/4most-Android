@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.mydaily">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".MyDailyApplication"
         android:allowBackup="true"
@@ -10,18 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDaily">
-        <activity android:name=".ui.view.goal.detail.GoalAddActivity"/>
         <activity
-            android:name=".ui.view.keyword.detail.KeywordListActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:exported="true" />
-        <activity
-            android:name=".ui.view.keyword.detail.KeywordPopupActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"
+            android:name=".ui.view.keyword.settings.KeywordSettingsActivity"
             android:exported="true"/>
+        <activity android:name=".ui.view.goal.detail.GoalAddActivity" />
         <activity
             android:name=".ui.view.keyword.KeywordAddActivity"
             android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.view.keyword.KeywordListActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.view.daily.detail.DailyDetailActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -35,7 +36,7 @@
         <activity
             android:name=".ui.view.signup.SignUpActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.view.signup.SignUpTermsActivity"
             android:exported="true" />
