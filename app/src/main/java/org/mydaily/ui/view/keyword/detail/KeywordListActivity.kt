@@ -1,7 +1,7 @@
-package org.mydaily.ui.view.keyword
+package org.mydaily.ui.view.keyword.detail
 
+import android.content.Intent
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
@@ -88,6 +88,7 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
             setChipBackgroundColorResource(R.color.selector_chip)
             setTextAppearance(R.style.MyDailyChipTextStyleAppearance)
             setRippleColorResource(android.R.color.transparent)
+            textSize = 16F
             setOnClickListener {
                 // Click Event 처리
                 shortToast("CHIP 클릭됨")
@@ -99,6 +100,8 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
         return when (item.itemId) {
             R.id.menu_help -> {
                 shortToast("도움말 버튼 클릭됨")
+                val intent = Intent(this, KeywordPopupActivity::class.java)
+                startActivity(intent)
                 true
             }
             else -> super.onOptionsItemSelected(item)
