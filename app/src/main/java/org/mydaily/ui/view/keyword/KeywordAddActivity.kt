@@ -1,5 +1,6 @@
 package org.mydaily.ui.view.keyword
 
+import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -8,7 +9,6 @@ import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordAddBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
-import org.mydaily.util.extension.shortToast
 import java.util.regex.Pattern
 
 
@@ -18,11 +18,17 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
     override val viewModel: KeywordViewModel by viewModel()
 
     private var keywordListForDuplicated = mutableListOf<String>()
+    private val addedMyWord = arrayListOf<String>()
 
     override fun initView() {
         initToolbar()
         keywordInput()
         keywordAdd()
+        getMyWordList()
+    }
+
+    private fun getMyWordList() {
+        addedMyWord.addAll(intent.getStringArrayListExtra("MyWordList") as ArrayList<String>)
     }
 
     private fun isKoreanInWord(keyword: String): Boolean {
@@ -90,6 +96,13 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
                     binding.tvErrortext.visibility = View.VISIBLE
                     binding.btnErrorIcon.visibility = View.VISIBLE
                     binding.tvErrortext.text = sameKeyword
+                } else if (addedMyWord.contains(binding.etKeywordInput.text.toString())) {
+                    binding.btnAdd.isEnabled = false
+                    sameKeyword =
+                        "'" + binding.etKeywordInput.text.toString() + "' 은(는) " + getString(R.string.already_exist)
+                    binding.tvErrortext.visibility = View.VISIBLE
+                    binding.btnErrorIcon.visibility = View.VISIBLE
+                    binding.tvErrortext.text = sameKeyword
                 } else if (isKoreanInWord(binding.etKeywordInput.text.toString())) {
                     binding.btnAdd.isEnabled = false
                     binding.tvErrortext.visibility = View.VISIBLE
@@ -101,14 +114,17 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
                     binding.btnErrorIcon.visibility = View.GONE
                 }
             }
+
             override fun afterTextChanged(s: Editable?) {}
         })
     }
 
     private fun keywordAdd() {
         binding.btnAdd.setOnClickListener {
-            intent.putExtra("MyWord", binding.etKeywordInput.text.toString())
-            shortToast("키워드 추가 버튼 클릭됨")
+            addedMyWord.clear()
+            val temp = Intent()
+            temp.putExtra("MyWord", binding.etKeywordInput.text.toString())
+            setResult(1005, temp)
             finish()
         }
     }

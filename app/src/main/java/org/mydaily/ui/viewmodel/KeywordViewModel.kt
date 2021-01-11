@@ -15,15 +15,6 @@ class KeywordViewModel : BaseViewModel() {
         get() = _workWordList
 
 
-    private val _myWordList = MutableLiveData<List<String>>()
-    val myWordList: LiveData<List<String>> = _myWordList
-
-    private val _myWordListAdd = MutableLiveData<MutableList<String>>() //mywordlist에 추가하기 위한 livedata
-    val myWordListAdd : LiveData<MutableList<String>> = _myWordListAdd
-
-    private val _addMyWordList = mutableListOf<String>()
-    val addMyWordList : List<String> = _addMyWordList
-
     //삶을 대하는 자세
     fun getLifeWord() {
         /* 임시 데이터 */

@@ -21,10 +21,10 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
 
     private var clickedChipCount: Int = 0
     private var myWordChipCount: Int = 0
-    private var addedMyWord = mutableListOf<String>()
-    private var selectedLifeWord = mutableListOf<String>()
-    private var selectedWorkWord = mutableListOf<String>()
-    private var selectedMyWord = mutableListOf<String>()
+    private var addedMyWord = arrayListOf<String>()
+    private var selectedLifeWord = arrayListOf<String>()
+    private var selectedWorkWord = arrayListOf<String>()
+    private var selectedMyWord = arrayListOf<String>()
 
     override val layoutResourceId: Int
         get() = R.layout.activity_keyword_list
@@ -39,27 +39,12 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
         onClickSelectFinishButton()
     }
 
-    private fun setSelectFinshButton() {
-        if (clickedChipCount > 8) {
-            binding.btnSelectFinish.isEnabled = false
-
-            floatingDialog()
-        } else if (clickedChipCount == 8) {
-            binding.btnSelectFinish.isEnabled = true
-        } else {
-            binding.btnSelectFinish.isEnabled = false
-        }
-    }
-
     private fun onClickedCompleteButtonState() {
         //TODO -> 완료 버튼 눌렀을 때 상태 세팅
-        //TODO -> for문 사용해서 viewmodel에 있는 myword 속성 싹 다 변경
-
     }
 
     private fun onClickModifyButtonState() {
         //TODO -> 수정 버튼 눌렀을 때 상태 세팅
-        //TODO -> for문 사용해서 viewmodel에 있는 myword 속성 싹 다 변경
     }
 
     private fun addKeywordList(text: String) {
@@ -67,7 +52,7 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
             selectedLifeWord.add(text)
         } else if (viewModel.workWordList.value!!.contains(text)) {
             selectedWorkWord.add(text)
-        } else if (viewModel.myWordList.value!!.contains(text)) {
+        } else if (addedMyWord.contains(text)) {
             selectedMyWord.add(text)
         }
     }
@@ -75,9 +60,9 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     private fun removeKeywordList(text: String) {
         if (viewModel.lifeWordList.value!!.contains(text)) {
             selectedLifeWord.remove(text)
-        } else if (viewModel.workWordList.equals(text)) {
+        } else if (viewModel.workWordList.value!!.contains(text)) {
             selectedWorkWord.remove(text)
-        } else if (viewModel.myWordList.equals(text)) {
+        } else if (addedMyWord.contains(text)) {
             selectedMyWord.remove(text)
         }
     }
@@ -92,13 +77,15 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     }
 
     private fun setCompleteState() {
-        binding.tvModify.visibility = View.VISIBLE
-        binding.tvComplete.visibility = View.GONE
+        binding.tvModify.visibility = View.GONE
+        binding.tvComplete.visibility = View.VISIBLE
     }
 
     private fun setModifyState() {
-        binding.tvModify.visibility = View.VISIBLE
-        binding.tvComplete.visibility = View.GONE
+        if (myWordChipCount > 0) {
+            binding.tvModify.visibility = View.VISIBLE
+            binding.tvComplete.visibility = View.GONE
+        }
     }
 
     private fun initModifyCompleteButton() {
@@ -126,11 +113,25 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
         binding.chipAdd.setOnClickListener {
             myWordChipCount++
             val intent = Intent(this, KeywordAddActivity::class.java)
-            startActivity(intent)
+            intent.putStringArrayListExtra("MyWordList", addedMyWord)
+            startActivityForResult(intent, 1004)
         }
-        if (binding.cgMyWord.childCount > 0) {
-            setModifyState()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1004) {
+            if (resultCode == 1005) {
+                if (data?.getStringExtra("MyWord") != null) {
+                    addedMyWord.add(data.getStringExtra("MyWord")!!)
+                }
+            } else {
+                shortToast("잘못된 resultCode")
+            }
+        } else {
+            shortToast("잘못된 requestCode")
         }
+        addMyWordList()
     }
 
     private fun observeLifeWordList() {
@@ -149,13 +150,11 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
         })
     }
 
-    private fun observeMyWordList() {
-        for(str in addedMyWord) {
-            binding.cgMyWord.addView(
-                createChip(str),
-                binding.cgMyWord.childCount - 1
-            )
-        }
+    private fun addMyWordList() {
+        binding.cgMyWord.addView(
+            createChip(addedMyWord.last().toString()),
+            binding.cgMyWord.childCount - 1
+        )
     }
 
     private fun createChip(str: String): Chip {
@@ -173,13 +172,25 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
             setRippleColorResource(android.R.color.transparent)
             setOnClickListener {
                 it as Chip
-                if (isChecked) {
+                if (isChecked) { //주황색일 때
                     clickedChipCount++
-                    setSelectFinshButton()
-                    addKeywordList(it.text as String)
+                    if (clickedChipCount >= 9) {
+                        binding.btnSelectFinish.isEnabled = true
+                        it.isChecked = false
+                        clickedChipCount--
+                        floatingDialog()
+                    } else if (clickedChipCount == 8) {
+                        addKeywordList(it.text as String)
+                        binding.btnSelectFinish.isEnabled = true
+                    } else {
+                        addKeywordList(it.text as String)
+                        binding.btnSelectFinish.isEnabled = false
+                    }
                 } else {
                     clickedChipCount--
-                    setSelectFinshButton()
+                    if (clickedChipCount < 8) {
+                        binding.btnSelectFinish.isEnabled = false
+                    }
                     removeKeywordList(it.text as String)
                 }
             }
@@ -221,8 +232,16 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     private fun onClickSelectFinishButton() {
         binding.btnSelectFinish.setOnClickListener {
             val intent = Intent(this, KeywordSelectActivity::class.java)
+            intent.putStringArrayListExtra("selectedlifeword", selectedLifeWord)
+            intent.putStringArrayListExtra("selectedworkword", selectedWorkWord)
+            intent.putStringArrayListExtra("selectedmyword", selectedMyWord)
             startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setModifyState()
 
     }
 }

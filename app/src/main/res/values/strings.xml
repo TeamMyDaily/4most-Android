@@ -77,7 +77,7 @@
 
     <!--KeywordAddActivity-->
     <string name="keyword_add">키워드 추가</string>
-    <string name="is_there_no_word">찾으시는 가치(단어)가\n 없으신가요?</string>
+    <string name="is_there_no_word">찾으시는 가치(단어)가\n없으신가요?</string>
     <string name="please_add_yourself">"나의 가치에 맞는 키워드를 직접 추가해 주세요"</string>
     <string name="keyword_guide">키워드 가이드\n공백 없이 최대 5글자까지 가능해요.\n명사 형태를 추천해요.</string>
     <string name="btn_add">추가할래요!</string>
