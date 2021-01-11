@@ -1,4 +1,4 @@
-package org.mydaily.ui.view.keyword
+package org.mydaily.ui.view.keyword.detail
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -11,8 +11,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordListBinding
 import org.mydaily.ui.base.BaseActivity
+import org.mydaily.ui.view.keyword.KeywordAddActivity
+import org.mydaily.ui.view.keyword.KeywordSelectActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
-import org.mydaily.util.extension.shortToast
 
 
 class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordViewModel>() {
@@ -124,8 +125,8 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     private fun initAddButton() {
         binding.chipAdd.setOnClickListener {
             myWordChipCount++
-            //val intent = Intent(this, KeywordAddActivity::class.java
-            //startActivity(intent)
+            val intent = Intent(this, KeywordAddActivity::class.java)
+            startActivity(intent)
         }
         if (binding.cgMyWord.childCount > 0) {
             setModifyState()
@@ -190,8 +191,8 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_help -> {
-//                val intent = Intent(this, KeywordPopupActivity::class.java)
-//                startActivity(intent)
+                val intent = Intent(this, KeywordPopupActivity::class.java)
+                startActivity(intent)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -222,9 +223,10 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
 
 
     private fun onClickSelectFinishButton() {
-//        val intent = Intent(this, KeywordSelectActivity::class.java)
-//        startActivity(intent)
-//TODO -> selected list 보내줘야함
+        binding.btnSelectFinish.setOnClickListener {
+            val intent = Intent(this, KeywordSelectActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }

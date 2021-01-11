@@ -27,6 +27,9 @@
             android:name=".ui.view.keyword.detail.KeywordPopupActivity"
             android:windowSoftInputMode="stateAlwaysHidden"
             android:exported="true"/>
+        <activity android:name=".ui.view.keyword.KeywordSelectActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity
             android:name=".ui.view.daily.detail.DailyDetailActivity"
             android:windowSoftInputMode="adjustPan" />

@@ -97,7 +97,8 @@
     <string name="my_word">내가 추가한 단어</string>
 
     <string name="no_word">찾고 있는 가치(단어)가 없으세요?</string>
-
+    <string name="complete">완료</string>
+    <string name="modify">수정</string>
     <string name="select_finish">선택완료!</string>
     <string name="image_error">이미지가 열리지 않습니다.</string>
     <string name="up_to_eight">8개 까지 선택 가능해요!</string>
@@ -114,6 +115,10 @@
     <string name="how_do_you_want_to_remembered">남들에게 어떤 사람으로 기억되고 싶으신가요?</string>
     <string name="example_tmi">항상 가식없는 사람, 미담이 가득한 사람이 되고 싶다.\n어려운 일이라는 것을 알고 누군가를 나를 싫어하는 사람이 있\n을테지만 싫어 할 수가 없는 진정성 있는 사람이 되고싶다.</string>
 
+    <!--KeywordSelectActivity-->
+    <string name="keyword_select">키워드 선택하기</string>
+    <string name="choose_four">8가지를 고르셨군요!\n조금만 더 고민해 볼까요?</string>
+    <string name="maximum_four">최대 4개까지 최종 키워드를 골라주세요!</string>
 
     <!--KeywordSettingsActivity-->
     <string name="menu_keyword_priority">키워드 우선순위</string>

@@ -40,9 +40,9 @@ class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, Keyword
 
     private fun getkeywordlistIntent() {
         var mykeywordlist = arrayListOf<String>()
-        val intent = intent
-        mykeywordlist = intent.getStringArrayListExtra("keywordList") as ArrayList<String>
-        shortToast(mykeywordlist[0])
+//        val intent = intent
+//        mykeywordlist = intent.getStringArrayListExtra("keywordList") as ArrayList<String>
+//        shortToast(mykeywordlist[0])
 
     }
 
