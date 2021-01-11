@@ -15,7 +15,8 @@ object FourMostPreference {
     }
 
     fun getUserToken(): String {
-        return preferences.getString(USER_TOKEN, "4most") ?: ""
+        //return preferences.getString(USER_TOKEN, "4most") ?: ""
+        return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6Iu2FjOyKpO2KuOqzhCIsImVtYWlsIjoiYWFAYWEuYWEiLCJpYXQiOjE2MTAyOTE1MTgsImV4cCI6MTYxMjg4MzUxOCwiaXNzIjoiY3lqIn0.Jso8y03veniE43kfmKjXkWgJdIQtBVG29KwYxGsXo-E"
     }
 
     fun setUserToken(value: String) {
