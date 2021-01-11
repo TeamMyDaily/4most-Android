@@ -15,7 +15,8 @@ object FourMostPreference {
     }
 
     fun getUserToken(): String {
-        return preferences.getString(USER_TOKEN, "4most") ?: ""
+        //return preferences.getString(USER_TOKEN, "4most") ?: ""
+        return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6InFxIiwiZW1haWwiOiJxcUBxcS5xcSIsImlhdCI6MTYxMDMzMzQ0MywiZXhwIjoxNjEyOTI1NDQzLCJpc3MiOiJjeWoifQ.k3HAJg9K_NMVscJWafGBdCB4Odj6qua9VUL2N3_siYo"
     }
 
     fun setUserToken(value: String) {
@@ -23,7 +24,7 @@ object FourMostPreference {
     }
 
     fun getUserName(): String {
-        return preferences.getString(USER_NAME, "4most") ?: ""
+        return preferences.getString(USER_NAME, "qq") ?: ""
     }
 
     fun setUserName(value: String) {
@@ -31,7 +32,7 @@ object FourMostPreference {
     }
 
     fun getUserEmail(): String {
-        return preferences.getString(USER_EMAIL, "4most@gmail.com") ?: ""
+        return preferences.getString(USER_EMAIL, "qq@qq.qq") ?: ""
     }
 
     fun setUserEmail(value: String) {

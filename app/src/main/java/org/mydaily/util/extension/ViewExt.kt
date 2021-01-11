@@ -20,6 +20,19 @@ fun Fragment.replace(@IdRes frameId: Int, fragment: androidx.fragment.app.Fragme
         .commit()
 }
 
+fun Fragment.replaceAndAddBackStack(@IdRes frameId: Int, fragment: androidx.fragment.app.Fragment, name: String) {
+    requireActivity().supportFragmentManager
+        .beginTransaction()
+        .replace(frameId, fragment)
+        .addToBackStack(name)
+        .commit()
+}
+
+fun Fragment.popBackStack() {
+    requireActivity().supportFragmentManager
+        .popBackStack()
+}
+
 fun Context.shortToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
