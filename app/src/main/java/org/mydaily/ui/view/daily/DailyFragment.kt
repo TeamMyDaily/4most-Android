@@ -2,22 +2,17 @@ package org.mydaily.ui.view.daily
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.util.Log
 import android.view.View
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.skydoves.expandablelayout.ExpandableLayout
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.data.local.FourMostPreference
 import org.mydaily.databinding.FragmentDailyBinding
 import org.mydaily.ui.adapter.DailyExpandableAdapter
-import org.mydaily.ui.adapter.DailyKeywordAdapter
 import org.mydaily.ui.base.BaseFragment
+import org.mydaily.ui.view.daily.detail.DailyAddActivity
 import org.mydaily.ui.view.daily.detail.DailyDetailActivity
 import org.mydaily.ui.viewmodel.DailyViewModel
 import org.mydaily.util.CalendarUtil
@@ -43,11 +38,16 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
 
     override fun initBeforeBinding() {
         binding.lifecycleOwner = viewLifecycleOwner
-        viewModel.getTasks(System.currentTimeMillis())
     }
 
     override fun initAfterBinding() {
         observeKeywordData()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.getTasks(System.currentTimeMillis())
+        binding.rvTasks.invalidate()
     }
 
     private fun initUserData() {
@@ -55,20 +55,20 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
     }
 
     private fun initTaskRecyclerView() {
-        dailyExpandableAdapter.setAddButtonListener {
+        dailyExpandableAdapter.setAddButtonListener { id, name->
             requireContext().apply {
-                val intent = Intent(this, DailyDetailActivity::class.java).apply {
-                    putExtra("keywordId",it)
-                    action = "WRITE"
+                val intent = Intent(this, DailyAddActivity::class.java).apply {
+                    putExtra("keywordId",id)
+                    putExtra("keywordName",name)
                 }
                 startActivity(intent)
             }
         }
-        dailyExpandableAdapter.setTaskClickListener {
+        dailyExpandableAdapter.setTaskClickListener { id, name->
             requireContext().apply {
                 val intent = Intent(this, DailyDetailActivity::class.java).apply {
-                    putExtra("taskId",it)
-                    action = "DETAIL"
+                    putExtra("taskId",id)
+                    putExtra("keywordName",name)
                 }
                 startActivity(intent)
             }
@@ -76,32 +76,34 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
         binding.rvTasks.apply {
             adapter = dailyExpandableAdapter
             layoutManager = LinearLayoutManager(requireContext())
-            setHasFixedSize(true)
         }
     }
 
     private fun initDateView() {
         binding.ibDate.setOnClickListener {
-            DatePickerDialog(
+            val datePickerDialog = DatePickerDialog(
                 requireContext(),
                 { _, year, month, day ->
-                    changeableCalendar.set(year, month, day)
+                    changeableCalendar.set(year, month, day, 23, 59, 59)
                     if (nowCalendar.compareDateTo(changeableCalendar)) {
                         stateCurrentDate()
                     } else {
                         stateNotCurrentDate(changeableCalendar)
                     }
-                    //통신
-                    //viewModel.getTask(newCalendar.timeInMillis)
+                    viewModel.getTasks(changeableCalendar.timeInMillis)
+                    Log.e("SEULGI", "clicked ${changeableCalendar.timeInMillis}")
                 },
                 nowCalendar.get(Calendar.YEAR), nowCalendar.get(Calendar.MONTH), nowCalendar.get(
                     Calendar.DAY_OF_MONTH
                 )
-            ).show()
+            )
+            datePickerDialog.datePicker.maxDate = nowCalendar.timeInMillis
+            datePickerDialog.show()
         }
 
         binding.ivToday.setOnClickListener {
             stateCurrentDate()
+            viewModel.getTasks(nowCalendar.timeInMillis)
         }
     }
 
@@ -120,9 +122,8 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
     }
 
     private fun observeKeywordData() {
-        /* 임시 데이터 */
-        viewModel.keywordList.observe(viewLifecycleOwner, {
-            if(it.isEmpty()){
+        viewModel.taskList.observe(viewLifecycleOwner, {
+            if(it.isNullOrEmpty()){
                 if (nowCalendar.compareDateTo(changeableCalendar)) {
                     binding.isNotKeywordExistThisWeek = true
                     binding.isNotKeywordExist = false
@@ -139,10 +140,6 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
                 dailyExpandableAdapter.data = it
             }
         })
-        /* 서버 데이터 */
-/*        viewModel.taskList.observe(viewLifecycleOwner, {
-            dailyExpandableAdapter.data = it
-        })*/
     }
 
     companion object {

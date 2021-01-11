@@ -17,21 +17,22 @@ import org.mydaily.data.model.network.response.ResTaskGet
  */
 class DailyExpandableAdapter : RecyclerView.Adapter<DailyExpandableAdapter.ViewHolder>() {
 
-    private val _data = mutableListOf<ResTaskGet.Data>()
-    var data: List<ResTaskGet.Data> = _data
+    private val _data = mutableListOf<ResTaskGet.Data.Result>()
+    var data: List<ResTaskGet.Data.Result> = _data
         set(value) {
             _data.clear()
             _data.addAll(value)
             notifyDataSetChanged()
         }
 
-    private var addButtonListener: ((id: Int) -> Unit)? = null
-    fun setAddButtonListener(listener: ((id: Int) -> Unit)) {
+    private var addButtonListener: ((keywordId: Int, name: String) -> Unit)? = null
+    private var taskClickListener: ((taskId: Int, name: String) -> Unit)? = null
+
+    fun setAddButtonListener(listener: ((keywordId: Int, name: String) -> Unit)) {
         this.addButtonListener = listener
     }
 
-    private var taskClickListener: ((id: Int) -> Unit)? = null
-    fun setTaskClickListener(listener: ((id: Int) -> Unit)) {
+    fun setTaskClickListener(listener: ((taskId: Int, name: String) -> Unit)) {
         this.taskClickListener = listener
     }
 
@@ -45,7 +46,7 @@ class DailyExpandableAdapter : RecyclerView.Adapter<DailyExpandableAdapter.ViewH
         private val parentLayout: View = expandableLayout.parentLayout
         private val secondLayout: View = expandableLayout.secondLayout
 
-        fun bind(task: ResTaskGet.Data, position: Int) {
+        fun bind(task: ResTaskGet.Data.Result, position: Int) {
             parentLayout.findViewById<TextView>(R.id.tv_number_of_task).text =
                 task.tasks.size.toString()
             parentLayout.findViewById<TextView>(R.id.tv_number).text = "0${position + 1}"
@@ -60,17 +61,16 @@ class DailyExpandableAdapter : RecyclerView.Adapter<DailyExpandableAdapter.ViewH
                 }
             }
             parentLayout.findViewById<ImageButton>(R.id.ib_plus).setOnClickListener {
-                addButtonListener?.invoke(task.totalKeywordId)
+                addButtonListener?.invoke(task.totalKeywordId, task.name)
             }
 
             secondLayout.findViewById<RecyclerView>(R.id.rv_weekly_goal).apply {
                 adapter = dailyKeywordAdapter[position]
                 layoutManager = LinearLayoutManager(itemView.context)
-                setHasFixedSize(true)
             }
             dailyKeywordAdapter[position].data = task.tasks
             dailyKeywordAdapter[position].setClickListener {
-                taskClickListener?.invoke(it)
+                taskClickListener?.invoke(it, task.name)
             }
         }
     }
