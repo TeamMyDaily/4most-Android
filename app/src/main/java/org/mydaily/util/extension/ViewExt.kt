@@ -5,6 +5,9 @@ import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import org.mydaily.util.Event
 
 fun AppCompatActivity.replace(@IdRes frameId: Int, fragment: androidx.fragment.app.Fragment) {
     supportFragmentManager
@@ -47,4 +50,15 @@ fun Context.longToast(message: String) {
 
 fun Context.longToast(resourceId: Int) {
     Toast.makeText(this, resourceId, Toast.LENGTH_SHORT).show()
+}
+
+fun Context.setupToast(
+    lifecycleOwner: LifecycleOwner,
+    toastEvent: LiveData<Event<String>>
+) {
+    toastEvent.observe(lifecycleOwner, { event ->
+        event.getContentIfNotHandled()?.let {
+            shortToast(it)
+        }
+    })
 }

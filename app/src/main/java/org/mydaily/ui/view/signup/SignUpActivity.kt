@@ -9,13 +9,13 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivitySignUpBinding
 import org.mydaily.ui.base.BaseActivity
-import org.mydaily.ui.viewmodel.SignUpViewModel
+import org.mydaily.ui.viewmodel.UserViewModel
 import org.mydaily.util.LoginPatternCheckUtil
 
-class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
+class SignUpActivity : BaseActivity<ActivitySignUpBinding, UserViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_sign_up
-    override val viewModel: SignUpViewModel by viewModel()
+    override val viewModel: UserViewModel by viewModel()
     private var isValidName = false
     private var isValidEmail = false
     private var isValidPassword = false

@@ -5,12 +5,12 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivitySignUpTermsBinding
 import org.mydaily.ui.base.BaseActivity
-import org.mydaily.ui.viewmodel.SignUpViewModel
+import org.mydaily.ui.viewmodel.UserViewModel
 
-class SignUpTermsActivity : BaseActivity<ActivitySignUpTermsBinding, SignUpViewModel>() {
+class SignUpTermsActivity : BaseActivity<ActivitySignUpTermsBinding, UserViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_sign_up_terms
-    override val viewModel: SignUpViewModel by viewModel()
+    override val viewModel: UserViewModel by viewModel()
 
     override fun initView() {
         initStartView()

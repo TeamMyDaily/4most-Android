@@ -7,6 +7,7 @@ object FourMostPreference {
     private const val USER_TOKEN = "USER_TOKEN"
     private const val USER_NAME = "USER_NAME"
     private const val USER_EMAIL = "USER_EMAIL"
+    private const val AUTO_LOGIN = "AUTO_LOGIN"
 
     lateinit var preferences: SharedPreferences
 
@@ -37,5 +38,13 @@ object FourMostPreference {
 
     fun setUserEmail(value: String) {
         preferences.edit().putString(USER_EMAIL, value).apply()
+    }
+
+    fun getAutoLogin(): Boolean {
+        return preferences.getBoolean(AUTO_LOGIN, true)
+    }
+
+    fun setAutoLogin(value: Boolean) {
+        preferences.edit().putBoolean(AUTO_LOGIN, value).apply()
     }
 }
