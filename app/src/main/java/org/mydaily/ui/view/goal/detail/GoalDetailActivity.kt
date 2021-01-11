@@ -71,6 +71,7 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
                 .setMessage("달성여부 변경할거임?")
                 .setPositiveButton("확인") { _, _ ->
                     viewModel.putGoalsCompletion(intentWeekGoalId)
+                    finish()
                 }
                 .setNegativeButton("취소") { _, _ ->
 
