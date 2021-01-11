@@ -34,10 +34,8 @@ class UserViewModel(private val repo: UserRepo): BaseViewModel() {
                     if(response.isSuccessful){
                         _signInEvent.postValue(Event(true))
                         FourMostPreference.setUserToken(response.body()?.data?.accessToken!!)
-                        Log.e(TAG, ""+response.body())
                     }else {
                         _toastMessage.postValue(Event("로그인에 실패하였습니다"))
-                        Log.e(TAG, ""+response.body())
                     }
                 }
                 override fun onFailure(call: Call<ResSignIn>, t: Throwable) {
@@ -55,7 +53,7 @@ class UserViewModel(private val repo: UserRepo): BaseViewModel() {
                     response: retrofit2.Response<ResSignUp>
                 ) {
                     if(response.isSuccessful){
-                        _signInEvent.postValue(Event(true))
+                        _signUpEvent.postValue(Event(true))
                     }else {
                         _toastMessage.postValue(Event("회원가입에 실패하였습니다"))
                     }
