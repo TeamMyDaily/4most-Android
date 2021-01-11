@@ -90,7 +90,20 @@ class GoalViewModel(private val repo: GoalRepo) : BaseViewModel() {
     }
 
     fun deleteGoal(goalId: Int) {
-//        repo.deleteGoal(goalId)
+        repo.deleteGoal(goalId)
+            .enqueue(object : Callback<Response>{
+                override fun onResponse(
+                    call: Call<Response>,
+                    response: retrofit2.Response<Response>
+                ) {
+                    if(response.isSuccessful){
+                        Log.i(TAG, response.body().toString())
+                    }
+                }
+                override fun onFailure(call: Call<Response>, t: Throwable) {
+                    Log.e(TAG, "deleteGoal", t)
+                }
+            })
     }
 
 

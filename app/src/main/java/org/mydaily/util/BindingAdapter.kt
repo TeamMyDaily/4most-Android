@@ -69,4 +69,25 @@ object BindingAdapter {
         textView.text = text
     }
 
+    @JvmStatic
+    @BindingAdapter("setAchievementButtonVisibility")
+    fun setAchievementButtonVisibility(textView: TextView, goal: ResGoalGet.Data.Keyword) {
+        if(goal.isGoalCompleted && goal.isGoalCreated){
+            textView.visibility = View.VISIBLE
+        }
+        else {
+            textView.visibility = View.GONE
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("setNotAchievementButtonVisibility")
+    fun setNotAchievementButtonVisibility(textView: TextView, goal: ResGoalGet.Data.Keyword) {
+        if(!goal.isGoalCompleted && goal.isGoalCreated){
+            textView.visibility = View.VISIBLE
+        }
+        else {
+            textView.visibility = View.GONE
+        }
+    }
 }
