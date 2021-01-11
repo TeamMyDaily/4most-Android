@@ -1,4 +1,4 @@
-package org.mydaily.ui.view.signin
+package org.mydaily.ui.view.user
 
 import android.content.Intent
 import android.text.method.HideReturnsTransformationMethod
@@ -11,7 +11,6 @@ import org.mydaily.data.local.FourMostPreference
 import org.mydaily.databinding.ActivitySignInBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.view.MainActivity
-import org.mydaily.ui.view.signup.SignUpTermsActivity
 import org.mydaily.ui.viewmodel.UserViewModel
 import org.mydaily.util.EventObserver
 import org.mydaily.util.LoginPatternCheckUtil

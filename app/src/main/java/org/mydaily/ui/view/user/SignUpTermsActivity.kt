@@ -1,4 +1,4 @@
-package org.mydaily.ui.view.signup
+package org.mydaily.ui.view.user
 
 import android.content.Intent
 import org.koin.androidx.viewmodel.ext.android.viewModel

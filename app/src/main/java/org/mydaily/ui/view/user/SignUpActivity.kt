@@ -1,4 +1,4 @@
-package org.mydaily.ui.view.signup
+package org.mydaily.ui.view.user
 
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
