@@ -34,13 +34,11 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
         binding.lifecycleOwner = this
         viewModel.getLifeWord()
         viewModel.getWorkWord()
-        viewModel.getMyWord()
     }
 
     override fun initAfterBinding() {
         observeLifeWordList()
         observeWorkWordList()
-        observeMyWordList()
     }
 
     private fun observeLifeWordList() {
@@ -51,12 +49,6 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
 
     private fun observeWorkWordList() {
         viewModel.workWordList.observe(this, {
-            keywordListForDuplicated.addAll(it)
-        })
-    }
-
-    private fun observeMyWordList() {
-        viewModel.myWordList.observe(this, {
             keywordListForDuplicated.addAll(it)
         })
     }
@@ -115,7 +107,7 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
 
     private fun keywordAdd() {
         binding.btnAdd.setOnClickListener {
-            viewModel.addMyWord(binding.etKeywordInput.text.toString())
+            intent.putExtra("MyWord", binding.etKeywordInput.text.toString())
             shortToast("키워드 추가 버튼 클릭됨")
             finish()
         }

@@ -14,12 +14,14 @@ import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.view.keyword.KeywordAddActivity
 import org.mydaily.ui.view.keyword.KeywordSelectActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
+import org.mydaily.util.extension.shortToast
 
 
 class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordViewModel>() {
 
     private var clickedChipCount: Int = 0
     private var myWordChipCount: Int = 0
+    private var addedMyWord = mutableListOf<String>()
     private var selectedLifeWord = mutableListOf<String>()
     private var selectedWorkWord = mutableListOf<String>()
     private var selectedMyWord = mutableListOf<String>()
@@ -38,11 +40,11 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     }
 
     private fun setSelectFinshButton() {
-        if(clickedChipCount > 8) {
+        if (clickedChipCount > 8) {
             binding.btnSelectFinish.isEnabled = false
 
             floatingDialog()
-        } else if(clickedChipCount == 8) {
+        } else if (clickedChipCount == 8) {
             binding.btnSelectFinish.isEnabled = true
         } else {
             binding.btnSelectFinish.isEnabled = false
@@ -108,13 +110,11 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
         binding.lifecycleOwner = this
         viewModel.getLifeWord()
         viewModel.getWorkWord()
-        viewModel.getMyWord()
     }
 
     override fun initAfterBinding() {
         observeLifeWordList()
         observeWorkWordList()
-        observeMyWordList()
     }
 
     private fun initToolbar() {
@@ -150,14 +150,12 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     }
 
     private fun observeMyWordList() {
-        viewModel.myWordList.observe(this, { list ->
-            for (str in list) {
-                binding.cgMyWord.addView(
-                    createChip(str),
-                    binding.cgMyWord.childCount - 1
-                )
-            }
-        })
+        for(str in addedMyWord) {
+            binding.cgMyWord.addView(
+                createChip(str),
+                binding.cgMyWord.childCount - 1
+            )
+        }
     }
 
     private fun createChip(str: String): Chip {
@@ -219,8 +217,6 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
             binding.btnSelectFinish.visibility = View.VISIBLE
         }
     }
-
-
 
     private fun onClickSelectFinishButton() {
         binding.btnSelectFinish.setOnClickListener {

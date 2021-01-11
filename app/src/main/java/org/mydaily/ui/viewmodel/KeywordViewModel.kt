@@ -42,18 +42,4 @@ class KeywordViewModel : BaseViewModel() {
         _workWordList.value = tempList
     }
 
-    //내가 추가한 단어
-    fun getMyWord() {
-
-    }
-
-    fun addMyWordToLiveData() {
-        //그냥 리스트를 라이브 데이터로 변환하는 방법 못찾겠따..
-        //그럼 그냥 mutablelivedata를 그냥 livedata에 넣어주면
-    }
-
-
-    fun addMyWord(keyword : String) {
-        _addMyWordList.add(keyword)
-    }
 }
