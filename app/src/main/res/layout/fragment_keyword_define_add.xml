@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.view.keyword.settings.KeywordDefineAddFragment">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_keyword_define_add"
+            android:layout_width="393dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_arrow_back">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/menu_keyword_define"
+                android:textColor="@color/mainBlack"
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/tv_keyword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="열정"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_marginTop="48dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tb_keyword_define_add" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이란?"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_keyword"
+            app:layout_constraintStart_toEndOf="@+id/tv_keyword"
+            app:layout_constraintTop_toTopOf="@+id/tv_keyword" />
+
+        <TextView
+            android:id="@+id/tv_what_for_me"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="나에게 무엇인가요?"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tv_keyword"
+            app:layout_constraintTop_toBottomOf="@+id/tv_keyword" />
+
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="키워드를 나만의 언어로 정의해보세요!"
+            android:textColor="@color/mainOrange"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/tv_what_for_me"
+            app:layout_constraintTop_toBottomOf="@+id/tv_what_for_me" />
+
+
+        <EditText
+            android:id="@+id/et_define"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:background="@drawable/selector_edittext_box"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="48dp"
+            android:maxLength="200"
+            android:padding="16dp"
+            android:textSize="15sp"
+            android:gravity="start"
+            android:hint="나만의 정의를 작성 해 주세요."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_info" />
+
+        <TextView
+            android:id="@+id/tv_define_byte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/silver"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_define_byte_info"
+            app:layout_constraintTop_toBottomOf="@+id/et_define" />
+
+        <TextView
+            android:id="@+id/tv_define_byte_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="/200자"
+            android:textColor="@color/mainOrange"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_define" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_set_priority"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            style="@style/MyDailyButtonStyle"
+            android:text="@string/msg_add_complete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
