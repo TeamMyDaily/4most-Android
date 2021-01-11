@@ -75,8 +75,8 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
         binding.tbKeywordAddActivity.setNavigationOnClickListener {
             finish()
         }
-
     }
+
     private fun keywordInput() {
         var sameKeyword : String
         binding.etKeywordInput.addTextChangedListener(object : TextWatcher {
