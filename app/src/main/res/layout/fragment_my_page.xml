@@ -12,10 +12,33 @@
         tools:context=".ui.view.mypage.MyPageFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_top">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tb_mypage"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="128dp"
+                android:background="@drawable/remind_tb_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tabTextAppearance="@style/CustomTabText" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_top"
             android:layout_width="match_parent"
-            android:layout_height="146dp"
-            android:background="@drawable/rectangle_fill_orange_radius_0_0_15_15"
+            android:layout_height="wrap_content"
+            android:background="@drawable/report_detail_goal_container_orange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -43,46 +66,28 @@
                 app:layout_constraintStart_toStartOf="@+id/tv_user"
                 app:layout_constraintTop_toBottomOf="@+id/tv_user" />
 
-            <TextView
-                android:id="@+id/tv_keyword_modify"
+            <ImageView
+                android:id="@+id/iv_character_icon"
                 android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="21dp"
-                android:background="@drawable/rectangle_white_radius_20"
-                android:gravity="center"
-                android:paddingHorizontal="12dp"
-                android:text="@string/modify_keyword"
-                android:textColor="@color/white"
-                android:textSize="16sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="81dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_user_info" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_4most_char" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/tv_my_keyword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:text="@string/my_current_keyword"
-            android:textColor="#aaa"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_top" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_my_keyword"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_mypage"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="20dp"
-            tools:listitem="@layout/item_my_page_keyword_list"
-            tools:itemCount="4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_my_keyword" />
+            app:layout_constraintTop_toBottomOf="@+id/cl_tab" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
