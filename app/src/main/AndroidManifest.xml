@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.mydaily">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MyDailyApplication"
@@ -12,9 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDaily">
+        <activity android:name=".ui.view.daily.detail.DailyAddActivity" />
         <activity
             android:name=".ui.view.keyword.settings.KeywordSettingsActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity android:name=".ui.view.goal.detail.GoalAddActivity" />
         <activity
             android:name=".ui.view.keyword.KeywordAddActivity"

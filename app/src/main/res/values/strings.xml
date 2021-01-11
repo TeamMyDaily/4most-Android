@@ -128,4 +128,10 @@
     <string name="msg_define_set_complete">정의 작성완료</string>
     <string name="msg_add_complete">작성완료</string>
     <string name="msg_write_your_definition">나만의 정의를 작성 해 주세요.</string>
+
+    <!--KeywordListFragment-->
+    <string name="priority_change">우선순위 변경 하기</string>
+    <string name="alarm_show">이곳에서 우선순위를 변경하게 되면 기록, 회고, 목표에서\n변경한 순서대로 보여지게 됩니다.</string>
+    <string name="priority_appoint">우선순위 지</string>
+    <string name="user_value">님이 추구하는 가치관이에요!</string>
 </resources>

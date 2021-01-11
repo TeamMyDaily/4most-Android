@@ -18,8 +18,6 @@ class KeywordPopupActivity : BaseActivity<ActivityKeywordPopupBinding, KeywordVi
     override val viewModel: KeywordViewModel by viewModel()
 
     private lateinit var viewpagerAdapter: KeywordPopupViewPagerAdapter
-    private var index: Int = 0
-
 
     override fun initView() {
         initBtnVisibility()
@@ -38,8 +36,7 @@ class KeywordPopupActivity : BaseActivity<ActivityKeywordPopupBinding, KeywordVi
 
     private fun tvPopupSkipClicked() {
         binding.tvPopupSkip.setOnClickListener {
-            index++
-            binding.vpKeywordPopup.currentItem = index
+            binding.vpKeywordPopup.currentItem = 2
         }
     }
 
