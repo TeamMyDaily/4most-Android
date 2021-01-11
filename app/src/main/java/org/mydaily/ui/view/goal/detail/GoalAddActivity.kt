@@ -51,7 +51,6 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
         setSupportActionBar(binding.tbGoalAdd)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         binding.tbGoalAdd.setNavigationOnClickListener {
-            //수정 시도했을때
             if (isGoalChanged) {
                 AlertDialog.Builder(this)
                     .setTitle("타이틀")
@@ -71,7 +70,6 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
                     .show()
 
             }
-            //수정 시도하지 않은 경우
             else {
                 finish()
             }
@@ -96,7 +94,6 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
             binding.btnAddSave.isEnabled = isGoalChanged && length > 0
         }
         binding.btnAddSave.setOnClickListener {
-            //추가 완료 후 메인으로 돌아감
             viewModel.postGoals(
                 intentStartDate,
                 intentTotalKeywordId.toString(),
@@ -116,7 +113,6 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
             binding.btnAddSave.isEnabled = isGoalChanged && length > 0
         }
         binding.btnAddSave.setOnClickListener {
-            //수정 완료 후 메인으로 돌아감
             viewModel.putGoals(
                 intentWeekGoalId,
                 binding.etGoal.text.toString()

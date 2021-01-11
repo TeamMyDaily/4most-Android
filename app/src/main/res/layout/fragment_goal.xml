@@ -4,12 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.view.View" />
+
         <variable
             name="temp"
             type="int" />
+
         <variable
             name="calendar"
             type="java.util.Calendar" />
+
+        <variable
+            name="isNotGoalExistThisWeek"
+            type="Boolean" />
+
+        <variable
+            name="isNotGoalExist"
+            type="Boolean" />
+
+
+        <variable
+            name="isGoalExist"
+            type="Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,8 +38,8 @@
             android:id="@+id/iv_arrow_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_light_arrow_left"
             android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_light_arrow_left"
             app:layout_constraintBottom_toBottomOf="@+id/iv_arrow_right"
             app:layout_constraintEnd_toStartOf="@+id/tv_date"
             app:layout_constraintTop_toTopOf="@+id/iv_arrow_right"
@@ -30,25 +47,25 @@
 
         <TextView
             android:id="@+id/tv_date"
+            setDateByCalendar="@{calendar}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            setDateByCalendar="@{calendar}"
+            android:layout_marginEnd="8dp"
             android:text="20년 12월 3주"
             android:textColor="#121212"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/iv_arrow_right"
             app:layout_constraintEnd_toStartOf="@+id/iv_arrow_right"
             app:layout_constraintTop_toTopOf="@+id/iv_arrow_right" />
 
 
-       <ImageView
+        <ImageView
             android:id="@+id/iv_arrow_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:src="@drawable/ic_light_arrow_right"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -58,23 +75,23 @@
             android:id="@+id/line"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#33C4C4C4"
             android:layout_marginHorizontal="16dp"
-            app:layout_constraintTop_toBottomOf="@id/iv_arrow_right"
+            android:background="#33C4C4C4"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/iv_arrow_right" />
 
         <TextView
             android:id="@+id/tv_alert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
             android:lineHeight="36dp"
             android:text="@string/msg_plz_set_goal_by_keyword"
             android:textColor="#121212"
             android:textSize="25sp"
             android:textStyle="bold"
-            android:layout_marginTop="14dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line" />
 
@@ -83,9 +100,10 @@
             layout="@layout/layout_goal_fragment_keyword_exist"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:visibility="@{isGoalExist ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_alert"
             app:temp="@{1}"/>
 
@@ -94,35 +112,37 @@
             layout="@layout/layout_goal_fragment_not_keyword"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:visibility="@{isNotGoalExist ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_alert"
-            android:visibility="gone"
-            app:temp="@{1}" />
+            app:temp="@{1}"
+            tools:visibility="gone" />
 
         <include
             android:id="@+id/layout_keyword_not_this_week"
             layout="@layout/layout_not_keyword_this_week"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:visibility="@{isNotGoalExistThisWeek ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_alert"
-            android:visibility="gone"
-            app:temp="@{1}"/>
+            app:temp="@{1}"
+            tools:visibility="gone" />
 
         <ImageView
             android:id="@+id/iv_this_week"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:visibility="gone"
             android:src="@drawable/ic_this_week"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

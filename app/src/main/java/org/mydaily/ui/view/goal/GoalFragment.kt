@@ -11,10 +11,12 @@ import org.mydaily.data.model.network.response.ResGoalGet
 import org.mydaily.databinding.FragmentGoalBinding
 import org.mydaily.ui.adapter.GoalReportAdapter
 import org.mydaily.ui.base.BaseFragment
+import org.mydaily.ui.view.daily.DailyFragment
 import org.mydaily.ui.view.goal.detail.GoalAddActivity
 import org.mydaily.ui.view.goal.detail.GoalDetailActivity
 import org.mydaily.ui.viewmodel.GoalViewModel
 import org.mydaily.util.CalendarUtil
+import org.mydaily.util.CalendarUtil.compareDateTo
 import org.mydaily.util.CalendarUtil.isWeekSame
 import org.mydaily.util.CalendarUtil.copyYMDFrom
 import java.util.*
@@ -27,16 +29,16 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
 
     private val goalReportAdapter = GoalReportAdapter()
 
-    private val nowCalendar = Calendar.getInstance()
+    private val nowCalendar = Calendar.getInstance(Locale.KOREA)
 
-    private var startCalendar: Calendar = Calendar.getInstance().apply {
+    private var startCalendar: Calendar = Calendar.getInstance(Locale.KOREA).apply {
         set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
         set(Calendar.HOUR, 0)
         set(Calendar.MINUTE, 0)
         set(Calendar.SECOND, 0)
         set(Calendar.MILLISECOND, 0)
     }
-    private var endCalendar = Calendar.getInstance().apply {
+    private var endCalendar = Calendar.getInstance(Locale.KOREA).apply {
         set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
         set(Calendar.HOUR, 0)
         set(Calendar.MINUTE, 0)
@@ -97,6 +99,7 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
                 binding.ivThisWeek.visibility = View.VISIBLE
             }
         }
+        viewModel.getGoals(startCalendar.timeInMillis, endCalendar.timeInMillis)
         Log.e("SEULGI", "start = ${startCalendar.timeInMillis} end = ${endCalendar.timeInMillis}")
     }
 
@@ -107,12 +110,10 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
             setHasFixedSize(true)
         }
         goalReportAdapter.setAddButtonClickListener {
-            //추가
             startGoalAddActivityWithAction("ADD", it)
         }
 
         goalReportAdapter.setGoalClickListener {
-            //상세 및 추가
             if (it.isGoalCreated) {
                 startGoalDetailActivity(it)
             } else {
@@ -123,7 +124,23 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
 
     private fun observeGoalData() {
         viewModel.goalList.observe(viewLifecycleOwner, {
-            goalReportAdapter.data = it
+            Log.e("SEULGI", "goalList = ${it.size}")
+            if(it.isNullOrEmpty()){
+                if (nowCalendar.isWeekSame(startCalendar)) {
+                    binding.isNotGoalExistThisWeek = true
+                    binding.isNotGoalExist = false
+                    binding.isGoalExist = false
+                } else {
+                    binding.isNotGoalExistThisWeek = false
+                    binding.isNotGoalExist = true
+                    binding.isGoalExist = false
+                }
+            }else {
+                binding.isNotGoalExistThisWeek = false
+                binding.isNotGoalExist = false
+                binding.isGoalExist = true
+                goalReportAdapter.data = it
+            }
         })
         viewModel.notSetGoalCount.observe(viewLifecycleOwner, {
             val text = "$it" + getString(R.string.msg_goal_has_not_been_set)
