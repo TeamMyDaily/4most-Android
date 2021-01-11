@@ -14,7 +14,7 @@
     <color name="mainGray">#C9C9C9</color>
     <color name="mainLightGray">#F2F2F2</color>
 
-    <color name="report_gray">#E5E5E5</color>
+    <color name="silver_gray">#E5E5E5</color>
 
     <color name="mainAlto">#E0E0E0</color>
     <color name = "daily_record_divider">#FFF1EE</color>
@@ -30,5 +30,7 @@
     <color name="cod_gray">#121212</color>
     <color name="pumpkin">#ff8022</color>
     <color name="carrot">#EC684A</color>
+    <color name="ashes">#F0F0F0</color>
+    <color name="darkGray">#C4C4C4</color>
 
 </resources>
