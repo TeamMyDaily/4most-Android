@@ -15,11 +15,6 @@ class KeywordViewModel : BaseViewModel() {
         get() = _workWordList
 
 
-    private val _myWordList = MutableLiveData<List<String>>()
-    val myWordList: LiveData<List<String>>
-        get() = _myWordList
-
-
     //삶을 대하는 자세
     fun getLifeWord() {
         /* 임시 데이터 */
@@ -33,14 +28,9 @@ class KeywordViewModel : BaseViewModel() {
     fun getWorkWord() {
         /* 임시 데이터 */
         val tempList = listOf(
-            "진정성", "용기", "열정", "꾸준함", "배움", "선한영향력", "아웃풋", "행복", "즐거움", "현명", "타당성", "정당성"
+            "친절함", "경청", "대충", "진실성", "존중", "신뢰", "의심", "신속성", "돈"
         )
         _workWordList.value = tempList
     }
 
-
-    //내가 추가한 단어
-    fun getMyWord() {
-
-    }
 }

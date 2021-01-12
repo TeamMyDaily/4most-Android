@@ -32,5 +32,7 @@
     <color name="carrot">#EC684A</color>
     <color name="ashes">#F0F0F0</color>
     <color name="darkGray">#C4C4C4</color>
+    <color name="royal_blue">#2F80ED</color>
+    <color name="burnt_sienna">#EA644B</color>
 
 </resources>
