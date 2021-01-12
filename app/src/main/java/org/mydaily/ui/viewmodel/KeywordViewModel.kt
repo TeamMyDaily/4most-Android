@@ -47,7 +47,6 @@ class KeywordViewModel(private val repo: KeywordRepo) : BaseViewModel() {
                     response: retrofit2.Response<ResKeywordSelect>
                 ) {
                     if (response.isSuccessful) {
-                        _toastMessage.postValue(Event("성공하였습니다"))
                         Log.d("KeywordList: ", response.body().toString())
                     } else {
                         _toastMessage.postValue(Event("응답 실패"))
