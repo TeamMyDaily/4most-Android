@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.signup.SignUpActivity">
+        tools:context=".ui.view.user.SignUpActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_sign_up_terms"

@@ -1,4 +1,4 @@
-package org.mydaily.ui.view.signin
+package org.mydaily.ui.view.user
 
 import android.content.Intent
 import android.text.method.HideReturnsTransformationMethod
@@ -7,19 +7,21 @@ import android.view.View
 import androidx.core.widget.addTextChangedListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
+import org.mydaily.data.local.FourMostPreference
 import org.mydaily.databinding.ActivitySignInBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.view.MainActivity
-import org.mydaily.ui.view.signup.SignUpTermsActivity
-import org.mydaily.ui.viewmodel.SignInViewModel
+import org.mydaily.ui.viewmodel.UserViewModel
+import org.mydaily.util.EventObserver
 import org.mydaily.util.LoginPatternCheckUtil
+import org.mydaily.util.extension.setupToast
 import org.mydaily.util.extension.shortToast
 
-class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
+class SignInActivity : BaseActivity<ActivitySignInBinding, UserViewModel>() {
 
     override val layoutResourceId: Int
         get() = R.layout.activity_sign_in
-    override val viewModel: SignInViewModel by viewModel()
+    override val viewModel: UserViewModel by viewModel()
     private var passwordIsVisible = true
     private var isValidPassword = false
     private var isValidEmail = false
@@ -29,6 +31,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
         visibleButtonChange()
         etColorChange()
         emailAndPasswordValid()
+        setupToast(this, viewModel.toastMessage)
     }
 
     override fun initBeforeBinding() {
@@ -36,20 +39,27 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
     }
 
     override fun initAfterBinding() {
+        observeSignInResult()
+    }
 
+    override fun onStart() {
+        super.onStart()
+        if(FourMostPreference.getAutoLogin() && FourMostPreference.getUserToken() != ""){
+            //startMainActivity()
+        }
     }
 
     private fun initClickEvent() {
         binding.ibAutoLogin.isSelected = true
         binding.ibAutoLogin.setOnClickListener {
             it.isSelected = !it.isSelected
-            //shortToast("자동로그인 버튼 클릭" + it.isSelected)
+            FourMostPreference.setAutoLogin(it.isSelected)
         }
         binding.tvFindId.setOnClickListener {
-            //shortToast("아이디찾기 버튼 클릭")
+            shortToast("서비스 준비중입니다")
         }
         binding.tvFindPassword.setOnClickListener {
-            //shortToast("비번찾기 버튼 클릭")
+            shortToast("서비스 준비중입니다")
         }
         binding.tvSignUp.setOnClickListener {
             binding.tvSignUp.setOnClickListener {
@@ -57,11 +67,10 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
             }
         }
         binding.btnSignIn.setOnClickListener {
-            val email = binding.etEmail.toString()
-            val password = binding.etPassword.toString()
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
             if (isValidEmail && isValidPassword) {
-                viewModel.signIn(email, password)
-                startActivity(Intent(this, MainActivity::class.java))
+                viewModel.postSignIn(email, password)
             }else {
                 shortToast(R.string.msg_sign_in_error)
             }
@@ -121,5 +130,19 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
                 }
             }
         }
+    }
+
+    private fun observeSignInResult() {
+        viewModel.signInEvent.observe(this, EventObserver{ success->
+            if(success){
+                startMainActivity()
+            }
+        })
+    }
+
+    private fun startMainActivity() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+
     }
 }

@@ -10,7 +10,7 @@ val viewModelModule = module {
     viewModel { RemindViewModel() }
     viewModel { MyPageViewModel() }
     viewModel { ReportViewModel() }
-    viewModel { SignInViewModel(get()) }
+    viewModel { UserViewModel(get()) }
     viewModel { GoalViewModel(get()) }
     viewModel { KeywordViewModel() }
 }
