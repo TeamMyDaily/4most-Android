@@ -21,7 +21,7 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
     private val addedMyWord = arrayListOf<String>()
 
     override fun initView() {
-        initToolbar()
+        initToolbar() //TODO -> 뒤로가는 툴바 버튼 눌렀을 때 오류!
         keywordInput()
         keywordAdd()
         getMyWordList()
