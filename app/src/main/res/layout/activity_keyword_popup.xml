@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.keyword.detail.KeywordPopupActivity">
+        tools:context=".ui.view.keyword.popup.KeywordPopupActivity">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tl_keyword_popup"

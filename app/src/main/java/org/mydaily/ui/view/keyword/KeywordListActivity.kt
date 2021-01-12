@@ -1,4 +1,4 @@
-package org.mydaily.ui.view.keyword.detail
+package org.mydaily.ui.view.keyword
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -11,8 +11,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordListBinding
 import org.mydaily.ui.base.BaseActivity
-import org.mydaily.ui.view.keyword.KeywordAddActivity
-import org.mydaily.ui.view.keyword.KeywordSelectActivity
+import org.mydaily.ui.view.keyword.popup.KeywordPopupActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
 import org.mydaily.util.extension.shortToast
 

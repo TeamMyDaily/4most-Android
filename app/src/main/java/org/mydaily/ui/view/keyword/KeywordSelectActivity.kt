@@ -10,7 +10,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordSelectBinding
 import org.mydaily.ui.base.BaseActivity
-import org.mydaily.ui.view.keyword.detail.KeywordPopupActivity
+import org.mydaily.ui.view.keyword.popup.KeywordPopupActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
 
 class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, KeywordViewModel>() {

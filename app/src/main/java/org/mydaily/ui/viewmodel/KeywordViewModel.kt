@@ -2,9 +2,10 @@ package org.mydaily.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import org.mydaily.data.repository.KeywordRepo
 import org.mydaily.ui.base.BaseViewModel
 
-class KeywordViewModel : BaseViewModel() {
+class KeywordViewModel(private val repo : KeywordRepo) : BaseViewModel() {
 
     private val _lifeWordList = MutableLiveData<List<String>>()
     val lifeWordList: LiveData<List<String>>
