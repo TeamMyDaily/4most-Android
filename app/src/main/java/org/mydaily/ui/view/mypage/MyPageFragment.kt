@@ -7,8 +7,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
+import org.mydaily.data.local.FourMostPreference
 import org.mydaily.databinding.FragmentMyPageBinding
-import org.mydaily.ui.adapter.MyPageViewPagerAdapter
+import org.mydaily.ui.adapter.ViewPagerAdapter
 import org.mydaily.ui.base.BaseFragment
 import org.mydaily.ui.viewmodel.UserViewModel
 import org.mydaily.util.extension.shortToast
@@ -21,42 +22,16 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, UserViewModel>() {
 
     override fun initView() {
         setHasOptionsMenu(true)
-        initRecyclerView()
-        initClickListener()
-        createViewPager()
+        initViewPager()
+        binding.tvUser.text = FourMostPreference.getUserName() + getString(R.string.of_user)
     }
 
     override fun initBeforeBinding() {
-        binding.lifecycleOwner = viewLifecycleOwner
-        //viewModel.getKeywordData()
-        //viewModel.getUser()
+
     }
 
     override fun initAfterBinding() {
-        observeKeywordData()
-    }
 
-    private fun initRecyclerView() {
-        /*binding.rvMyKeyword.apply {
-            adapter = myPageKeywordAdapter
-            layoutManager = LinearLayoutManager(context)
-            setHasFixedSize(true)
-        }*/
-    }
-
-    private fun initClickListener() {
-        /*binding.tvKeywordModify.setOnClickListener {
-            requireContext().shortToast("키워드 수정버튼 클릭됨")
-        }
-        myPageKeywordAdapter.setClickListener {
-            requireContext().shortToast("$it 클릭됨")
-        }*/
-    }
-
-    private fun observeKeywordData() {
-        //viewModel.keywordList.observe(viewLifecycleOwner, {
-            //myPageKeywordAdapter.data = it
-        //})
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -73,16 +48,15 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, UserViewModel>() {
         }
     }
 
-    fun createViewPager() {
-        var tab_label = listOf("기록키워드", "키워드 목록")
-        var fragmentList = listOf(RecordKeywordFragment(), KeywordListFragment())
-        val myPageKeywordAdapter = MyPageViewPagerAdapter(this)
-        myPageKeywordAdapter.fragmentList = fragmentList
+    private fun initViewPager() {
+        val tabLabel = listOf("기록키워드", "키워드 목록")
+        val myPageKeywordAdapter = ViewPagerAdapter(this)
+        myPageKeywordAdapter.fragmentList = listOf(MyPageCurrentKeywordFragment(), MyPageKeywordListFragment())
 
         binding.vpMypage.adapter = myPageKeywordAdapter
 
         TabLayoutMediator(binding.tbMypage, binding.vpMypage){tab, position->
-            tab.text = tab_label[position]
+            tab.text = tabLabel[position]
         }.attach()
 
         binding.vpMypage.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {

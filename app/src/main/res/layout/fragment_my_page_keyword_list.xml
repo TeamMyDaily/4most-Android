@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.mypage.KeywordListFragment">
+        tools:context=".ui.view.mypage.MyPageKeywordListFragment">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -23,7 +23,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:context=".ui.view.mypage.KeywordListFragment">
+                tools:context=".ui.view.mypage.MyPageKeywordListFragment">
 
                 <TextView
                     android:id="@+id/tv_name"
@@ -54,13 +54,13 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_values"
-                    tools:itemCount="4"
+                    tools:itemCount="6"
                     tools:listitem="@layout/item_my_page_keyword_list" />
 
                 <ImageButton
                     android:id="@+id/ib_plus_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="40dp"
                     android:background="@drawable/ic_plus"
                     app:layout_constraintEnd_toEndOf="parent"
