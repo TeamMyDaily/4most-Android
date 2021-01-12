@@ -12,18 +12,18 @@ import org.mydaily.data.local.FourMostPreference
 import org.mydaily.databinding.FragmentDailyBinding
 import org.mydaily.ui.adapter.DailyExpandableAdapter
 import org.mydaily.ui.base.BaseFragment
-import org.mydaily.ui.view.daily.detail.DailyAddActivity
-import org.mydaily.ui.view.daily.detail.DailyDetailActivity
-import org.mydaily.ui.viewmodel.DailyViewModel
+import org.mydaily.ui.view.daily.detail.TaskAddActivity
+import org.mydaily.ui.view.daily.detail.TaskDetailActivity
+import org.mydaily.ui.viewmodel.TaskViewModel
 import org.mydaily.util.CalendarUtil
 import org.mydaily.util.CalendarUtil.compareDateTo
 import java.util.*
 
 
-class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
+class TaskFragment : BaseFragment<FragmentDailyBinding, TaskViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_daily
-    override val viewModel: DailyViewModel by viewModel()
+    override val viewModel: TaskViewModel by viewModel()
 
     private val dailyExpandableAdapter = DailyExpandableAdapter()
 
@@ -57,7 +57,7 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
     private fun initTaskRecyclerView() {
         dailyExpandableAdapter.setAddButtonListener { id, name->
             requireContext().apply {
-                val intent = Intent(this, DailyAddActivity::class.java).apply {
+                val intent = Intent(this, TaskAddActivity::class.java).apply {
                     putExtra("keywordId",id)
                     putExtra("keywordName",name)
                 }
@@ -66,7 +66,7 @@ class DailyFragment : BaseFragment<FragmentDailyBinding, DailyViewModel>() {
         }
         dailyExpandableAdapter.setTaskClickListener { id, name->
             requireContext().apply {
-                val intent = Intent(this, DailyDetailActivity::class.java).apply {
+                val intent = Intent(this, TaskDetailActivity::class.java).apply {
                     putExtra("taskId",id)
                     putExtra("keywordName",name)
                 }

@@ -5,7 +5,7 @@ import org.koin.dsl.module
 import org.mydaily.ui.viewmodel.*
 
 val viewModelModule = module {
-    viewModel { DailyViewModel(get()) }
+    viewModel { TaskViewModel(get()) }
     viewModel { RemindViewModel() }
     viewModel { ReportViewModel() }
     viewModel { UserViewModel(get()) }

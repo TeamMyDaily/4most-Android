@@ -8,7 +8,7 @@ import org.mydaily.R
 import org.mydaily.databinding.ActivityMainBinding
 import org.mydaily.util.extension.replace
 import org.mydaily.ui.base.BaseActivity
-import org.mydaily.ui.view.daily.DailyFragment
+import org.mydaily.ui.view.daily.TaskFragment
 import org.mydaily.ui.view.goal.GoalFragment
 import org.mydaily.ui.view.mypage.MyPageFragment
 import org.mydaily.ui.view.remind.RemindFragment
@@ -20,7 +20,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, UserViewModel>() {
         get() = R.layout.activity_main
     override val viewModel: UserViewModel by viewModel()
 
-    private val dailyFragment: DailyFragment by lazy { DailyFragment() }
+    private val dailyFragment: TaskFragment by lazy { TaskFragment() }
     private val remindFragment: RemindFragment by lazy { RemindFragment() }
     private val myFragment: MyPageFragment by lazy { MyPageFragment() }
     private val goalFragment: GoalFragment by lazy { GoalFragment() }

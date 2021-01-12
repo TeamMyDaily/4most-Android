@@ -1,22 +1,20 @@
 package org.mydaily.ui.view.daily.detail
 
 import android.app.AlertDialog
-import android.content.Intent
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.core.widget.addTextChangedListener
 import com.xw.repo.BubbleSeekBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityDailyAddBinding
 import org.mydaily.ui.base.BaseActivity
-import org.mydaily.ui.viewmodel.DailyViewModel
+import org.mydaily.ui.viewmodel.TaskViewModel
 
-class DailyAddActivity : BaseActivity<ActivityDailyAddBinding, DailyViewModel>() {
+class TaskAddActivity : BaseActivity<ActivityDailyAddBinding, TaskViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_daily_add
-    override val viewModel: DailyViewModel by viewModel()
+    override val viewModel: TaskViewModel by viewModel()
 
     private var isTitleEntered = false
     private var isDescriptionEntered = false

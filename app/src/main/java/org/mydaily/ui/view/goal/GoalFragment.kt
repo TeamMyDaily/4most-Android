@@ -11,12 +11,10 @@ import org.mydaily.data.model.network.response.ResGoalGet
 import org.mydaily.databinding.FragmentGoalBinding
 import org.mydaily.ui.adapter.GoalReportAdapter
 import org.mydaily.ui.base.BaseFragment
-import org.mydaily.ui.view.daily.DailyFragment
 import org.mydaily.ui.view.goal.detail.GoalAddActivity
 import org.mydaily.ui.view.goal.detail.GoalDetailActivity
 import org.mydaily.ui.viewmodel.GoalViewModel
 import org.mydaily.util.CalendarUtil
-import org.mydaily.util.CalendarUtil.compareDateTo
 import org.mydaily.util.CalendarUtil.isWeekSame
 import org.mydaily.util.CalendarUtil.copyYMDFrom
 import java.util.*
