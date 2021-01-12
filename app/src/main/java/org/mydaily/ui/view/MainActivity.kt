@@ -12,13 +12,13 @@ import org.mydaily.ui.view.daily.DailyFragment
 import org.mydaily.ui.view.goal.GoalFragment
 import org.mydaily.ui.view.mypage.MyPageFragment
 import org.mydaily.ui.view.remind.RemindFragment
-import org.mydaily.ui.viewmodel.MainViewModel
+import org.mydaily.ui.viewmodel.UserViewModel
 
-class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
+class MainActivity : BaseActivity<ActivityMainBinding, UserViewModel>() {
 
     override val layoutResourceId: Int
         get() = R.layout.activity_main
-    override val viewModel: MainViewModel by viewModel()
+    override val viewModel: UserViewModel by viewModel()
 
     private val dailyFragment: DailyFragment by lazy { DailyFragment() }
     private val remindFragment: RemindFragment by lazy { RemindFragment() }

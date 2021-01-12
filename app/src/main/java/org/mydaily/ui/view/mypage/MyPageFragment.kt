@@ -10,13 +10,13 @@ import org.mydaily.R
 import org.mydaily.databinding.FragmentMyPageBinding
 import org.mydaily.ui.adapter.MyPageViewPagerAdapter
 import org.mydaily.ui.base.BaseFragment
-import org.mydaily.ui.viewmodel.MyPageViewModel
+import org.mydaily.ui.viewmodel.UserViewModel
 import org.mydaily.util.extension.shortToast
 
-class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
+class MyPageFragment : BaseFragment<FragmentMyPageBinding, UserViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_my_page
-    override val viewModel: MyPageViewModel by viewModel()
+    override val viewModel: UserViewModel by viewModel()
 
 
     override fun initView() {
@@ -28,13 +28,12 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
 
     override fun initBeforeBinding() {
         binding.lifecycleOwner = viewLifecycleOwner
-        viewModel.getKeywordData()
-        viewModel.getUser()
+        //viewModel.getKeywordData()
+        //viewModel.getUser()
     }
 
     override fun initAfterBinding() {
         observeKeywordData()
-        observeUserName()
     }
 
     private fun initRecyclerView() {
@@ -58,12 +57,6 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
         //viewModel.keywordList.observe(viewLifecycleOwner, {
             //myPageKeywordAdapter.data = it
         //})
-    }
-
-    private fun observeUserName() {
-        viewModel.userName.observe(viewLifecycleOwner, {
-            binding.tvUser.text = it + getString(R.string.of_user)
-        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
