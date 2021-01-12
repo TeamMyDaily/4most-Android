@@ -11,7 +11,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyDaily">
+        android:theme="@style/Theme.MyDaily"
+        android:usesCleartextTraffic="true">
         <activity android:name=".ui.view.daily.detail.DailyAddActivity" />
         <activity
             android:name=".ui.view.keyword.settings.KeywordSettingsActivity"
