@@ -28,4 +28,7 @@ object CalendarUtil {
                 && get(Calendar.MONTH) == c1.get(Calendar.MONTH)
                 && get(Calendar.WEEK_OF_MONTH) == c1.get(Calendar.WEEK_OF_MONTH)
     }
+    fun Calendar.copyYMDFrom(c1: Calendar) {
+        set(c1.get(Calendar.YEAR), c1.get(Calendar.MONTH), c1.get(Calendar.DATE))
+    }
 }

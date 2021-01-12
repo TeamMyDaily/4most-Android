@@ -1,34 +1,36 @@
 package org.mydaily.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import org.mydaily.data.model.domain.Goal
+import org.mydaily.data.model.network.response.ResGoalGet
 import org.mydaily.databinding.ItemKeywordGoalBinding
 
 class GoalReportAdapter: RecyclerView.Adapter<GoalReportAdapter.ViewHolder>() {
 
-    private val _data = mutableListOf<Goal>()
-    var data : List<Goal> = _data
+    private val _data = mutableListOf<ResGoalGet.Data.Result.Keyword>()
+    var data : List<ResGoalGet.Data.Result.Keyword> = _data
         set(value) {
             _data.clear()
             _data.addAll(value)
             notifyDataSetChanged()
         }
 
-    private var addButtonClickListener: ((Goal)-> Unit) ?= null
-    private var goalClickListener: ((Goal)-> Unit) ?= null
+    private var addButtonClickListener: ((ResGoalGet.Data.Result.Keyword)-> Unit) ?= null
+    private var goalClickListener: ((ResGoalGet.Data.Result.Keyword)-> Unit) ?= null
 
-    fun setAddButtonClickListener(listener : (Goal)-> Unit) {
+    fun setAddButtonClickListener(listener : (ResGoalGet.Data.Result.Keyword)-> Unit) {
         this.addButtonClickListener = listener
     }
 
-    fun setGoalClickListener(listener : (Goal)-> Unit) {
+    fun setGoalClickListener(listener : (ResGoalGet.Data.Result.Keyword)-> Unit) {
         this.goalClickListener = listener
     }
 
     inner class ViewHolder(private val binding: ItemKeywordGoalBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(goal: Goal) {
+        fun bind(goal: ResGoalGet.Data.Result.Keyword) {
+            Log.e("GOalReportAdapter", ""+goal)
             binding.goal = goal
 
             binding.tvAddBtn.setOnClickListener {

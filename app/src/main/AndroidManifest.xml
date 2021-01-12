@@ -17,7 +17,9 @@
         <activity
             android:name=".ui.view.keyword.settings.KeywordSettingsActivity"
             android:exported="true" />
-        <activity android:name=".ui.view.goal.detail.GoalAddActivity" />
+        <activity
+            android:name=".ui.view.goal.detail.GoalAddActivity"
+            android:windowSoftInputMode="adjustResize"  />
         <activity
             android:name=".ui.view.keyword.KeywordAddActivity"
             android:windowSoftInputMode="adjustPan" />
