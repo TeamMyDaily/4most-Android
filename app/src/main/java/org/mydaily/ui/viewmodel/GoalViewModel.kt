@@ -19,8 +19,8 @@ class GoalViewModel(private val repo: GoalRepo) : BaseViewModel() {
     val notSetGoalCount: LiveData<Int>
         get() = _notSetGoalCount
 
-    private val _goalList = MutableLiveData<List<ResGoalGet.Data.Keyword>>()
-    val goalList: LiveData<List<ResGoalGet.Data.Keyword>>
+    private val _goalList = MutableLiveData<List<ResGoalGet.Data.Result.Keyword>>()
+    val goalList: LiveData<List<ResGoalGet.Data.Result.Keyword>>
         get() = _goalList
 
     fun getGoals(start: Long, end: Long) {
@@ -30,8 +30,8 @@ class GoalViewModel(private val repo: GoalRepo) : BaseViewModel() {
                 response: retrofit2.Response<ResGoalGet>
             ) {
                 if (response.isSuccessful) {
-                    _goalList.postValue(response.body()?.data?.keywords)
-                    _notSetGoalCount.postValue(response.body()?.data?.notSetGoalCount)
+                    _goalList.postValue(response.body()?.data?.result?.keywords)
+                    _notSetGoalCount.postValue(response.body()?.data?.result?.notSetGoalCount)
                 }
             }
 

@@ -55,7 +55,7 @@ object BindingAdapter {
 
     @JvmStatic
     @BindingAdapter("setGoalWithGoal")
-    fun setGoalWithGoal(textView: TextView, goal: ResGoalGet.Data.Keyword) {
+    fun setGoalWithGoal(textView: TextView, goal: ResGoalGet.Data.Result.Keyword) {
         val color: Int
         val text: String
         if (goal.isGoalCreated) {
@@ -71,7 +71,7 @@ object BindingAdapter {
 
     @JvmStatic
     @BindingAdapter("setAchievementButtonVisibility")
-    fun setAchievementButtonVisibility(textView: TextView, goal: ResGoalGet.Data.Keyword) {
+    fun setAchievementButtonVisibility(textView: TextView, goal: ResGoalGet.Data.Result.Keyword) {
         if(goal.isGoalCompleted && goal.isGoalCreated){
             textView.visibility = View.VISIBLE
         }
@@ -82,7 +82,7 @@ object BindingAdapter {
 
     @JvmStatic
     @BindingAdapter("setNotAchievementButtonVisibility")
-    fun setNotAchievementButtonVisibility(textView: TextView, goal: ResGoalGet.Data.Keyword) {
+    fun setNotAchievementButtonVisibility(textView: TextView, goal: ResGoalGet.Data.Result.Keyword) {
         if(!goal.isGoalCompleted && goal.isGoalCreated){
             textView.visibility = View.VISIBLE
         }

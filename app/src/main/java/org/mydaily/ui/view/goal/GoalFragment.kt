@@ -124,7 +124,7 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
 
     private fun observeGoalData() {
         viewModel.goalList.observe(viewLifecycleOwner, {
-            Log.e("SEULGI", "goalList = ${it.size}")
+            Log.e("SEULGI", "goalList = ${it?.size}")
             if(it.isNullOrEmpty()){
                 if (nowCalendar.isWeekSame(startCalendar)) {
                     binding.isNotGoalExistThisWeek = true
@@ -148,7 +148,7 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
         })
     }
 
-    private fun startGoalDetailActivity(goal: ResGoalGet.Data.Keyword) {
+    private fun startGoalDetailActivity(goal: ResGoalGet.Data.Result.Keyword) {
         val intent: Intent = Intent(requireContext(), GoalDetailActivity::class.java).apply {
             putExtra("keyword", goal.name)
             putExtra("weekGoal", goal.weekGoal)
@@ -159,7 +159,7 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
         startActivity(intent)
     }
 
-    private fun startGoalAddActivityWithAction(action: String, goal: ResGoalGet.Data.Keyword) {
+    private fun startGoalAddActivityWithAction(action: String, goal: ResGoalGet.Data.Result.Keyword) {
         val intent: Intent = Intent(requireContext(), GoalAddActivity::class.java).apply {
             this.action = action
             putExtra("keyword", goal.name)

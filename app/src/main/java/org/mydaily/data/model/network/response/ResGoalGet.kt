@@ -5,37 +5,44 @@ import com.google.gson.annotations.SerializedName
 
 data class ResGoalGet(
     @SerializedName("status")
-    val status: Int,
+    var status: Int,
     @SerializedName("success")
-    val success: Boolean,
+    var success: Boolean,
     @SerializedName("message")
-    val message: String,
+    var message: String,
     @SerializedName("data")
-    val `data`: Data
+    var `data`: Data
 ) {
     data class Data(
-        @SerializedName("notSetGoalCount")
-        val notSetGoalCount: Int,
-        @SerializedName("count")
-        val count: Int,
-        @SerializedName("keywords")
-        val keywords: List<Keyword>
+        @SerializedName("keywordsExist")
+        var keywordsExist: Boolean,
+        @SerializedName("result")
+        var result: Result
     ) {
-        data class Keyword(
-            @SerializedName("totalKeywordId")
-            val totalKeywordId: Int,
-            @SerializedName("priority")
-            val priority: Int,
-            @SerializedName("name")
-            val name: String,
-            @SerializedName("isGoalCreated")
-            val isGoalCreated: Boolean,
-            @SerializedName("weekGoalId")
-            val weekGoalId: Int,
-            @SerializedName("weekGoal")
-            val weekGoal: String,
-            @SerializedName("isGoalCompleted")
-            val isGoalCompleted: Boolean
-        )
+        data class Result(
+            @SerializedName("notSetGoalCount")
+            var notSetGoalCount: Int,
+            @SerializedName("count")
+            var count: Int,
+            @SerializedName("keywords")
+            var keywords: List<Keyword>
+        ) {
+            data class Keyword(
+                @SerializedName("totalKeywordId")
+                var totalKeywordId: Int,
+                @SerializedName("priority")
+                var priority: Int,
+                @SerializedName("name")
+                var name: String,
+                @SerializedName("isGoalCreated")
+                var isGoalCreated: Boolean,
+                @SerializedName("weekGoalId")
+                var weekGoalId: Int,
+                @SerializedName("weekGoal")
+                var weekGoal: String,
+                @SerializedName("isGoalCompleted")
+                var isGoalCompleted: Boolean
+            )
+        }
     }
 }
