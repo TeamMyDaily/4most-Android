@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import org.mydaily.data.model.network.response.ResGoalGet
+import org.mydaily.data.model.network.response.ResKeywordListGet
 import org.mydaily.data.model.network.response.ResTaskKeywordGet
 import org.mydaily.data.repository.KeywordRepo
 import org.mydaily.ui.base.BaseViewModel
@@ -25,6 +26,10 @@ class KeywordViewModel(private val repo : KeywordRepo) : BaseViewModel() {
     private val _taskKeywordList = MutableLiveData<List<String>>()
     val taskKeywordList: LiveData<List<String>>
         get() = _taskKeywordList
+
+    private val _keywordList = MutableLiveData<List<ResKeywordListGet.Data>>()
+    val keywordList: LiveData<List<ResKeywordListGet.Data>>
+        get() = _keywordList
 
     //삶을 대하는 자세
     fun getLifeWord() {
@@ -56,7 +61,6 @@ class KeywordViewModel(private val repo : KeywordRepo) : BaseViewModel() {
                         _taskKeywordList.postValue(response.body()?.data?.keywords)
                         Log.e(TAG, response.body().toString())
                     }
-
                 }
 
                 override fun onFailure(call: Call<ResTaskKeywordGet>, t: Throwable) {
@@ -65,6 +69,24 @@ class KeywordViewModel(private val repo : KeywordRepo) : BaseViewModel() {
             })
     }
 
+    fun getKeywordList(){
+        repo.getKeywordList().enqueue(object : Callback<ResKeywordListGet>{
+            override fun onResponse(
+                call: Call<ResKeywordListGet>,
+                response: Response<ResKeywordListGet>
+            ) {
+                if (response.isSuccessful) {
+                    _keywordList.postValue(response.body()?.data)
+                    Log.e(TAG, response.body().toString())
+                }
+            }
+
+            override fun onFailure(call: Call<ResKeywordListGet>, t: Throwable) {
+                Log.e(TAG, "getKeywordList", t)
+            }
+
+        })
+    }
     companion object{
         private val TAG = KeywordViewModel::class.java.simpleName
     }
