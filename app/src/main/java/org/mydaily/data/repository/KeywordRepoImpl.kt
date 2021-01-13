@@ -24,4 +24,6 @@ class KeywordRepoImpl(private val remoteDataSource: KeywordRemoteDataSource) : K
     override fun getTaskKeyword(): Call<ResTaskKeywordGet>  = remoteDataSource.getTaskKeyword()
 
     override fun getKeywordList(): Call<ResKeywordListGet>  = remoteDataSource.getKeywordList()
+    override fun getKeywordDefinition(totalKeywordId: Int): Call<ResKeywordDefinitionGet>  =
+        remoteDataSource.getKeywordDefinition(totalKeywordId)
 }

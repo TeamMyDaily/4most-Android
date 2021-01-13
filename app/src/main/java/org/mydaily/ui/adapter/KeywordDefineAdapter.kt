@@ -4,32 +4,33 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.mydaily.data.model.domain.KeywordPriority
+import org.mydaily.data.model.network.response.ResTaskKeywordGet
 import org.mydaily.databinding.ItemKeywordDefineBinding
 
 
 class KeywordDefineAdapter: RecyclerView.Adapter<KeywordDefineAdapter.ViewHolder>() {
 
-    private val _data = mutableListOf<KeywordPriority>()
-    var data: List<KeywordPriority> = _data
+    private val _data = mutableListOf<ResTaskKeywordGet.Data.Keyword>()
+    var data: List<ResTaskKeywordGet.Data.Keyword> = _data
         set(value) {
             _data.clear()
             _data.addAll(value)
             notifyDataSetChanged()
         }
 
-    private var listener: ((String)-> Unit) ?= null
+    private var listener: ((Int, String)-> Unit) ?= null
 
-    fun setClickListener(listener : (String)-> Unit) {
+    fun setClickListener(listener : ((Int, String)-> Unit)) {
         this.listener = listener
     }
 
     inner class ViewHolder(private val binding: ItemKeywordDefineBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(keywordPriority: KeywordPriority, position: Int) {
+        fun bind(keyword: ResTaskKeywordGet.Data.Keyword, position: Int) {
             binding.number = "0" + (position + 1)
-            binding.keyword = keywordPriority.name
+            binding.keyword = keyword.name
             binding.clParent.setOnClickListener {
-                listener?.invoke(keywordPriority.name)
+                listener?.invoke(keyword.totalKeywordId, keyword.name)
             }
         }
     }

@@ -12,4 +12,5 @@ interface KeywordRepo {
     fun postKeywordPriority(body: ReqKeywordPriority): Call<Response>
     fun getTaskKeyword(): Call<ResTaskKeywordGet>
     fun getKeywordList(): Call<ResKeywordListGet>
+    fun getKeywordDefinition(totalKeywordId: Int): Call<ResKeywordDefinitionGet>
 }

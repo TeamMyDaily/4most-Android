@@ -54,4 +54,10 @@ interface KeywordService {
     @Headers("Content-Type: application/json")
     fun getKeywordList(): Call<ResKeywordListGet>
 
+    //GET	마이페이지 키워드정의
+    @GET("/keywords/definition")
+    @Headers("Content-Type: application/json")
+    fun getKeywordDefinition(
+        @Query("totalKeywordId") totalKeywordId: Int
+    ): Call<ResKeywordDefinitionGet>
 }
