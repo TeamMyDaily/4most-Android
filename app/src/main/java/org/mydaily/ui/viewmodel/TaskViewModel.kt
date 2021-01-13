@@ -14,7 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DailyViewModel(private val repo: TaskRepo) : BaseViewModel() {
+class TaskViewModel(private val repo: TaskRepo) : BaseViewModel() {
 
     private val _taskList = MutableLiveData<List<ResTaskGet.Data.Result>>()
     val taskList: LiveData<List<ResTaskGet.Data.Result>>
@@ -104,6 +104,6 @@ class DailyViewModel(private val repo: TaskRepo) : BaseViewModel() {
     }
 
     companion object{
-        private val TAG = DailyViewModel::class.java.simpleName
+        private val TAG = TaskViewModel::class.java.simpleName
     }
 }

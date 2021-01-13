@@ -9,7 +9,7 @@ import org.mydaily.data.remote.datasource.GoalRemoteDataSource
 import retrofit2.Call
 
 class GoalRepoImpl(private val remoteDataSource: GoalRemoteDataSource) : GoalRepo {
-    override fun getGoals(start: String, end: String): Call<ResGoalGet> =
+    override fun getGoals(start: Long, end: Long): Call<ResGoalGet> =
         remoteDataSource.getGoals(start, end)
 
     override fun postGoals(body: ReqGoalPost): Call<ResGoalPost> =

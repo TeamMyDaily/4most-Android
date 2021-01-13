@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.daily.detail.DailyDetailActivity">
+        tools:context=".ui.view.daily.detail.TaskDetailActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_daily_detail"

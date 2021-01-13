@@ -13,8 +13,8 @@ interface GoalService {
     @GET("/goals")
     @Headers("Content-Type: application/json")
     fun getGoals(
-        @Query("start") start: String,
-        @Query("end") end: String
+        @Query("start") start: Long,
+        @Query("end") end: Long
     ): Call<ResGoalGet>
 
     //POST	주차별 목표 등록

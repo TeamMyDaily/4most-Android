@@ -1,24 +1,18 @@
 package org.mydaily.ui.view.daily.detail
 
 import android.content.Intent
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import androidx.core.widget.addTextChangedListener
-import com.xw.repo.BubbleSeekBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityDailyDetailBinding
 import org.mydaily.ui.base.BaseActivity
-import org.mydaily.ui.view.MainActivity
-import org.mydaily.ui.viewmodel.DailyViewModel
-import org.mydaily.util.extension.shortToast
+import org.mydaily.ui.viewmodel.TaskViewModel
 
-class DailyDetailActivity : BaseActivity<ActivityDailyDetailBinding, DailyViewModel>() {
+class TaskDetailActivity : BaseActivity<ActivityDailyDetailBinding, TaskViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_daily_detail
-    override val viewModel: DailyViewModel by viewModel()
+    override val viewModel: TaskViewModel by viewModel()
 
     private var intentKeywordName : String = ""
     private var intentTaskId : Int = 0
@@ -76,7 +70,7 @@ class DailyDetailActivity : BaseActivity<ActivityDailyDetailBinding, DailyViewMo
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_modify -> {
-                val intent = Intent(this, DailyAddActivity::class.java)
+                val intent = Intent(this, TaskAddActivity::class.java)
                 intent.apply {
                     action = "MODIFY"
                     putExtra("taskId",intentTaskId)

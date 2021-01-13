@@ -1,4 +1,4 @@
-package org.mydaily.ui.view.keyword.detail
+package org.mydaily.ui.view.keyword.popup
 
 import android.view.View
 import androidx.viewpager.widget.ViewPager
@@ -7,9 +7,9 @@ import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordPopupBinding
 import org.mydaily.ui.adapter.KeywordPopupViewPagerAdapter
 import org.mydaily.ui.base.BaseActivity
-import org.mydaily.ui.view.keyword.KeywordPopupFirstFragment
-import org.mydaily.ui.view.keyword.KeywordPopupSecondFragment
-import org.mydaily.ui.view.keyword.KeywordPopupThirdFragment
+import org.mydaily.ui.view.keyword.popup.KeywordPopupFirstFragment
+import org.mydaily.ui.view.keyword.popup.KeywordPopupSecondFragment
+import org.mydaily.ui.view.keyword.popup.KeywordPopupThirdFragment
 import org.mydaily.ui.viewmodel.KeywordViewModel
 
 class KeywordPopupActivity : BaseActivity<ActivityKeywordPopupBinding, KeywordViewModel>() {

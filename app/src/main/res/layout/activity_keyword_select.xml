@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,10 +9,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.view.keyword.KeywordSelectActivity">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tb_keyword_add_activity"
+            android:id="@+id/tb_keyword_select_activity"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/keyword_setting"
+                android:text="@string/keyword_select"
                 android:textColor="@color/cod_gray"
                 android:textSize="21sp"
                 android:textStyle="bold" />
@@ -32,27 +34,27 @@
 
 
         <ScrollView
-            android:id="@+id/sv_keyword_list"
+            android:id="@+id/sv_keyword_select"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_select_finish"
+            app:layout_constraintBottom_toTopOf="@+id/btn_select_four_finish"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tb_keyword_add_activity">
+            app:layout_constraintTop_toBottomOf="@+id/tb_keyword_select_activity">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_in_sv"
+                android:id="@+id/cl_in_scrollview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="70dp">
 
                 <TextView
-                    android:id="@+id/tv_what_is_important"
+                    android:id="@+id/tv_choose_four"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="48dp"
-                    android:text="@string/what_is_important_thing_to_you"
+                    android:text="@string/choose_four"
                     android:textColor="@color/cod_gray"
                     android:textSize="25sp"
                     android:textStyle="bold"
@@ -60,18 +62,18 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_sub"
+                    android:id="@+id/tv_subtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="@string/choose_eight"
-                    android:textColor="@color/mainOrange"
+                    android:text="@string/maximum_four"
+                    android:textColor="@color/burnt_sienna"
                     android:textSize="15sp"
-                    app:layout_constraintStart_toStartOf="@+id/tv_what_is_important"
-                    app:layout_constraintTop_toBottomOf="@id/tv_what_is_important" />
+                    app:layout_constraintStart_toStartOf="@+id/tv_choose_four"
+                    app:layout_constraintTop_toBottomOf="@id/tv_choose_four" />
 
                 <TextView
-                    android:id="@+id/tv_life"
+                    android:id="@+id/tv_life_four"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="48dp"
@@ -79,120 +81,85 @@
                     android:textColor="@color/cod_gray"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/tv_sub"
-                    app:layout_constraintTop_toBottomOf="@id/tv_sub" />
+                    app:layout_constraintStart_toStartOf="@id/tv_subtitle"
+                    app:layout_constraintTop_toBottomOf="@id/tv_subtitle" />
 
                 <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/cg_life"
+                    android:id="@+id/cg_life_four"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="16dp"
                     android:layout_marginTop="16dp"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    app:layout_constraintTop_toBottomOf="@id/tv_life"
+                    android:paddingHorizontal="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/tv_life_four" />
 
                 <TextView
-                    android:id="@+id/tv_work"
+                    android:id="@+id/tv_work_four"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="48dp"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="48dp"
                     android:text="@string/attitude_for_work"
                     android:textColor="@color/cod_gray"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/cg_life"
-                    app:layout_constraintTop_toBottomOf="@id/cg_life" />
+                    app:layout_constraintStart_toStartOf="@id/cg_life_four"
+                    app:layout_constraintTop_toBottomOf="@id/cg_life_four" />
 
                 <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/cg_work"
+                    android:id="@+id/cg_work_four"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="16dp"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintTop_toBottomOf="@id/tv_work"
+                    android:paddingHorizontal="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/tv_work_four" />
 
                 <TextView
-                    android:id="@+id/tv_my_word"
+                    android:id="@+id/tv_my_word_four"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="48dp"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="48dp"
                     android:text="@string/my_word"
-                    android:textColor="@color/cod_gray"
+                    android:textColor="@color/burnt_sienna"
                     android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@id/cg_work"
-                    app:layout_constraintTop_toBottomOf="@id/cg_work" />
-
-                <TextView
-                    android:id="@+id/tv_modify"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="48dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/modify"
-                    android:textColor="@color/royal_blue"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cg_work" />
-
-                <TextView
-                    android:id="@+id/tv_complete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="48dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/complete"
-                    android:textColor="@color/royal_blue"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cg_work" />
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/cg_work_four"
+                    app:layout_constraintTop_toBottomOf="@id/cg_work_four" />
 
                 <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/cg_my_word"
+                    android:id="@+id/cg_my_word_four"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="16dp"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintTop_toBottomOf="@id/tv_my_word"
+                    android:paddingHorizontal="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintTop_toBottomOf="@id/tv_my_word_four">
 
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_add"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:chipIcon="@drawable/ic_add"
-                        app:chipIconSize="32dp"
-                        app:rippleColor="@android:color/transparent"
-                        android:stateListAnimator="@null"
-                        app:chipBackgroundColor="@android:color/transparent"/>
 
                 </com.google.android.material.chip.ChipGroup>
-
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </ScrollView>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_select_finish"
+            android:id="@+id/btn_select_four_finish"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/selector_btn_sign_in"
-            android:enabled="false"
-            android:gravity="center"
             android:text="@string/select_finish"
-            android:textColor="@color/white"
-            android:textSize="18sp"
             android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:enabled="false"
+            android:background="@drawable/selector_btn_sign_in"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

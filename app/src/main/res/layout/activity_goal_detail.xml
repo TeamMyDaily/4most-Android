@@ -87,7 +87,7 @@
 
         <TextView
             android:id="@+id/tv_goal"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/mainBlack"
             android:text="블로그에 1개이상 퍼블리싱 하기"
@@ -96,6 +96,7 @@
             android:paddingStart="16dp"
             android:paddingEnd="110dp"
             android:layout_marginTop="16dp"
+            android:gravity="start"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_keyword" />

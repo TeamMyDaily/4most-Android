@@ -5,7 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import org.mydaily.R
-import org.mydaily.data.model.domain.Goal
+import org.mydaily.data.model.network.response.ResGoalGet
 import org.mydaily.util.CalendarUtil.isWeekSame
 import java.util.*
 
@@ -55,7 +55,7 @@ object BindingAdapter {
 
     @JvmStatic
     @BindingAdapter("setGoalWithGoal")
-    fun setGoalWithGoal(textView: TextView, goal: Goal) {
+    fun setGoalWithGoal(textView: TextView, goal: ResGoalGet.Data.Result.Keyword) {
         val color: Int
         val text: String
         if (goal.isGoalCreated) {
@@ -69,4 +69,25 @@ object BindingAdapter {
         textView.text = text
     }
 
+    @JvmStatic
+    @BindingAdapter("setAchievementButtonVisibility")
+    fun setAchievementButtonVisibility(textView: TextView, goal: ResGoalGet.Data.Result.Keyword) {
+        if(goal.isGoalCompleted && goal.isGoalCreated){
+            textView.visibility = View.VISIBLE
+        }
+        else {
+            textView.visibility = View.GONE
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("setNotAchievementButtonVisibility")
+    fun setNotAchievementButtonVisibility(textView: TextView, goal: ResGoalGet.Data.Result.Keyword) {
+        if(!goal.isGoalCompleted && goal.isGoalCreated){
+            textView.visibility = View.VISIBLE
+        }
+        else {
+            textView.visibility = View.GONE
+        }
+    }
 }

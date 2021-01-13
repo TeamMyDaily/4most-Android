@@ -13,24 +13,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDaily"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.view.daily.detail.DailyAddActivity" />
+        <activity android:name=".ui.view.daily.detail.TaskAddActivity" />
         <activity
             android:name=".ui.view.keyword.settings.KeywordSettingsActivity"
             android:exported="true" />
-        <activity android:name=".ui.view.goal.detail.GoalAddActivity" />
+        <activity
+            android:name=".ui.view.goal.detail.GoalAddActivity"
+            android:windowSoftInputMode="adjustResize"  />
         <activity
             android:name=".ui.view.keyword.KeywordAddActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui.view.keyword.detail.KeywordListActivity"
+            android:name=".ui.view.keyword.KeywordListActivity"
             android:exported="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.view.keyword.detail.KeywordPopupActivity"
+            android:name=".ui.view.keyword.popup.KeywordPopupActivity"
             android:windowSoftInputMode="stateAlwaysHidden"
             android:exported="true"/>
+        <activity android:name=".ui.view.keyword.KeywordSelectActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity
-            android:name=".ui.view.daily.detail.DailyDetailActivity"
+            android:name=".ui.view.daily.detail.TaskDetailActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.view.user.SignInActivity"/>

@@ -4,10 +4,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordSettingsBinding
 import org.mydaily.ui.base.BaseActivity
-import org.mydaily.ui.view.daily.DailyFragment
-import org.mydaily.ui.view.goal.GoalFragment
-import org.mydaily.ui.view.mypage.MyPageFragment
-import org.mydaily.ui.view.remind.RemindFragment
 import org.mydaily.ui.viewmodel.KeywordViewModel
 import org.mydaily.util.extension.replace
 
