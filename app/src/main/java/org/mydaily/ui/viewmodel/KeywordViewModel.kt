@@ -3,13 +3,17 @@ package org.mydaily.ui.viewmodel
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import org.mydaily.data.model.network.request.ReqKeywordPriority
 import org.mydaily.data.model.network.request.ReqKeywordSelect
+import org.mydaily.data.model.network.response.ResKeywordListGet
 import org.mydaily.data.model.network.response.ResKeywordSelect
+import org.mydaily.data.model.network.response.ResTaskKeywordGet
 import org.mydaily.data.repository.KeywordRepo
 import org.mydaily.ui.base.BaseViewModel
 import org.mydaily.util.Event
 import retrofit2.Call
 import retrofit2.Callback
+import retrofit2.Response
 
 class KeywordViewModel(private val repo: KeywordRepo) : BaseViewModel() {
 
@@ -23,6 +27,18 @@ class KeywordViewModel(private val repo: KeywordRepo) : BaseViewModel() {
 
     private val _toastMessage = MutableLiveData<Event<String>>()
     val toastMessage: LiveData<Event<String>> = _toastMessage
+
+    private val _taskKeywordList = MutableLiveData<List<ResTaskKeywordGet.Data.Keyword>>()
+    val taskKeywordList: LiveData<List<ResTaskKeywordGet.Data.Keyword>>
+        get() = _taskKeywordList
+
+    private val _keywordList = MutableLiveData<List<ResKeywordListGet.Data>>()
+    val keywordList: LiveData<List<ResKeywordListGet.Data>>
+        get() = _keywordList
+
+    private val _keywordStringList = MutableLiveData<List<String>>()
+    val keywordStringList: LiveData<List<String>>
+        get() = _keywordStringList
 
     fun getLifeWord() {
         val tempList = listOf(
@@ -47,7 +63,7 @@ class KeywordViewModel(private val repo: KeywordRepo) : BaseViewModel() {
                     response: retrofit2.Response<ResKeywordSelect>
                 ) {
                     if (response.isSuccessful) {
-                        Log.d("KeywordList: ", response.body().toString())
+                        Log.d(TAG, response.body().toString())
                     } else {
                         _toastMessage.postValue(Event("응답 실패"))
                     }
@@ -57,5 +73,82 @@ class KeywordViewModel(private val repo: KeywordRepo) : BaseViewModel() {
                     _toastMessage.postValue(Event("응답 실패"))
                 }
             })
+    }
+
+    fun postKeywordPriority(list: List<String>) {
+        val keywords = mutableListOf<ReqKeywordPriority.Keyword>()
+        var i = 1
+        list.forEach {
+            keywords.add(ReqKeywordPriority.Keyword(it, i++))
+        }
+        repo.postKeywordPriority(ReqKeywordPriority(keywords))
+            .enqueue(object : Callback<org.mydaily.data.model.network.response.Response>{
+                override fun onResponse(
+                    call: Call<org.mydaily.data.model.network.response.Response>,
+                    response: Response<org.mydaily.data.model.network.response.Response>
+                ) {
+                    if (response.isSuccessful) {
+                        Log.d(TAG, response.body().toString())
+                    }
+                }
+
+                override fun onFailure(
+                    call: Call<org.mydaily.data.model.network.response.Response>,
+                    t: Throwable
+                ) {
+                    Log.e(TAG, "postKeywordPriority", t)
+                }
+            }
+        )
+    }
+
+    /*마이페이지*/
+    fun getTaskKeyword() {
+        repo.getTaskKeyword()
+            .enqueue(object : Callback<ResTaskKeywordGet> {
+                override fun onResponse(
+                    call: Call<ResTaskKeywordGet>,
+                    response: Response<ResTaskKeywordGet>
+                ) {
+                    if (response.isSuccessful) {
+                        _taskKeywordList.postValue(response.body()?.data?.keywords)
+
+                        //매핑
+                        val keywords = mutableListOf<String>()
+                        for(data in response.body()?.data?.keywords!!){
+                            keywords.add(data.name)
+                        }
+                        _keywordStringList.postValue(keywords)
+
+                        Log.e(TAG, response.body().toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<ResTaskKeywordGet>, t: Throwable) {
+                    Log.e(TAG, "getTaskKeyword", t)
+                }
+            })
+    }
+
+    fun getKeywordList() {
+        repo.getKeywordList().enqueue(object : Callback<ResKeywordListGet> {
+            override fun onResponse(
+                call: Call<ResKeywordListGet>,
+                response: Response<ResKeywordListGet>
+            ) {
+                if (response.isSuccessful) {
+                    _keywordList.postValue(response.body()?.data)
+                }
+            }
+
+            override fun onFailure(call: Call<ResKeywordListGet>, t: Throwable) {
+                Log.e(TAG, "getKeywordList", t)
+            }
+
+        })
+    }
+
+    companion object {
+        private val TAG = KeywordViewModel::class.java.simpleName
     }
 }

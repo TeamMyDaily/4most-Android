@@ -1,9 +1,7 @@
 package org.mydaily.data.repository
 
 import org.mydaily.data.model.network.request.*
-import org.mydaily.data.model.network.response.ResKeywordAdd
-import org.mydaily.data.model.network.response.ResKeywordSelect
-import org.mydaily.data.model.network.response.Response
+import org.mydaily.data.model.network.response.*
 import org.mydaily.data.remote.datasource.KeywordRemoteDataSource
 import retrofit2.Call
 
@@ -22,4 +20,8 @@ class KeywordRepoImpl(private val remoteDataSource: KeywordRemoteDataSource) : K
 
     override fun postKeywordPriority(body: ReqKeywordPriority): Call<Response> =
         remoteDataSource.postKeywordPriority(body)
+
+    override fun getTaskKeyword(): Call<ResTaskKeywordGet>  = remoteDataSource.getTaskKeyword()
+
+    override fun getKeywordList(): Call<ResKeywordListGet>  = remoteDataSource.getKeywordList()
 }

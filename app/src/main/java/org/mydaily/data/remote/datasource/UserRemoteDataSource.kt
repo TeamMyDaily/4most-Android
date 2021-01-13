@@ -12,5 +12,4 @@ interface UserRemoteDataSource {
     fun postPassword(body: ReqPassword): Call<Response>
     fun postCurrentPassword(body: ReqPassword): Call<ResCurrentPassword>
     fun deleteUser(body: ReqPassword): Call<Response>
-    fun getUser(): Call<ResUser>
 }
