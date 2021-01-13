@@ -110,12 +110,12 @@ class KeywordViewModel(private val repo: KeywordRepo) : BaseViewModel() {
                     if (response.isSuccessful) {
                         _taskKeywordList.value = response.body()?.data?.keywords
 
-/*                        //매핑
+                        //매핑
                         val keywords = mutableListOf<String>()
                         for(data in response.body()?.data?.keywords!!){
                             keywords.add(data.name)
                         }
-                        _keywordStringList.value = keywords*/
+                        _keywordStringList.value = keywords
 
                         Log.e(TAG+"hi", response.body().toString())
                     }
