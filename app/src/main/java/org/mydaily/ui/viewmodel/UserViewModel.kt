@@ -34,6 +34,8 @@ class UserViewModel(private val repo: UserRepo): BaseViewModel() {
                     if(response.isSuccessful){
                         _signInEvent.postValue(Event(true))
                         FourMostPreference.setUserToken(response.body()?.data?.accessToken!!)
+                        FourMostPreference.setUserName(response.body()?.data?.userName!!)
+                        FourMostPreference.setUserEmail(response.body()?.data?.email!!)
                     }else {
                         _toastMessage.postValue(Event("로그인에 실패하였습니다"))
                     }

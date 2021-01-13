@@ -10,6 +10,7 @@ import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
+import org.mydaily.data.local.FourMostPreference
 import org.mydaily.data.model.domain.KeywordPriority
 import org.mydaily.data.model.network.request.ReqKeywordPriority
 import org.mydaily.databinding.FragmentKeywordPriorityBinding
@@ -76,8 +77,6 @@ class KeywordPriorityFragment : BaseFragment<FragmentKeywordPriorityBinding, Key
 
     private fun initButton() {
         binding.btnSetPriority.setOnClickListener {
-            Log.e("SEULGI", "우선순위 버튼 클릭")
-            //우선순위 지정한거 서버로 보내야함
             replaceAndAddBackStack(R.id.container_keyword_settings, KeywordDefineFragment(), "priority")
             val temp = mutableListOf<ReqKeywordPriority.Keyword>()
             var i=1
@@ -85,6 +84,7 @@ class KeywordPriorityFragment : BaseFragment<FragmentKeywordPriorityBinding, Key
                 temp.add(ReqKeywordPriority.Keyword(data, i++))
             }
             viewModel.postKeywordPriority(temp)
+            FourMostPreference.setFirstVisit(false)
         }
     }
 
