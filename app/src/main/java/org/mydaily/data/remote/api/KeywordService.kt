@@ -1,9 +1,7 @@
 package org.mydaily.data.remote.api
 
 import org.mydaily.data.model.network.request.*
-import org.mydaily.data.model.network.response.ResKeywordAdd
-import org.mydaily.data.model.network.response.ResKeywordSelect
-import org.mydaily.data.model.network.response.Response
+import org.mydaily.data.model.network.response.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -43,5 +41,17 @@ interface KeywordService {
     fun postKeywordPriority(
         @Body body: ReqKeywordPriority
     ): Call<Response>
+
+
+    //GET	마이페이지 기록키워드
+    @GET("/keywords/taskKeyword")
+    @Headers("Content-Type: application/json")
+    fun getTaskKeyword(): Call<ResTaskKeywordGet>
+
+
+    //GET	마이페이지 키워드목록
+    @GET("/keywords/keywordList")
+    @Headers("Content-Type: application/json")
+    fun getKeywordList(): Call<ResKeywordListGet>
 
 }
