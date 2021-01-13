@@ -12,6 +12,7 @@ import org.mydaily.databinding.ActivityKeywordSelectBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.view.keyword.popup.KeywordPopupActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
+import org.mydaily.util.extension.setupToast
 
 class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, KeywordViewModel>() {
     override val layoutResourceId: Int
@@ -25,6 +26,7 @@ class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, Keyword
 
     private var clickedChipCount: Int = 0
     private var finalSelectedKeywordList = mutableListOf<String>()
+    private val keywords: List<String> = finalSelectedKeywordList
 
     override fun initView() {
         initToolbar()
@@ -32,6 +34,9 @@ class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, Keyword
         addChipLife()
         addChipWork()
         addChipMy()
+        onClickBtnSelectFinish()
+        setupToast(this, viewModel.toastMessage)
+
     }
 
     private fun initToolbar() {
@@ -148,5 +153,11 @@ class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, Keyword
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_keyword_list, menu)
         return true
+    }
+
+    private fun onClickBtnSelectFinish() {
+        binding.btnSelectFourFinish.setOnClickListener {
+            viewModel.postKeywordSelect(keywords)
+        }
     }
 }
