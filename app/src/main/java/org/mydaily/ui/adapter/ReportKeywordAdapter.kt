@@ -11,12 +11,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import org.mydaily.R
 import org.mydaily.data.model.ReportListData
+import org.mydaily.data.model.network.response.ResReportGet
 import org.mydaily.databinding.KeywordListItemBinding
 import org.mydaily.ui.view.remind.OnItemClick
 
 class ReportKeywordAdapter(private val context: Context, listener : OnItemClick) : RecyclerView.Adapter<ReportKeywordAdapter.ViewHolder>() {
     private lateinit var binding: KeywordListItemBinding
-    var data = mutableListOf<ReportListData>()
+    var data = mutableListOf<ResReportGet.Data.Result>()
     private val mCallback = listener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,18 +35,18 @@ class ReportKeywordAdapter(private val context: Context, listener : OnItemClick)
     inner class ViewHolder(private val binding: KeywordListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(data: ReportListData, pos : Int) {
-            val tasknum = data.task_num.toString()
+        fun bind(data: ResReportGet.Data.Result, pos : Int) {
+            val tasknum = data.taskCnt.toString()
             binding.reportlistdata = data
             binding.tvTasknum.text = "총 "+tasknum+"개"
-            binding.tvRate.text = data.rate.toString()
-            if(data.rate > 0) {
+            binding.tvRate.text = data.taskSatisAvg
+            if(data.taskSatisAvg.toFloat() > 0.0) {
                 binding.tvRate.setTextColor(Color.parseColor("#EC684A"))
             }
             else {
                 binding.tvRate.setTextColor(Color.parseColor("#E5E5E5"))
             }
-            binding.sbRate.setProgress(((data.rate * 10).toInt()),true)
+            binding.sbRate.progress = (data.taskSatisAvg.toFloat() * 10).toInt()
 
             binding.sbRate.setOnTouchListener(object : View.OnTouchListener {
                 override fun onTouch(v: View, event: MotionEvent): Boolean {
@@ -58,5 +59,9 @@ class ReportKeywordAdapter(private val context: Context, listener : OnItemClick)
             }
 
         }
+    }
+    fun setKeywordList(keywordList: List<ResReportGet.Data.Result>) {
+        data = keywordList.toMutableList()
+        notifyDataSetChanged()
     }
 }

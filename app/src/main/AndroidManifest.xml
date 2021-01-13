@@ -33,8 +33,11 @@
             android:name=".ui.view.daily.detail.DailyDetailActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui.view.user.SignInActivity"
-            android:exported="true" />
+            android:name=".ui.view.user.SignInActivity"/>
+        <activity
+            android:name=".ui.view.remind.RemindDetailWriteActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.view.goal.detail.GoalDetailActivity"
             android:exported="true"

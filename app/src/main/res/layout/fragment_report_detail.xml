@@ -6,7 +6,7 @@
     <data>
         <variable
             name="reportdetaildata"
-            type="org.mydaily.data.model.ReportListData" />
+            type="org.mydaily.data.model.network.response.ResReportDetailGet.Data" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="48dp"
-            android:text="@{reportdetaildata.keyword}"
+            android:text="@{reportdetaildata.keywordName}"
             android:textColor="@color/mainBlack"
             android:textSize="32sp"
             android:textStyle="bold"
@@ -97,7 +97,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="16dp"
                         android:lineHeight="1.5px"
-                        android:text="@{reportdetaildata.keyword_goal}"
+                        android:text="@{reportdetaildata.goal}"
                         android:textColor="@color/mainBlack"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"

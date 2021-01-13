@@ -6,7 +6,7 @@
     <data>
         <variable
             name="dailydata"
-            type="org.mydaily.data.model.ReportListData.Daily" />
+            type="org.mydaily.data.model.network.response.ResReportDetailGet.Data.Task" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,7 +45,7 @@
                 android:layout_marginTop="24dp"
                 android:maxWidth="108sp"
                 android:gravity="start"
-                android:text="@{dailydata.record}"
+                android:text="@{dailydata.title}"
                 android:lineSpacingExtra="8sp"
                 android:textColor="@color/mainBlack"
                 android:textSize="16sp"

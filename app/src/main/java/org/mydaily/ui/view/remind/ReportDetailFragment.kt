@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.Toast
 import android.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,16 +13,18 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.data.model.ReportListData
+import org.mydaily.data.model.network.request.ReqReportDetailGet
 import org.mydaily.databinding.FragmentReportDetailBinding
 import org.mydaily.ui.adapter.ReportDetailAdapter
 import org.mydaily.ui.base.BaseFragment
+import org.mydaily.ui.viewmodel.RemindViewModel
 import org.mydaily.ui.viewmodel.ReportViewModel
 import org.mydaily.util.extension.shortToast
 
-class ReportDetailFragment: BaseFragment<FragmentReportDetailBinding, ReportViewModel>() {
+class ReportDetailFragment: BaseFragment<FragmentReportDetailBinding, RemindViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_report_detail
-    override val viewModel: ReportViewModel by viewModel()
+    override val viewModel: RemindViewModel by viewModel()
     private lateinit var detailAdapter: ReportDetailAdapter
 
     override fun initView() {
@@ -30,7 +33,8 @@ class ReportDetailFragment: BaseFragment<FragmentReportDetailBinding, ReportView
     }
 
     override fun initBeforeBinding() {
-        viewModel.getReportData()
+        binding.lifecycleOwner = viewLifecycleOwner
+        viewModel.getReportDetail(ReqReportDetailGet(1610290800000, 1610982000000,17))
     }
 
     override fun initAfterBinding() {
@@ -44,16 +48,9 @@ class ReportDetailFragment: BaseFragment<FragmentReportDetailBinding, ReportView
     }
 
     private fun observeReportDetailData() {
-        /* 임시 데이터 */
-        val args = arguments
-
-        val priority = args?.getInt("data_priority",0)
-        viewModel.reportList.observe(this, Observer<List<ReportListData>> {
-            val data = priority?.let { it1 -> it[it1] }
-            if (data != null) {
-                binding.reportdetaildata = data
-                detailAdapter.data = data.daily_record.toMutableList()
-            }
+        viewModel.reportDetailList.observe(this, {
+                binding.reportdetaildata = it
+                detailAdapter.setDetailList(it.tasks)
         })
     }
 

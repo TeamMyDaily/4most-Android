@@ -56,6 +56,7 @@
             android:layout_marginBottom="24dp"
             android:ems="10"
             android:hint="이번주, 어떤 내 모습을 칭찬 해 주고 싶나요?"
+            android:maxLength="800"
             android:scrollbars="vertical"
             android:gravity="start"
             android:textColor="@color/mainBlack"
