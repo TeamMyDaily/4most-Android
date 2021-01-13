@@ -134,4 +134,23 @@
     <string name="alarm_show">이곳에서 우선순위를 변경하게 되면 기록, 회고, 목표에서\n변경한 순서대로 보여지게 됩니다.</string>
     <string name="priority_appoint">우선순위 지</string>
     <string name="user_value">님이 추구하는 가치관이에요!</string>
+
+    <!--MyPageSettingFragment-->
+    <string name="sir">님</string>
+    <string name="setting">설정</string>
+    <string name="change_password_periodically">안전한 계정 이용을 위해 비밀번호는 주기적으로 변경해 주세요.</string>
+    <string name="account_setting">계정 설정</string>
+    <string name="identitiy_verification">본인인증</string>
+    <string name="change_nickname">닉네임 변경</string>
+    <string name="password_change">계정 비밀번호 변경</string>
+    <string name="app_info">앱 정보</string>
+    <string name="four_most_use_info">포모스트 이용안내</string>
+    <string name="app_version">앱 버전 정보</string>
+    <string name="terms_and_policies">약관 및 정책</string>
+    <string name="four_most_terms_of_service">포모스트 이용약관</string>
+    <string name="privacy_policy">개인정보 처리 방침</string>
+    <string name="open_source">오픈소스라이선스</string>
+    <string name="logout">로그아웃</string>
+    <string name="withdrawal">회원 탈퇴</string>
+    <string name="copyright">copyrightⓒ4(for)most</string>
 </resources>
