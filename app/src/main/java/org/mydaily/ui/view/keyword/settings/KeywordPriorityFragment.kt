@@ -7,12 +7,15 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_remind_write.view.*
 import org.koin.android.ext.android.bind
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.data.model.domain.KeywordPriority
+import org.mydaily.data.model.network.request.ReqKeywordPriority
 import org.mydaily.databinding.FragmentKeywordPriorityBinding
 import org.mydaily.ui.adapter.ItemTouchHelperCallback
 import org.mydaily.ui.adapter.KeywordPriorityAdapter
+import org.mydaily.ui.adapter.MyPageKeywordPriorityAdapter
 import org.mydaily.ui.base.BaseFragment
 import org.mydaily.ui.viewmodel.KeywordViewModel
 import org.mydaily.util.extension.replace
@@ -21,22 +24,30 @@ import org.mydaily.util.extension.replaceAndAddBackStack
 class KeywordPriorityFragment : BaseFragment<FragmentKeywordPriorityBinding, KeywordViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_keyword_priority
-    override val viewModel: KeywordViewModel by viewModel()
+    override val viewModel: KeywordViewModel by sharedViewModel()
 
     private val keywordPriorityAdapter = KeywordPriorityAdapter()
 
+    private var keywordList : ArrayList<String>?= null
+
     override fun initView() {
+        getIntent()
         initToolbar()
         initRecyclerView()
         initButton()
     }
 
     override fun initBeforeBinding() {
-
+        binding.lifecycleOwner = viewLifecycleOwner
+        viewModel.getTaskKeyword()
     }
 
     override fun initAfterBinding() {
 
+    }
+
+    private fun getIntent() {
+        keywordList = requireActivity().intent.getStringArrayListExtra("keywords")
     }
 
 
@@ -60,23 +71,21 @@ class KeywordPriorityFragment : BaseFragment<FragmentKeywordPriorityBinding, Key
             itemTouchHelper.attachToRecyclerView(this)
         }
 
-        /*임시 데이터*/
-        keywordPriorityAdapter.data = listOf(
-            KeywordPriority("열정", 1),
-            KeywordPriority("아웃풋", 2),
-            KeywordPriority("영향력", 3),
-            KeywordPriority("경청", 4),
-        )
+        keywordPriorityAdapter.data = keywordList?.toList() ?: listOf()
     }
 
     private fun initButton() {
         binding.btnSetPriority.setOnClickListener {
+            Log.e("SEULGI", "우선순위 버튼 클릭")
             //우선순위 지정한거 서버로 보내야함
             replaceAndAddBackStack(R.id.container_keyword_settings, KeywordDefineFragment(), "priority")
-            Log.e("SEULGI", keywordPriorityAdapter.data.toString())
-
+            val temp = mutableListOf<ReqKeywordPriority.Keyword>()
+            var i=1
+            for(data in keywordPriorityAdapter.data){
+                temp.add(ReqKeywordPriority.Keyword(data, i++))
+            }
+            viewModel.postKeywordPriority(temp)
         }
     }
-
 
 }

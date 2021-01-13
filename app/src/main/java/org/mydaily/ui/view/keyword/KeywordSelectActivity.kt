@@ -2,6 +2,7 @@ package org.mydaily.ui.view.keyword
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.google.android.material.chip.Chip
@@ -11,6 +12,7 @@ import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordSelectBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.view.keyword.popup.KeywordPopupActivity
+import org.mydaily.ui.view.keyword.settings.KeywordSettingsActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
 import org.mydaily.util.extension.setupToast
 
@@ -157,7 +159,12 @@ class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, Keyword
 
     private fun onClickBtnSelectFinish() {
         binding.btnSelectFourFinish.setOnClickListener {
+            Log.e("SEULGI", keywords.toString())
             viewModel.postKeywordSelect(keywords)
+
+            val intent = Intent(this, KeywordSettingsActivity::class.java)
+            intent.putStringArrayListExtra("keywords",keywords as java.util.ArrayList<String>)
+            startActivity(intent)
         }
     }
 }

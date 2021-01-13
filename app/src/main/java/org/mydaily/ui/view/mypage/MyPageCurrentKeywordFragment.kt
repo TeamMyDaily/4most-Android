@@ -10,6 +10,7 @@ import org.mydaily.R
 import org.mydaily.data.model.network.request.ReqKeywordPriority
 import org.mydaily.databinding.FragmentMyPageCurrentKeywordBinding
 import org.mydaily.ui.adapter.ItemTouchHelperCallback
+import org.mydaily.ui.adapter.KeywordPriorityAdapter
 import org.mydaily.ui.adapter.MyPageCurrentKeywordAdapter
 import org.mydaily.ui.adapter.MyPageKeywordPriorityAdapter
 import org.mydaily.ui.base.BaseFragment
@@ -22,7 +23,8 @@ class MyPageCurrentKeywordFragment : BaseFragment<FragmentMyPageCurrentKeywordBi
     override val viewModel: KeywordViewModel by viewModel()
 
     private val myPageCurrentKeywordAdapter = MyPageCurrentKeywordAdapter()
-    private val myPageKeywordPriorityAdapter = MyPageKeywordPriorityAdapter()
+    //private val myPageKeywordPriorityAdapter = MyPageKeywordPriorityAdapter()
+    private val myPageKeywordPriorityAdapter = KeywordPriorityAdapter()
     private val dividerItemDecoration: DividerItemDecoration by lazy{
         DividerItemDecoration(requireContext(),LinearLayoutManager.VERTICAL).apply {
             setDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.divider_recyclerview)!!)
@@ -73,7 +75,12 @@ class MyPageCurrentKeywordFragment : BaseFragment<FragmentMyPageCurrentKeywordBi
         }
 
         binding.layoutMyPageCurrentKeywordPriority.tvAppointPriority.setOnClickListener {
-            viewModel.postKeywordPriority(myPageKeywordPriorityAdapter.data)
+            val temp = mutableListOf<ReqKeywordPriority.Keyword>()
+            var i=1
+            for(data in myPageKeywordPriorityAdapter.data){
+                temp.add(ReqKeywordPriority.Keyword(data, i++))
+            }
+            viewModel.postKeywordPriority(temp)
             viewModel.getTaskKeyword()
             binding.isCurrentKeywordListVisible = true
         }

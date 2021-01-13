@@ -24,4 +24,7 @@ class KeywordRemoteDataSourceImpl(private val service: KeywordService) : Keyword
     override fun getTaskKeyword(): Call<ResTaskKeywordGet> = service.getTaskKeyword()
 
     override fun getKeywordList(): Call<ResKeywordListGet> = service.getKeywordList()
+
+    override fun getKeywordDefinition(totalKeywordId: Int): Call<ResKeywordDefinitionGet>
+    = service.getKeywordDefinition(totalKeywordId)
 }
