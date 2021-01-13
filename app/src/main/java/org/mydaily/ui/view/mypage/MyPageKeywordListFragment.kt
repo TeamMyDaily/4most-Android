@@ -10,6 +10,7 @@ import org.mydaily.databinding.FragmentMyPageKeywordListBinding
 import org.mydaily.ui.adapter.MyPageCurrentKeywordAdapter
 import org.mydaily.ui.adapter.MyPageKeywordListAdapter
 import org.mydaily.ui.base.BaseFragment
+import org.mydaily.ui.view.custom.MyPageBottomSheetDialog
 import org.mydaily.ui.viewmodel.KeywordViewModel
 import org.mydaily.util.extension.shortToast
 
@@ -47,6 +48,7 @@ class MyPageKeywordListFragment : BaseFragment<FragmentMyPageKeywordListBinding,
         }
         myPageKeywordListAdapter.setClickListener {
             requireContext().shortToast("$it 클릭됨")
+            MyPageBottomSheetDialog().show(childFragmentManager, "keyword")
         }
     }
 
