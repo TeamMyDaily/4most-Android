@@ -20,6 +20,4 @@ class UserRepoImpl(private val remoteDataSource: UserRemoteDataSource) : UserRep
 
     override fun deleteUser(body: ReqPassword): Call<Response> =
         remoteDataSource.deleteUser(body)
-
-    override fun getUser(): Call<ResUser> = remoteDataSource.getUser()
 }
