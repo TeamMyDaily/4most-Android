@@ -1,9 +1,15 @@
 package org.mydaily.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import org.mydaily.data.model.network.response.ResGoalGet
+import org.mydaily.data.model.network.response.ResTaskKeywordGet
 import org.mydaily.data.repository.KeywordRepo
 import org.mydaily.ui.base.BaseViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class KeywordViewModel(private val repo : KeywordRepo) : BaseViewModel() {
 
@@ -15,6 +21,10 @@ class KeywordViewModel(private val repo : KeywordRepo) : BaseViewModel() {
     val workWordList: LiveData<List<String>>
         get() = _workWordList
 
+
+    private val _taskKeywordList = MutableLiveData<List<String>>()
+    val taskKeywordList: LiveData<List<String>>
+        get() = _taskKeywordList
 
     //삶을 대하는 자세
     fun getLifeWord() {
@@ -34,4 +44,28 @@ class KeywordViewModel(private val repo : KeywordRepo) : BaseViewModel() {
         _workWordList.value = tempList
     }
 
+    /*마이페이지*/
+    fun getTaskKeyword() {
+        repo.getTaskKeyword()
+            .enqueue(object: Callback<ResTaskKeywordGet>{
+                override fun onResponse(
+                    call: Call<ResTaskKeywordGet>,
+                    response: Response<ResTaskKeywordGet>
+                ) {
+                    if (response.isSuccessful) {
+                        _taskKeywordList.postValue(response.body()?.data?.keywords)
+                        Log.e(TAG, response.body().toString())
+                    }
+
+                }
+
+                override fun onFailure(call: Call<ResTaskKeywordGet>, t: Throwable) {
+                    Log.e(TAG, "getTaskKeyword", t)
+                }
+            })
+    }
+
+    companion object{
+        private val TAG = KeywordViewModel::class.java.simpleName
+    }
 }
