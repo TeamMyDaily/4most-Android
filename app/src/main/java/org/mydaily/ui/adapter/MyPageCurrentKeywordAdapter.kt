@@ -1,14 +1,16 @@
 package org.mydaily.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import org.mydaily.data.model.network.response.ResTaskKeywordGet
 import org.mydaily.databinding.ItemMyPageCurrentKeywordBinding
 
 class MyPageCurrentKeywordAdapter : RecyclerView.Adapter<MyPageCurrentKeywordAdapter.ViewHolder>() {
 
-    private val _data = mutableListOf<String>()
-    var data: List<String> = _data
+    private val _data = mutableListOf<ResTaskKeywordGet.Data.Keyword>()
+    var data: List<ResTaskKeywordGet.Data.Keyword> = _data
         set(value) {
             _data.clear()
             _data.addAll(value)
@@ -18,7 +20,7 @@ class MyPageCurrentKeywordAdapter : RecyclerView.Adapter<MyPageCurrentKeywordAda
     inner class ViewHolder(private val binding: ItemMyPageCurrentKeywordBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(keyword: String, position: Int) {
+        fun bind(keyword: ResTaskKeywordGet.Data.Keyword, position: Int) {
             binding.keyword = keyword
             binding.number = (position + 1).toString()
         }

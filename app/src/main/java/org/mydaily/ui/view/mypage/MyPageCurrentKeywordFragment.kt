@@ -1,12 +1,17 @@
 package org.mydaily.ui.view.mypage
 
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
+import org.mydaily.data.model.network.request.ReqKeywordPriority
 import org.mydaily.databinding.FragmentMyPageCurrentKeywordBinding
+import org.mydaily.ui.adapter.ItemTouchHelperCallback
 import org.mydaily.ui.adapter.MyPageCurrentKeywordAdapter
+import org.mydaily.ui.adapter.MyPageKeywordPriorityAdapter
 import org.mydaily.ui.base.BaseFragment
 import org.mydaily.ui.viewmodel.KeywordViewModel
 import org.mydaily.util.extension.shortToast
@@ -17,36 +22,36 @@ class MyPageCurrentKeywordFragment : BaseFragment<FragmentMyPageCurrentKeywordBi
     override val viewModel: KeywordViewModel by viewModel()
 
     private val myPageCurrentKeywordAdapter = MyPageCurrentKeywordAdapter()
+    private val myPageKeywordPriorityAdapter = MyPageKeywordPriorityAdapter()
+    private val dividerItemDecoration: DividerItemDecoration by lazy{
+        DividerItemDecoration(requireContext(),LinearLayoutManager.VERTICAL).apply {
+            setDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.divider_recyclerview)!!)
+        }
+    }
 
     override fun initView() {
-        initClickEvent()
-        initRecyclerView()
+        initListLayout()
+        initPriorityLayout()
         binding.isCurrentKeywordListVisible = true
     }
 
     override fun initBeforeBinding() {
         binding.lifecycleOwner = viewLifecycleOwner
-        viewModel.getTaskKeyword()
     }
 
     override fun initAfterBinding() {
         observeTaskKeyword()
     }
 
-    private fun initClickEvent(){
-        binding.layoutMyPageCurrentKeywordList.btnChangePriority.setOnClickListener {
-            binding.isCurrentKeywordListVisible = false
-            requireContext().shortToast("우선순위변경하기 버튼 클릭")
-        }
-        binding.layoutMyPageCurrentKeywordPriority.tvAppointPriority.setOnClickListener {
-            binding.isCurrentKeywordListVisible = true
-            requireContext().shortToast("우선순위 지정 버튼 클릭")
-        }
+    override fun onResume() {
+        super.onResume()
+        viewModel.getTaskKeyword()
     }
 
-    private fun initRecyclerView() {
-        val dividerItemDecoration = DividerItemDecoration(requireContext(),LinearLayoutManager.VERTICAL)
-        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.divider_recyclerview)!!)
+    private fun initListLayout() {
+        binding.layoutMyPageCurrentKeywordList.btnChangePriority.setOnClickListener {
+            binding.isCurrentKeywordListVisible = false
+        }
 
         binding.layoutMyPageCurrentKeywordList.rvCurrentKeywordList.apply {
             adapter = myPageCurrentKeywordAdapter
@@ -56,11 +61,31 @@ class MyPageCurrentKeywordFragment : BaseFragment<FragmentMyPageCurrentKeywordBi
         }
     }
 
+    private fun initPriorityLayout() {
+        val itemTouchHelper = ItemTouchHelper(ItemTouchHelperCallback(myPageKeywordPriorityAdapter))
+
+        binding.layoutMyPageCurrentKeywordPriority.rvCurrentKeywordListPriority.apply {
+            adapter = myPageKeywordPriorityAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+            addItemDecoration(dividerItemDecoration)
+            itemTouchHelper.attachToRecyclerView(this)
+        }
+
+        binding.layoutMyPageCurrentKeywordPriority.tvAppointPriority.setOnClickListener {
+            viewModel.postKeywordPriority(myPageKeywordPriorityAdapter.data)
+            viewModel.getTaskKeyword()
+            binding.isCurrentKeywordListVisible = true
+        }
+    }
+
     private fun observeTaskKeyword() {
         viewModel.taskKeywordList.observe(viewLifecycleOwner, {
             myPageCurrentKeywordAdapter.data = it
         })
-
+        viewModel.keywordStringList.observe(viewLifecycleOwner, {
+            myPageKeywordPriorityAdapter.data = it
+        })
     }
 
 }

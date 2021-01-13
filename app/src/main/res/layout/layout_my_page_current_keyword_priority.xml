@@ -41,7 +41,7 @@
             android:id="@+id/tv_appoint_priority"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_fill_gray_radius_15"
+            android:background="@drawable/rectangle_fill_orange_radius_15"
             android:text="@string/priority_appoint"
             android:textColor="@color/white"
             android:textSize="16sp"

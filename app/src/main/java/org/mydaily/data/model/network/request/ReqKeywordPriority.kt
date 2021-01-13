@@ -11,6 +11,6 @@ data class ReqKeywordPriority(
         @SerializedName("name")
         val name: String,
         @SerializedName("priority")
-        val priority: Int
+        var priority: Int
     )
 }

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="keyword"
-            type="String" />
+            type="org.mydaily.data.model.network.response.ResTaskKeywordGet.Data.Keyword" />
 
         <variable
             name="number"
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:text="@{keyword}"
+            android:text="@{keyword.name}"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tv_priority_num"

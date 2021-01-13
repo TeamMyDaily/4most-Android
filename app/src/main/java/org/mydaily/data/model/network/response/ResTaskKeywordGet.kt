@@ -14,9 +14,14 @@ data class ResTaskKeywordGet(
     val `data`: Data
 ) {
     data class Data(
-        @SerializedName("userName")
-        val userName: String,
         @SerializedName("keywords")
-        val keywords: List<String>
-    )
+        val keywords: List<Keyword>
+    ) {
+        data class Keyword(
+            @SerializedName("totalKeywordId")
+            val totalKeywordId: Int,
+            @SerializedName("name")
+            val name: String
+        )
+    }
 }
