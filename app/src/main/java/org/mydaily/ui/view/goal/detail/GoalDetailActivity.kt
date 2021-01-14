@@ -82,7 +82,7 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_goal_detail, menu)
+        menuInflater.inflate(R.menu.menu_modify, menu)
         return true
     }
 

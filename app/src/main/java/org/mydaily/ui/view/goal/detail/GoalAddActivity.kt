@@ -123,7 +123,7 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         if (intentAction == "MODIFY") {
-            menuInflater.inflate(R.menu.menu_goal_add, menu)
+            menuInflater.inflate(R.menu.menu_delete, menu)
             return true
         }
         return false
