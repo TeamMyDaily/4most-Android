@@ -34,5 +34,7 @@
     <color name="darkGray">#C4C4C4</color>
     <color name="royal_blue">#2F80ED</color>
     <color name="burnt_sienna">#EA644B</color>
+    <color name="silver_chalice">#AAAAAA</color>
+    <color name="judge_gray">#564A39</color>
 
 </resources>

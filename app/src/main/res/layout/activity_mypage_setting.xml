@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.view.keyword.settings.MyPageSettingFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_mypage_setting"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/persimmon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_btn_arrow_left_white">
+
+            <TextView
+                android:id="@+id/tv_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/setting"
+                android:textColor="@color/white"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="48dp"
+            android:textColor="@color/mainBlack"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tb_mypage_setting" />
+
+        <TextView
+            android:id="@+id/tv_change_password_periodically"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/change_password_periodically"
+            android:textColor="@color/mainGray"
+            app:layout_constraintStart_toStartOf="@+id/tv_user_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_name" />
+
+        <View
+            android:id="@+id/boundary1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/mainLightGray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_change_password_periodically"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/boundary1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_bottom_of_boundary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_accout_setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:textSize="12sp"
+                    android:text="@string/account_setting"
+                    android:textColor="@color/silver_chalice"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/cl_bottom_of_boundary" />
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/email"
+                    android:textColor="@color/mainBlack"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_accout_setting"
+                    app:layout_constraintTop_toBottomOf="@id/tv_accout_setting" />
+
+                <TextView
+                    android:id="@+id/tv_user_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:textColor="@color/persimmon"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_email" />
+
+                <TextView
+                    android:id="@+id/tv_identity_verification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/identitiy_verification"
+                    android:textColor="@color/mainBlack"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_email"
+                    app:layout_constraintTop_toBottomOf="@id/tv_email" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/ic_ic_thin_arrow_next_page"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_identity_verification"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_identity_verification" />
+
+                <TextView
+                    android:id="@+id/tv_change_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/change_nickname"
+                    android:textSize="15sp"
+                    android:textColor="@color/mainBlack"
+                    app:layout_constraintStart_toStartOf="@+id/tv_identity_verification"
+                    app:layout_constraintTop_toBottomOf="@id/tv_identity_verification" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/ic_ic_thin_arrow_next_page"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_change_nickname"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_change_nickname" />
+
+                <TextView
+                    android:id="@+id/tv_password_change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/password_change"
+                    android:textSize="15sp"
+                    android:textColor="@color/mainBlack"
+                    app:layout_constraintStart_toStartOf="@+id/tv_change_nickname"
+                    app:layout_constraintTop_toBottomOf="@id/tv_change_nickname" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/ic_ic_thin_arrow_next_page"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_password_change"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_password_change" />
+
+                <TextView
+                    android:id="@+id/tv_app_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:text="@string/app_info"
+                    android:textColor="@color/silver_chalice"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_password_change"
+                    app:layout_constraintTop_toBottomOf="@id/tv_password_change" />
+
+                <TextView
+                    android:id="@+id/tv_four_most_use_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="21dp"
+                    android:text="@string/four_most_use_info"
+                    android:textColor="@color/mainBlack"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_password_change"
+                    app:layout_constraintTop_toBottomOf="@id/tv_app_info" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/ic_ic_thin_arrow_next_page"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_four_most_use_info"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tv_app_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/app_version"
+                    android:textColor="@color/mainBlack"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_four_most_use_info"
+                    app:layout_constraintTop_toBottomOf="@id/tv_four_most_use_info" />
+
+                <TextView
+                    android:id="@+id/tv_current_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:textColor="@color/mainGray"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_app_version"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_app_version" />
+
+                <TextView
+                    android:id="@+id/tv_terms_and_policies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:text="@string/terms_and_policies"
+                    android:textColor="@color/silver_chalice"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_app_version"
+                    app:layout_constraintTop_toBottomOf="@id/tv_app_version" />
+
+                <TextView
+                    android:id="@+id/tv_four_most_terms_of_service"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="21dp"
+                    android:text="@string/four_most_terms_of_service"
+                    android:textColor="@color/mainBlack"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_terms_and_policies"
+                    app:layout_constraintTop_toBottomOf="@id/tv_terms_and_policies" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/ic_ic_thin_arrow_next_page"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_four_most_terms_of_service"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_four_most_terms_of_service" />
+
+                <TextView
+                    android:id="@+id/tv_privacy_policy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/privacy_policy"
+                    android:textSize="15sp"
+                    android:textColor="@color/mainBlack"
+                    app:layout_constraintStart_toStartOf="@+id/tv_four_most_terms_of_service"
+                    app:layout_constraintTop_toBottomOf="@id/tv_four_most_terms_of_service" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/ic_ic_thin_arrow_next_page"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_privacy_policy"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_privacy_policy" />
+
+                <TextView
+                    android:id="@+id/tv_open_source"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/open_source"
+                    android:textColor="@color/mainBlack"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_privacy_policy"
+                    app:layout_constraintTop_toBottomOf="@id/tv_privacy_policy" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/ic_ic_thin_arrow_next_page"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_open_source"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_open_source" />
+
+                <TextView
+                    android:id="@+id/tv_logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="44dp"
+                    android:text="@string/logout"
+                    android:textColor="@color/mainBlack"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_open_source"
+                    app:layout_constraintTop_toBottomOf="@id/tv_open_source" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/ic_ic_thin_arrow_next_page"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_logout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_logout" />
+
+                <TextView
+                    android:id="@+id/tv_withdrawal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/withdrawal"
+                    android:textColor="@color/mainBlack"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_logout"
+                    app:layout_constraintTop_toBottomOf="@id/tv_logout" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/ic_ic_thin_arrow_next_page"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_withdrawal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_withdrawal" />
+
+                <TextView
+                    android:id="@+id/tv_copyright"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginBottom="58dp"
+                    android:text="@string/copyright"
+                    android:textColor="@color/judge_gray"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_withdrawal"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

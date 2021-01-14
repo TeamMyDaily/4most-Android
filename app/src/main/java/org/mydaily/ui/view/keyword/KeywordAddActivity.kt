@@ -63,7 +63,6 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
         setSupportActionBar(binding.tbKeywordAddActivity)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
         binding.tbKeywordAddActivity.setNavigationOnClickListener {
             finish()
         }
