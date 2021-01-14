@@ -42,7 +42,7 @@
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/tv_alert_name"
             app:layout_constraintEnd_toStartOf="@+id/tv_alert_name"
-            app:srcCompat="@drawable/ic_alert_icon" />
+            app:srcCompat="@drawable/ic_error" />
 
         <ImageView
             android:id="@+id/iv_alert_email"
@@ -52,7 +52,7 @@
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/tv_alert_email"
             app:layout_constraintEnd_toStartOf="@+id/tv_alert_email"
-            app:srcCompat="@drawable/ic_alert_icon" />
+            app:srcCompat="@drawable/ic_error" />
 
         <ImageView
             android:id="@+id/iv_alert_password"
@@ -62,7 +62,7 @@
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/tv_password_alert"
             app:layout_constraintEnd_toStartOf="@+id/tv_password_alert"
-            app:srcCompat="@drawable/ic_alert_icon" />
+            app:srcCompat="@drawable/ic_error" />
 
         <TextView
             android:id="@+id/tv_alert_name"
@@ -113,6 +113,7 @@
             android:text="@string/email_alarm"
             android:textColor="@color/mainGray"
             android:textSize="12sp"
+            android:background="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/cl_email"
             app:layout_constraintEnd_toEndOf="@+id/cl_email" />
 
@@ -345,8 +346,8 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_sign_up"
             style="@style/MyDailyButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
             android:layout_marginHorizontal="64dp"
             android:layout_marginStart="64dp"
             android:layout_marginEnd="64dp"

@@ -114,7 +114,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_keyword_input"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
+                    android:maxLines="1"
+                    android:inputType="text"
                     android:privateImeOptions='"defaultInputmode=korean"'
                     android:textCursorDrawable="@drawable/edittext_cursor_cod_gray" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -134,7 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:background="@drawable/ic_error_2"
+                android:background="@drawable/ic_error"
                 android:clickable="false"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/et_keyword_input_layout"
