@@ -1,6 +1,5 @@
 package org.mydaily.ui.view.goal.detail
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.view.Menu
 import android.view.MenuItem
@@ -8,6 +7,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityGoalDetailBinding
 import org.mydaily.ui.base.BaseActivity
+import org.mydaily.ui.view.custom.GoalAchieveDialog
 import org.mydaily.ui.viewmodel.GoalViewModel
 import org.mydaily.util.CalendarUtil
 import java.util.*
@@ -66,23 +66,32 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
 
     private fun initClickEvent() {
         binding.btnAchieve.setOnClickListener {
-            AlertDialog.Builder(this)
-                .setTitle("타이틀")
-                .setMessage("달성여부 변경할거임?")
-                .setPositiveButton("확인") { _, _ ->
-                    viewModel.putGoalsCompletion(intentWeekGoalId)
-                    finish()
-                }
-                .setNegativeButton("취소") { _, _ ->
+            if (!intentIsGoalCompleted) {
+                GoalAchieveDialog(this).show()
+            } else {
+                finish()
+            }
+            intentIsGoalCompleted = !intentIsGoalCompleted
+            binding.isGoalCompleted = intentIsGoalCompleted
+            viewModel.putGoalsCompletion(intentWeekGoalId)
 
-                }
-                .create()
-                .show()
+            /* AlertDialog.Builder(this)
+                 .setTitle("타이틀")
+                 .setMessage("달성여부 변경할거임?")
+                 .setPositiveButton("확인") { _, _ ->
+                     viewModel.putGoalsCompletion(intentWeekGoalId)
+                     finish()
+                 }
+                 .setNegativeButton("취소") { _, _ ->
+
+                 }
+                 .create()
+                 .show()*/
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_goal_detail, menu)
+        menuInflater.inflate(R.menu.menu_modify, menu)
         return true
     }
 

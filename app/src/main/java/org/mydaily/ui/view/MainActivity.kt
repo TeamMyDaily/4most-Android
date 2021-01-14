@@ -2,13 +2,14 @@ package org.mydaily.ui.view
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.view.View
 import androidx.core.content.ContextCompat
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityMainBinding
 import org.mydaily.util.extension.replace
 import org.mydaily.ui.base.BaseActivity
-import org.mydaily.ui.view.daily.TaskFragment
+import org.mydaily.ui.view.task.TaskFragment
 import org.mydaily.ui.view.goal.GoalFragment
 import org.mydaily.ui.view.mypage.MyPageFragment
 import org.mydaily.ui.view.remind.RemindFragment
@@ -70,14 +71,17 @@ class MainActivity : BaseActivity<ActivityMainBinding, UserViewModel>() {
 
     private fun replaceDailyFragment() {
         replace(R.id.container_main, dailyFragment)
-        binding.tvTitle.text = getString(R.string.four_most)
+        binding.tvTitle.visibility = View.GONE
+        binding.ivLogo.visibility = View.VISIBLE
         binding.tvTitle.setTextColor(ContextCompat.getColor(this, R.color.white))
-        supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.mainOrange)))
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
     private fun replaceRemindFragment() {
         replace(R.id.container_main, remindFragment)
         binding.tvTitle.text =getString(R.string.menu_remind)
+        binding.tvTitle.visibility = View.VISIBLE
+        binding.ivLogo.visibility = View.GONE
         binding.tvTitle.setTextColor(ContextCompat.getColor(this, R.color.mainBlack))
         supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
@@ -85,6 +89,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, UserViewModel>() {
     private fun replaceMyPageFragment() {
         replace(R.id.container_main, myFragment)
         binding.tvTitle.text = getString(R.string.menu_my)
+        binding.tvTitle.visibility = View.VISIBLE
+        binding.ivLogo.visibility = View.GONE
         binding.tvTitle.setTextColor(ContextCompat.getColor(this, R.color.white))
         supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.mainOrange)))
     }
@@ -92,6 +98,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, UserViewModel>() {
     private fun replaceGoalFragment() {
         replace(R.id.container_main, goalFragment)
         binding.tvTitle.text = getString(R.string.menu_goal)
+        binding.ivLogo.visibility = View.GONE
+        binding.tvTitle.visibility = View.VISIBLE
         binding.tvTitle.setTextColor(ContextCompat.getColor(this, R.color.mainBlack))
         supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }

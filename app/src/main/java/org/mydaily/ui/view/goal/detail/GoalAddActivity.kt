@@ -53,17 +53,17 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
         binding.tbGoalAdd.setNavigationOnClickListener {
             if (isGoalChanged) {
                 AlertDialog.Builder(this)
-                    .setTitle("타이틀")
-                    .setMessage("수정사항 저장?")
-                    .setPositiveButton("확인") { _, _ ->
-                        viewModel.postGoals(
+                    .setTitle("정말 뒤로가시겠어요?")
+                    .setMessage("뒤로가기를 누르시면 수정사항이 삭제되고 이전 페이지로 돌아갑니다.")
+                    .setPositiveButton("뒤로가기") { _, _ ->
+/*                        viewModel.postGoals(
                             System.currentTimeMillis(),
                             intentTotalKeywordId.toString(),
                             binding.etGoal.text.toString()
-                        )
+                        )*/
                         finish()
                     }
-                    .setNegativeButton("취소") { _, _ ->
+                    .setNegativeButton("취소하기") { _, _ ->
 
                     }
                     .create()
@@ -123,7 +123,7 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         if (intentAction == "MODIFY") {
-            menuInflater.inflate(R.menu.menu_goal_add, menu)
+            menuInflater.inflate(R.menu.menu_delete, menu)
             return true
         }
         return false
@@ -133,7 +133,7 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
         return when (item.itemId) {
             R.id.menu_delete -> {
                 AlertDialog.Builder(this)
-                    .setMessage("목표를 삭제하시겠어요?")
+                    .setTitle("목표를 삭제하시겠어요?")
                     .setPositiveButton("삭제하기") { _, _ ->
                         viewModel.deleteGoal(intentWeekGoalId)
                         finish()

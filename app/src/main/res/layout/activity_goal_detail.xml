@@ -20,8 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"
-            app:navigationIcon="@drawable/ic_arrow_back"
-            app:menu="@menu/menu_goal_detail"
+            app:navigationIcon="@drawable/ic_back"
+            app:menu="@menu/menu_modify"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -135,6 +135,7 @@
             android:layout_marginHorizontal="16dp"
             android:text="@string/msg_goal_achieve"
             style="@style/MyDailyButtonStyle"
+            setButtonBackgroundWithGoalCompleted="@{isGoalCompleted}"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

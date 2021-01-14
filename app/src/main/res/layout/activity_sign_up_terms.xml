@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"
-            app:navigationIcon="@drawable/ic_arrow_back"
+            app:navigationIcon="@drawable/ic_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -40,22 +40,21 @@
             android:id="@+id/imageView"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="86dp"
-            android:src="@color/black"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/img_app_logo"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tb_sign_up_terms" />
 
         <TextView
             android:id="@+id/sub_title_"
-            android:layout_width="256dp"
-            android:layout_height="44dp"
-            android:gravity="center_vertical"
-            android:text="나를 돌아보고 방향성을 잡는 포모스트(대충 1-2줄짜리 짧은 Sub title)"
-            android:textColor="@color/black"
-            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
+            android:text="@string/app_description"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 
@@ -152,14 +151,14 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_sign_up"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginHorizontal="64dp"
             android:layout_marginTop="180dp"
-            android:background="@drawable/selector_btn_sign_up"
             android:text="@string/next"
+            style="@style/MyDailyButtonStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />

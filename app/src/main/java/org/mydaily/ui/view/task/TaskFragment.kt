@@ -1,4 +1,4 @@
-package org.mydaily.ui.view.daily
+package org.mydaily.ui.view.task
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -9,20 +9,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.data.local.FourMostPreference
-import org.mydaily.databinding.FragmentDailyBinding
+import org.mydaily.databinding.FragmentTaskBinding
 import org.mydaily.ui.adapter.DailyExpandableAdapter
 import org.mydaily.ui.base.BaseFragment
-import org.mydaily.ui.view.daily.detail.TaskAddActivity
-import org.mydaily.ui.view.daily.detail.TaskDetailActivity
+import org.mydaily.ui.view.task.detail.TaskAddActivity
+import org.mydaily.ui.view.task.detail.TaskDetailActivity
 import org.mydaily.ui.viewmodel.TaskViewModel
 import org.mydaily.util.CalendarUtil
 import org.mydaily.util.CalendarUtil.compareDateTo
 import java.util.*
 
 
-class TaskFragment : BaseFragment<FragmentDailyBinding, TaskViewModel>() {
+class TaskFragment : BaseFragment<FragmentTaskBinding, TaskViewModel>() {
     override val layoutResourceId: Int
-        get() = R.layout.fragment_daily
+        get() = R.layout.fragment_task
     override val viewModel: TaskViewModel by viewModel()
 
     private val dailyExpandableAdapter = DailyExpandableAdapter()

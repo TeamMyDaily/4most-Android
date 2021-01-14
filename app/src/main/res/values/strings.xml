@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">MyDaily</string>
+    <string name="app_name">포모스트(4most)</string>
+    <string name="app_description">이상이 일상이 되는 회고, 포모스트</string>
 
     <!--Main Menu-->
     <string name="four_most">4most</string>
@@ -18,7 +19,7 @@
 
 
     <!--Sign In-->
-    <string name="sign_in">포모스트 입장!</string>
+    <string name="sign_in">로그인</string>
     <string name="sign_up">회원가입</string>
     <string name="auto_sign_in">자동로그인</string>
     <string name="email">이메일</string>
@@ -30,7 +31,7 @@
     <!--Sign Up Terms-->
     <string name="msg_allow_personal_information">[필수] 개인정보 수집이용 동의</string>
     <string name="msg_allow_service_terms">[필수] 서비스 이용약관 동의</string>
-    <string name="msg_allow_alert">약관에는 ‘개인정보 수집 목적 및 이용’에 관한 중요\n한 내용이 담겨 있습니다.약관동의 체크는 해당 약관\n을 모두 숙지하였으며, 이에 동의함을 의미합니다.</string>
+    <string name="msg_allow_alert">약관에는 ‘개인정보 수집 목적 및 이용’에 관한 중요한 내용이 담겨 있습니다.약관동의 체크는 해당 약관을 모두 숙지하였으며, 이에 동의함을 의미합니다.</string>
     <string name="next">다음</string>
 
     <!--Sign Up-->
@@ -53,14 +54,14 @@
 
 
     <!--Goal-->
-    <string name="msg_plz_set_goal_by_keyword">키워드에 따른\n목표를 설정해주세요!</string>
+    <string name="msg_plz_set_goal_by_keyword">이번 주 키워드별\n목표를 설정해주세요</string>
     <string name="msg_goal_has_not_been_set">개의 목표가 미설정 되었어요!</string>
     <string name="msg_delete">삭제할래요</string>
     <string name="msg_set_goal">목표를 세워주세요.</string>
     <string name="msg_achieved">달성</string>
     <string name="msg_not_achieved">미달성</string>
-    <string name="msg_goal_denied_keyword_not_exist">키워드가 존재 하지 않아 목표를 생성 할 수 없어요.😢 \n + 버튼을 눌러 키워드를 생성 해 보세요!</string>
-    <string name="msg_keyword_not_exist_this_week">이 주에는 키워드가 없어요.😢</string>
+    <string name="msg_goal_denied_keyword_not_exist">키워드가 존재 하지 않아 목표를 생성 할 수 없어요.\n + 버튼을 눌러 키워드를 생성 해 보세요!</string>
+    <string name="msg_keyword_not_exist_this_week">키워드가 없는 날이에요.</string>
     <string name="msg_check_goal_achievement">목표 달성여부 체크</string>
     <string name="msg_to_goal">에 가까워지기 위한 목표</string>
     <string name="msg_goal_achieve">목표 달성</string>

@@ -42,7 +42,6 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, UserViewModel>() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_settings -> {
-                requireContext().shortToast("설정 버튼 클릭됨")
                 requireContext().apply {
                     startActivity(Intent(this, MyPageSettingActivity::class.java))
                 }

@@ -1,4 +1,4 @@
-package org.mydaily.ui.view.daily.detail
+package org.mydaily.ui.view.task.detail
 
 import android.app.AlertDialog
 import android.view.Menu
@@ -7,13 +7,13 @@ import androidx.core.widget.addTextChangedListener
 import com.xw.repo.BubbleSeekBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
-import org.mydaily.databinding.ActivityDailyAddBinding
+import org.mydaily.databinding.ActivityTaskAddBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.viewmodel.TaskViewModel
 
-class TaskAddActivity : BaseActivity<ActivityDailyAddBinding, TaskViewModel>() {
+class TaskAddActivity : BaseActivity<ActivityTaskAddBinding, TaskViewModel>() {
     override val layoutResourceId: Int
-        get() = R.layout.activity_daily_add
+        get() = R.layout.activity_task_add
     override val viewModel: TaskViewModel by viewModel()
 
     private var isTitleEntered = false
@@ -62,17 +62,16 @@ class TaskAddActivity : BaseActivity<ActivityDailyAddBinding, TaskViewModel>() {
         binding.tbDailyDetail.setNavigationOnClickListener {//수정 시도했을때
             if (isInputChanged) {
                 AlertDialog.Builder(this)
-                    .setTitle("타이틀")
-                    .setMessage("수정사항 저장?")
-                    .setPositiveButton("확인") { _, _ ->
-                        viewModel.postTask(
+                    .setTitle("정말 뒤로가시겠어요?")
+                    .setMessage("뒤로가기를 누르시면 작성 중인 내용이 삭제되고 이전 페이지로 돌아갑니다.")
+                    .setPositiveButton("뒤로가기") { _, _ ->
+/*                        viewModel.postTask(
                             intentKeywordId.toString(), binding.etTitle.text.toString(),
                             binding.etDescription.text.toString(), binding.bubbleSeekBar.progress
-                        )
+                        )*/
                         finish()
                     }
-                    .setNegativeButton("취소") { _, _ ->
-
+                    .setNegativeButton("취소하기") { _, _ ->
                     }
                     .create()
                     .show()
@@ -186,7 +185,7 @@ class TaskAddActivity : BaseActivity<ActivityDailyAddBinding, TaskViewModel>() {
         when (item.itemId) {
             R.id.menu_delete -> {
                 AlertDialog.Builder(this)
-                    .setMessage("이 기록을 삭제하시겠어요?")
+                    .setTitle("이 기록을 삭제하시겠어요?")
                     .setPositiveButton("삭제하기"){ _, _ ->
                         viewModel.deleteTask(intentTasksId)
                         finish()

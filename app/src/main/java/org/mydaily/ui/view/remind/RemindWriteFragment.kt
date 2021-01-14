@@ -7,7 +7,6 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.FragmentRemindWriteBinding
 import org.mydaily.ui.base.BaseFragment
@@ -17,8 +16,8 @@ class RemindWriteFragment : BaseFragment<FragmentRemindWriteBinding, RemindViewM
     override val layoutResourceId: Int
         get() = R.layout.fragment_remind_write
     override val viewModel: RemindViewModel by sharedViewModel()
-    private var start : Long = 0
-    private var end : Long = 0
+    private var start: Long = 0
+    private var end: Long = 0
 
     override fun initView() {
         initSetting()
@@ -35,18 +34,24 @@ class RemindWriteFragment : BaseFragment<FragmentRemindWriteBinding, RemindViewM
         observeStartEnd()
     }
 
-    private fun startRemindDetailWriteActivityWithAction(tv_content: TextView, tV_title: TextView, subType: Int, start: Long, end: Long) {
-        val intent: Intent = Intent(requireActivity(), RemindDetailWriteActivity::class.java).apply {
+    private fun startRemindDetailWriteActivityWithAction(
+        tv_content: TextView,
+        tV_title: TextView,
+        subType: Int,
+        start: Long,
+        end: Long
+    ) {
+        val intent: Intent =
+            Intent(requireActivity(), RemindDetailWriteActivity::class.java).apply {
                 putExtra("remind", tv_content.text.toString())
                 putExtra("title", tV_title.text.toString())
                 putExtra("subType", subType)
                 putExtra("start", start)
                 putExtra("end", end)
             }
-        if(tv_content.text.isNotEmpty()) {
-            intent.putExtra("isWriten",true)
-        }
-        else {
+        if (tv_content.text.isNotEmpty()) {
+            intent.putExtra("isWriten", true)
+        } else {
             intent.putExtra("isWriten", false)
         }
         startActivity(intent)
@@ -89,40 +94,39 @@ class RemindWriteFragment : BaseFragment<FragmentRemindWriteBinding, RemindViewM
         })
     }
 
-    private fun observeReview(){
+    private fun observeReview() {
         viewModel.reviewList.observe(requireActivity(), {
-            if(it.isWritten) {
-                if(it.review.good != null) {
-                    binding.tvWeekGoodContent.text = Editable.Factory.getInstance().newEditable(it.review.good)
+            if (it.isWritten) {
+                if (it.review.good != null) {
+                    binding.tvWeekGoodContent.text =
+                        Editable.Factory.getInstance().newEditable(it.review.good)
                     binding.tvWeekGoodContent.setBackgroundResource(R.drawable.rectangle_cherry_radius_15)
                     binding.tvGoodCount.text = it.review.good.length.toString()
-                }
-                else {
+                } else {
                     binding.tvWeekGoodContent.setBackgroundResource(R.drawable.remind_write_textbox)
                     binding.tvGoodCount.text = "0"
                 }
 
-                if(it.review.bad != null) {
-                    binding.tvWeekBadContent.text = Editable.Factory.getInstance().newEditable(it.review.bad)
+                if (it.review.bad != null) {
+                    binding.tvWeekBadContent.text =
+                        Editable.Factory.getInstance().newEditable(it.review.bad)
                     binding.tvWeekBadContent.setBackgroundResource(R.drawable.rectangle_cherry_radius_15)
                     binding.tvBadCount.text = it.review.bad.length.toString()
-                }
-                else {
+                } else {
                     binding.tvWeekBadContent.setBackgroundResource(R.drawable.remind_write_textbox)
                     binding.tvBadCount.text = "0"
                 }
 
-                if(it.review.next != null) {
-                    binding.tvNextWeekContent.text = Editable.Factory.getInstance().newEditable(it.review.next)
+                if (it.review.next != null) {
+                    binding.tvNextWeekContent.text =
+                        Editable.Factory.getInstance().newEditable(it.review.next)
                     binding.tvNextWeekContent.setBackgroundResource(R.drawable.rectangle_cherry_radius_15)
                     binding.tvNextWeekCount.text = it.review.next.length.toString()
-                }
-                else {
+                } else {
                     binding.tvNextWeekContent.setBackgroundResource(R.drawable.remind_write_textbox)
                     binding.tvNextWeekCount.text = "0"
                 }
-            }
-            else {
+            } else {
                 binding.tvNextWeekContent.setBackgroundResource(R.drawable.remind_write_textbox)
                 binding.tvWeekGoodContent.setBackgroundResource(R.drawable.remind_write_textbox)
                 binding.tvWeekBadContent.setBackgroundResource(R.drawable.remind_write_textbox)
@@ -142,7 +146,7 @@ class RemindWriteFragment : BaseFragment<FragmentRemindWriteBinding, RemindViewM
         binding.tvNextWeekContent.movementMethod = ScrollingMovementMethod()
     }
 
-    private fun scrollEvent(){
+    private fun scrollEvent() {
         binding.tvWeekGoodContent.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(v: View, event: MotionEvent): Boolean {
                 binding.svEntire.requestDisallowInterceptTouchEvent(true)

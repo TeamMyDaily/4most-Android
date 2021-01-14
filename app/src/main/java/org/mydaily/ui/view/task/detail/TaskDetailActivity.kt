@@ -1,17 +1,17 @@
-package org.mydaily.ui.view.daily.detail
+package org.mydaily.ui.view.task.detail
 
 import android.content.Intent
 import android.view.Menu
 import android.view.MenuItem
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
-import org.mydaily.databinding.ActivityDailyDetailBinding
+import org.mydaily.databinding.ActivityTaskDetailBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.viewmodel.TaskViewModel
 
-class TaskDetailActivity : BaseActivity<ActivityDailyDetailBinding, TaskViewModel>() {
+class TaskDetailActivity : BaseActivity<ActivityTaskDetailBinding, TaskViewModel>() {
     override val layoutResourceId: Int
-        get() = R.layout.activity_daily_detail
+        get() = R.layout.activity_task_detail
     override val viewModel: TaskViewModel by viewModel()
 
     private var intentKeywordName : String = ""

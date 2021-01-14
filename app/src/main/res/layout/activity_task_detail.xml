@@ -7,22 +7,21 @@
 
     </data>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.daily.detail.TaskDetailActivity">
+        tools:context=".ui.view.task.detail.TaskAddActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_daily_detail"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"
-            app:menu="@menu/menu_delete"
+            app:menu="@menu/menu_modify"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/ic_arrow_back">
+            app:navigationIcon="@drawable/ic_back">
 
             <TextView
                 android:id="@+id/tv_title"
@@ -65,7 +64,7 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="으로 채운"
+                    android:text="에 관한"
                     android:textColor="@color/mainBlack"
                     android:textSize="25sp"
                     app:layout_constraintStart_toEndOf="@+id/tv_keyword"
@@ -75,7 +74,7 @@
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="하루에 대해 알려주세요"
+                    android:text="행동을 기록해주세요"
                     android:textColor="@color/mainBlack"
                     android:textSize="25sp"
                     app:layout_constraintStart_toStartOf="@+id/tv_keyword"
@@ -97,27 +96,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-                <TextView
-                    android:id="@+id/tv_title_byte"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textColor="@color/silver"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_title_byte_info"
-                    app:layout_constraintTop_toBottomOf="@+id/et_title" />
-
-                <TextView
-                    android:id="@+id/tv_title_byte_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:text="/20자"
-                    android:textColor="@color/mainOrange"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/et_title" />
-
                 <EditText
                     android:id="@+id/et_description"
                     android:layout_width="match_parent"
@@ -130,30 +108,10 @@
                     android:padding="16dp"
                     android:textColor="@color/mainBlack"
                     android:textSize="15sp"
+                    android:enabled="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_title_byte" />
-
-                <TextView
-                    android:id="@+id/tv_desc_byte"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textColor="@color/silver"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_desc_byte_info"
-                    app:layout_constraintTop_toBottomOf="@+id/et_description" />
-
-                <TextView
-                    android:id="@+id/tv_desc_byte_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:text="/500자"
-                    android:textColor="@color/mainOrange"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/et_description" />
+                    app:layout_constraintTop_toBottomOf="@+id/et_title" />
 
                 <TextView
                     android:id="@+id/tv_satisfaction_info"
@@ -198,6 +156,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginVertical="24dp"
+                    android:enabled="false"
                     app:bsb_bubble_color="@color/mainOrange"
                     app:bsb_bubble_text_color="@color/white"
                     app:bsb_max="5"
@@ -217,24 +176,11 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_satisfaction_info" />
 
-                <Button
-                    android:id="@+id/btn_save"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginBottom="21dp"
-                    android:background="@drawable/selector_btn_sign_in"
-                    android:text="@string/msg_store"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
