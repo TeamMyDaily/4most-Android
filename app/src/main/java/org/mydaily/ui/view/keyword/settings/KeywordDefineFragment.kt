@@ -3,7 +3,9 @@ package org.mydaily.ui.view.keyword.settings
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.data.model.domain.KeywordPriority
@@ -18,7 +20,7 @@ import org.mydaily.util.extension.replaceAndAddBackStack
 class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, KeywordViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_keyword_define
-    override val viewModel: KeywordViewModel by viewModel()
+    override val viewModel: KeywordViewModel by sharedViewModel()
 
     private val keywordDefineAdapter = KeywordDefineAdapter()
 
@@ -29,11 +31,12 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
     }
 
     override fun initBeforeBinding() {
-
+        binding.lifecycleOwner = viewLifecycleOwner
+        viewModel.getTaskKeyword()
     }
 
     override fun initAfterBinding() {
-
+        observeKeywordList()
     }
 
     private fun initToolbar() {
@@ -48,10 +51,7 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
                 .setTitle("키워드정의를 건너뛰시겠어요?")
                 .setMessage("MY>나의 현재 키워드> 키워드 정의에서 설정 할 수 있어요.")
                 .setPositiveButton("확인"){ _, _ ->
-                    requireActivity().apply {
-                        startActivity(Intent(this, MainActivity::class.java))
-                        finish()
-                    }
+                    startMainActivity()
                 }
                 .setNegativeButton("취소"){ _, _ ->
 
@@ -59,6 +59,9 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
                 }
                 .create()
                 .show()
+        }
+        binding.btnSetPriorityWithSkip.setOnClickListener {
+            startMainActivity()
         }
     }
 
@@ -68,25 +71,37 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
         }
-        keywordDefineAdapter.setClickListener {
+        keywordDefineAdapter.setClickListener { id, name->
             val bundle = Bundle().apply {
-                putString("keyword", it)
+                putInt("totalKeywordId", id)
+                putString("keyword", name)
             }
             val keywordDefineAddFragment = KeywordDefineAddFragment().apply {
                 arguments = bundle
             }
-            replaceAndAddBackStack(R.id.container_keyword_settings, keywordDefineAddFragment, "priority")
+            replaceAndAddBackStack(
+               R.id.container_keyword_settings,
+                keywordDefineAddFragment,
+                "add"
+            )
         }
 
-        /** 임시데이터
-        * 나중에 KeywordViewModel에서 data 가져오는걸로 수정해야함
-        */
-        keywordDefineAdapter.data = listOf(
-            KeywordPriority("열정", 1),
-            KeywordPriority("아웃풋", 2),
-            KeywordPriority("영향력", 3),
-            KeywordPriority("경청", 4),
-        )
     }
+
+    private fun observeKeywordList() {
+        viewModel.taskKeywordList.observe(viewLifecycleOwner, {
+            keywordDefineAdapter.data = it
+        })
+    }
+
+    private fun startMainActivity() {
+        requireActivity().apply {
+            val intent =Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+            finish()
+        }
+    }
+
 
 }

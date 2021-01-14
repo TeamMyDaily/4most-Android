@@ -9,8 +9,8 @@ import java.util.*
 
 class KeywordPriorityAdapter : RecyclerView.Adapter<KeywordPriorityAdapter.ViewHolder>(), ItemTouchHelperListener {
 
-    private val _data = mutableListOf<KeywordPriority>()
-    var data: List<KeywordPriority> = _data
+    private val _data = mutableListOf<String>()
+    var data: List<String> = _data
         set(value) {
             _data.clear()
             _data.addAll(value)
@@ -19,8 +19,8 @@ class KeywordPriorityAdapter : RecyclerView.Adapter<KeywordPriorityAdapter.ViewH
 
     inner class ViewHolder(private val binding: ItemKeywordPriorityBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(keywordPriority: KeywordPriority) {
-            binding.keywordPriority = keywordPriority
+        fun bind(keyword: String) {
+            binding.keyword = keyword
         }
     }
 
@@ -38,11 +38,17 @@ class KeywordPriorityAdapter : RecyclerView.Adapter<KeywordPriorityAdapter.ViewH
 
     override fun getItemCount(): Int = _data.size
 
-    override fun onItemMoved(from: Int, to: Int){
-        Collections.swap(_data, from, to)
-        for(i in 0 until _data.size){
-            _data[i].priority = i+1
+    override fun onItemMoved(fromPos: Int, toPos: Int){
+        if (fromPos < toPos) {
+            for(i in fromPos until toPos){
+                Collections.swap(_data, i, i+1);
+            }
+        }else{
+            for(i in fromPos downTo toPos+1){
+                Collections.swap(_data, i, i-1);
+            }
         }
-        notifyItemMoved(from, to)
+
+        notifyItemMoved(fromPos, toPos)
     }
 }

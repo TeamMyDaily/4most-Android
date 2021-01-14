@@ -43,10 +43,4 @@ interface UserService {
     fun deleteUser(
         @Body body: ReqPassword
     ): Call<Response>
-
-    //GET	마이페이지
-    @GET("/users")
-    @Headers("Content-Type: application/json")
-    fun getUser(
-    ): Call<ResUser>
 }

@@ -38,7 +38,14 @@
             android:name=".ui.view.daily.detail.TaskDetailActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui.view.user.SignInActivity"/>
+            android:name=".ui.view.user.SignInActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.view.remind.RemindDetailWriteActivity"
             android:exported="true"
@@ -55,11 +62,6 @@
             android:name=".ui.view.user.SignUpTermsActivity"
             android:exported="true" />
         <activity android:name=".ui.view.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

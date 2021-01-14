@@ -19,7 +19,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/menu_keyword_list">
+            app:menu="@menu/menu_keyword_list"
+            app:navigationIcon="@drawable/ic_btn_arrow_left">
 
             <TextView
                 android:layout_width="wrap_content"
