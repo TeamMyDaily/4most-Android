@@ -77,11 +77,11 @@
 
     <!--KeywordAddActivity-->
     <string name="keyword_add">키워드 추가</string>
-    <string name="is_there_no_word">찾으시는 가치(단어)가\n없으신가요?</string>
-    <string name="please_add_yourself">"나의 가치에 맞는 키워드를 직접 추가해 주세요"</string>
+    <string name="is_there_no_word">찾으시는 가치가\n없으신가요?</string>
+    <string name="please_add_yourself">"가치관에 맞는 키워드를 직접 추가해주세요!"</string>
     <string name="keyword_guide">키워드 가이드\n공백 없이 최대 5글자까지 가능해요.\n명사 형태를 추천해요.</string>
-    <string name="btn_add">추가할래요!</string>
-    <string name="input_value">가치를 입력해주세요</string>
+    <string name="btn_add">키워드 추가하기</string>
+    <string name="input_value">가치를 입력해주세요.</string>
     <string name="there_is_space">잠깐! 공백이 있어요!</string>
     <string name="maximum_five_word">최대 5글자의 단어만 입력 가능해요!</string>
     <string name="already_exist">이미 생성 된 단어에요!</string>
@@ -89,26 +89,24 @@
 
     <!--KeywordListActivity-->
     <string name="keyword_setting">키워드 설정하기</string>
-    <string name="what_is_important_thing_to_you">살면서 중요하게\n생각하는 것은 무엇인가요?</string>
-    <string name="choose_eight">먼저 8개를 골라보세요</string>
-    <string name="attitude_for_life">삶을 대하는 자세</string>
-    <string name="attitude_for_work">일을 대하는 자세</string>
-    <string name="my_word">내가 추가한 단어</string>
-
-    <string name="no_word">찾고 있는 가치(단어)가 없으세요?</string>
+    <string name="what_is_important_thing_to_you">삶에서 중요하게\n생각하는 가치는 무엇인가요?</string>
+    <string name="choose_eight">먼저 8개의 키워드를 선택해보세요!</string>
+    <string name="attitude_for_life">삶과 관련된 가치</string>
+    <string name="attitude_for_work">일과 관련된 가치</string>
+    <string name="my_word">내가 추가한 키워드</string>
     <string name="complete">완료</string>
-    <string name="modify">수정</string>
-    <string name="select_finish">선택완료!</string>
+    <string name="modify">삭제</string>
+    <string name="select_finish">키워드 선택하기</string>
     <string name="image_error">이미지가 열리지 않습니다.</string>
     <string name="up_to_eight">8개 까지 선택 가능해요!</string>
-    <string name="too_many_keyword_selected">키워드를 많이 선택 하셨어요.\n키워드는 8개 까지 선택이 가능합니다.\n좀 더 고민해서 하나를 제외 해 주세요!</string>
+    <string name="too_many_keyword_selected">조금만 더 고민해서\n더 중요한 8개의 키워드만 남겨주세요.</string>
 
     <!--KeywordPopupActivity-->
     <string name="who_is_your_role_model_why">당신이 선망하는 사람은 누구인가요?\n그 이유는 무엇인가요?</string>
     <string name="example">예시</string>
     <string name="example_stevejobs">스티브 잡스\n우리가 이룬 것 만큼 이루지 못한 것도\n자랑스럽습니다 라고 말하는 자신감</string>
     <string name="popup_skip">건너뛰기</string>
-    <string name="popup_finish">알겠어요</string>
+    <string name="popup_finish">돌아가기</string>
     <string name="imagine_your_perfect_day">당신의 완벽한 하루를 상상해 보세요!\n어떤 것을 하고 있나요?</string>
     <string name="example_plan">계획한대로 하루를 분 단위로 쪼개서 바쁘게 살았을 때\n하루를 알차게 보냈다는 뿌듯함에서 오는 자랑스러움\n그것이 나의 완벽한 하루다</string>
     <string name="how_do_you_want_to_remembered">남들에게 어떤 사람으로 기억되고 싶으신가요?</string>
@@ -116,8 +114,11 @@
 
     <!--KeywordSelectActivity-->
     <string name="keyword_select">키워드 선택하기</string>
-    <string name="choose_four">8가지를 고르셨군요!\n조금만 더 고민해 볼까요?</string>
-    <string name="maximum_four">최대 4개까지 최종 키워드를 골라주세요!</string>
+    <string name="choose_four">선택한 가치 중에서\n더 중요한 것을 골라보세요</string>
+    <string name="maximum_four">최종 키워드를 최대 4개까지 골라보세요!</string>
+    <string name="up_to_four">4개까지 선택 가능해요!</string>
+    <string name="think_more">조금만 더 고민해서\n더 중요한 4개의 키워드만 남겨주세요.</string>
+    <string name="okay">확인</string>
 
     <!--KeywordSettingsActivity-->
     <string name="menu_keyword_priority">키워드 우선순위</string>

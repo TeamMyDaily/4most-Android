@@ -14,6 +14,7 @@
         android:theme="@style/Theme.MyDaily"
         android:usesCleartextTraffic="true">
         <activity android:name=".ui.view.daily.detail.TaskAddActivity" />
+        <activity android:name=".ui.view.mypage.MyPageSettingActivity"/>
         <activity
             android:name=".ui.view.keyword.settings.KeywordSettingsActivity"
             android:exported="true" />
@@ -22,7 +23,7 @@
             android:windowSoftInputMode="adjustResize"  />
         <activity
             android:name=".ui.view.keyword.KeywordAddActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.view.keyword.KeywordListActivity"
             android:exported="true"

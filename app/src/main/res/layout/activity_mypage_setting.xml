@@ -10,6 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         tools:context=".ui.view.keyword.settings.MyPageSettingFragment">
 
         <androidx.appcompat.widget.Toolbar
@@ -19,7 +20,7 @@
             android:background="@color/persimmon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/ic_arrow_back_white_bold">
+            app:navigationIcon="@drawable/ic_btn_arrow_left_white">
 
             <TextView
                 android:id="@+id/tv_setting"
@@ -37,12 +38,11 @@
 
 
         <TextView
-            android:id="@+id/tv_sir"
+            android:id="@+id/tv_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="48dp"
-            android:text="@string/sir"
             android:textColor="@color/mainBlack"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,8 +55,8 @@
             android:layout_marginTop="8dp"
             android:text="@string/change_password_periodically"
             android:textColor="@color/mainGray"
-            app:layout_constraintStart_toStartOf="@+id/tv_sir"
-            app:layout_constraintTop_toBottomOf="@id/tv_sir" />
+            app:layout_constraintStart_toStartOf="@+id/tv_user_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_name" />
 
         <View
             android:id="@+id/boundary1"
