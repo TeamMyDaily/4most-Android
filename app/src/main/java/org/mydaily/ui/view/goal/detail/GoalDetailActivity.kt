@@ -1,6 +1,5 @@
 package org.mydaily.ui.view.goal.detail
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.view.Menu
 import android.view.MenuItem
@@ -67,29 +66,27 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
 
     private fun initClickEvent() {
         binding.btnAchieve.setOnClickListener {
-            if(!intentIsGoalCompleted){
-                GoalAchieveDialog(this)
-                    .setNegativeButtonClickListener {
-                        finish()
-                    }
-                    .show()
-            }else {
+            if (!intentIsGoalCompleted) {
+                GoalAchieveDialog(this).show()
+            } else {
                 finish()
             }
+            intentIsGoalCompleted = !intentIsGoalCompleted
+            binding.isGoalCompleted = intentIsGoalCompleted
             viewModel.putGoalsCompletion(intentWeekGoalId)
 
-           /* AlertDialog.Builder(this)
-                .setTitle("타이틀")
-                .setMessage("달성여부 변경할거임?")
-                .setPositiveButton("확인") { _, _ ->
-                    viewModel.putGoalsCompletion(intentWeekGoalId)
-                    finish()
-                }
-                .setNegativeButton("취소") { _, _ ->
+            /* AlertDialog.Builder(this)
+                 .setTitle("타이틀")
+                 .setMessage("달성여부 변경할거임?")
+                 .setPositiveButton("확인") { _, _ ->
+                     viewModel.putGoalsCompletion(intentWeekGoalId)
+                     finish()
+                 }
+                 .setNegativeButton("취소") { _, _ ->
 
-                }
-                .create()
-                .show()*/
+                 }
+                 .create()
+                 .show()*/
         }
     }
 
