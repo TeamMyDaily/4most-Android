@@ -13,6 +13,7 @@ import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordSelectBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.view.keyword.popup.KeywordPopupActivity
+import org.mydaily.ui.view.keyword.settings.KeywordSettingsActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
 import org.mydaily.util.extension.setupToast
 
@@ -44,7 +45,14 @@ class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, Keyword
     private fun initToolbar() {
         setSupportActionBar(binding.tbKeywordSelectActivity)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.white)))
+        supportActionBar?.setBackgroundDrawable(
+            ColorDrawable(
+                ContextCompat.getColor(
+                    this,
+                    R.color.white
+                )
+            )
+        )
         binding.tbKeywordSelectActivity.setNavigationOnClickListener {
             finish()
         }
@@ -159,6 +167,10 @@ class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, Keyword
     private fun onClickBtnSelectFinish() {
         binding.btnSelectFourFinish.setOnClickListener {
             viewModel.postKeywordSelect(keywords)
+
+            val intent = Intent(this, KeywordSettingsActivity::class.java)
+            intent.putStringArrayListExtra("keywords", keywords as java.util.ArrayList<String>)
+            startActivity(intent)
         }
     }
 }
