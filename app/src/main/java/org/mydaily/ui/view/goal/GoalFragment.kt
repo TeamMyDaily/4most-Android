@@ -65,7 +65,6 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
     }
 
     private fun initClickEvent() {
-        Log.e("SEULGI", "start = ${startCalendar.timeInMillis} end = ${endCalendar.timeInMillis}")
         binding.ivArrowLeft.setOnClickListener {
             startCalendar.add(Calendar.DATE, -7)
             endCalendar.add(Calendar.DATE, -7)
@@ -98,7 +97,6 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
             }
         }
         viewModel.getGoals(startCalendar.timeInMillis, endCalendar.timeInMillis)
-        Log.e("SEULGI", "start = ${startCalendar.timeInMillis} end = ${endCalendar.timeInMillis}")
     }
 
     private fun initRecyclerView() {

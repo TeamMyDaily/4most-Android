@@ -8,6 +8,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityGoalDetailBinding
 import org.mydaily.ui.base.BaseActivity
+import org.mydaily.ui.view.custom.GoalAchieveDialog
 import org.mydaily.ui.viewmodel.GoalViewModel
 import org.mydaily.util.CalendarUtil
 import java.util.*
@@ -66,7 +67,18 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
 
     private fun initClickEvent() {
         binding.btnAchieve.setOnClickListener {
-            AlertDialog.Builder(this)
+            if(!intentIsGoalCompleted){
+                GoalAchieveDialog(this)
+                    .setNegativeButtonClickListener {
+                        finish()
+                    }
+                    .show()
+            }else {
+                finish()
+            }
+            viewModel.putGoalsCompletion(intentWeekGoalId)
+
+           /* AlertDialog.Builder(this)
                 .setTitle("타이틀")
                 .setMessage("달성여부 변경할거임?")
                 .setPositiveButton("확인") { _, _ ->
@@ -77,7 +89,7 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
 
                 }
                 .create()
-                .show()
+                .show()*/
         }
     }
 
