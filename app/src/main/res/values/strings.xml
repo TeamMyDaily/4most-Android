@@ -135,6 +135,11 @@
     <string name="priority_appoint">우선순위 지정</string>
     <string name="user_value">님이 추구하는 가치관이에요!</string>
 
-
     <string name="msg_service_is_being_prepared">서비스 준비중입니다.</string>
+    
+    <!--Splash-->
+    <string name="fourmost_start">포모스트 시작하기!</string>
+    <string name="splash_explain1">내 삶의 지향점이 될\n가치관을 정해보세요</string>
+    <string name="splash_explain2">가치관에 가까워지기 위한\n일상의 행동을 기록해보세요</string>
+    <string name="splash_explain3">한 주간의 행동을 회고하면서\n더 나은 내일을 꿈꿔보세요</string>
 </resources>
