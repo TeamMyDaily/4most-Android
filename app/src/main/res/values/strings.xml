@@ -133,7 +133,7 @@
     <!--KeywordListFragment-->
     <string name="priority_change">우선순위 변경 하기</string>
     <string name="alarm_show">이곳에서 우선순위를 변경하게 되면 기록, 회고, 목표에서\n변경한 순서대로 보여지게 됩니다.</string>
-    <string name="priority_appoint">우선순위 지</string>
+    <string name="priority_appoint">우선순위 지정</string>
     <string name="user_value">님이 추구하는 가치관이에요!</string>
 
     <!--MyPageSettingFragment-->
@@ -154,4 +154,7 @@
     <string name="logout">로그아웃</string>
     <string name="withdrawal">회원 탈퇴</string>
     <string name="copyright">copyrightⓒ4(for)most</string>
+
+    <string name="msg_service_is_being_prepared">서비스 준비중입니다.</string>
+
 </resources>
