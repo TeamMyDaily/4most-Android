@@ -7,15 +7,12 @@ import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_remind.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.mydaily.R
-import org.mydaily.data.model.network.request.ReqReportDetailGet
 import org.mydaily.databinding.FragmentRemindBinding
 import org.mydaily.ui.adapter.RemindViewPagerAdapter
 import org.mydaily.ui.base.BaseFragment
 import org.mydaily.ui.viewmodel.RemindViewModel
 import org.mydaily.util.CalendarUtil
-import org.mydaily.util.CalendarUtil.copyYMDFrom
 import org.mydaily.util.CalendarUtil.isWeekSame
-import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -23,9 +20,9 @@ class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_remind
     override val viewModel: RemindViewModel by sharedViewModel()
-    private var btnVisible : Boolean = true
-    private var start : Long = 0
-    private var end : Long = 0
+    private var btnVisible: Boolean = true
+    private var start: Long = 0
+    private var end: Long = 0
 
     private val nowCalendar = Calendar.getInstance(Locale.KOREA)
 
@@ -63,7 +60,7 @@ class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
 
     }
 
-    private fun dateBtnClickEvent(){
+    private fun dateBtnClickEvent() {
         binding.ivArrowLeft.setOnClickListener {
             startCalendar.add(Calendar.DATE, -7)
             endCalendar.add(Calendar.DATE, -7)
@@ -78,7 +75,10 @@ class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
         binding.ivArrowRight.setOnClickListener {
             startCalendar.add(Calendar.DATE, 7)
             endCalendar.add(Calendar.DATE, 7)
-            if(CalendarUtil.convertCalendarToWeekString(startCalendar) <= CalendarUtil.convertCalendarToWeekString(nowCalendar)) {
+            if (CalendarUtil.convertCalendarToWeekString(startCalendar) <= CalendarUtil.convertCalendarToWeekString(
+                    nowCalendar
+                )
+            ) {
                 start = startCalendar.timeInMillis
                 end = endCalendar.timeInMillis
                 binding.tvDate.text = CalendarUtil.convertCalendarToWeekString(startCalendar)
@@ -87,8 +87,7 @@ class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
                 viewModel.setStartEnd(startCalendar.timeInMillis, endCalendar.timeInMillis)
                 viewModel.getReport(startCalendar.timeInMillis, endCalendar.timeInMillis)
                 viewModel.getReview(startCalendar.timeInMillis, endCalendar.timeInMillis)
-            }
-            else {
+            } else {
                 startCalendar.add(Calendar.DATE, -7)
                 endCalendar.add(Calendar.DATE, -7)
             }
@@ -114,7 +113,12 @@ class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
                 add(Calendar.DATE, 7)
             }
             binding.tvDate.text = CalendarUtil.convertCalendarToWeekString(startCalendar)
-            binding.tvDate.setTextColor(ContextCompat.getColor(requireContext(), R.color.mainOrange))
+            binding.tvDate.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.mainOrange
+                )
+            )
             binding.ivThisWeek.visibility = View.INVISIBLE
             start = startCalendar.timeInMillis
             end = endCalendar.timeInMillis
@@ -126,14 +130,18 @@ class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
     }
 
     private fun convertDateStatus() {
-        if(startCalendar.isWeekSame(nowCalendar)) {
-            binding.tvDate.setTextColor(ContextCompat.getColor(requireContext(), R.color.mainOrange))
-            if(btnVisible)
+        if (startCalendar.isWeekSame(nowCalendar)) {
+            binding.tvDate.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.mainOrange
+                )
+            )
+            if (btnVisible)
                 binding.ivThisWeek.visibility = View.INVISIBLE
-        }
-        else {
+        } else {
             binding.tvDate.setTextColor(ContextCompat.getColor(requireContext(), R.color.mainBlack))
-            if(btnVisible)
+            if (btnVisible)
                 binding.ivThisWeek.visibility = View.VISIBLE
         }
     }
@@ -146,18 +154,18 @@ class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
 
         vp_remind.adapter = remindAdapter
 
-        TabLayoutMediator(tb_remind, vp_remind){tab, position->
+        TabLayoutMediator(tb_remind, vp_remind) { tab, position ->
             tab.text = tab_label[position]
         }.attach()
 
         binding.vpRemind.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                if(position == 0) {
+                if (position == 0) {
                     btnVisible = true
                     convertDateStatus()
                 }
-                if(position == 1) {
+                if (position == 1) {
                     binding.ivThisWeek.visibility = View.INVISIBLE
                     btnVisible = false
                 }
