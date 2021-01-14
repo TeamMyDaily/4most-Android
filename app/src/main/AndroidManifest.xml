@@ -47,6 +47,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.view.remind.RemindDetailWriteActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".ui.view.goal.detail.GoalDetailActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />

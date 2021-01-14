@@ -29,7 +29,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, UserViewModel>() {
     override fun initView() {
         initToolbar()
         initBottomNavigation()
-
         replaceDailyFragment()
     }
 

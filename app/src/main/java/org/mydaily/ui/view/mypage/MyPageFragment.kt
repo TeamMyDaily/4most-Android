@@ -1,5 +1,6 @@
 package org.mydaily.ui.view.mypage
 
+import android.content.Intent
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -42,6 +43,10 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, UserViewModel>() {
         return when (item.itemId) {
             R.id.menu_settings -> {
                 requireContext().shortToast("설정 버튼 클릭됨")
+                requireContext().apply {
+                    startActivity(Intent(this, MyPageSettingActivity::class.java))
+                }
+
                 true
             }
             else -> super.onOptionsItemSelected(item)

@@ -2,9 +2,11 @@ package org.mydaily.ui.view.keyword
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -104,8 +106,12 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     }
 
     private fun initToolbar() {
-        setSupportActionBar(binding.tbKeywordAddActivity)
+        setSupportActionBar(binding.tbKeywordListActivity)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.white)))
+        binding.tbKeywordListActivity.setNavigationOnClickListener {
+            finish()
+        }
     }
 
     private fun initAddButton() {
@@ -125,10 +131,10 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
                     addedMyWord.add(data.getStringExtra("MyWord")!!)
                 }
             } else {
-                shortToast("잘못된 resultCode")
+                shortToast("잘못된 resultCode1")
             }
         } else {
-            shortToast("잘못된 requestCode")
+            shortToast("잘못된 requestCode2")
         }
         addMyWordList()
     }
