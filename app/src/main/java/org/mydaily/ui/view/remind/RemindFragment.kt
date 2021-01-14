@@ -5,13 +5,16 @@ import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_remind.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.mydaily.R
 import org.mydaily.data.model.network.request.ReqReportDetailGet
 import org.mydaily.databinding.FragmentRemindBinding
 import org.mydaily.ui.adapter.RemindViewPagerAdapter
 import org.mydaily.ui.base.BaseFragment
 import org.mydaily.ui.viewmodel.RemindViewModel
+import org.mydaily.util.CalendarUtil
+import org.mydaily.util.CalendarUtil.copyYMDFrom
+import org.mydaily.util.CalendarUtil.isWeekSame
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -19,12 +22,8 @@ import java.util.*
 class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_remind
-    override val viewModel: RemindViewModel by viewModel()
-    private lateinit var dateString : String
+    override val viewModel: RemindViewModel by sharedViewModel()
     private var btnVisible : Boolean = true
-    private val dateFormat = "yy년 MM월 W주"
-    private val date = Calendar.getInstance()
-    private var today = date.time
     private var start : Long = 0
     private var end : Long = 0
 
@@ -49,13 +48,15 @@ class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
 
     override fun initView() {
         createViewPager()
-        todayInit()
         dateInit()
-        //dateBtnClickEvent()
+        dateBtnClickEvent()
     }
 
     override fun initBeforeBinding() {
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = activity
+        viewModel.setStartEnd(startCalendar.timeInMillis, endCalendar.timeInMillis)
+        viewModel.getReport(startCalendar.timeInMillis, endCalendar.timeInMillis)
+        viewModel.getReview(startCalendar.timeInMillis, endCalendar.timeInMillis)
     }
 
     override fun initAfterBinding() {
@@ -66,46 +67,66 @@ class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
         binding.ivArrowLeft.setOnClickListener {
             startCalendar.add(Calendar.DATE, -7)
             endCalendar.add(Calendar.DATE, -7)
-
-            dateString = SimpleDateFormat(dateFormat, Locale.KOREA).format(date.time)
-            binding.tvDate.text = dateString
-            convertDateStatus(dateFormat, today)
+            binding.tvDate.text = CalendarUtil.convertCalendarToWeekString(startCalendar)
+            convertDateStatus()
+            //값전달
+            viewModel.setStartEnd(startCalendar.timeInMillis, endCalendar.timeInMillis)
+            viewModel.getReport(startCalendar.timeInMillis, endCalendar.timeInMillis)
+            viewModel.getReview(startCalendar.timeInMillis, endCalendar.timeInMillis)
         }
 
         binding.ivArrowRight.setOnClickListener {
-            date.set(Calendar.DATE, Calendar.MONDAY)
             startCalendar.add(Calendar.DATE, 7)
             endCalendar.add(Calendar.DATE, 7)
-            if(!date.after(today)) {
-                start = date.timeInMillis
-                dateString = SimpleDateFormat(dateFormat, Locale.KOREA).format(date.time)
-                date.add(Calendar.DATE, 6)
-                end = date.timeInMillis
-                binding.tvDate.text = dateString
-                convertDateStatus(dateFormat, today)
+            if(CalendarUtil.convertCalendarToWeekString(startCalendar) <= CalendarUtil.convertCalendarToWeekString(nowCalendar)) {
+                start = startCalendar.timeInMillis
+                end = endCalendar.timeInMillis
+                binding.tvDate.text = CalendarUtil.convertCalendarToWeekString(startCalendar)
+                convertDateStatus()
+                //값전
+                viewModel.setStartEnd(startCalendar.timeInMillis, endCalendar.timeInMillis)
+                viewModel.getReport(startCalendar.timeInMillis, endCalendar.timeInMillis)
+                viewModel.getReview(startCalendar.timeInMillis, endCalendar.timeInMillis)
             }
-            else
-                date.set(Calendar.DATE, Calendar.SUNDAY)
+            else {
+                startCalendar.add(Calendar.DATE, -7)
+                endCalendar.add(Calendar.DATE, -7)
+            }
+            //값전
         }
 
         binding.ivThisWeek.setOnClickListener {
-            startCalendar.copyYMDFrom(nowCalendar)
-            endCalendar.copyYMDFrom(nowCalendar)
-            endCalendar.add(Calendar.DATE, 7)
-            date.time = today
-            dateString = SimpleDateFormat(dateFormat, Locale.KOREA).format(date.time)
-            binding.tvDate.text = dateString
+            startCalendar = Calendar.getInstance(Locale.KOREA)
+            startCalendar.apply {
+                set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
+                set(Calendar.HOUR, 0)
+                set(Calendar.MINUTE, 0)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+            }
+            endCalendar = Calendar.getInstance(Locale.KOREA)
+            endCalendar.apply {
+                set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
+                set(Calendar.HOUR, 0)
+                set(Calendar.MINUTE, 0)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+                add(Calendar.DATE, 7)
+            }
+            binding.tvDate.text = CalendarUtil.convertCalendarToWeekString(startCalendar)
             binding.tvDate.setTextColor(ContextCompat.getColor(requireContext(), R.color.mainOrange))
             binding.ivThisWeek.visibility = View.INVISIBLE
-            date.set(Calendar.DATE, Calendar.MONDAY)
-            start = date.timeInMillis
-            date.add(Calendar.DATE, 6)
-            end = date.timeInMillis
+            start = startCalendar.timeInMillis
+            end = endCalendar.timeInMillis
+            //값
+            viewModel.getReport(startCalendar.timeInMillis, endCalendar.timeInMillis)
+            viewModel.setStartEnd(startCalendar.timeInMillis, endCalendar.timeInMillis)
+            viewModel.getReview(startCalendar.timeInMillis, endCalendar.timeInMillis)
         }
     }
 
-    private fun convertDateStatus(format : String, today : Date) {
-        if(dateString == SimpleDateFormat(format, Locale.KOREA).format(today)) {
+    private fun convertDateStatus() {
+        if(startCalendar.isWeekSame(nowCalendar)) {
             binding.tvDate.setTextColor(ContextCompat.getColor(requireContext(), R.color.mainOrange))
             if(btnVisible)
                 binding.ivThisWeek.visibility = View.INVISIBLE
@@ -134,7 +155,7 @@ class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
                 super.onPageSelected(position)
                 if(position == 0) {
                     btnVisible = true
-                    convertDateStatus(dateFormat, today)
+                    convertDateStatus()
                 }
                 if(position == 1) {
                     binding.ivThisWeek.visibility = View.INVISIBLE
@@ -142,24 +163,19 @@ class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
                 }
             }
         })
+
     }
 
     private fun dateInit() {
-        dateString = SimpleDateFormat(dateFormat, Locale.KOREA).format(today)
-        binding.tvDate.text = dateString
+        binding.tvDate.text = CalendarUtil.convertCalendarToWeekString(startCalendar)
+        convertDateStatus()
 
-        date.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
-        start = date.timeInMillis
-
-        date.add(Calendar.DAY_OF_WEEK, 6)
-        end = date.timeInMillis
+        //값전달
     }
 
-    private fun todayInit() {
-        date.set(Calendar.HOUR_OF_DAY, 0)
-        date.set(Calendar.MINUTE, 0)
-        date.set(Calendar.SECOND, 0)
-        date.set(Calendar.MILLISECOND, 0)
-        today = date.time
+    override fun onStart() {
+        super.onStart()
+        viewModel.setStartEnd(startCalendar.timeInMillis, endCalendar.timeInMillis)
+        viewModel.getReview(startCalendar.timeInMillis, endCalendar.timeInMillis)
     }
 }

@@ -22,16 +22,10 @@ data class ResReviewGet(
         data class Review(
             @SerializedName("bad")
             val bad: String,
-            @SerializedName("date")
-            val date: String,
             @SerializedName("good")
             val good: String,
-            @SerializedName("id")
-            val id: Int,
             @SerializedName("next")
-            val next: String,
-            @SerializedName("UserId")
-            val userId: Int
+            val next: String
         )
     }
 }

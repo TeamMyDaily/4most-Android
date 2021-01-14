@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import org.mydaily.R
@@ -27,7 +28,8 @@ class ReportKeywordAdapter(private val context: Context, listener : OnItemClick)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(data[position], position)
+        if(data[position].taskCnt > 0)
+            holder.bind(data[position], position)
     }
 
     override fun getItemCount(): Int = data.size
@@ -40,12 +42,8 @@ class ReportKeywordAdapter(private val context: Context, listener : OnItemClick)
             binding.reportlistdata = data
             binding.tvTasknum.text = "총 "+tasknum+"개"
             binding.tvRate.text = data.taskSatisAvg
-            if(data.taskSatisAvg.toFloat() > 0.0) {
-                binding.tvRate.setTextColor(Color.parseColor("#EC684A"))
-            }
-            else {
-                binding.tvRate.setTextColor(Color.parseColor("#E5E5E5"))
-            }
+            binding.tvRate.setTextColor(ContextCompat.getColor(context, R.color.carrot))
+
             binding.sbRate.progress = (data.taskSatisAvg.toFloat() * 10).toInt()
 
             binding.sbRate.setOnTouchListener(object : View.OnTouchListener {
@@ -55,7 +53,7 @@ class ReportKeywordAdapter(private val context: Context, listener : OnItemClick)
             })//시크바 터치 prevent
 
             binding.root.setOnClickListener{
-                mCallback.onClick(pos)
+                mCallback.onClick(data.Id)
             }
 
         }

@@ -11,8 +11,8 @@ interface ReviewService {
     @GET("/reviews")
     @Headers("Content-Type: application/json")
     fun getReviews(
-        @Query("start") start: String,
-        @Query("end") end: String
+        @Query("start") start: Long,
+        @Query("end") end: Long
     ): Call<ResReviewGet>
 
     //POST	주차별 회고 생성

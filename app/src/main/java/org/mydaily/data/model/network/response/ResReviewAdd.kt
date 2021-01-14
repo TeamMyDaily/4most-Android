@@ -14,12 +14,6 @@ data class ResReviewAdd(
     val `data`: Data
 ) {
     data class Data(
-        @SerializedName("id")
-        val id: Int,
-        @SerializedName("UserId")
-        val userId: Int,
-        @SerializedName("date")
-        val date: String,
         @SerializedName("good")
         val good: String,
         @SerializedName("bad")

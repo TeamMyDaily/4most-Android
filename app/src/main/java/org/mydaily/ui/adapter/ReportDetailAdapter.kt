@@ -34,6 +34,7 @@ class ReportDetailAdapter(private val context: Context) : RecyclerView.Adapter<R
         fun bind(data: ResReportDetailGet.Data.Task) {
             val rate = data.satisfaction.toString()
             binding.dailydata = data
+            binding.tvDate.text = data.date.substring(0,10)
             binding.tvTaskRate.text = "태스크 만족도: " + rate + "점"
         }
 

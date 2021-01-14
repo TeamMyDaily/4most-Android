@@ -32,7 +32,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="14dp"
                 android:lineHeight="1.5px"
-                android:text="@{dailydata.date}"
                 android:textColor="@color/mainGray"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
