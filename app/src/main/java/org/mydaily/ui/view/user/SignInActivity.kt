@@ -92,13 +92,13 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, UserViewModel>() {
     private fun visibleButtonChange() {
         binding.ivVisibleButton.setOnClickListener {
             if(passwordIsVisible) {
-                binding.ivVisibleButton.setBackgroundResource(R.drawable.ic_visible_button)
+                binding.ivVisibleButton.setBackgroundResource(R.drawable.ic_visible)
                 binding.etPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
                 binding.etPassword.letterSpacing = 0.0F
                 passwordIsVisible = false
             }
             else {
-                binding.ivVisibleButton.setBackgroundResource(R.drawable.ic_invisible_button)
+                binding.ivVisibleButton.setBackgroundResource(R.drawable.ic_invisible)
                 binding.etPassword.transformationMethod = PasswordTransformationMethod.getInstance()
                 binding.etPassword.letterSpacing = 0.2F
                 passwordIsVisible = true

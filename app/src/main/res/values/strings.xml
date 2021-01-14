@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">MyDaily</string>
+    <string name="app_name">4most</string>
+    <string name="app_description">이상이 일상이 되는 회고, 포모스트</string>
 
     <!--Main Menu-->
     <string name="four_most">4most</string>
@@ -18,7 +19,7 @@
 
 
     <!--Sign In-->
-    <string name="sign_in">포모스트 입장!</string>
+    <string name="sign_in">로그인</string>
     <string name="sign_up">회원가입</string>
     <string name="auto_sign_in">자동로그인</string>
     <string name="email">이메일</string>
@@ -30,7 +31,7 @@
     <!--Sign Up Terms-->
     <string name="msg_allow_personal_information">[필수] 개인정보 수집이용 동의</string>
     <string name="msg_allow_service_terms">[필수] 서비스 이용약관 동의</string>
-    <string name="msg_allow_alert">약관에는 ‘개인정보 수집 목적 및 이용’에 관한 중요\n한 내용이 담겨 있습니다.약관동의 체크는 해당 약관\n을 모두 숙지하였으며, 이에 동의함을 의미합니다.</string>
+    <string name="msg_allow_alert">약관에는 ‘개인정보 수집 목적 및 이용’에 관한 중요한 내용이 담겨 있습니다.약관동의 체크는 해당 약관을 모두 숙지하였으며, 이에 동의함을 의미합니다.</string>
     <string name="next">다음</string>
 
     <!--Sign Up-->
