@@ -54,7 +54,7 @@
 
 
     <!--Goal-->
-    <string name="msg_plz_set_goal_by_keyword">키워드에 따른\n목표를 설정해주세요!</string>
+    <string name="msg_plz_set_goal_by_keyword">이번 주 키워드별\n목표를 설정해주세요</string>
     <string name="msg_goal_has_not_been_set">개의 목표가 미설정 되었어요!</string>
     <string name="msg_delete">삭제할래요</string>
     <string name="msg_set_goal">목표를 세워주세요.</string>

@@ -30,7 +30,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/mainBlack"
                 android:layout_gravity="center"
-                tools:text="목표 설정"/>
+                android:text="@string/menu_goal"/>
 
         </androidx.appcompat.widget.Toolbar>
 
