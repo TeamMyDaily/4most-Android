@@ -40,7 +40,13 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.view.user.SignInActivity"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.view.goal.detail.GoalDetailActivity"
             android:exported="true"
@@ -53,11 +59,6 @@
             android:name=".ui.view.user.SignUpTermsActivity"
             android:exported="true" />
         <activity android:name=".ui.view.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

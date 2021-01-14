@@ -50,7 +50,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="이란?"
+            android:text="에 대한"
             android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tv_keyword"
@@ -61,7 +61,7 @@
             android:id="@+id/tv_what_for_me"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="나에게 무엇인가요?"
+            android:text="나만의 정의는 무엇인가요?"
             android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tv_keyword"

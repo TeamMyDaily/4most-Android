@@ -3,7 +3,7 @@ package org.mydaily.data.model.network.response
 
 import com.google.gson.annotations.SerializedName
 
-data class ResSignIn(
+data class ResKeywordListGet(
     @SerializedName("status")
     val status: Int,
     @SerializedName("success")
@@ -11,16 +11,12 @@ data class ResSignIn(
     @SerializedName("message")
     val message: String,
     @SerializedName("data")
-    val `data`: Data
+    val `data`: List<Data>
 ) {
     data class Data(
-        @SerializedName("userName")
-        val userName: String,
-        @SerializedName("email")
-        val email: String,
-        @SerializedName("accessToken")
-        val accessToken: String,
-        @SerializedName("refreshToken")
-        val refreshToken: String
+        @SerializedName("isSelected")
+        val isSelected: Boolean,
+        @SerializedName("name")
+        val name: String
     )
 }

@@ -1,9 +1,7 @@
 package org.mydaily.data.repository
 
 import org.mydaily.data.model.network.request.*
-import org.mydaily.data.model.network.response.ResKeywordAdd
-import org.mydaily.data.model.network.response.ResKeywordSelect
-import org.mydaily.data.model.network.response.Response
+import org.mydaily.data.model.network.response.*
 import retrofit2.Call
 
 interface KeywordRepo {
@@ -12,4 +10,7 @@ interface KeywordRepo {
     fun deleteKeyword(body: ReqKeywordDelete): Call<Response>
     fun postKeywordDefinition(body: ReqKeywordDefine): Call<Response>
     fun postKeywordPriority(body: ReqKeywordPriority): Call<Response>
+    fun getTaskKeyword(): Call<ResTaskKeywordGet>
+    fun getKeywordList(): Call<ResKeywordListGet>
+    fun getKeywordDefinition(totalKeywordId: Int): Call<ResKeywordDefinitionGet>
 }

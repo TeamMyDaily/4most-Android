@@ -22,7 +22,4 @@ class UserRemoteDataSourceImpl(private val service: UserService) : UserRemoteDat
 
     override fun deleteUser(body: ReqPassword): Call<Response> =
         service.deleteUser(body)
-
-    override fun getUser(): Call<ResUser> =
-        service.getUser()
 }

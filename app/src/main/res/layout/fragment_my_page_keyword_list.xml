@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.mypage.KeywordListFragment">
+        tools:context=".ui.view.mypage.MyPageKeywordListFragment">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -23,7 +23,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:context=".ui.view.mypage.KeywordListFragment">
+                tools:context=".ui.view.mypage.MyPageKeywordListFragment">
 
                 <TextView
                     android:id="@+id/tv_name"
@@ -48,24 +48,27 @@
                     app:layout_constraintStart_toEndOf="@+id/tv_name" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcv_keyword_list"
+                    android:id="@+id/rv_keyword_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_values"
-                    tools:itemCount="4"
+                    android:layout_marginHorizontal="16dp"
+                    tools:itemCount="6"
                     tools:listitem="@layout/item_my_page_keyword_list" />
 
                 <ImageButton
                     android:id="@+id/ib_plus_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="40dp"
+                    android:layout_marginBottom="40dp"
                     android:background="@drawable/ic_plus"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rcv_keyword_list" />
+                    app:layout_constraintTop_toBottomOf="@+id/rv_keyword_list" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 

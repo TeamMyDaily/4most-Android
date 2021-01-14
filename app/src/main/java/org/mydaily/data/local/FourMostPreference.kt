@@ -8,6 +8,7 @@ object FourMostPreference {
     private const val USER_NAME = "USER_NAME"
     private const val USER_EMAIL = "USER_EMAIL"
     private const val AUTO_LOGIN = "AUTO_LOGIN"
+    private const val IS_FIRST_VISIT = "IS_FIRST_VISIT"
 
     lateinit var preferences: SharedPreferences
 
@@ -16,8 +17,7 @@ object FourMostPreference {
     }
 
     fun getUserToken(): String {
-        //return preferences.getString(USER_TOKEN, "4most") ?: ""
-        return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6InFxIiwiZW1haWwiOiJxcUBxcS5xcSIsImlhdCI6MTYxMDMzMzQ0MywiZXhwIjoxNjEyOTI1NDQzLCJpc3MiOiJjeWoifQ.k3HAJg9K_NMVscJWafGBdCB4Odj6qua9VUL2N3_siYo"
+        return preferences.getString(USER_TOKEN, "") ?: ""
     }
 
     fun setUserToken(value: String) {
@@ -25,7 +25,7 @@ object FourMostPreference {
     }
 
     fun getUserName(): String {
-        return preferences.getString(USER_NAME, "qq") ?: ""
+        return preferences.getString(USER_NAME, "") ?: ""
     }
 
     fun setUserName(value: String) {
@@ -33,7 +33,7 @@ object FourMostPreference {
     }
 
     fun getUserEmail(): String {
-        return preferences.getString(USER_EMAIL, "qq@qq.qq") ?: ""
+        return preferences.getString(USER_EMAIL, "") ?: ""
     }
 
     fun setUserEmail(value: String) {
@@ -46,5 +46,13 @@ object FourMostPreference {
 
     fun setAutoLogin(value: Boolean) {
         preferences.edit().putBoolean(AUTO_LOGIN, value).apply()
+    }
+
+    fun getFirstVisit(): Boolean {
+        return preferences.getBoolean(IS_FIRST_VISIT, true)
+    }
+
+    fun setFirstVisit(value: Boolean) {
+        preferences.edit().putBoolean(IS_FIRST_VISIT, value).apply()
     }
 }

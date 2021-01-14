@@ -3,6 +3,7 @@ package org.mydaily.ui.view.user
 import android.content.Intent
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.util.Log
 import android.view.View
 import androidx.core.widget.addTextChangedListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -11,6 +12,7 @@ import org.mydaily.data.local.FourMostPreference
 import org.mydaily.databinding.ActivitySignInBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.view.MainActivity
+import org.mydaily.ui.view.keyword.KeywordListActivity
 import org.mydaily.ui.viewmodel.UserViewModel
 import org.mydaily.util.EventObserver
 import org.mydaily.util.LoginPatternCheckUtil
@@ -45,7 +47,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, UserViewModel>() {
     override fun onStart() {
         super.onStart()
         if(FourMostPreference.getAutoLogin() && FourMostPreference.getUserToken() != ""){
-            //startMainActivity()
+            onSuccessSignIn()
         }
     }
 
@@ -56,15 +58,13 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, UserViewModel>() {
             FourMostPreference.setAutoLogin(it.isSelected)
         }
         binding.tvFindId.setOnClickListener {
-            shortToast("서비스 준비중입니다")
+            shortToast(R.string.msg_service_is_being_prepared)
         }
         binding.tvFindPassword.setOnClickListener {
-            shortToast("서비스 준비중입니다")
+            shortToast(R.string.msg_service_is_being_prepared)
         }
         binding.tvSignUp.setOnClickListener {
-            binding.tvSignUp.setOnClickListener {
-                startActivity(Intent(this, SignUpTermsActivity::class.java))
-            }
+            startActivity(Intent(this, SignUpTermsActivity::class.java))
         }
         binding.btnSignIn.setOnClickListener {
             val email = binding.etEmail.text.toString()
@@ -135,14 +135,31 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, UserViewModel>() {
     private fun observeSignInResult() {
         viewModel.signInEvent.observe(this, EventObserver{ success->
             if(success){
-                startMainActivity()
+                onSuccessSignIn()
             }
         })
+    }
+
+    private fun onSuccessSignIn() {
+        Log.e("SEULGI", "\n"+FourMostPreference.getFirstVisit()
+        +"\n"+FourMostPreference.getAutoLogin()
+        +"\n"+FourMostPreference.getUserToken()
+                +"\n"+FourMostPreference.getUserEmail()
+                +"\n"+FourMostPreference.getUserName())
+        if(FourMostPreference.getFirstVisit()){
+            startKeywordListActivity()
+        } else {
+            startMainActivity()
+        }
     }
 
     private fun startMainActivity() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
+    }
 
+    private fun startKeywordListActivity() {
+        startActivity(Intent(this, KeywordListActivity::class.java))
+        finish()
     }
 }
