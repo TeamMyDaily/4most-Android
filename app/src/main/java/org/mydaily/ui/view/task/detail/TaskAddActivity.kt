@@ -1,4 +1,4 @@
-package org.mydaily.ui.view.daily.detail
+package org.mydaily.ui.view.task.detail
 
 import android.app.AlertDialog
 import android.view.Menu
@@ -7,13 +7,13 @@ import androidx.core.widget.addTextChangedListener
 import com.xw.repo.BubbleSeekBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
-import org.mydaily.databinding.ActivityDailyAddBinding
+import org.mydaily.databinding.ActivityTaskAddBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.viewmodel.TaskViewModel
 
-class TaskAddActivity : BaseActivity<ActivityDailyAddBinding, TaskViewModel>() {
+class TaskAddActivity : BaseActivity<ActivityTaskAddBinding, TaskViewModel>() {
     override val layoutResourceId: Int
-        get() = R.layout.activity_daily_add
+        get() = R.layout.activity_task_add
     override val viewModel: TaskViewModel by viewModel()
 
     private var isTitleEntered = false

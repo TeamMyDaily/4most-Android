@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.daily.detail.TaskDetailActivity">
+        tools:context=".ui.view.task.detail.TaskDetailActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_daily_detail"
@@ -22,7 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/ic_arrow_back">
+            app:navigationIcon="@drawable/ic_back">
 
             <TextView
                 android:id="@+id/tv_title"
