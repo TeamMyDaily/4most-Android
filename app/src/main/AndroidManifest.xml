@@ -63,6 +63,8 @@
             android:exported="true" />
         <activity android:name=".ui.view.MainActivity">
         </activity>
+
+        <activity android:name=".ui.view.mypage.MyPageSettingActivity"/>
     </application>
 
 </manifest>
