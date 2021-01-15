@@ -69,6 +69,7 @@
 
 
     <!--My Page-->
+    <string name="my_page">마이페이지</string>
     <string name="of_user">님의</string>
     <string name="lets_find_destination">목적지를 찾아봐요!</string>
     <string name="modify_keyword">키워드 수정</string>
