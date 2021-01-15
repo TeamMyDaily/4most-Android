@@ -10,7 +10,7 @@
         <item name="colorSecondaryVariant">@color/mainLightOrange</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/mainOrange</item>
         <!-- Customize your theme here. -->
         <item name="android:textColor">@color/mainBlack</item>
         <item name="android:overScrollMode">never</item>
