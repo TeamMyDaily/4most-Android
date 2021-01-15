@@ -92,8 +92,8 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
         }
         keywordDefineAdapter.setKeywordNotExistListener {
             //정의 있을때
-            //requireContext().shortToast("정의를 이미 작성한 키워드에요!")
-            Log.e("SEULGI", "pos :"+it)
+            requireContext().shortToast("정의를 이미 작성한 키워드에요!")
+/*            Log.e("SEULGI", "pos :"+it)
 
             val bundle = Bundle().apply {
                 putInt("totalKeywordId", viewModel.selectedKeywordIds[it])
@@ -105,7 +105,7 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
                 R.id.container_keyword_settings,
                 keywordDefineDetailFragment,
                 "detail"
-            )
+            )*/
         }
         keywordDefineAdapter.setKeywordExistListener { keyword, position ->
             //정의 없을때
