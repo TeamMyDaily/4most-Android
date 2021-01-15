@@ -130,12 +130,9 @@ class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, Keyword
                         it.isChecked = false
                         clickedChipCount--
                         floatingDialog()
-                    } else if (clickedChipCount == 4) {
-                        addKeywordList(it.text as String)
-                        binding.btnSelectFourFinish.isEnabled = true
                     } else {
                         addKeywordList(it.text as String)
-                        binding.btnSelectFourFinish.isEnabled = false
+                        binding.btnSelectFourFinish.isEnabled = true
                     }
                 } else {
                     clickedChipCount--
