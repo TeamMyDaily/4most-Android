@@ -26,8 +26,7 @@
                 android:id="@+id/iv_logo"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/img_logotype"
-                android:visibility="gone"/>
+                android:src="@drawable/img_logotype_dark"/>
 
             <TextView
                 android:id="@+id/tv_title"
