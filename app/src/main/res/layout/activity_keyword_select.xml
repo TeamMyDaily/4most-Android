@@ -16,10 +16,13 @@
             android:id="@+id/tb_keyword_select_activity"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            android:elevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/menu_keyword_list">
+            app:menu="@menu/menu_keyword_list"
+            app:navigationIcon="@drawable/ic_btn_arrow_left">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,7 +58,6 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="48dp"
                     android:text="@string/choose_four"
-                    android:textColor="@color/cod_gray"
                     android:textSize="25sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +80,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="48dp"
                     android:text="@string/attitude_for_life"
-                    android:textColor="@color/cod_gray"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/tv_subtitle"
@@ -102,7 +103,6 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="48dp"
                     android:text="@string/attitude_for_work"
-                    android:textColor="@color/cod_gray"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/cg_life_four"

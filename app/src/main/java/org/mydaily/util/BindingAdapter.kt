@@ -44,6 +44,17 @@ object BindingAdapter {
     }
 
     @JvmStatic
+    @BindingAdapter("setButtonBackgroundWithGoalCompleted")
+    fun setButtonBackgroundWithGoalCompleted(view: View, isGoalCompleted: Boolean) {
+        if (isGoalCompleted) {
+            view.setBackgroundResource(R.drawable.rectangle_fill_orange_radius_15)
+        } else {
+            view.setBackgroundResource(R.drawable.rectangle_fill_gray_radius_15)
+        }
+    }
+
+
+    @JvmStatic
     @BindingAdapter("setBackgroundWithGoalCompleted")
     fun setBackgroundWithGoalCompleted(view: View, isGoalCompleted: Boolean) {
         if (isGoalCompleted) {

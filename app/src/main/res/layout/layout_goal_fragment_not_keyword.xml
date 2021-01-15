@@ -13,10 +13,10 @@
 
         <ImageView
             android:id="@+id/iv_logo"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="104dp"
-            android:src="@color/mainOrange"
+            android:src="@drawable/image_createdkeyword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,18 +34,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <ImageButton
             android:id="@+id/btn_add_keyword"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginTop="48dp"
-            android:background="@drawable/rectangle_fill_orange_radius_15"
-            android:drawableEnd="@drawable/ic_light_arrow_right"
-            android:drawableTint="@color/white"
-            android:paddingHorizontal="12dp"
-            android:text="키워드 생성"
-            android:textColor="@color/white"
-            android:textSize="16sp"
+            android:src="@drawable/ic_plus"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_info" />

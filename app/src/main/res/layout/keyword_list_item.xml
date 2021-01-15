@@ -6,7 +6,7 @@
     <data>
         <variable
             name="reportlistdata"
-            type="org.mydaily.data.model.ReportListData" />
+            type="org.mydaily.data.model.network.response.ResReportGet.Data.Result" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,9 +30,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="11dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="2dp"
                 android:gravity="center"
-                android:text="총 5개"
                 android:textColor="@color/mainGray"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_rate"
@@ -48,7 +47,8 @@
                 android:textSize="32sp"
                 android:lineHeight="40sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="0"/>
 
             <TextView
                 android:id="@+id/tv_keyword"
@@ -71,7 +71,7 @@
                 android:layout_marginTop="8dp"
                 android:gravity="right"
                 android:maxWidth="163sp"
-                android:text="@{reportlistdata.keyword_goal}"
+                android:text="@{reportlistdata.weekGoal}"
                 android:textColor="@color/mainGray"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/tv_keyword"
@@ -84,7 +84,6 @@
                 android:layout_marginTop="13dp"
                 android:layout_marginBottom="13dp"
                 android:max="50"
-                android:progress="25"
                 android:progressDrawable="@drawable/sb_rate_custom"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

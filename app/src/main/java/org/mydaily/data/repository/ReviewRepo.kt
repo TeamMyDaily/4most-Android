@@ -6,6 +6,6 @@ import org.mydaily.data.model.network.response.ResReviewGet
 import retrofit2.Call
 
 interface ReviewRepo {
-    fun getReviews(start: String, end: String): Call<ResReviewGet>
+    fun getReviews(start: Long, end: Long): Call<ResReviewGet>
     fun postReviews(body: ReqReviewAdd): Call<ResReviewAdd>
 }

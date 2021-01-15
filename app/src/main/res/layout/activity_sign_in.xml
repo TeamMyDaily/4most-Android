@@ -15,10 +15,10 @@
 
         <ImageView
             android:id="@+id/iv_logo"
-            android:layout_width="105dp"
-            android:layout_height="105dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="120dp"
-            android:src="@color/black"
+            android:src="@drawable/img_logotype"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,7 +30,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="13dp"
             android:layout_marginTop="168dp"
-
             android:background="@android:color/transparent"
             android:src="@drawable/selector_checkbox"
             app:layout_constraintStart_toEndOf="@+id/iv_logo"
@@ -42,8 +41,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@string/auto_sign_in"
-            android:textSize="12sp"
             android:textColor="@color/mainGray"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/ib_auto_login"
             app:layout_constraintStart_toEndOf="@+id/ib_auto_login"
             app:layout_constraintTop_toTopOf="@+id/ib_auto_login" />
@@ -55,11 +54,11 @@
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/selector_et_sign_in"
-            android:paddingVertical="12dp"
-            android:paddingHorizontal="16dp"
             android:gravity="center_vertical"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,8 +83,8 @@
                 android:background="@null"
                 android:hint="@string/password"
                 android:inputType="textPassword"
-                android:paddingVertical="12dp"
                 android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
                 android:textColor="@color/mainBlack"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toStartOf="@+id/iv_visible_button"
@@ -97,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/ic_invisible_button"
+                android:background="@drawable/ic_invisible"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -123,7 +122,7 @@
                 android:textSize="12sp" />
 
             <View
-                android:layout_width="2dp"
+                android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:background="#C9C9C9" />
@@ -139,7 +138,7 @@
 
             <View
                 android:layout_width="1dp"
-                android:layout_height="16dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:background="#C9C9C9" />
 
@@ -148,21 +147,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:textColor="@color/mainGray"
                 android:text="@string/find_password"
+                android:textColor="@color/mainGray"
                 android:textSize="12sp" />
 
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_sign_in"
+            style="@style/MyDailyButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginHorizontal="22dp"
-            android:layout_marginTop="72dp"
-            style="@style/MyDailyButtonStyle"
-            android:text="@string/sign_in"
             android:enabled="false"
+            android:text="@string/sign_in"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ll_other" />

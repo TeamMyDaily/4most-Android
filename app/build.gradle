@@ -57,6 +57,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     androidTestImplementation "androidx.arch.core:core-testing:$arch_version"
     implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0'
+    implementation 'androidx.fragment:fragment-ktx:1.1.0'
 
     //library
     implementation "com.google.android.material:material:$material_version"

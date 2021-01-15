@@ -47,7 +47,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, UserViewModel>() {
     override fun onStart() {
         super.onStart()
         if(FourMostPreference.getAutoLogin() && FourMostPreference.getUserToken() != ""){
-            onSuccessSignIn()
+            startMainActivity()
         }
     }
 
@@ -92,13 +92,13 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, UserViewModel>() {
     private fun visibleButtonChange() {
         binding.ivVisibleButton.setOnClickListener {
             if(passwordIsVisible) {
-                binding.ivVisibleButton.setBackgroundResource(R.drawable.ic_visible_button)
+                binding.ivVisibleButton.setBackgroundResource(R.drawable.ic_visible)
                 binding.etPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
                 binding.etPassword.letterSpacing = 0.0F
                 passwordIsVisible = false
             }
             else {
-                binding.ivVisibleButton.setBackgroundResource(R.drawable.ic_invisible_button)
+                binding.ivVisibleButton.setBackgroundResource(R.drawable.ic_invisible)
                 binding.etPassword.transformationMethod = PasswordTransformationMethod.getInstance()
                 binding.etPassword.letterSpacing = 0.2F
                 passwordIsVisible = true
@@ -133,24 +133,13 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, UserViewModel>() {
     }
 
     private fun observeSignInResult() {
-        viewModel.signInEvent.observe(this, EventObserver{ success->
-            if(success){
-                onSuccessSignIn()
+        viewModel.signInEvent.observe(this, EventObserver{
+            if(it == "keywordsExist"){
+                startMainActivity()
+            }else {
+                startKeywordListActivity()
             }
         })
-    }
-
-    private fun onSuccessSignIn() {
-        Log.e("SEULGI", "\n"+FourMostPreference.getFirstVisit()
-        +"\n"+FourMostPreference.getAutoLogin()
-        +"\n"+FourMostPreference.getUserToken()
-                +"\n"+FourMostPreference.getUserEmail()
-                +"\n"+FourMostPreference.getUserName())
-        if(FourMostPreference.getFirstVisit()){
-            startKeywordListActivity()
-        } else {
-            startMainActivity()
-        }
     }
 
     private fun startMainActivity() {

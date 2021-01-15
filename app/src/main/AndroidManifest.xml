@@ -13,16 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDaily"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.view.splash.service.ServiceExplainActivity"/>
-        <activity android:name=".ui.view.splash.SplashActivity"
-            android:exported="true"/>
-        <activity android:name=".ui.view.daily.detail.TaskAddActivity" />
+        <activity android:name=".ui.view.task.detail.TaskAddActivity" />
         <activity
             android:name=".ui.view.keyword.settings.KeywordSettingsActivity"
             android:exported="true" />
         <activity
             android:name=".ui.view.goal.detail.GoalAddActivity"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize"  />
         <activity
             android:name=".ui.view.keyword.KeywordAddActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -32,14 +29,13 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.view.keyword.popup.KeywordPopupActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:exported="true"/>
+        <activity android:name=".ui.view.keyword.KeywordSelectActivity"
             android:exported="true"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity
-            android:name=".ui.view.keyword.KeywordSelectActivity"
-            android:exported="true"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name=".ui.view.daily.detail.TaskDetailActivity"
+            android:name=".ui.view.task.detail.TaskDetailActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.view.user.SignInActivity"
@@ -51,6 +47,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.view.remind.RemindDetailWriteActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".ui.view.goal.detail.GoalDetailActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
@@ -61,7 +61,10 @@
         <activity
             android:name=".ui.view.user.SignUpTermsActivity"
             android:exported="true" />
-        <activity android:name=".ui.view.MainActivity" />
+        <activity android:name=".ui.view.MainActivity">
+        </activity>
+
+        <activity android:name=".ui.view.mypage.MyPageSettingActivity"/>
     </application>
 
 </manifest>

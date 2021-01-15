@@ -10,10 +10,8 @@ data class ReqReviewAdd(
     val end: Long,
     @SerializedName("now")
     val now: Long,
-    @SerializedName("good")
-    val good: String,
-    @SerializedName("bad")
-    val bad: String,
-    @SerializedName("next")
-    val next: String
+    @SerializedName("subType")
+    val subType: Int,
+    @SerializedName("content")
+    val content: String
 )

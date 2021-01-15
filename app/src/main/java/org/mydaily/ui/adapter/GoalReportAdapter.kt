@@ -30,7 +30,6 @@ class GoalReportAdapter: RecyclerView.Adapter<GoalReportAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemKeywordGoalBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(goal: ResGoalGet.Data.Result.Keyword) {
-            Log.e("GOalReportAdapter", ""+goal)
             binding.goal = goal
 
             binding.tvAddBtn.setOnClickListener {

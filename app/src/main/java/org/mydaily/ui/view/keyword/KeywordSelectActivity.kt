@@ -2,9 +2,10 @@ package org.mydaily.ui.view.keyword
 
 import android.app.AlertDialog
 import android.content.Intent
-import android.util.Log
+import android.graphics.drawable.ColorDrawable
 import android.view.Menu
 import android.view.MenuItem
+import androidx.core.content.ContextCompat
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -43,9 +44,15 @@ class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, Keyword
 
     private fun initToolbar() {
         setSupportActionBar(binding.tbKeywordSelectActivity)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+        supportActionBar?.setBackgroundDrawable(
+            ColorDrawable(
+                ContextCompat.getColor(
+                    this,
+                    R.color.white
+                )
+            )
+        )
         binding.tbKeywordSelectActivity.setNavigationOnClickListener {
             finish()
         }
@@ -59,9 +66,9 @@ class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, Keyword
 
     private fun floatingDialog() {
         AlertDialog.Builder(this)
-            .setTitle(R.string.up_to_eight)
-            .setMessage(R.string.too_many_keyword_selected)
-            .setPositiveButton("확인", null)
+            .setTitle(R.string.up_to_four)
+            .setMessage(R.string.think_more)
+            .setPositiveButton(getString(R.string.okay), null)
             .create()
             .show()
     }
@@ -159,11 +166,10 @@ class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, Keyword
 
     private fun onClickBtnSelectFinish() {
         binding.btnSelectFourFinish.setOnClickListener {
-            Log.e("SEULGI", keywords.toString())
             viewModel.postKeywordSelect(keywords)
 
             val intent = Intent(this, KeywordSettingsActivity::class.java)
-            intent.putStringArrayListExtra("keywords",keywords as java.util.ArrayList<String>)
+            intent.putStringArrayListExtra("keywords", keywords as java.util.ArrayList<String>)
             startActivity(intent)
         }
     }

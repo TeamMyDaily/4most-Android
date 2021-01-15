@@ -18,6 +18,8 @@ data class ResSignIn(
         val userName: String,
         @SerializedName("email")
         val email: String,
+        @SerializedName("keywordsExist")
+        val keywordsExist: Boolean,
         @SerializedName("accessToken")
         val accessToken: String,
         @SerializedName("refreshToken")

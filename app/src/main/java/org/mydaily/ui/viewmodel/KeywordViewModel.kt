@@ -116,8 +116,6 @@ class KeywordViewModel(private val repo: KeywordRepo) : BaseViewModel() {
                             keywords.add(data.name)
                         }
                         _keywordStringList.value = keywords
-
-                        Log.e(TAG+"hi", response.body().toString())
                     }
                 }
 

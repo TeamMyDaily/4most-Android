@@ -1,21 +1,19 @@
 package org.mydaily.ui.view.remind
 
 import android.os.Bundle
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.mydaily.R
-import org.mydaily.data.model.ReportListData
+import org.mydaily.data.model.network.request.ReqReportDetailGet
 import org.mydaily.databinding.FragmentReportBinding
 import org.mydaily.ui.adapter.ReportKeywordAdapter
 import org.mydaily.ui.base.BaseFragment
-import org.mydaily.ui.view.MainActivity
-import org.mydaily.ui.viewmodel.ReportViewModel
+import org.mydaily.ui.viewmodel.RemindViewModel
 
-class ReportFragment : BaseFragment<FragmentReportBinding, ReportViewModel>(), OnItemClick {
+class ReportFragment : BaseFragment<FragmentReportBinding, RemindViewModel>(), OnItemClick {
     override val layoutResourceId: Int
         get() = R.layout.fragment_report
-    override val viewModel: ReportViewModel by viewModel()
+    override val viewModel: RemindViewModel by sharedViewModel()
     private lateinit var reportKeywordAdapter: ReportKeywordAdapter
 
 
@@ -24,7 +22,7 @@ class ReportFragment : BaseFragment<FragmentReportBinding, ReportViewModel>(), O
     }
 
     override fun initBeforeBinding() {
-        viewModel.getReportData()
+        binding.lifecycleOwner = activity
     }
 
     override fun initAfterBinding() {
@@ -32,9 +30,11 @@ class ReportFragment : BaseFragment<FragmentReportBinding, ReportViewModel>(), O
     }
 
     private fun observeReportListData() {
-        /* 임시 데이터 */
-        viewModel.reportList.observe(this, Observer<List<ReportListData>> {
-            reportKeywordAdapter.data = it.toMutableList()
+        viewModel.reportList.observe(requireActivity(), {
+            if (it.keywordsExist)
+                reportKeywordAdapter.setKeywordList(it.result.toMutableList())
+            else {
+            }
         })
     }
 
@@ -47,10 +47,11 @@ class ReportFragment : BaseFragment<FragmentReportBinding, ReportViewModel>(), O
     override fun onClick(value: Int) {
         val bundle = Bundle()
         var reportDetailFragment = ReportDetailFragment()
-        bundle.putInt("data_priority", value);
+        viewModel.startEnd.observe(requireActivity(), {
+            viewModel.getReportDetail(ReqReportDetailGet(it[0], it[1], value))
+        })
         reportDetailFragment.arguments = bundle
-
-        activity!!.supportFragmentManager
+        requireActivity().supportFragmentManager
             .beginTransaction()
             .replace(R.id.container_main, reportDetailFragment)
             .addToBackStack(null).commit()

@@ -3,12 +3,14 @@ package org.mydaily.ui.view.goal.detail
 import android.app.AlertDialog
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.core.widget.addTextChangedListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityGoalAddBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.viewmodel.GoalViewModel
+import org.mydaily.util.CalendarUtil
 
 class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
     override val layoutResourceId: Int
@@ -38,6 +40,10 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
 
     }
 
+    override fun onBackPressed() {
+        showBackPressedDialog()
+    }
+
     private fun getIntentData() {
         intentAction = intent.action
         intentKeyword = intent.getStringExtra("keyword") ?: ""
@@ -51,28 +57,7 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
         setSupportActionBar(binding.tbGoalAdd)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         binding.tbGoalAdd.setNavigationOnClickListener {
-            if (isGoalChanged) {
-                AlertDialog.Builder(this)
-                    .setTitle("타이틀")
-                    .setMessage("수정사항 저장?")
-                    .setPositiveButton("확인") { _, _ ->
-                        viewModel.postGoals(
-                            System.currentTimeMillis(),
-                            intentTotalKeywordId.toString(),
-                            binding.etGoal.text.toString()
-                        )
-                        finish()
-                    }
-                    .setNegativeButton("취소") { _, _ ->
-
-                    }
-                    .create()
-                    .show()
-
-            }
-            else {
-                finish()
-            }
+            showBackPressedDialog()
         }
     }
 
@@ -87,6 +72,9 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
     }
 
     private fun stateAdd() {
+        binding.tvDate.visibility = View.GONE
+        binding.line.visibility = View.GONE
+
         binding.etGoal.addTextChangedListener {
             val length = binding.etGoal.length()
             isGoalChanged = true
@@ -105,6 +93,9 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
 
 
     private fun stateModify() {
+        binding.tvDate.visibility = View.VISIBLE
+        binding.tvDate.text = CalendarUtil.convertMilliSecToWeekString(intentStartDate)
+        binding.line.visibility = View.VISIBLE
         binding.etGoal.setText(intentWeekGoal)
         binding.etGoal.addTextChangedListener {
             val length = binding.etGoal.length()
@@ -121,9 +112,28 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
         }
     }
 
+    private fun showBackPressedDialog() {
+        if (isGoalChanged) {
+            AlertDialog.Builder(this)
+                .setTitle("정말 뒤로가시겠어요?")
+                .setMessage("뒤로가기를 누르시면 수정사항이 삭제되고 이전 페이지로 돌아갑니다.")
+                .setPositiveButton("뒤로가기") { _, _ ->
+                    finish()
+                }
+                .setNegativeButton("취소하기") { _, _ ->
+
+                }
+                .create()
+                .show()
+        }
+        else {
+            finish()
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         if (intentAction == "MODIFY") {
-            menuInflater.inflate(R.menu.menu_goal_add, menu)
+            menuInflater.inflate(R.menu.menu_delete, menu)
             return true
         }
         return false
@@ -133,7 +143,7 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
         return when (item.itemId) {
             R.id.menu_delete -> {
                 AlertDialog.Builder(this)
-                    .setMessage("목표를 삭제하시겠어요?")
+                    .setTitle("목표를 삭제하시겠어요?")
                     .setPositiveButton("삭제하기") { _, _ ->
                         viewModel.deleteGoal(intentWeekGoalId)
                         finish()

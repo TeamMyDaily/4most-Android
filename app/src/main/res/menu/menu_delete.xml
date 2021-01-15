@@ -4,5 +4,6 @@
     <item
         android:id="@+id/menu_delete"
         android:title="삭제"
+        android:icon="@drawable/ic_trash"
         app:showAsAction="ifRoom"/>
 </menu>

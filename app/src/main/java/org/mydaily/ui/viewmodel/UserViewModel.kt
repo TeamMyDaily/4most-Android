@@ -15,8 +15,8 @@ import retrofit2.Callback
 
 class UserViewModel(private val repo: UserRepo): BaseViewModel() {
 
-    private val _signInEvent = MutableLiveData<Event<Boolean>>()
-    val signInEvent: LiveData<Event<Boolean>> = _signInEvent
+    private val _signInEvent = MutableLiveData<Event<String>>()
+    val signInEvent: LiveData<Event<String>> = _signInEvent
 
     private val _signUpEvent = MutableLiveData<Event<Boolean>>()
     val signUpEvent: LiveData<Event<Boolean>> = _signUpEvent
@@ -32,7 +32,11 @@ class UserViewModel(private val repo: UserRepo): BaseViewModel() {
                     response: retrofit2.Response<ResSignIn>
                 ) {
                     if(response.isSuccessful){
-                        _signInEvent.postValue(Event(true))
+                        if(response.body()?.data?.keywordsExist == true){
+                            _signInEvent.postValue(Event("keywordsExist"))
+                        }else {
+                            _signInEvent.postValue(Event("keywordsNotExist"))
+                        }
                         FourMostPreference.setUserToken(response.body()?.data?.accessToken!!)
                         FourMostPreference.setUserName(response.body()?.data?.userName!!)
                         FourMostPreference.setUserEmail(response.body()?.data?.email!!)
@@ -41,7 +45,7 @@ class UserViewModel(private val repo: UserRepo): BaseViewModel() {
                     }
                 }
                 override fun onFailure(call: Call<ResSignIn>, t: Throwable) {
-                    Log.e(TAG, "postSignUp", t)
+                    Log.e(TAG, "postSignIn", t)
                     _toastMessage.postValue(Event("로그인에 실패하였습니다"))
                 }
             })

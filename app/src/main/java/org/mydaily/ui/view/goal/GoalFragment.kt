@@ -1,7 +1,6 @@
 package org.mydaily.ui.view.goal
 
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,9 +13,8 @@ import org.mydaily.ui.base.BaseFragment
 import org.mydaily.ui.view.goal.detail.GoalAddActivity
 import org.mydaily.ui.view.goal.detail.GoalDetailActivity
 import org.mydaily.ui.viewmodel.GoalViewModel
-import org.mydaily.util.CalendarUtil
-import org.mydaily.util.CalendarUtil.isWeekSame
 import org.mydaily.util.CalendarUtil.copyYMDFrom
+import org.mydaily.util.CalendarUtil.isWeekSame
 import java.util.*
 
 
@@ -52,7 +50,7 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
 
     override fun initBeforeBinding() {
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.calendar = Calendar.getInstance()
+        notifyDateChanged()
     }
 
     override fun initAfterBinding() {
@@ -65,7 +63,6 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
     }
 
     private fun initClickEvent() {
-        Log.e("SEULGI", "start = ${startCalendar.timeInMillis} end = ${endCalendar.timeInMillis}")
         binding.ivArrowLeft.setOnClickListener {
             startCalendar.add(Calendar.DATE, -7)
             endCalendar.add(Calendar.DATE, -7)
@@ -87,8 +84,8 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
     }
 
     private fun notifyDateChanged() {
+        binding.calendar = startCalendar
         binding.tvDate.apply {
-            text = CalendarUtil.convertCalendarToWeekString(startCalendar)
             if (nowCalendar.isWeekSame(startCalendar)) {
                 setTextColor(ContextCompat.getColor(requireContext(), R.color.mainOrange))
                 binding.ivThisWeek.visibility = View.GONE
@@ -98,7 +95,6 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
             }
         }
         viewModel.getGoals(startCalendar.timeInMillis, endCalendar.timeInMillis)
-        Log.e("SEULGI", "start = ${startCalendar.timeInMillis} end = ${endCalendar.timeInMillis}")
     }
 
     private fun initRecyclerView() {
@@ -122,8 +118,7 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
 
     private fun observeGoalData() {
         viewModel.goalList.observe(viewLifecycleOwner, {
-            Log.e("SEULGI", "goalList = ${it?.size}")
-            if(it.isNullOrEmpty()){
+            if (it.isNullOrEmpty()) {
                 if (nowCalendar.isWeekSame(startCalendar)) {
                     binding.isNotGoalExistThisWeek = true
                     binding.isNotGoalExist = false
@@ -133,7 +128,7 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
                     binding.isNotGoalExist = true
                     binding.isGoalExist = false
                 }
-            }else {
+            } else {
                 binding.isNotGoalExistThisWeek = false
                 binding.isNotGoalExist = false
                 binding.isGoalExist = true
@@ -153,11 +148,15 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
             putExtra("keywordId", goal.totalKeywordId)
             putExtra("weekGoalId", goal.weekGoalId)
             putExtra("isGoalCompleted", goal.isGoalCompleted)
+            putExtra("startDate", startCalendar.timeInMillis)
         }
         startActivity(intent)
     }
 
-    private fun startGoalAddActivityWithAction(action: String, goal: ResGoalGet.Data.Result.Keyword) {
+    private fun startGoalAddActivityWithAction(
+        action: String,
+        goal: ResGoalGet.Data.Result.Keyword
+    ) {
         val intent: Intent = Intent(requireContext(), GoalAddActivity::class.java).apply {
             this.action = action
             putExtra("keyword", goal.name)

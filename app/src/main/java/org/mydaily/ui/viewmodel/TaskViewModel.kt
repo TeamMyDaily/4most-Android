@@ -29,7 +29,6 @@ class TaskViewModel(private val repo: TaskRepo) : BaseViewModel() {
             override fun onResponse(call: Call<ResTaskGet>, response: Response<ResTaskGet>) {
                 if(response.isSuccessful){
                     _taskList.postValue(response.body()?.data?.result)
-                    Log.e(TAG, "$date ->"+response.body().toString())
                 }
             }
             override fun onFailure(call: Call<ResTaskGet>, t: Throwable) {
@@ -56,7 +55,7 @@ class TaskViewModel(private val repo: TaskRepo) : BaseViewModel() {
             .enqueue(object :Callback<ResTaskAdd>{
                 override fun onResponse(call: Call<ResTaskAdd>, response: Response<ResTaskAdd>) {
                     if(response.isSuccessful){
-                        Log.e(TAG, response.body().toString())
+                        Log.i(TAG, response.body().toString())
                     }
                 }
                 override fun onFailure(call: Call<ResTaskAdd>, t: Throwable) {
@@ -72,7 +71,7 @@ class TaskViewModel(private val repo: TaskRepo) : BaseViewModel() {
                     call: Call<org.mydaily.data.model.network.response.Response>,
                     response: Response<org.mydaily.data.model.network.response.Response>
                 ) {
-                    Log.e(TAG, response.body().toString())
+                    Log.i(TAG, response.body().toString())
                 }
 
                 override fun onFailure(
@@ -90,7 +89,7 @@ class TaskViewModel(private val repo: TaskRepo) : BaseViewModel() {
                 call: Call<org.mydaily.data.model.network.response.Response>,
                 response: Response<org.mydaily.data.model.network.response.Response>
             ) {
-                Log.e(TAG, "deleteTask : ${response.isSuccessful}")
+                Log.i(TAG, "deleteTask : ${response.isSuccessful}")
             }
 
             override fun onFailure(

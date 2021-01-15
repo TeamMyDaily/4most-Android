@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -16,9 +16,12 @@
             android:id="@+id/tb_keyword_add_activity"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            android:elevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_btn_arrow_left">
 
 
             <TextView
@@ -47,6 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="48dp"
                 android:text="@string/is_there_no_word"
                 android:textColor="@color/cod_gray"
                 android:textSize="25sp"
@@ -113,7 +117,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_keyword_input"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
+                    android:maxLines="1"
+                    android:inputType="text"
                     android:privateImeOptions='"defaultInputmode=korean"'
                     android:textCursorDrawable="@drawable/edittext_cursor_cod_gray" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -133,7 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:background="@drawable/ic_error_2"
+                android:background="@drawable/ic_error"
                 android:clickable="false"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/et_keyword_input_layout"
