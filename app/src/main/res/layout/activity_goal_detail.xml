@@ -103,32 +103,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_keyword" />
 
 
-        <ImageView
-            android:id="@+id/iv_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:src="@drawable/selector_goal"
-            android:layout_marginTop="48dp"
-            android:layout_marginStart="16dp"
-            setCheckBoxImageWithGoalCompleted="@{isGoalCompleted}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_goal" />
-
-        <TextView
-            android:id="@+id/tv_check_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/msg_check_goal_achievement"
-            android:textColor="@color/selector_checked"
-            android:textSize="12sp"
-            android:layout_marginStart="8dp"
-            setTextColorWithGoalCompleted="@{isGoalCompleted}"
-            app:layout_constraintBottom_toBottomOf="@id/iv_check"
-            app:layout_constraintStart_toEndOf="@+id/iv_check"
-            app:layout_constraintTop_toTopOf="@id/iv_check" />
-
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_achieve"
             android:layout_width="match_parent"
@@ -137,10 +111,10 @@
             android:text="@string/msg_goal_achieve"
             style="@style/MyDailyButtonStyle"
             setButtonBackgroundWithGoalCompleted="@{isGoalCompleted}"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="80dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_check" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_goal" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
