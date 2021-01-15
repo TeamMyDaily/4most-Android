@@ -148,6 +148,7 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
             putExtra("keywordId", goal.totalKeywordId)
             putExtra("weekGoalId", goal.weekGoalId)
             putExtra("isGoalCompleted", goal.isGoalCompleted)
+            putExtra("startDate", startCalendar.timeInMillis)
         }
         startActivity(intent)
     }
