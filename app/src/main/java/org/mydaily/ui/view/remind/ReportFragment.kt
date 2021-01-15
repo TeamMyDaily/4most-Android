@@ -1,7 +1,9 @@
 package org.mydaily.ui.view.remind
 
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.mydaily.R
 import org.mydaily.data.model.network.request.ReqReportDetailGet
@@ -31,9 +33,18 @@ class ReportFragment : BaseFragment<FragmentReportBinding, RemindViewModel>(), O
 
     private fun observeReportListData() {
         viewModel.reportList.observe(requireActivity(), {
-            if (it.keywordsExist)
+            if(it.keywordsExist) {
+                binding.tvTitle.visibility = View.VISIBLE
+                binding.rcvReport.visibility = View.VISIBLE
+                binding.tvReportEmpty.visibility = View.INVISIBLE
+                binding.iv4mostChar.visibility = View.INVISIBLE
                 reportKeywordAdapter.setKeywordList(it.result.toMutableList())
+            }
             else {
+                binding.tvReportEmpty.visibility = View.VISIBLE
+                binding.iv4mostChar.visibility = View.VISIBLE
+                binding.tvTitle.visibility = View.INVISIBLE
+                binding.rcvReport.visibility = View.INVISIBLE
             }
         })
     }
@@ -44,12 +55,11 @@ class ReportFragment : BaseFragment<FragmentReportBinding, RemindViewModel>(), O
         binding.rcvReport.layoutManager = LinearLayoutManager(activity)
     }
 
-    override fun onClick(value: Int) {
+    override fun onClick(value: Int, keyword: String) {
         val bundle = Bundle()
         var reportDetailFragment = ReportDetailFragment()
-        viewModel.startEnd.observe(requireActivity(), {
-            viewModel.getReportDetail(ReqReportDetailGet(it[0], it[1], value))
-        })
+        bundle.putInt("id", value)
+        bundle.putString("keyword", keyword)
         reportDetailFragment.arguments = bundle
         requireActivity().supportFragmentManager
             .beginTransaction()

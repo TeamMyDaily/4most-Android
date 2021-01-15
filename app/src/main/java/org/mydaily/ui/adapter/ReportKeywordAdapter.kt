@@ -53,7 +53,7 @@ class ReportKeywordAdapter(private val context: Context, listener : OnItemClick)
             })//시크바 터치 prevent
 
             binding.root.setOnClickListener{
-                mCallback.onClick(data.Id)
+                mCallback.onClick(data.Id, data.keyword)
             }
 
         }

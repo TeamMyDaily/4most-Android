@@ -1,5 +1,6 @@
 package org.mydaily.ui.view.remind
 
+import android.os.Handler
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
@@ -184,6 +185,9 @@ class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
     override fun onStart() {
         super.onStart()
         viewModel.setStartEnd(startCalendar.timeInMillis, endCalendar.timeInMillis)
+        Handler().postDelayed({
+
+        }, 100)
         viewModel.getReview(startCalendar.timeInMillis, endCalendar.timeInMillis)
     }
 }
