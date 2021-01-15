@@ -15,7 +15,7 @@
     <string name="msg_what_happend_today">오늘 하루 무슨 일이 있었나요?</string>
     <string name="msg_rate_satisfaction">만족도를 평가해주세요!</string>
     <string name="msg_store">저장할래요!</string>
-    <string name="msg_report_denied_keyword_not_exist">키워드가 존재 하지 않아 기록을 생성 할 수 없어요.😢 \n 버튼을 눌러 키워드를 생성 해 보세요!</string>
+    <string name="msg_report_denied_keyword_not_exist">키워드가 존재하지 않아 기록을 생성할 수 없어요.\n버튼을 눌러 키워드를 생성해보세요!</string>
 
 
     <!--Sign In-->
@@ -60,7 +60,7 @@
     <string name="msg_set_goal">목표를 세워주세요.</string>
     <string name="msg_achieved">달성</string>
     <string name="msg_not_achieved">미달성</string>
-    <string name="msg_goal_denied_keyword_not_exist">키워드가 존재 하지 않아 목표를 생성 할 수 없어요.\n + 버튼을 눌러 키워드를 생성 해 보세요!</string>
+    <string name="msg_goal_denied_keyword_not_exist">키워드가 존재하지 않아 기록을 생성할 수 없어요.\n버튼을 눌러 키워드를 생성해보세요!</string>
     <string name="msg_keyword_not_exist_this_week">키워드가 없는 날이에요.</string>
     <string name="msg_check_goal_achievement">목표 달성여부 체크</string>
     <string name="msg_to_goal">에 가까워지기 위한 목표</string>
