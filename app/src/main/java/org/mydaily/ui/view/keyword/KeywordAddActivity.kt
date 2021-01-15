@@ -109,7 +109,7 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
                     binding.btnAdd.isEnabled = false
                     binding.tvErrortext.visibility = View.VISIBLE
                     binding.btnErrorIcon.visibility = View.VISIBLE
-                    binding.tvErrortext.text = "한글 이외의 단어는 안된다 임마!"
+                    binding.tvErrortext.text = "특수문자, 숫자, 영어를 제외하고 입력해주세요."
                 } else {
                     binding.btnAdd.isEnabled = true
                     binding.tvErrortext.visibility = View.GONE

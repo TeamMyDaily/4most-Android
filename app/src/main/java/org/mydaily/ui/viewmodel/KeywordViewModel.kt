@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import org.mydaily.data.model.network.request.ReqKeywordDefine
 import org.mydaily.data.model.network.request.ReqKeywordPriority
 import org.mydaily.data.model.network.request.ReqKeywordSelect
+import org.mydaily.data.model.network.response.ResKeywordDefinitionGet
 import org.mydaily.data.model.network.response.ResKeywordListGet
 import org.mydaily.data.model.network.response.ResKeywordSelect
 import org.mydaily.data.model.network.response.ResTaskKeywordGet
@@ -41,6 +42,15 @@ class KeywordViewModel(private val repo: KeywordRepo) : BaseViewModel() {
     private val _keywordStringList = MutableLiveData<List<String>>()
     val keywordStringList: LiveData<List<String>>
         get() = _keywordStringList
+
+    private val _keywordDefinition = MutableLiveData<ResKeywordDefinitionGet.Data>()
+    val keywordDefinition: LiveData<ResKeywordDefinitionGet.Data>
+        get() = _keywordDefinition
+
+
+    //KeywordDefine.. 하드코딩..ㅠㅠ
+    var isDefineSet = arrayOf(false,false,false,false)
+    var selectedKeywordIds = mutableListOf<Int>()
 
     fun getLifeWord() {
         val tempList = listOf(
@@ -114,7 +124,9 @@ class KeywordViewModel(private val repo: KeywordRepo) : BaseViewModel() {
                         val keywords = mutableListOf<String>()
                         for(data in response.body()?.data?.keywords!!){
                             keywords.add(data.name)
+                            selectedKeywordIds.add(data.totalKeywordId)
                         }
+                        Log.e(TAG, selectedKeywordIds.toString())
                         _keywordStringList.value = keywords
                     }
                 }
@@ -163,6 +175,25 @@ class KeywordViewModel(private val repo: KeywordRepo) : BaseViewModel() {
             }
 
         })
+    }
+
+    fun getKeywordDefinition(id: Int){
+        repo.getKeywordDefinition(id)
+            .enqueue(object : Callback<ResKeywordDefinitionGet>{
+                override fun onResponse(
+                    call: Call<ResKeywordDefinitionGet>,
+                    response: Response<ResKeywordDefinitionGet>
+                ) {
+                    if (response.isSuccessful) {
+                        _keywordDefinition.postValue(response.body()?.data)
+                    }
+                }
+
+                override fun onFailure(call: Call<ResKeywordDefinitionGet>, t: Throwable) {
+                    Log.e(TAG,"getKeywordDefinition", t)
+                }
+
+            })
     }
 
     companion object {

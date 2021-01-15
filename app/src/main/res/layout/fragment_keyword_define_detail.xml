@@ -9,12 +9,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.view.keyword.settings.KeywordDefineAddFragment">
+        android:layout_height="match_parent">
 
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tb_keyword_define_add"
+            android:id="@+id/tb_keyword_define_detail"
             android:layout_width="393dp"
             android:layout_height="50dp"
             android:background="@android:color/transparent"
@@ -45,7 +44,7 @@
             android:layout_marginTop="48dp"
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tb_keyword_define_add" />
+            app:layout_constraintTop_toBottomOf="@+id/tb_keyword_define_detail" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -61,7 +60,7 @@
             android:id="@+id/tv_what_for_me"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="나만의 정의는 무엇인가요?"
+            android:text="나만의 정의"
             android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tv_keyword"
@@ -72,7 +71,7 @@
             android:id="@+id/tv_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="내가 정의한 가치의 의미를 작성해보세요!"
+            android:text="내가 추구하는 가치의 의미에요!"
             android:textColor="@color/mainOrange"
             android:textSize="15sp"
             android:textStyle="bold"
@@ -85,52 +84,18 @@
             android:id="@+id/et_define"
             android:layout_width="match_parent"
             android:layout_height="260dp"
-            android:background="@drawable/selector_edittext_box"
+            android:background="@drawable/rectangle_orange_radius_15"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="48dp"
             android:maxLength="200"
             android:padding="16dp"
             android:textSize="15sp"
             android:gravity="start"
-            android:hint="나만의 정의를 작성 해 주세요."
+            android:enabled="false"
+            android:textColor="@color/mainBlack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_info" />
-
-        <TextView
-            android:id="@+id/tv_define_byte"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="@color/silver"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/tv_define_byte_info"
-            app:layout_constraintTop_toBottomOf="@+id/et_define" />
-
-        <TextView
-            android:id="@+id/tv_define_byte_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="/200자"
-            android:textColor="@color/mainOrange"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_define" />
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_set_priority"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="16dp"
-            style="@style/MyDailyButtonStyle"
-            android:text="@string/msg_add_complete"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
