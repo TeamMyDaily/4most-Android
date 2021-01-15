@@ -52,6 +52,33 @@
     <string name="password_alert">비밀번호 조합이 틀려요!</string>
     <string name="password_dismatch">비밀번호가 서로 맞지 않아요!</string>
 
+    <!--Report-->
+    <string name="zero">"0"</string>
+    <string name="report">리포트</string>
+    <string name="keword_title">이번 주 키워드와\n얼마나 가까워졌나요?</string>
+    <string name="report_empty">리포트 내용이 없어요</string>
+    <string name="report_object">목표</string>
+    <string name="daily_record">하루 기록</string>
+    <string name="report_achieve">달성</string>
+    <string name="report_not_achieve">미달성</string>
+    <string name="report_not_object">이번주에 설정된 목표가 없어요.</string>
+
+    <!--Remind-->
+    <string name="remind_restore">저장하기</string>
+    <string name="remind_back_really">정말 뒤로가시겠어요?</string>
+    <string name="remind_back_alert">뒤로가기를 누르시면 작성 중인 내용이\n사라지고 이전 페이지로 돌아갑니다.</string>
+    <string name="remind_back_edit_alert">뒤로가기를 누르시면 수정사항이\n삭제되고 이전 페이지로 돌아갑니다.</string>
+    <string name="remind">회고</string>    
+    <string name="remove">삭제하기</string>
+    <string name="cancel">취소하기</string>
+    <string name="back">뒤로가기</string>
+    <string name="remind_good">이번 주 좋았던 점</string>
+    <string name="remind_limit">/800자</string>
+    <string name="remind_good_content">이번 주, 어떤 을 칭찬 해 주고 싶나요?\n\n</string>
+    <string name="remind_bad_content">이번 주, 아쉬움이 남는 점은 무엇인가요?\n\n</string>
+    <string name="next_week_content">다음 주, 어떻게 보내고 싶으신가요?\n\n</string>
+    <string name="remind_bad">이번 주 아쉬웠던 점</string>
+    <string name="remind_next_week">다음 주 마음가짐</string>
 
     <!--Goal-->
     <string name="msg_plz_set_goal_by_keyword">이번 주 키워드별\n목표를 설정해주세요</string>

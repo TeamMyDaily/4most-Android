@@ -1,4 +1,4 @@
-package org.mydaily.ui.view.remind
+package org.mydaily.ui.view.remind.detail
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -48,22 +48,22 @@ class RemindDetailWriteActivity : BaseActivity<ActivityRemindDetailWriteBinding,
             if(isContentEntered) {
                 val builder = AlertDialog.Builder(this)
                 if(!isWriten) {
-                    builder.setTitle("정말 뒤로 가시겠어요?")
-                    builder.setMessage("뒤로가기를 누르시면 작성 중인 내용이\n사라지고 이전 페이지로 돌아갑니다.")
+                    builder.setTitle(getString(R.string.remind_back_really))
+                    builder.setMessage(getString(R.string.remind_back_alert))
                     builder.setPositiveButton(
-                    "취소하기"
+                    getString(R.string.cancel)
                     ) { dialogInterface: DialogInterface?, i: Int -> }
-                    builder.setNegativeButton("삭제하기") { dialogInterface: DialogInterface?, i: Int ->
+                    builder.setNegativeButton(getString(R.string.remove)) { dialogInterface: DialogInterface?, i: Int ->
                         finish()
                     }
                 }
                 else {
-                    builder.setTitle("정말 뒤로 가시겠어요?")
-                    builder.setMessage("뒤로가기를 누르시면 수정사항이\n삭제되고 이전 페이지로 돌아갑니다.")
+                    builder.setTitle(getString(R.string.remind_back_really))
+                    builder.setMessage(getString(R.string.remind_back_edit_alert))
                     builder.setPositiveButton(
-                        "취소하기"
+                        getString(R.string.cancel)
                     ) { dialogInterface: DialogInterface?, i: Int -> }
-                    builder.setNegativeButton("뒤로가기") { dialogInterface: DialogInterface?, i: Int ->
+                    builder.setNegativeButton(getString(R.string.back)) { dialogInterface: DialogInterface?, i: Int ->
                         finish()
                     }
                 }
@@ -121,9 +121,9 @@ class RemindDetailWriteActivity : BaseActivity<ActivityRemindDetailWriteBinding,
 
     private fun initBtnSetting(){
         if(!isWriten)
-            binding.btWriteComplete.text = "작성완료"
+            binding.btWriteComplete.text = getString(R.string.msg_add_complete)
         else {
-            binding.btWriteComplete.text = "저장할래요"
+            binding.btWriteComplete.text = getString(R.string.remind_restore)
         }
     }
 }

@@ -1,8 +1,6 @@
 package org.mydaily.ui.adapter
 
 import android.content.Context
-import android.graphics.Color
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -11,19 +9,18 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import org.mydaily.R
-import org.mydaily.data.model.ReportListData
 import org.mydaily.data.model.network.response.ResReportGet
-import org.mydaily.databinding.KeywordListItemBinding
+import org.mydaily.databinding.ItemKeywordListBinding
 import org.mydaily.ui.view.remind.OnItemClick
 
 class ReportKeywordAdapter(private val context: Context, listener : OnItemClick) : RecyclerView.Adapter<ReportKeywordAdapter.ViewHolder>() {
-    private lateinit var binding: KeywordListItemBinding
+    private lateinit var binding: ItemKeywordListBinding
     var data = mutableListOf<ResReportGet.Data.Result>()
     private val mCallback = listener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         binding = DataBindingUtil.inflate(LayoutInflater.from(context),
-            R.layout.keyword_list_item, parent, false)
+            R.layout.item_keyword_list, parent, false)
         return ViewHolder(binding)
     }
 
@@ -34,7 +31,7 @@ class ReportKeywordAdapter(private val context: Context, listener : OnItemClick)
 
     override fun getItemCount(): Int = data.size
 
-    inner class ViewHolder(private val binding: KeywordListItemBinding) :
+    inner class ViewHolder(private val binding: ItemKeywordListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: ResReportGet.Data.Result, pos : Int) {

@@ -3,10 +3,8 @@ package org.mydaily.ui.view.remind
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.mydaily.R
-import org.mydaily.data.model.network.request.ReqReportDetailGet
 import org.mydaily.databinding.FragmentReportBinding
 import org.mydaily.ui.adapter.ReportKeywordAdapter
 import org.mydaily.ui.base.BaseFragment

@@ -67,7 +67,7 @@ class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
             endCalendar.add(Calendar.DATE, -7)
             binding.tvDate.text = CalendarUtil.convertCalendarToWeekString(startCalendar)
             convertDateStatus()
-            //값전달
+
             viewModel.setStartEnd(startCalendar.timeInMillis, endCalendar.timeInMillis)
             viewModel.getReport(startCalendar.timeInMillis, endCalendar.timeInMillis)
             viewModel.getReview(startCalendar.timeInMillis, endCalendar.timeInMillis)
@@ -148,7 +148,7 @@ class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
     }
 
     private fun createViewPager() {
-        var tab_label = listOf("리포트", "회고")
+        var tab_label = listOf(getString(R.string.report), getString(R.string.remind))
         var fragmentList = listOf(ReportFragment(), RemindFragment())
         val remindAdapter = RemindViewPagerAdapter(this)
         remindAdapter.fragmentList = fragmentList

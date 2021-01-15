@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.remind.RemindDetailWriteActivity">
+        tools:context=".ui.view.remind.detail.RemindDetailWriteActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_remind_detail_write"
@@ -63,7 +63,7 @@
             android:textColor="@color/mainBlack"
             android:textSize="15sp"
             android:padding="16dp"
-            android:background="@drawable/remind_write_textbox"
+            android:background="@drawable/rectangle_fill_main_light_gray_15"
             app:layout_constraintBottom_toTopOf="@+id/bt_write_complete"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.292"
