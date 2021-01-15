@@ -138,6 +138,7 @@ class TaskFragment : BaseFragment<FragmentTaskBinding, TaskViewModel>() {
                 binding.isNotKeywordExist = false
                 binding.isKeywordExist = true
                 dailyExpandableAdapter.data = it
+                binding.rvTasks.adapter = dailyExpandableAdapter
             }
         })
     }
