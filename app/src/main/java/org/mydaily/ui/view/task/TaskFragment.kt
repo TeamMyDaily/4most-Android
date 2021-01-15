@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.data.local.FourMostPreference
@@ -23,7 +24,7 @@ import java.util.*
 class TaskFragment : BaseFragment<FragmentTaskBinding, TaskViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_task
-    override val viewModel: TaskViewModel by viewModel()
+    override val viewModel: TaskViewModel by sharedViewModel()
 
     private val dailyExpandableAdapter = DailyExpandableAdapter()
 
@@ -47,7 +48,6 @@ class TaskFragment : BaseFragment<FragmentTaskBinding, TaskViewModel>() {
     override fun onStart() {
         super.onStart()
         viewModel.getTasks(System.currentTimeMillis())
-        binding.rvTasks.invalidate()
     }
 
     private fun initUserData() {

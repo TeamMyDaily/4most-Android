@@ -47,6 +47,7 @@ class MyPageSettingActivity : BaseActivity<ActivityMypageSettingBinding, UserVie
                 setUserToken("")
                 setUserEmail("")
                 setUserName("")
+                setKeywordExist(false)
             }
 
             val intent = Intent(this, SignInActivity::class.java)
