@@ -136,7 +136,7 @@ class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, Keyword
                     }
                 } else {
                     clickedChipCount--
-                    if (clickedChipCount < 4) {
+                    if (clickedChipCount < 1) {
                         binding.btnSelectFourFinish.isEnabled = false
                     }
                     removeKeywordList(it.text as String)
