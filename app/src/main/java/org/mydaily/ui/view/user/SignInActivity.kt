@@ -47,7 +47,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, UserViewModel>() {
     override fun onStart() {
         super.onStart()
         if(FourMostPreference.getAutoLogin() && FourMostPreference.getUserToken() != ""){
-            onSuccessSignIn()
+            startMainActivity()
         }
     }
 
@@ -133,24 +133,13 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, UserViewModel>() {
     }
 
     private fun observeSignInResult() {
-        viewModel.signInEvent.observe(this, EventObserver{ success->
-            if(success){
-                onSuccessSignIn()
+        viewModel.signInEvent.observe(this, EventObserver{
+            if(it == "keywordsExist"){
+                startMainActivity()
+            }else {
+                startKeywordListActivity()
             }
         })
-    }
-
-    private fun onSuccessSignIn() {
-        Log.e("SEULGI", "\n"+FourMostPreference.getFirstVisit()
-        +"\n"+FourMostPreference.getAutoLogin()
-        +"\n"+FourMostPreference.getUserToken()
-                +"\n"+FourMostPreference.getUserEmail()
-                +"\n"+FourMostPreference.getUserName())
-        if(FourMostPreference.getFirstVisit()){
-            startKeywordListActivity()
-        } else {
-            startMainActivity()
-        }
     }
 
     private fun startMainActivity() {

@@ -84,7 +84,6 @@ class KeywordPriorityFragment : BaseFragment<FragmentKeywordPriorityBinding, Key
                 temp.add(ReqKeywordPriority.Keyword(data, i++))
             }
             viewModel.postKeywordPriority(temp)
-            FourMostPreference.setFirstVisit(false)
         }
     }
 
