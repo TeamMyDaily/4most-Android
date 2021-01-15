@@ -1,5 +1,6 @@
 package org.mydaily.ui.view.splash
 
+import android.animation.Animator
 import android.content.Intent
 import android.graphics.drawable.Animatable
 import androidx.appcompat.app.AppCompatActivity
@@ -37,9 +38,20 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, KeywordViewModel>() {
     }
 
     private fun initLottie() {
-        binding.splash.setAnimation("splash.json")
-        binding.splash.repeatMode = LottieDrawable.REVERSE
-        binding.splash.repeatCount = LottieDrawable.INFINITE
-        binding.splash.playAnimation()
+        binding.splash.addAnimatorListener(object : Animator.AnimatorListener{
+            override fun onAnimationStart(animation: Animator?) {
+
+            }
+
+            override fun onAnimationEnd(animation: Animator?) {
+                //finish()
+            }
+
+            override fun onAnimationCancel(animation: Animator?) {
+            }
+
+            override fun onAnimationRepeat(animation: Animator?) {
+            }
+        })
     }
 }
