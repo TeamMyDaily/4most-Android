@@ -130,7 +130,7 @@ class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, Keyword
                         it.isChecked = false
                         clickedChipCount--
                         floatingDialog()
-                    } else if (clickedChipCount == 4) {
+                    } else if (clickedChipCount >= 1) {
                         addKeywordList(it.text as String)
                         binding.btnSelectFourFinish.isEnabled = true
                     } else {
@@ -139,7 +139,7 @@ class KeywordSelectActivity : BaseActivity<ActivityKeywordSelectBinding, Keyword
                     }
                 } else {
                     clickedChipCount--
-                    if (clickedChipCount < 4) {
+                    if (clickedChipCount < 1) {
                         binding.btnSelectFourFinish.isEnabled = false
                     }
                     removeKeywordList(it.text as String)
