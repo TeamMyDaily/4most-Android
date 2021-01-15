@@ -129,14 +129,10 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
             if (resultCode == 1005) {
                 if (data?.getStringExtra("MyWord") != null) {
                     addedMyWord.add(data.getStringExtra("MyWord")!!)
+                    addMyWordList()
                 }
-            } else {
-                shortToast("잘못된 resultCode1")
             }
-        } else {
-            shortToast("잘못된 requestCode2")
         }
-        addMyWordList()
     }
 
     private fun observeLifeWordList() {
@@ -220,16 +216,16 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
 
     private fun onClickModifyButton() {
         binding.tvModify.setOnClickListener {
-            setCompleteState()
-            onClickModifyButtonState()
+            //setCompleteState()
+            //onClickModifyButtonState()
             binding.btnSelectFinish.visibility = View.GONE
         }
     }
 
     private fun onClickCompleteButton() {
         binding.tvComplete.setOnClickListener {
-            setModifyState()
-            onClickedCompleteButtonState()
+            //setModifyState()
+            //onClickedCompleteButtonState()
             binding.btnSelectFinish.visibility = View.VISIBLE
         }
     }
@@ -246,7 +242,7 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
 
     override fun onResume() {
         super.onResume()
-        setModifyState()
+        //setModifyState()
 
     }
 }
