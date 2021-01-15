@@ -39,7 +39,7 @@ class RemindViewModel(private val reportRepo: ReportRepo, private val reviewRepo
             }
 
             override fun onFailure(call: Call<ResReportGet>, t: Throwable) {
-                Log.e(TAG, "$start ->" + "getReport", t)
+
             }
         })
     }
@@ -53,7 +53,7 @@ class RemindViewModel(private val reportRepo: ReportRepo, private val reviewRepo
             }
 
             override fun onFailure(call: Call<ResReportDetailGet>, t: Throwable) {
-                Log.e(TAG, "fail->" + "getReportDetails", t)
+
             }
         })
     }
@@ -71,7 +71,7 @@ class RemindViewModel(private val reportRepo: ReportRepo, private val reviewRepo
             }
 
             override fun onFailure(call: Call<ResReviewGet>, t: Throwable) {
-                Log.e(TAG, "$start ->" + "getReport", t)
+
             }
         })
     }
@@ -80,12 +80,12 @@ class RemindViewModel(private val reportRepo: ReportRepo, private val reviewRepo
         reviewRepo.postReviews(body).enqueue(object : Callback<ResReviewAdd> {
             override fun onResponse(call: Call<ResReviewAdd>, response: Response<ResReviewAdd>) {
                 if (response.isSuccessful) {
-                    Log.i(TAG, response.body().toString())
+
                 }
             }
 
             override fun onFailure(call: Call<ResReviewAdd>, t: Throwable) {
-                Log.e(TAG, "putReview", t)
+
             }
         })
     }

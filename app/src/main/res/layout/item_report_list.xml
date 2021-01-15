@@ -14,6 +14,7 @@
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_record"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -80,7 +81,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:lineHeight="1.5px"
-                android:text="태스크 만족도: 3점"
                 android:textColor="@color/mainBlack"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -15,7 +15,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_tab"
-            android:background="@drawable/remind_tb_background"
+            android:background="@drawable/rectangle_fill_deep_dark_gray"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -29,7 +29,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="67dp"
-                android:background="@drawable/remind_tb_background"
+                android:background="@drawable/rectangle_fill_deep_dark_gray"
                 app:tabTextAppearance="@style/CustomTabText"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/linearLayout"
@@ -59,7 +59,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="8dp"
-                    android:text="20년 12월 3주"
                     android:textAlignment="center"
                     android:textColor="@color/mainOrange"
                     android:textSize="12sp"

@@ -3,7 +3,6 @@ package org.mydaily.ui.view.remind
 import android.content.Intent
 import android.text.Editable
 import android.text.method.ScrollingMovementMethod
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
@@ -11,6 +10,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.mydaily.R
 import org.mydaily.databinding.FragmentRemindWriteBinding
 import org.mydaily.ui.base.BaseFragment
+import org.mydaily.ui.view.remind.detail.RemindDetailWriteActivity
 import org.mydaily.ui.viewmodel.RemindViewModel
 
 class RemindWriteFragment : BaseFragment<FragmentRemindWriteBinding, RemindViewModel>() {
@@ -106,14 +106,14 @@ class RemindWriteFragment : BaseFragment<FragmentRemindWriteBinding, RemindViewM
                         binding.tvGoodCount.text = it.review.good.length.toString()
                     }
                     else {
-                        binding.tvWeekGoodContent.setBackgroundResource(R.drawable.remind_write_textbox)
+                        binding.tvWeekGoodContent.setBackgroundResource(R.drawable.rectangle_fill_main_light_gray_15)
                         binding.tvWeekGoodContent.text = null
-                        binding.tvGoodCount.text = "0"
+                        binding.tvGoodCount.text = getString(R.string.zero)
                     }
                 } else {
-                    binding.tvWeekGoodContent.setBackgroundResource(R.drawable.remind_write_textbox)
+                    binding.tvWeekGoodContent.setBackgroundResource(R.drawable.rectangle_fill_main_light_gray_15)
                     binding.tvWeekGoodContent.text = null
-                    binding.tvGoodCount.text = "0"
+                    binding.tvGoodCount.text = getString(R.string.zero)
                 }
 
                 if (it.review.bad != null) {
@@ -124,13 +124,13 @@ class RemindWriteFragment : BaseFragment<FragmentRemindWriteBinding, RemindViewM
                         binding.tvBadCount.text = it.review.bad.length.toString()
                     }
                     else {
-                        binding.tvWeekBadContent.setBackgroundResource(R.drawable.remind_write_textbox)
-                        binding.tvBadCount.text = "0"
+                        binding.tvWeekBadContent.setBackgroundResource(R.drawable.rectangle_fill_main_light_gray_15)
+                        binding.tvBadCount.text = getString(R.string.zero)
                         binding.tvWeekBadContent.text = null
                     }
                 } else {
-                    binding.tvWeekBadContent.setBackgroundResource(R.drawable.remind_write_textbox)
-                    binding.tvBadCount.text = "0"
+                    binding.tvWeekBadContent.setBackgroundResource(R.drawable.rectangle_fill_main_light_gray_15)
+                    binding.tvBadCount.text = getString(R.string.zero)
                     binding.tvWeekBadContent.text = null
                 }
 
@@ -142,25 +142,25 @@ class RemindWriteFragment : BaseFragment<FragmentRemindWriteBinding, RemindViewM
                         binding.tvNextWeekCount.text = it.review.next.length.toString()
                     }
                     else {
-                        binding.tvNextWeekContent.setBackgroundResource(R.drawable.remind_write_textbox)
+                        binding.tvNextWeekContent.setBackgroundResource(R.drawable.rectangle_fill_main_light_gray_15)
                         binding.tvNextWeekContent.text = null
-                        binding.tvNextWeekCount.text = "0"
+                        binding.tvNextWeekCount.text = getString(R.string.zero)
                     }
                 } else {
-                    binding.tvNextWeekContent.setBackgroundResource(R.drawable.remind_write_textbox)
+                    binding.tvNextWeekContent.setBackgroundResource(R.drawable.rectangle_fill_main_light_gray_15)
                     binding.tvNextWeekContent.text = null
-                    binding.tvNextWeekCount.text = "0"
+                    binding.tvNextWeekCount.text = getString(R.string.zero)
                 }
             } else {
-                binding.tvNextWeekContent.setBackgroundResource(R.drawable.remind_write_textbox)
-                binding.tvWeekGoodContent.setBackgroundResource(R.drawable.remind_write_textbox)
-                binding.tvWeekBadContent.setBackgroundResource(R.drawable.remind_write_textbox)
+                binding.tvNextWeekContent.setBackgroundResource(R.drawable.rectangle_fill_main_light_gray_15)
+                binding.tvWeekGoodContent.setBackgroundResource(R.drawable.rectangle_fill_main_light_gray_15)
+                binding.tvWeekBadContent.setBackgroundResource(R.drawable.rectangle_fill_main_light_gray_15)
                 binding.tvNextWeekContent.text = null
                 binding.tvWeekGoodContent.text = null
                 binding.tvWeekBadContent.text = null
-                binding.tvGoodCount.text = "0"
-                binding.tvBadCount.text = "0"
-                binding.tvNextWeekCount.text = "0"
+                binding.tvGoodCount.text = getString(R.string.zero)
+                binding.tvBadCount.text = getString(R.string.zero)
+                binding.tvNextWeekCount.text = getString(R.string.zero)
             }
         })
     }

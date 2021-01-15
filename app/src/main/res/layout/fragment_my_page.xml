@@ -15,7 +15,7 @@
             android:id="@+id/cl_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/report_detail_goal_container_orange"
+            android:background="@drawable/rectangle_fill_orange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">

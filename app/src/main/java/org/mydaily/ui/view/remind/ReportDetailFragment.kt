@@ -2,7 +2,6 @@ package org.mydaily.ui.view.remind
 
 import android.content.Intent
 import android.os.Handler
-import android.text.format.DateFormat.format
 import android.view.*
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
@@ -12,17 +11,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.mydaily.R
 import org.mydaily.data.model.network.request.ReqReportDetailGet
-import org.mydaily.data.model.network.response.ResGoalGet
 import org.mydaily.databinding.FragmentReportDetailBinding
 import org.mydaily.ui.adapter.ReportDetailAdapter
 import org.mydaily.ui.base.BaseFragment
-import org.mydaily.ui.view.goal.detail.GoalAddActivity
 import org.mydaily.ui.view.goal.detail.GoalDetailActivity
-import org.mydaily.ui.view.task.detail.TaskDetailActivity
 import org.mydaily.ui.viewmodel.RemindViewModel
 import org.mydaily.util.extension.popBackStack
-import java.lang.String.format
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -75,7 +69,7 @@ class ReportDetailFragment : BaseFragment<FragmentReportDetailBinding, RemindVie
                     isGoalCompleted = it.isGoalCompleted
                     if (it.isGoalCompleted) {
                         binding.tvAchievement.setBackgroundResource(R.drawable.achviement_container_orange)
-                        binding.tvAchievement.text = "달성"
+                        binding.tvAchievement.text = getString(R.string.report_achieve)
                         binding.tvGoalContent.text = it.goal
                         binding.tvGoal.setTextColor(
                             ResourcesCompat.getColor(
@@ -89,7 +83,7 @@ class ReportDetailFragment : BaseFragment<FragmentReportDetailBinding, RemindVie
                                 R.color.white, null
                             )
                         )
-                        binding.clGoal.setBackgroundResource(R.drawable.report_detail_goal_container_orange)
+                        binding.clGoal.setBackgroundResource(R.drawable.rectangle_fill_orange)
                         binding.tvAchievement.setTextColor(
                             ResourcesCompat.getColor(
                                 resources,
@@ -99,7 +93,7 @@ class ReportDetailFragment : BaseFragment<FragmentReportDetailBinding, RemindVie
                         binding.ivArrowRight.setBackgroundResource(R.drawable.ic_arrow_report_detail_white)
                     } else {
                         binding.tvAchievement.setBackgroundResource(R.drawable.achievement_container)
-                        binding.tvAchievement.text = "미달성"
+                        binding.tvAchievement.text = getString(R.string.report_not_achieve)
                         binding.tvGoalContent.text = it.goal
                         binding.tvGoal.setTextColor(
                             ResourcesCompat.getColor(
@@ -113,7 +107,7 @@ class ReportDetailFragment : BaseFragment<FragmentReportDetailBinding, RemindVie
                                 R.color.mainBlack, null
                             )
                         )
-                        binding.clGoal.setBackgroundResource(R.drawable.report_detail_goal_container)
+                        binding.clGoal.setBackgroundResource(R.drawable.rectangle_fill_gray_white)
                         binding.tvAchievement.setTextColor(
                             ResourcesCompat.getColor(
                                 resources,
@@ -132,14 +126,14 @@ class ReportDetailFragment : BaseFragment<FragmentReportDetailBinding, RemindVie
                             R.color.mainBlack, null
                         )
                     )
-                    binding.tvGoalContent.text = "이번주 작성된 목표가 없어요!"
+                    binding.tvGoalContent.text = getString(R.string.report_not_object)
                     binding.tvGoalContent.setTextColor(
                         ResourcesCompat.getColor(
                             resources,
                             R.color.mainGray, null
                         )
                     )
-                    binding.clGoal.setBackgroundResource(R.drawable.report_detail_goal_container)
+                    binding.clGoal.setBackgroundResource(R.drawable.rectangle_fill_gray_white)
                 }
                 binding.tvTasknum.text = "총 " + it.tasks.size + "개"
                 detailAdapter.setDetailList(it.tasks)

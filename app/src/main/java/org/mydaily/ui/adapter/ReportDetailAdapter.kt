@@ -4,25 +4,22 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import org.mydaily.R
-import org.mydaily.data.model.ReportListData
 import org.mydaily.data.model.network.response.ResReportDetailGet
-import org.mydaily.data.model.network.response.ResReportGet
-import org.mydaily.databinding.ReportListItemBinding
+import org.mydaily.databinding.ItemReportListBinding
 import org.mydaily.ui.view.task.detail.TaskDetailActivity
 import java.text.SimpleDateFormat
 
 class ReportDetailAdapter(private val context: Context, private val keyword: String) : RecyclerView.Adapter<ReportDetailAdapter.ViewHolder>() {
-    private lateinit var binding: ReportListItemBinding
+    private lateinit var binding: ItemReportListBinding
     var data = mutableListOf<ResReportDetailGet.Data.Task>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         binding = DataBindingUtil.inflate(
             LayoutInflater.from(context),
-            R.layout.report_list_item, parent, false)
+            R.layout.item_report_list, parent, false)
         return ViewHolder(binding)
     }
 
@@ -32,7 +29,7 @@ class ReportDetailAdapter(private val context: Context, private val keyword: Str
 
     override fun getItemCount(): Int = data.size
 
-    inner class ViewHolder(private val binding: ReportListItemBinding) :
+    inner class ViewHolder(private val binding: ItemReportListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: ResReportDetailGet.Data.Task) {
@@ -41,7 +38,7 @@ class ReportDetailAdapter(private val context: Context, private val keyword: Str
             binding.tvDate.text = dateConvert(data.date.substring(0,10))
             binding.tvTaskRate.text = "태스크 만족도: " + rate + "점"
 
-            binding.ivArrowRight.setOnClickListener {
+            binding.clRecord.setOnClickListener {
                 context.apply {
                     val intent = Intent(this, TaskDetailActivity::class.java).apply {
                         putExtra("taskId", data.taskId)
