@@ -3,6 +3,7 @@ package org.mydaily.ui.view.goal.detail
 import android.app.AlertDialog
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.core.widget.addTextChangedListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
@@ -70,6 +71,9 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
     }
 
     private fun stateAdd() {
+        binding.tvDate.visibility = View.GONE
+        binding.line.visibility = View.GONE
+
         binding.etGoal.addTextChangedListener {
             val length = binding.etGoal.length()
             isGoalChanged = true
@@ -88,6 +92,8 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
 
 
     private fun stateModify() {
+        binding.tvDate.visibility = View.VISIBLE
+        binding.line.visibility = View.VISIBLE
         binding.etGoal.setText(intentWeekGoal)
         binding.etGoal.addTextChangedListener {
             val length = binding.etGoal.length()
