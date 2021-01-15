@@ -45,7 +45,6 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
         if(binding.cgMyWord.childCount == 1) {
             binding.tvMyWord.setTextColor(getColor(R.color.mainBlack))
         } else {
-            shortToast("나냐?")
             binding.tvMyWord.setTextColor(getColor(R.color.persimmon))
         }
     }
