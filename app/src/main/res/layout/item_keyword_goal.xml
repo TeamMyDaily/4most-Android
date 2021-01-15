@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             tools:text="아웃풋"
             android:textColor="@color/mainBlack"
-            android:textSize="15sp"
+            android:textSize="21sp"
             android:textStyle="bold"
             android:text="@{goal.name}"
             app:layout_constraintStart_toStartOf="parent"
