@@ -80,7 +80,7 @@ class TaskFragment : BaseFragment<FragmentTaskBinding, TaskViewModel>() {
     }
 
     private fun initDateView() {
-        binding.ibDate.setOnClickListener {
+        binding.llDate.setOnClickListener {
             val datePickerDialog = DatePickerDialog(
                 requireContext(),
                 { _, year, month, day ->
@@ -138,6 +138,7 @@ class TaskFragment : BaseFragment<FragmentTaskBinding, TaskViewModel>() {
                 binding.isNotKeywordExist = false
                 binding.isKeywordExist = true
                 dailyExpandableAdapter.data = it
+                binding.rvTasks.adapter = dailyExpandableAdapter
             }
         })
     }

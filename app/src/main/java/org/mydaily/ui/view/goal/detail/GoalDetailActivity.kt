@@ -22,6 +22,7 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
     private var intentWeekGoal: String = ""
     private var intentWeekGoalId: Int = 0
     private var intentIsGoalCompleted: Boolean = false
+    private var intentStartDate: Long = 0
 
     override fun initView() {
         getIntentData()
@@ -45,6 +46,7 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
         intentWeekGoal = intent.getStringExtra("weekGoal") ?: ""
         intentWeekGoalId = intent.getIntExtra("weekGoalId", 0)
         intentIsGoalCompleted = intent.getBooleanExtra("isGoalCompleted", false)
+        intentStartDate = intent.getLongExtra("startDate", Calendar.getInstance().timeInMillis)
     }
 
     private fun initToolbar() {
@@ -57,7 +59,7 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
 
     private fun initViewWithIntent() {
         binding.apply {
-            tvDate.text = CalendarUtil.convertCalendarToWeekString(Calendar.getInstance())
+            tvDate.text = CalendarUtil.convertMilliSecToWeekString(intentStartDate)
             tvKeyword.text = intentKeyword
             tvGoal.text = intentWeekGoal
             isGoalCompleted = intentIsGoalCompleted
@@ -74,19 +76,6 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
             intentIsGoalCompleted = !intentIsGoalCompleted
             binding.isGoalCompleted = intentIsGoalCompleted
             viewModel.putGoalsCompletion(intentWeekGoalId)
-
-            /* AlertDialog.Builder(this)
-                 .setTitle("타이틀")
-                 .setMessage("달성여부 변경할거임?")
-                 .setPositiveButton("확인") { _, _ ->
-                     viewModel.putGoalsCompletion(intentWeekGoalId)
-                     finish()
-                 }
-                 .setNegativeButton("취소") { _, _ ->
-
-                 }
-                 .create()
-                 .show()*/
         }
     }
 
@@ -104,6 +93,7 @@ class GoalDetailActivity : BaseActivity<ActivityGoalDetailBinding, GoalViewModel
                     putExtra("keywordId", intentTotalKeywordId)
                     putExtra("weekGoal", intentWeekGoal)
                     putExtra("weekGoalId", intentWeekGoalId)
+                    putExtra("startDate", intentStartDate)
                 }
                 startActivity(intent)
                 finish()

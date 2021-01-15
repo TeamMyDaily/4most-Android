@@ -41,8 +41,12 @@ class TaskDetailActivity : BaseActivity<ActivityTaskDetailBinding, TaskViewModel
     //보기만 할때
     private fun initViewEnable() {
         binding.etTitle.isEnabled = false
-        binding.etDescription.isEnabled = false
         binding.bubbleSeekBar.isEnabled = false
+
+        binding.etDescription.apply {
+            isFocusableInTouchMode = false
+            clearFocus()
+        }
     }
 
     private fun initToolbar() {

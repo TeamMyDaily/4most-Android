@@ -24,10 +24,9 @@
 
             <ImageView
                 android:id="@+id/iv_logo"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_4most_logo"
-                android:visibility="gone"/>
+                android:src="@drawable/img_logotype_dark"/>
 
             <TextView
                 android:id="@+id/tv_title"
@@ -59,6 +58,8 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_alignParentBottom="true"
             app:labelVisibilityMode="labeled"
+            app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
+            app:itemTextAppearanceInactive="@style/BottomNavigationView"
             app:itemIconTint="@color/selector_bottom_navi"
             app:itemTextColor="@color/selector_bottom_navi"
             app:menu="@menu/menu_main"/>

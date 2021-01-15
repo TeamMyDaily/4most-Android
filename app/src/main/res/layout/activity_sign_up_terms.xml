@@ -16,7 +16,8 @@
             android:id="@+id/tb_sign_up_terms"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/transparent"
+            android:background="@color/white"
+            android:elevation="4dp"
             app:navigationIcon="@drawable/ic_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -38,10 +39,10 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_marginTop="80dp"
-            android:src="@drawable/img_app_logo"
+            android:src="@drawable/image_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tb_sign_up_terms" />
