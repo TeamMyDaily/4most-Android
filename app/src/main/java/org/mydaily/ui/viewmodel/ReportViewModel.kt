@@ -2,7 +2,6 @@ package org.mydaily.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import org.mydaily.data.model.Keyword
 import org.mydaily.data.model.ReportListData
 import org.mydaily.ui.base.BaseViewModel
 

@@ -42,6 +42,10 @@ class KeywordViewModel(private val repo: KeywordRepo) : BaseViewModel() {
     val keywordStringList: LiveData<List<String>>
         get() = _keywordStringList
 
+
+    //KeywordDefine.. 하드코딩..ㅠㅠ
+    var isDefineSet = arrayOf(false,false,false,false)
+
     fun getLifeWord() {
         val tempList = listOf(
             "진정성", "용기", "열정", "꾸준함", "배움", "선한영향력", "아웃풋", "행복", "즐거움", "현명", "타당성", "정당성"

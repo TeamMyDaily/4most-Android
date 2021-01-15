@@ -3,12 +3,10 @@ package org.mydaily.ui.view.keyword.settings
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
-import org.mydaily.data.model.domain.KeywordPriority
+import org.mydaily.data.model.domain.KeywordDefine
 import org.mydaily.databinding.FragmentKeywordDefineBinding
 import org.mydaily.ui.adapter.KeywordDefineAdapter
 import org.mydaily.ui.base.BaseFragment
@@ -16,6 +14,7 @@ import org.mydaily.ui.view.MainActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
 import org.mydaily.util.extension.popBackStack
 import org.mydaily.util.extension.replaceAndAddBackStack
+import org.mydaily.util.extension.shortToast
 
 class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, KeywordViewModel>() {
     override val layoutResourceId: Int
@@ -23,12 +22,15 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
     override val viewModel: KeywordViewModel by sharedViewModel()
 
     private val keywordDefineAdapter = KeywordDefineAdapter()
+    private var argumentsKeyword = arrayListOf<String>()
+    private var keywordsList = mutableListOf<KeywordDefine>()
 
     override fun initView() {
         getArgumentsData()
         initToolbar()
         initClickListener()
         initRecyclerView()
+        initButtonVisible()
     }
 
     override fun initBeforeBinding() {
@@ -40,10 +42,14 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
         observeKeywordList()
     }
 
-    private var keywordsList = arrayListOf<String>()
 
     private fun getArgumentsData() {
-        keywordsList = arguments?.getStringArrayList("keywords") as ArrayList<String>
+        argumentsKeyword = arguments?.getStringArrayList("keywords") as ArrayList<String>
+
+        keywordsList.clear()
+        for((i, arg) in argumentsKeyword.withIndex()){
+            keywordsList.add(KeywordDefine(arg, viewModel.isDefineSet[i]))
+        }
     }
 
     private fun initToolbar() {
@@ -67,6 +73,9 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
                 .create()
                 .show()
         }
+        binding.btnSetPriority.setOnClickListener {
+            startMainActivity()
+        }
         binding.btnSetPriorityWithSkip.setOnClickListener {
             startMainActivity()
         }
@@ -80,9 +89,13 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
         }
-        keywordDefineAdapter.setClickListener { name->
+        keywordDefineAdapter.setKeywordNotExistListener {
+            requireContext().shortToast("정의를 이미 작성한 키워드에요!")
+        }
+        keywordDefineAdapter.setKeywordExistListener { keyword, position ->
             val bundle = Bundle().apply {
-                putString("keyword", name)
+                putString("keyword", keyword.name)
+                putInt("position", position)
             }
             val keywordDefineAddFragment = KeywordDefineAddFragment().apply {
                 arguments = bundle
@@ -94,6 +107,17 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
             )
         }
 
+    }
+
+    private fun initButtonVisible(){
+        var isDefinedKeywordExist : Boolean = false
+        for(isDefined in viewModel.isDefineSet){
+            if(isDefined){
+                isDefinedKeywordExist = true
+                break
+            }
+        }
+        binding.isDefinedKeywordExist = isDefinedKeywordExist
     }
 
     private fun observeKeywordList() {
