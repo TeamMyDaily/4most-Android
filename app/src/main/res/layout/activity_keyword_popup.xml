@@ -43,7 +43,7 @@
             android:id="@+id/vp_keyword_popup"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toTopOf="@id/btn_popup_finish"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tl_keyword_popup" />

@@ -3,12 +3,15 @@ package org.mydaily.ui.view.keyword
 import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordAddBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
+import org.mydaily.util.extension.shortToast
 import java.util.regex.Pattern
 
 
