@@ -51,6 +51,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, UserViewModel>() {
     override fun onStart() {
         super.onStart()
         if(getAutoLogin() && getUserToken() != ""){
+            //Log.e("SEULGI", "onStart ${getKeywordExist()}")
             if(getKeywordExist()){
                 startMainActivity()
             }else {
@@ -140,6 +141,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, UserViewModel>() {
 
     private fun observeSignInResult() {
         viewModel.signInEvent.observe(this, EventObserver{
+            Log.e("SEULGI", "observeSignInResult $it")
             setKeywordExist(it == "keywordsExist")
             if(it == "keywordsExist"){
                 startMainActivity()
