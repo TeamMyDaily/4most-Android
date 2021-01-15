@@ -10,6 +10,7 @@ import org.mydaily.R
 import org.mydaily.databinding.ActivityGoalAddBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.viewmodel.GoalViewModel
+import org.mydaily.util.CalendarUtil
 
 class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
     override val layoutResourceId: Int
@@ -93,6 +94,7 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
 
     private fun stateModify() {
         binding.tvDate.visibility = View.VISIBLE
+        binding.tvDate.text = CalendarUtil.convertMilliSecToWeekString(intentStartDate)
         binding.line.visibility = View.VISIBLE
         binding.etGoal.setText(intentWeekGoal)
         binding.etGoal.addTextChangedListener {
@@ -123,7 +125,6 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
                 }
                 .create()
                 .show()
-
         }
         else {
             finish()
