@@ -34,19 +34,29 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     override fun initView() {
         initToolbar()
         initAddButton()
-        initModifyCompleteButton()
-        onClickModifyButton()
-        onClickCompleteButton()
+        //initMyWordText()
+        //initModifyCompleteButton()
+        //onClickModifyButton()
+        //onClickCompleteButton()
         onClickSelectFinishButton()
     }
 
-    private fun onClickedCompleteButtonState() {
-        //TODO -> 완료 버튼 눌렀을 때 상태 세팅
+    private fun initMyWordText() {
+        if(binding.cgMyWord.childCount == 1) {
+            binding.tvMyWord.setTextColor(getColor(R.color.mainBlack))
+        } else {
+            shortToast("나냐?")
+            binding.tvMyWord.setTextColor(getColor(R.color.persimmon))
+        }
     }
 
-    private fun onClickModifyButtonState() {
-        //TODO -> 수정 버튼 눌렀을 때 상태 세팅
-    }
+//    private fun onClickedCompleteButtonState() {
+//        TODO -> 완료 버튼 눌렀을 때 상태 세팅
+//    }
+//
+//    private fun onClickModifyButtonState() {
+//        TODO -> 수정 버튼 눌렀을 때 상태 세팅
+//    }
 
     private fun addKeywordList(text: String) {
         if (viewModel.lifeWordList.value!!.contains(text)) {
@@ -77,22 +87,22 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
             .show()
     }
 
-    private fun setCompleteState() {
-        binding.tvModify.visibility = View.GONE
-        binding.tvComplete.visibility = View.VISIBLE
-    }
+//    private fun setCompleteState() {
+//        binding.tvModify.visibility = View.GONE
+//        binding.tvComplete.visibility = View.VISIBLE
+//    }
+//
+//    private fun setModifyState() {
+//        if (myWordChipCount > 0) {
+//            binding.tvModify.visibility = View.VISIBLE
+//            binding.tvComplete.visibility = View.GONE
+//        }
+//    }
 
-    private fun setModifyState() {
-        if (myWordChipCount > 0) {
-            binding.tvModify.visibility = View.VISIBLE
-            binding.tvComplete.visibility = View.GONE
-        }
-    }
-
-    private fun initModifyCompleteButton() {
-        binding.tvModify.visibility = View.GONE
-        binding.tvComplete.visibility = View.GONE
-    }
+//    private fun initModifyCompleteButton() {
+//        binding.tvModify.visibility = View.GONE
+//        binding.tvComplete.visibility = View.GONE
+//    }
 
     override fun initBeforeBinding() {
         binding.lifecycleOwner = this
@@ -108,7 +118,14 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     private fun initToolbar() {
         setSupportActionBar(binding.tbKeywordListActivity)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.white)))
+        supportActionBar?.setBackgroundDrawable(
+            ColorDrawable(
+                ContextCompat.getColor(
+                    this,
+                    R.color.white
+                )
+            )
+        )
         binding.tbKeywordListActivity.setNavigationOnClickListener {
             finish()
         }
@@ -130,6 +147,7 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
                 if (data?.getStringExtra("MyWord") != null) {
                     addedMyWord.add(data.getStringExtra("MyWord")!!)
                     addMyWordList()
+                    initMyWordText()
                 }
             }
         }
@@ -214,21 +232,21 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
         return true
     }
 
-    private fun onClickModifyButton() {
-        binding.tvModify.setOnClickListener {
-            //setCompleteState()
-            //onClickModifyButtonState()
-            binding.btnSelectFinish.visibility = View.GONE
-        }
-    }
+//    private fun onClickModifyButton() {
+//        binding.tvModify.setOnClickListener {
+//            setCompleteState()
+//            onClickModifyButtonState()
+//            binding.btnSelectFinish.visibility = View.GONE
+//        }
+//    }
 
-    private fun onClickCompleteButton() {
-        binding.tvComplete.setOnClickListener {
-            //setModifyState()
-            //onClickedCompleteButtonState()
-            binding.btnSelectFinish.visibility = View.VISIBLE
-        }
-    }
+//    private fun onClickCompleteButton() {
+//        binding.tvComplete.setOnClickListener {
+//            setModifyState()
+//            onClickedCompleteButtonState()
+//            binding.btnSelectFinish.visibility = View.VISIBLE
+//        }
+//    }
 
     private fun onClickSelectFinishButton() {
         binding.btnSelectFinish.setOnClickListener {
@@ -240,9 +258,8 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        //setModifyState()
-
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        setModifyState()
+//    }
 }

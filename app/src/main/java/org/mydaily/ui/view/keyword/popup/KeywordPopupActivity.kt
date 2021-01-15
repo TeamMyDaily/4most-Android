@@ -7,9 +7,6 @@ import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordPopupBinding
 import org.mydaily.ui.adapter.KeywordPopupViewPagerAdapter
 import org.mydaily.ui.base.BaseActivity
-import org.mydaily.ui.view.keyword.popup.KeywordPopupFirstFragment
-import org.mydaily.ui.view.keyword.popup.KeywordPopupSecondFragment
-import org.mydaily.ui.view.keyword.popup.KeywordPopupThirdFragment
 import org.mydaily.ui.viewmodel.KeywordViewModel
 
 class KeywordPopupActivity : BaseActivity<ActivityKeywordPopupBinding, KeywordViewModel>() {

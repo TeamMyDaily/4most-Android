@@ -17,8 +17,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, KeywordViewModel>() {
         get() = R.layout.activity_splash
     override val viewModel: KeywordViewModel by viewModel()
 
-    private val SPLASH_VIEW_TIME: Long = 2200
-
     override fun initView() {
         initLottie()
     }
