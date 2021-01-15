@@ -179,9 +179,9 @@
         <td><a href="https://github.com/sgh002400">@sgh002400</a></td>
     </tr>
     <tr>
-        <td><img src="/wiki/contributor/4z7l.png" /></td>
-        <td><img src="/wiki/contributor/mdb1217.jpeg" /></td>
-        <td><img src="/wiki/contributor/sgh002400.png" /></td>
+        <td><img src="/wiki/contributor/4z7l.png" width="300px"/></td>
+        <td><img src="/wiki/contributor/mdb1217.jpeg"  width="300px"/></td>
+        <td><img src="/wiki/contributor/sgh002400.png"  width="300px"/></td>
     </tr>
     <tr>
         <td>기록, 목표, 마이페이지</td>
