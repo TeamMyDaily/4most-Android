@@ -1,5 +1,6 @@
 package org.mydaily.ui.view.keyword.settings
 
+import android.util.Log
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordSettingsBinding
@@ -17,7 +18,6 @@ class KeywordSettingsActivity : BaseActivity<ActivityKeywordSettingsBinding, Key
     }
 
     override fun initBeforeBinding() {
-
     }
 
     override fun initAfterBinding() {

@@ -10,27 +10,27 @@ import org.mydaily.databinding.ItemKeywordDefineBinding
 
 class KeywordDefineAdapter: RecyclerView.Adapter<KeywordDefineAdapter.ViewHolder>() {
 
-    private val _data = mutableListOf<ResTaskKeywordGet.Data.Keyword>()
-    var data: List<ResTaskKeywordGet.Data.Keyword> = _data
+    private val _data = mutableListOf<String>()
+    var data: List<String> = _data
         set(value) {
             _data.clear()
             _data.addAll(value)
             notifyDataSetChanged()
         }
 
-    private var listener: ((Int, String)-> Unit) ?= null
+    private var listener: ((String)-> Unit) ?= null
 
-    fun setClickListener(listener : ((Int, String)-> Unit)) {
+    fun setClickListener(listener : ((String)-> Unit)) {
         this.listener = listener
     }
 
     inner class ViewHolder(private val binding: ItemKeywordDefineBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(keyword: ResTaskKeywordGet.Data.Keyword, position: Int) {
+        fun bind(keyword: String, position: Int) {
             binding.number = "0" + (position + 1)
-            binding.keyword = keyword.name
+            binding.keyword = keyword
             binding.clParent.setOnClickListener {
-                listener?.invoke(keyword.totalKeywordId, keyword.name)
+                listener?.invoke(keyword)
             }
         }
     }

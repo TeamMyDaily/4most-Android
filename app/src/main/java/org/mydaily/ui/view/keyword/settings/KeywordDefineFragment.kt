@@ -25,6 +25,7 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
     private val keywordDefineAdapter = KeywordDefineAdapter()
 
     override fun initView() {
+        getArgumentsData()
         initToolbar()
         initClickListener()
         initRecyclerView()
@@ -37,6 +38,12 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
 
     override fun initAfterBinding() {
         observeKeywordList()
+    }
+
+    private var keywordsList = arrayListOf<String>()
+
+    private fun getArgumentsData() {
+        keywordsList = arguments?.getStringArrayList("keywords") as ArrayList<String>
     }
 
     private fun initToolbar() {
@@ -66,14 +73,15 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
     }
 
     private fun initRecyclerView() {
+        keywordDefineAdapter.data = keywordsList
+
         binding.rvKeyword.apply {
             adapter = keywordDefineAdapter
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
         }
-        keywordDefineAdapter.setClickListener { id, name->
+        keywordDefineAdapter.setClickListener { name->
             val bundle = Bundle().apply {
-                putInt("totalKeywordId", id)
                 putString("keyword", name)
             }
             val keywordDefineAddFragment = KeywordDefineAddFragment().apply {
@@ -89,9 +97,9 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
     }
 
     private fun observeKeywordList() {
-        viewModel.taskKeywordList.observe(viewLifecycleOwner, {
+/*        viewModel.taskKeywordList.observe(viewLifecycleOwner, {
             keywordDefineAdapter.data = it
-        })
+        })*/
     }
 
     private fun startMainActivity() {
