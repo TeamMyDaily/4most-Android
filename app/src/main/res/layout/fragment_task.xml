@@ -70,7 +70,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_user">
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/ib_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
