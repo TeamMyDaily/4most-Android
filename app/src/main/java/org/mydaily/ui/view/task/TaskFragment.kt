@@ -2,6 +2,7 @@ package org.mydaily.ui.view.task
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -10,6 +11,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.data.local.FourMostPreference
+import org.mydaily.data.model.network.request.ReqReportDetailGet
 import org.mydaily.databinding.FragmentTaskBinding
 import org.mydaily.ui.adapter.DailyExpandableAdapter
 import org.mydaily.ui.base.BaseFragment
@@ -39,6 +41,7 @@ class TaskFragment : BaseFragment<FragmentTaskBinding, TaskViewModel>() {
 
     override fun initBeforeBinding() {
         binding.lifecycleOwner = viewLifecycleOwner
+        viewModel.getTasks(System.currentTimeMillis())
     }
 
     override fun initAfterBinding() {

@@ -50,6 +50,7 @@ class GoalFragment : BaseFragment<FragmentGoalBinding, GoalViewModel>() {
 
     override fun initBeforeBinding() {
         binding.lifecycleOwner = viewLifecycleOwner
+        viewModel.getGoals(startCalendar.timeInMillis, endCalendar.timeInMillis)
         notifyDateChanged()
     }
 
