@@ -1,15 +1,18 @@
 package org.mydaily.ui.view.splash.service
 
+import android.content.Intent
 import android.view.View
 import androidx.viewpager.widget.ViewPager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
+import org.mydaily.data.local.FourMostPreference
 import org.mydaily.databinding.ActivityServiceExplainBinding
 import org.mydaily.ui.adapter.ServiceExplainViewPagerAdapter
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.view.keyword.popup.KeywordPopupFirstFragment
 import org.mydaily.ui.view.keyword.popup.KeywordPopupSecondFragment
 import org.mydaily.ui.view.keyword.popup.KeywordPopupThirdFragment
+import org.mydaily.ui.view.user.SignInActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
 
 class ServiceExplainActivity : BaseActivity<ActivityServiceExplainBinding, KeywordViewModel>() {
@@ -37,6 +40,8 @@ class ServiceExplainActivity : BaseActivity<ActivityServiceExplainBinding, Keywo
 
     private fun btnExplainFinishClicked() {
         binding.btnExplainFinish.setOnClickListener {
+            FourMostPreference.setFirstVisit(false)
+            startActivity(Intent(this, SignInActivity::class.java))
             finish()
         }
     }
@@ -50,9 +55,9 @@ class ServiceExplainActivity : BaseActivity<ActivityServiceExplainBinding, Keywo
     private fun initViewPager() {
         viewpagerAdapter = ServiceExplainViewPagerAdapter(supportFragmentManager)
         viewpagerAdapter.fragments = listOf(
-            KeywordPopupFirstFragment(),
-            KeywordPopupSecondFragment(),
-            KeywordPopupThirdFragment()
+            ServiceExplainFirstFragment(),
+            ServiceExplainSecondFragment(),
+            ServiceExplainThirdFragment()
         )
         binding.vpServiceExplain.adapter = viewpagerAdapter
     }

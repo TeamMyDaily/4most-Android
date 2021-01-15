@@ -26,5 +26,4 @@ class ServiceExplainThirdFragment : BaseFragment<FragmentServiceExplainThirdBind
     override fun initAfterBinding() {
     }
 
-
 }

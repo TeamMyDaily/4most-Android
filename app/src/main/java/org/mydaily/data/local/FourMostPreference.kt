@@ -47,4 +47,13 @@ object FourMostPreference {
     fun setAutoLogin(value: Boolean) {
         preferences.edit().putBoolean(AUTO_LOGIN, value).apply()
     }
+
+
+    fun getFirstVisit(): Boolean {
+        return preferences.getBoolean(IS_FIRST_VISIT, true)
+    }
+
+    fun setFirstVisit(value: Boolean) {
+        preferences.edit().putBoolean(IS_FIRST_VISIT, value).apply()
+    }
 }
