@@ -59,6 +59,8 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_alignParentBottom="true"
             app:labelVisibilityMode="labeled"
+            app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
+            app:itemTextAppearanceInactive="@style/BottomNavigationView"
             app:itemIconTint="@color/selector_bottom_navi"
             app:itemTextColor="@color/selector_bottom_navi"
             app:menu="@menu/menu_main"/>
