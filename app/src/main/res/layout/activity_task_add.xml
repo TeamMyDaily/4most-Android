@@ -130,6 +130,7 @@
                     android:padding="16dp"
                     android:textColor="@color/mainBlack"
                     android:textSize="15sp"
+                    android:hint="조금 더 자세히 기록해보세요."
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_title_byte" />

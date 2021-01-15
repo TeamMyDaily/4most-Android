@@ -80,7 +80,7 @@ class TaskFragment : BaseFragment<FragmentTaskBinding, TaskViewModel>() {
     }
 
     private fun initDateView() {
-        binding.ibDate.setOnClickListener {
+        binding.llDate.setOnClickListener {
             val datePickerDialog = DatePickerDialog(
                 requireContext(),
                 { _, year, month, day ->
