@@ -38,6 +38,10 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
 
     }
 
+    override fun onBackPressed() {
+        showBackPressedDialog()
+    }
+
     private fun getIntentData() {
         intentAction = intent.action
         intentKeyword = intent.getStringExtra("keyword") ?: ""
@@ -51,28 +55,7 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
         setSupportActionBar(binding.tbGoalAdd)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         binding.tbGoalAdd.setNavigationOnClickListener {
-            if (isGoalChanged) {
-                AlertDialog.Builder(this)
-                    .setTitle("정말 뒤로가시겠어요?")
-                    .setMessage("뒤로가기를 누르시면 수정사항이 삭제되고 이전 페이지로 돌아갑니다.")
-                    .setPositiveButton("뒤로가기") { _, _ ->
-/*                        viewModel.postGoals(
-                            System.currentTimeMillis(),
-                            intentTotalKeywordId.toString(),
-                            binding.etGoal.text.toString()
-                        )*/
-                        finish()
-                    }
-                    .setNegativeButton("취소하기") { _, _ ->
-
-                    }
-                    .create()
-                    .show()
-
-            }
-            else {
-                finish()
-            }
+            showBackPressedDialog()
         }
     }
 
@@ -117,6 +100,26 @@ class GoalAddActivity : BaseActivity<ActivityGoalAddBinding, GoalViewModel>() {
                 intentWeekGoalId,
                 binding.etGoal.text.toString()
             )
+            finish()
+        }
+    }
+
+    private fun showBackPressedDialog() {
+        if (isGoalChanged) {
+            AlertDialog.Builder(this)
+                .setTitle("정말 뒤로가시겠어요?")
+                .setMessage("뒤로가기를 누르시면 수정사항이 삭제되고 이전 페이지로 돌아갑니다.")
+                .setPositiveButton("뒤로가기") { _, _ ->
+                    finish()
+                }
+                .setNegativeButton("취소하기") { _, _ ->
+
+                }
+                .create()
+                .show()
+
+        }
+        else {
             finish()
         }
     }
