@@ -32,11 +32,19 @@ class ReportFragment : BaseFragment<FragmentReportBinding, RemindViewModel>(), O
     private fun observeReportListData() {
         viewModel.reportList.observe(requireActivity(), {
             if(it.keywordsExist) {
-                binding.tvTitle.visibility = View.VISIBLE
-                binding.rcvReport.visibility = View.VISIBLE
-                binding.tvReportEmpty.visibility = View.INVISIBLE
-                binding.iv4mostChar.visibility = View.INVISIBLE
-                reportKeywordAdapter.setKeywordList(it.result.toMutableList())
+                if(it.result.isNotEmpty()) {
+                    binding.tvTitle.visibility = View.VISIBLE
+                    binding.rcvReport.visibility = View.VISIBLE
+                    binding.tvReportEmpty.visibility = View.INVISIBLE
+                    binding.iv4mostChar.visibility = View.INVISIBLE
+                    reportKeywordAdapter.setKeywordList(it.result.toMutableList())
+                }
+                else {
+                    binding.tvReportEmpty.visibility = View.VISIBLE
+                    binding.iv4mostChar.visibility = View.VISIBLE
+                    binding.tvTitle.visibility = View.INVISIBLE
+                    binding.rcvReport.visibility = View.INVISIBLE
+                }
             }
             else {
                 binding.tvReportEmpty.visibility = View.VISIBLE
