@@ -47,21 +47,20 @@ class KeywordViewModel(private val repo: KeywordRepo) : BaseViewModel() {
     val keywordDefinition: LiveData<ResKeywordDefinitionGet.Data>
         get() = _keywordDefinition
 
-
-    //KeywordDefine.. 하드코딩..ㅠㅠ
     var isDefineSet = arrayOf(false,false,false,false)
     var selectedKeywordIds = mutableListOf<Int>()
 
     fun getLifeWord() {
         val tempList = listOf(
-            "진정성", "용기", "열정", "꾸준함", "배움", "선한영향력", "아웃풋", "행복", "즐거움", "현명", "타당성", "정당성"
+            "신뢰", "행복", "배려", "다양성", "감사", "인내", "경험", "용서", "정의", "긍정", "건강", "자유", "나눔", "자신감", "도전", "풍요로움",
+            "양심", "부", "정직", "변화"
         )
         _lifeWordList.value = tempList
     }
 
     fun getWorkWord() {
         val tempList = listOf(
-            "친절함", "경청", "대충", "진실성", "존중", "신뢰", "의심", "신속성", "돈"
+            "몰입", "열정", "배움", "결과", "과정", "소통", "효율성", "성취", "인정", "보람", "성장", "탁월함", "혁신", "협력", "성실", "책임", "본질", "완벽", "실천", "목적의식"
         )
         _workWordList.value = tempList
     }
