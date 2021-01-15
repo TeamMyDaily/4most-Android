@@ -19,13 +19,13 @@ class KeywordDefineAdapter: RecyclerView.Adapter<KeywordDefineAdapter.ViewHolder
         }
 
     private var keywordExistListener: ((KeywordDefine, Int)-> Unit) ?= null
-    private var keywordNotExistListener: (()-> Unit) ?= null
+    private var keywordNotExistListener: ((Int)-> Unit) ?= null
 
     fun setKeywordExistListener(listener : ((KeywordDefine, Int)-> Unit)) {
         this.keywordExistListener = listener
     }
 
-    fun setKeywordNotExistListener(listener : (()-> Unit)) {
+    fun setKeywordNotExistListener(listener : ((Int)-> Unit)) {
         this.keywordNotExistListener = listener
     }
 
@@ -56,7 +56,7 @@ class KeywordDefineAdapter: RecyclerView.Adapter<KeywordDefineAdapter.ViewHolder
                 if(!keyword.isKeywordDefine){
                     keywordExistListener?.invoke(keyword, position)
                 } else {
-                    keywordNotExistListener?.invoke()
+                    keywordNotExistListener?.invoke(position)
                 }
             }
         }

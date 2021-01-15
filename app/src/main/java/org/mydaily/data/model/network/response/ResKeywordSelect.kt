@@ -18,8 +18,6 @@ data class ResKeywordSelect(
         val date: String,
         @SerializedName("id")
         val id: Int,
-        @SerializedName("priority")
-        val priority: Int,
         @SerializedName("TotalKeywordId")
         val totalKeywordId: Int
     )

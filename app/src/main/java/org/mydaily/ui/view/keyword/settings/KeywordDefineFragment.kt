@@ -3,6 +3,7 @@ package org.mydaily.ui.view.keyword.settings
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.mydaily.R
@@ -90,9 +91,24 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
             setHasFixedSize(true)
         }
         keywordDefineAdapter.setKeywordNotExistListener {
-            requireContext().shortToast("정의를 이미 작성한 키워드에요!")
+            //정의 있을때
+            //requireContext().shortToast("정의를 이미 작성한 키워드에요!")
+            Log.e("SEULGI", "pos :"+it)
+
+            val bundle = Bundle().apply {
+                putInt("totalKeywordId", viewModel.selectedKeywordIds[it])
+            }
+            val keywordDefineDetailFragment = KeywordDefineDetailFragment().apply {
+                arguments = bundle
+            }
+            replaceAndAddBackStack(
+                R.id.container_keyword_settings,
+                keywordDefineDetailFragment,
+                "detail"
+            )
         }
         keywordDefineAdapter.setKeywordExistListener { keyword, position ->
+            //정의 없을때
             val bundle = Bundle().apply {
                 putString("keyword", keyword.name)
                 putInt("position", position)
