@@ -29,7 +29,7 @@ class MyPageBottomSheetDialog : BottomSheetDialogFragment() {
             requireContext().shortToast("서비스 준비중입니다")
         }
         binding.llCancle.setOnClickListener {
-            requireContext().shortToast("서비스 준비중입니다")
+            dismiss()
         }
         return binding.root
     }

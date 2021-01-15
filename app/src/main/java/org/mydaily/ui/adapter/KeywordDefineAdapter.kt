@@ -3,34 +3,61 @@ package org.mydaily.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import org.mydaily.data.model.domain.KeywordPriority
-import org.mydaily.data.model.network.response.ResTaskKeywordGet
+import org.mydaily.R
+import org.mydaily.data.model.domain.KeywordDefine
 import org.mydaily.databinding.ItemKeywordDefineBinding
 
 
 class KeywordDefineAdapter: RecyclerView.Adapter<KeywordDefineAdapter.ViewHolder>() {
 
-    private val _data = mutableListOf<ResTaskKeywordGet.Data.Keyword>()
-    var data: List<ResTaskKeywordGet.Data.Keyword> = _data
+    private val _data = mutableListOf<KeywordDefine>()
+    var data: List<KeywordDefine> = _data
         set(value) {
             _data.clear()
             _data.addAll(value)
             notifyDataSetChanged()
         }
 
-    private var listener: ((Int, String)-> Unit) ?= null
+    private var keywordExistListener: ((KeywordDefine, Int)-> Unit) ?= null
+    private var keywordNotExistListener: ((Int)-> Unit) ?= null
 
-    fun setClickListener(listener : ((Int, String)-> Unit)) {
-        this.listener = listener
+    fun setKeywordExistListener(listener : ((KeywordDefine, Int)-> Unit)) {
+        this.keywordExistListener = listener
+    }
+
+    fun setKeywordNotExistListener(listener : ((Int)-> Unit)) {
+        this.keywordNotExistListener = listener
     }
 
     inner class ViewHolder(private val binding: ItemKeywordDefineBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(keyword: ResTaskKeywordGet.Data.Keyword, position: Int) {
-            binding.number = "0" + (position + 1)
+        fun bind(keyword: KeywordDefine, position: Int) {
+            val imageResource = if(keyword.isKeywordDefine){
+                when(position){
+                    0 -> R.drawable.ic_01_on
+                    1 -> R.drawable.ic_02_on
+                    2 -> R.drawable.ic_03_on
+                    else -> R.drawable.ic_04_on
+                }
+            }else {
+                when(position){
+                    0 -> R.drawable.ic_01
+                    1 -> R.drawable.ic_02
+                    2 -> R.drawable.ic_03
+                    else -> R.drawable.ic_04
+                }
+            }
+            binding.ivNumber.setImageResource(imageResource)
+
+            binding.isKeywordDefine = keyword.isKeywordDefine
             binding.keyword = keyword.name
             binding.clParent.setOnClickListener {
-                listener?.invoke(keyword.totalKeywordId, keyword.name)
+                //키워드 정의없을때만 클릭 가능
+                if(!keyword.isKeywordDefine){
+                    keywordExistListener?.invoke(keyword, position)
+                } else {
+                    keywordNotExistListener?.invoke(position)
+                }
             }
         }
     }

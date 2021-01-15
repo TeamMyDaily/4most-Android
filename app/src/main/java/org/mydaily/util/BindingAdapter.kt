@@ -101,4 +101,15 @@ object BindingAdapter {
             textView.visibility = View.GONE
         }
     }
+
+    @JvmStatic
+    @BindingAdapter("setKeywordColorByDefined")
+    fun setKeywordColorByDefined(textView: TextView, isDefined: Boolean) {
+        val color = if(isDefined){
+            textView.resources.getColor(R.color.mainBlack, null)
+        }else {
+            textView.resources.getColor(R.color.mainGray, null)
+        }
+        textView.setTextColor(color)
+    }
 }

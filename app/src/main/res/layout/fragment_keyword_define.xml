@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="android.view.View"/>
+        <variable
+            name="isDefinedKeywordExist"
+            type="Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,7 +54,7 @@
             android:id="@+id/rv_keyword"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="23dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_set_priority"
             app:layout_constraintEnd_toEndOf="parent"
@@ -68,8 +71,9 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="16dp"
             style="@style/MyDailyButtonStyle"
-            android:visibility="gone"
             android:text="@string/msg_define_set_complete"
+            tools:visibility="gone"
+            android:visibility="@{isDefinedKeywordExist ? View.VISIBLE :View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -85,6 +89,7 @@
             android:text="Skip"
             android:textSize="18sp"
             android:textColor="@color/mainGray"
+            android:visibility="@{isDefinedKeywordExist ? View.GONE :View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -96,6 +101,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:text="@string/msg_define_set_complete"
+            android:visibility="@{isDefinedKeywordExist ? View.GONE :View.VISIBLE}"
             app:layout_constraintHorizontal_weight="3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
