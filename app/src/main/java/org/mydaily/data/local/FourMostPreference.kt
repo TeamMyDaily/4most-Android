@@ -9,6 +9,7 @@ object FourMostPreference {
     private const val USER_EMAIL = "USER_EMAIL"
     private const val AUTO_LOGIN = "AUTO_LOGIN"
     private const val IS_FIRST_VISIT = "IS_FIRST_VISIT"
+    private const val IS_KEYWORD_EXIST = "IS_KEYWORD_EXIST"
 
     lateinit var preferences: SharedPreferences
 
@@ -55,5 +56,13 @@ object FourMostPreference {
 
     fun setFirstVisit(value: Boolean) {
         preferences.edit().putBoolean(IS_FIRST_VISIT, value).apply()
+    }
+
+    fun getKeywordExist(): Boolean {
+        return preferences.getBoolean(IS_KEYWORD_EXIST, false)
+    }
+
+    fun setKeywordExist(value: Boolean) {
+        preferences.edit().putBoolean(IS_KEYWORD_EXIST, value).apply()
     }
 }

@@ -2,13 +2,16 @@ package org.mydaily.ui.view.task
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.data.local.FourMostPreference
+import org.mydaily.data.model.network.request.ReqReportDetailGet
 import org.mydaily.databinding.FragmentTaskBinding
 import org.mydaily.ui.adapter.DailyExpandableAdapter
 import org.mydaily.ui.base.BaseFragment
@@ -23,7 +26,7 @@ import java.util.*
 class TaskFragment : BaseFragment<FragmentTaskBinding, TaskViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_task
-    override val viewModel: TaskViewModel by viewModel()
+    override val viewModel: TaskViewModel by sharedViewModel()
 
     private val dailyExpandableAdapter = DailyExpandableAdapter()
 
@@ -38,6 +41,7 @@ class TaskFragment : BaseFragment<FragmentTaskBinding, TaskViewModel>() {
 
     override fun initBeforeBinding() {
         binding.lifecycleOwner = viewLifecycleOwner
+        viewModel.getTasks(System.currentTimeMillis())
     }
 
     override fun initAfterBinding() {
@@ -47,7 +51,6 @@ class TaskFragment : BaseFragment<FragmentTaskBinding, TaskViewModel>() {
     override fun onStart() {
         super.onStart()
         viewModel.getTasks(System.currentTimeMillis())
-        binding.rvTasks.invalidate()
     }
 
     private fun initUserData() {

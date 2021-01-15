@@ -9,6 +9,10 @@ import androidx.core.widget.addTextChangedListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.data.local.FourMostPreference
+import org.mydaily.data.local.FourMostPreference.getAutoLogin
+import org.mydaily.data.local.FourMostPreference.getKeywordExist
+import org.mydaily.data.local.FourMostPreference.getUserToken
+import org.mydaily.data.local.FourMostPreference.setKeywordExist
 import org.mydaily.databinding.ActivitySignInBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.view.MainActivity
@@ -46,8 +50,12 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, UserViewModel>() {
 
     override fun onStart() {
         super.onStart()
-        if(FourMostPreference.getAutoLogin() && FourMostPreference.getUserToken() != ""){
-            startMainActivity()
+        if(getAutoLogin() && getUserToken() != ""){
+            if(getKeywordExist()){
+                startMainActivity()
+            }else {
+                startKeywordListActivity()
+            }
         }
     }
 
@@ -132,6 +140,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, UserViewModel>() {
 
     private fun observeSignInResult() {
         viewModel.signInEvent.observe(this, EventObserver{
+            setKeywordExist(it == "keywordsExist")
             if(it == "keywordsExist"){
                 startMainActivity()
             }else {

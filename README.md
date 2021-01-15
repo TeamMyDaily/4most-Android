@@ -54,8 +54,8 @@
 
 <tr>
     <td><b>Third Party Library</b></td>
-<td><a href="https://github.com/skydoves/ExpandableLayout">ExpandableLayout</a>,
- <a href="https://github.com/woxingxiao/BubbleSeekBar">BubbleSeekBar</a></td>,
+    <td><a href="https://github.com/skydoves/ExpandableLayout">ExpandableLayout</a>,
+ <a href="https://github.com/woxingxiao/BubbleSeekBar">BubbleSeekBar</a>,
   <a href="https://github.com/airbnb/lottie-android">Lottie</a></td>
 
 </tr>
