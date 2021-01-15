@@ -72,7 +72,7 @@
             android:id="@+id/tv_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="키워드를 나만의 언어로 정의해보세요!"
+            android:text="내가 정의한 가치의 의미를 작성해보세요!"
             android:textColor="@color/mainOrange"
             android:textSize="15sp"
             android:textStyle="bold"

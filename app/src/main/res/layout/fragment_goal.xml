@@ -108,8 +108,8 @@
             app:temp="@{1}"/>
 
         <include
-            android:id="@+id/layout_keyword_not"
-            layout="@layout/layout_goal_fragment_not_keyword"
+            android:id="@+id/layout_keyword_not_this_week"
+            layout="@layout/layout_not_keyword_this_week"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:visibility="@{isNotGoalExist ? View.VISIBLE : View.GONE}"
@@ -121,8 +121,8 @@
             tools:visibility="gone" />
 
         <include
-            android:id="@+id/layout_keyword_not_this_week"
-            layout="@layout/layout_not_keyword_this_week"
+            android:id="@+id/layout_keyword_not"
+            layout="@layout/layout_goal_fragment_not_keyword"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:visibility="@{isNotGoalExistThisWeek ? View.VISIBLE : View.GONE}"

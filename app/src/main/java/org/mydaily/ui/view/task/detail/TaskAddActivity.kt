@@ -48,6 +48,10 @@ class TaskAddActivity : BaseActivity<ActivityTaskAddBinding, TaskViewModel>() {
         observeTaskDetail()
     }
 
+    override fun onBackPressed() {
+        showBackPressedDialog()
+    }
+
     private fun getIntentData() {
         intentKeywordId = intent.getIntExtra("keywordId", 0)
         intentKeywordName = intent.getStringExtra("keywordName") ?: "NULL"
@@ -60,27 +64,7 @@ class TaskAddActivity : BaseActivity<ActivityTaskAddBinding, TaskViewModel>() {
         setSupportActionBar(binding.tbDailyDetail)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         binding.tbDailyDetail.setNavigationOnClickListener {//수정 시도했을때
-            if (isInputChanged) {
-                AlertDialog.Builder(this)
-                    .setTitle("정말 뒤로가시겠어요?")
-                    .setMessage("뒤로가기를 누르시면 작성 중인 내용이 삭제되고 이전 페이지로 돌아갑니다.")
-                    .setPositiveButton("뒤로가기") { _, _ ->
-/*                        viewModel.postTask(
-                            intentKeywordId.toString(), binding.etTitle.text.toString(),
-                            binding.etDescription.text.toString(), binding.bubbleSeekBar.progress
-                        )*/
-                        finish()
-                    }
-                    .setNegativeButton("취소하기") { _, _ ->
-                    }
-                    .create()
-                    .show()
-
-            }
-            //수정 시도하지 않은 경우
-            else {
-                finish()
-            }
+            showBackPressedDialog()
         }
     }
 
@@ -158,19 +142,33 @@ class TaskAddActivity : BaseActivity<ActivityTaskAddBinding, TaskViewModel>() {
             bubbleSeekBar: BubbleSeekBar?,
             progress: Int,
             progressFloat: Float
-        ) {
-
-        }
+        ) {}
 
         override fun getProgressOnFinally(
             bubbleSeekBar: BubbleSeekBar?,
             progress: Int,
             progressFloat: Float,
             fromUser: Boolean
-        ) {
+        ) {}
+    }
+
+    private fun showBackPressedDialog(){
+        if (isInputChanged) {
+            AlertDialog.Builder(this)
+                .setTitle("정말 뒤로가시겠어요?")
+                .setMessage("뒤로가기를 누르시면 작성 중인 내용이 삭제되고 이전 페이지로 돌아갑니다.")
+                .setPositiveButton("뒤로가기") { _, _ ->
+                    finish()
+                }
+                .setNegativeButton("취소하기") { _, _ ->
+                }
+                .create()
+                .show()
 
         }
-
+        else {
+            finish()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

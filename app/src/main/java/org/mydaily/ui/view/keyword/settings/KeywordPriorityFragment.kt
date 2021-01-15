@@ -1,5 +1,6 @@
 package org.mydaily.ui.view.keyword.settings
 
+import android.os.Bundle
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -77,14 +78,22 @@ class KeywordPriorityFragment : BaseFragment<FragmentKeywordPriorityBinding, Key
 
     private fun initButton() {
         binding.btnSetPriority.setOnClickListener {
-            replaceAndAddBackStack(R.id.container_keyword_settings, KeywordDefineFragment(), "priority")
             val temp = mutableListOf<ReqKeywordPriority.Keyword>()
+            val stringList = arrayListOf<String>()
             var i=1
             for(data in keywordPriorityAdapter.data){
+                stringList.add(data)
                 temp.add(ReqKeywordPriority.Keyword(data, i++))
             }
+
+            val keywordDefineFragment = KeywordDefineFragment()
+            keywordDefineFragment.arguments = Bundle().apply {
+                putStringArrayList("keywords", stringList)
+            }
+
+            replaceAndAddBackStack(R.id.container_keyword_settings, keywordDefineFragment, "priority")
+
             viewModel.postKeywordPriority(temp)
-            FourMostPreference.setFirstVisit(false)
         }
     }
 

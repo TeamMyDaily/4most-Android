@@ -35,7 +35,6 @@ class RemindViewModel(private val reportRepo: ReportRepo, private val reviewRepo
             override fun onResponse(call: Call<ResReportGet>, response: Response<ResReportGet>) {
                 if (response.isSuccessful) {
                     _reportList.postValue(response.body()?.data)
-                    Log.e(TAG, "$start ->" + response.body().toString())
                 }
             }
 
@@ -50,7 +49,6 @@ class RemindViewModel(private val reportRepo: ReportRepo, private val reviewRepo
             override fun onResponse(call: Call<ResReportDetailGet>, response: Response<ResReportDetailGet>) {
                 if (response.isSuccessful) {
                     _reportDetailList.postValue(response.body()?.data)
-                    Log.e(TAG, "result->" + response.body().toString())
                 }
             }
 
@@ -69,7 +67,6 @@ class RemindViewModel(private val reportRepo: ReportRepo, private val reviewRepo
             override fun onResponse(call: Call<ResReviewGet>, response: Response<ResReviewGet>) {
                 if (response.isSuccessful) {
                     _reviewList.postValue(response.body()?.data)
-                    Log.e(TAG, "$start ->" + response.body().toString())
                 }
             }
 

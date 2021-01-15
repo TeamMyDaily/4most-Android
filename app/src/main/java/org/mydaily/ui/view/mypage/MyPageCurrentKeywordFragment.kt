@@ -52,7 +52,8 @@ class MyPageCurrentKeywordFragment : BaseFragment<FragmentMyPageCurrentKeywordBi
 
     private fun initListLayout() {
         binding.layoutMyPageCurrentKeywordList.btnChangePriority.setOnClickListener {
-            binding.isCurrentKeywordListVisible = false
+            //binding.isCurrentKeywordListVisible = false
+            requireContext().shortToast(R.string.msg_service_is_being_prepared)
         }
 
         binding.layoutMyPageCurrentKeywordList.rvCurrentKeywordList.apply {

@@ -6,9 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
-import org.mydaily.data.model.domain.KeywordPriority
+import org.mydaily.data.model.domain.KeywordDefine
 import org.mydaily.databinding.FragmentKeywordDefineBinding
 import org.mydaily.ui.adapter.KeywordDefineAdapter
 import org.mydaily.ui.base.BaseFragment
@@ -16,6 +15,7 @@ import org.mydaily.ui.view.MainActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
 import org.mydaily.util.extension.popBackStack
 import org.mydaily.util.extension.replaceAndAddBackStack
+import org.mydaily.util.extension.shortToast
 
 class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, KeywordViewModel>() {
     override val layoutResourceId: Int
@@ -23,11 +23,15 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
     override val viewModel: KeywordViewModel by sharedViewModel()
 
     private val keywordDefineAdapter = KeywordDefineAdapter()
+    private var argumentsKeyword = arrayListOf<String>()
+    private var keywordsList = mutableListOf<KeywordDefine>()
 
     override fun initView() {
+        getArgumentsData()
         initToolbar()
         initClickListener()
         initRecyclerView()
+        initButtonVisible()
     }
 
     override fun initBeforeBinding() {
@@ -37,6 +41,16 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
 
     override fun initAfterBinding() {
         observeKeywordList()
+    }
+
+
+    private fun getArgumentsData() {
+        argumentsKeyword = arguments?.getStringArrayList("keywords") as ArrayList<String>
+
+        keywordsList.clear()
+        for((i, arg) in argumentsKeyword.withIndex()){
+            keywordsList.add(KeywordDefine(arg, viewModel.isDefineSet[i]))
+        }
     }
 
     private fun initToolbar() {
@@ -60,21 +74,44 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
                 .create()
                 .show()
         }
+        binding.btnSetPriority.setOnClickListener {
+            startMainActivity()
+        }
         binding.btnSetPriorityWithSkip.setOnClickListener {
             startMainActivity()
         }
     }
 
     private fun initRecyclerView() {
+        keywordDefineAdapter.data = keywordsList
+
         binding.rvKeyword.apply {
             adapter = keywordDefineAdapter
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
         }
-        keywordDefineAdapter.setClickListener { id, name->
+        keywordDefineAdapter.setKeywordNotExistListener {
+            //정의 있을때
+            requireContext().shortToast("정의를 이미 작성한 키워드에요!")
+/*            Log.e("SEULGI", "pos :"+it)
+
             val bundle = Bundle().apply {
-                putInt("totalKeywordId", id)
-                putString("keyword", name)
+                putInt("totalKeywordId", viewModel.selectedKeywordIds[it])
+            }
+            val keywordDefineDetailFragment = KeywordDefineDetailFragment().apply {
+                arguments = bundle
+            }
+            replaceAndAddBackStack(
+                R.id.container_keyword_settings,
+                keywordDefineDetailFragment,
+                "detail"
+            )*/
+        }
+        keywordDefineAdapter.setKeywordExistListener { keyword, position ->
+            //정의 없을때
+            val bundle = Bundle().apply {
+                putString("keyword", keyword.name)
+                putInt("position", position)
             }
             val keywordDefineAddFragment = KeywordDefineAddFragment().apply {
                 arguments = bundle
@@ -88,10 +125,21 @@ class KeywordDefineFragment : BaseFragment<FragmentKeywordDefineBinding, Keyword
 
     }
 
+    private fun initButtonVisible(){
+        var isDefinedKeywordExist : Boolean = false
+        for(isDefined in viewModel.isDefineSet){
+            if(isDefined){
+                isDefinedKeywordExist = true
+                break
+            }
+        }
+        binding.isDefinedKeywordExist = isDefinedKeywordExist
+    }
+
     private fun observeKeywordList() {
-        viewModel.taskKeywordList.observe(viewLifecycleOwner, {
+/*        viewModel.taskKeywordList.observe(viewLifecycleOwner, {
             keywordDefineAdapter.data = it
-        })
+        })*/
     }
 
     private fun startMainActivity() {

@@ -47,9 +47,16 @@ class DailyExpandableAdapter : RecyclerView.Adapter<DailyExpandableAdapter.ViewH
         private val secondLayout: View = expandableLayout.secondLayout
 
         fun bind(task: ResTaskGet.Data.Result, position: Int) {
+            val imageResource = when(position){
+                0 -> R.drawable.ic_01
+                1 -> R.drawable.ic_02
+                2 -> R.drawable.ic_03
+                else -> R.drawable.ic_04
+            }
+            parentLayout.findViewById<ImageView>(R.id.iv_number).setImageResource(imageResource)
+
             parentLayout.findViewById<TextView>(R.id.tv_number_of_task).text =
                 task.tasks.size.toString()
-            parentLayout.findViewById<TextView>(R.id.tv_number).text = "0${position + 1}"
             parentLayout.findViewById<TextView>(R.id.tv_report_name).text = task.name
             parentLayout.setOnClickListener {
                 if (expandableLayout.isExpanded) {

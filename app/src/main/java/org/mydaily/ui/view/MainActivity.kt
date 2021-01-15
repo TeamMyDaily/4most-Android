@@ -88,7 +88,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, UserViewModel>() {
 
     private fun replaceMyPageFragment() {
         replace(R.id.container_main, myFragment)
-        binding.tvTitle.text = getString(R.string.menu_my)
+        binding.tvTitle.text = getString(R.string.my_page)
         binding.tvTitle.visibility = View.VISIBLE
         binding.ivLogo.visibility = View.GONE
         binding.tvTitle.setTextColor(ContextCompat.getColor(this, R.color.white))

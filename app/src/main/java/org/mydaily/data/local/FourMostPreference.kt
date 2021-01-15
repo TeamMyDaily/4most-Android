@@ -48,6 +48,7 @@ object FourMostPreference {
         preferences.edit().putBoolean(AUTO_LOGIN, value).apply()
     }
 
+
     fun getFirstVisit(): Boolean {
         return preferences.getBoolean(IS_FIRST_VISIT, true)
     }

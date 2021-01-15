@@ -3,6 +3,7 @@ package org.mydaily.ui.view.keyword.settings
 import android.os.Bundle
 import android.util.Log
 import androidx.core.widget.addTextChangedListener
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.FragmentKeywordDefineAddBinding
@@ -14,10 +15,10 @@ import org.mydaily.util.extension.popBackStack
 class KeywordDefineAddFragment : BaseFragment<FragmentKeywordDefineAddBinding, KeywordViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_keyword_define_add
-    override val viewModel: KeywordViewModel by viewModel()
+    override val viewModel: KeywordViewModel by sharedViewModel()
 
-    private var totalKeywordId : Int ?= null
     private var keyword : String ?= null
+    private var position : Int = 0
 
     override fun initView() {
         getArgumentData()
@@ -41,8 +42,8 @@ class KeywordDefineAddFragment : BaseFragment<FragmentKeywordDefineAddBinding, K
     }
 
     private fun getArgumentData() {
-        totalKeywordId = requireArguments().getInt("totalKeywordId", 0)
         keyword = requireArguments().getString("keyword")
+        position = requireArguments().getInt("position")
     }
 
     private fun initEditText() {
@@ -59,6 +60,7 @@ class KeywordDefineAddFragment : BaseFragment<FragmentKeywordDefineAddBinding, K
         binding.btnSetPriority.isEnabled = false
         binding.btnSetPriority.setOnClickListener {
             viewModel.postKeywordDefinition(name = keyword!!, definition = binding.etDefine.text.toString())
+            viewModel.isDefineSet[position] = true
             popBackStack()
         }
     }

@@ -13,6 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDaily"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.view.splash.service.ServiceExplainActivity"/>
+        <activity android:name=".ui.view.splash.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.view.task.detail.TaskAddActivity" />
         <activity
             android:name=".ui.view.keyword.settings.KeywordSettingsActivity"
@@ -40,11 +49,6 @@
         <activity
             android:name=".ui.view.user.SignInActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.view.remind.RemindDetailWriteActivity"

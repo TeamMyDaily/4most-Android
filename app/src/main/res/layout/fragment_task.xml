@@ -33,7 +33,7 @@
                 android:id="@+id/img_task_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/img_task_main"
+                android:src="@drawable/image_main"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,7 +46,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_task_main" />
 
-
             <TextView
                 android:id="@+id/tv_user"
                 android:layout_width="0dp"
@@ -57,33 +56,39 @@
                 android:text="@string/your_daily_report"
                 android:textColor="@color/mainBlack"
                 android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@+id/ib_date"
+                app:layout_constraintEnd_toStartOf="@+id/ll_date"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/img_task_main" />
 
-            <ImageButton
-                android:id="@+id/ib_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/selector_btn_calendar"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_user"
-                app:layout_constraintEnd_toStartOf="@+id/tv_date"
-                app:layout_constraintTop_toTopOf="@+id/tv_user" />
 
-            <TextView
-                android:id="@+id/tv_date"
+            <LinearLayout
+                android:id="@+id/ll_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="@{date}"
-                android:textColor="@color/mainOrange"
-                android:textSize="12sp"
+                android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_user"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_user"
-                tools:text="20년 12월 20일" />
+                app:layout_constraintTop_toTopOf="@+id/tv_user">
+
+                <ImageView
+                    android:id="@+id/ib_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/selector_btn_calendar"/>
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{date}"
+                    android:textColor="@color/mainOrange"
+                    android:textSize="12sp"
+                    tools:text="20년 12월 20일" />
+
+            </LinearLayout>
 
             <View
                 android:id="@+id/line"

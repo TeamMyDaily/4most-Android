@@ -47,7 +47,7 @@ class MyPageKeywordListFragment : BaseFragment<FragmentMyPageKeywordListBinding,
             addItemDecoration(dividerItemDecoration)
         }
         myPageKeywordListAdapter.setClickListener {
-            requireContext().shortToast("$it 클릭됨")
+            //requireContext().shortToast(R.string.msg_service_is_being_prepared)
             MyPageBottomSheetDialog().show(childFragmentManager, "keyword")
         }
     }

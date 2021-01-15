@@ -3,12 +3,15 @@ package org.mydaily.ui.view.keyword
 import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordAddBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
+import org.mydaily.util.extension.shortToast
 import java.util.regex.Pattern
 
 
@@ -106,7 +109,7 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
                     binding.btnAdd.isEnabled = false
                     binding.tvErrortext.visibility = View.VISIBLE
                     binding.btnErrorIcon.visibility = View.VISIBLE
-                    binding.tvErrortext.text = "한글 이외의 단어는 안된다 임마!"
+                    binding.tvErrortext.text = "특수문자, 숫자, 영어를 제외하고 입력해주세요."
                 } else {
                     binding.btnAdd.isEnabled = true
                     binding.tvErrortext.visibility = View.GONE

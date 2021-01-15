@@ -9,44 +9,54 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <TextView
-            android:id="@+id/tv_imagine_your_perfect_day"
+            android:id="@+id/popup_hard_to_select2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/imagine_your_perfect_day"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <TextView
-            android:id="@+id/tv_example2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/example"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="60dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_imagine_your_perfect_day"/>
-
-        <TextView
-            android:id="@+id/tv_example2_plan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/example_plan"
+            android:text="@string/hard_to_select"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/mine_shaft"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_example2" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/popup_image1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/popup_hard_to_select2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/image_popup02" />
+
+        <TextView
+            android:id="@+id/imagine_your_perfect_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="39dp"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/popup_image1"
+            android:text="@string/imagine_your_perfect_day"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/off_fun"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:textColor="@color/silver"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imagine_your_perfect_day"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
