@@ -108,7 +108,14 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
     private fun initToolbar() {
         setSupportActionBar(binding.tbKeywordListActivity)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.white)))
+        supportActionBar?.setBackgroundDrawable(
+            ColorDrawable(
+                ContextCompat.getColor(
+                    this,
+                    R.color.white
+                )
+            )
+        )
         binding.tbKeywordListActivity.setNavigationOnClickListener {
             finish()
         }
@@ -125,18 +132,12 @@ class KeywordListActivity : BaseActivity<ActivityKeywordListBinding, KeywordView
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 1004) {
-            if (resultCode == 1005) {
-                if (data?.getStringExtra("MyWord") != null) {
-                    addedMyWord.add(data.getStringExtra("MyWord")!!)
-                }
-            } else {
-                shortToast("잘못된 resultCode1")
+        if (requestCode == 1004 && resultCode == 1005) {
+            if (data?.getStringExtra("MyWord") != null) {
+                addedMyWord.add(data.getStringExtra("MyWord")!!)
+                addMyWordList()
             }
-        } else {
-            shortToast("잘못된 requestCode2")
         }
-        addMyWordList()
     }
 
     private fun observeLifeWordList() {

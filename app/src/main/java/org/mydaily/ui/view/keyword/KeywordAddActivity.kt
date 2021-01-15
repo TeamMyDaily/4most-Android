@@ -68,6 +68,10 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
         }
     }
 
+    override fun onBackPressed() {
+        finish()
+    }
+
     private fun keywordInput() {
         var sameKeyword: String
         binding.etKeywordInput.addTextChangedListener(object : TextWatcher {
