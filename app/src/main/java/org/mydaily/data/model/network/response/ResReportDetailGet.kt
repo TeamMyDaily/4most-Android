@@ -14,6 +14,10 @@ data class ResReportDetailGet(
     val success: Boolean
 ) {
     data class Data(
+        @SerializedName("totalKeywordId")
+        val totalKeywordId: Int,
+        @SerializedName("weekGoalId")
+        val weekGoalId: Int,
         @SerializedName("goal")
         val goal: String,
         @SerializedName("isGoalCompleted")

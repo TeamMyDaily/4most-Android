@@ -3,6 +3,7 @@ package org.mydaily.ui.view.remind
 import android.content.Intent
 import android.text.Editable
 import android.text.method.ScrollingMovementMethod
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
@@ -98,32 +99,56 @@ class RemindWriteFragment : BaseFragment<FragmentRemindWriteBinding, RemindViewM
         viewModel.reviewList.observe(requireActivity(), {
             if (it.isWritten) {
                 if (it.review.good != null) {
-                    binding.tvWeekGoodContent.text =
-                        Editable.Factory.getInstance().newEditable(it.review.good)
-                    binding.tvWeekGoodContent.setBackgroundResource(R.drawable.rectangle_cherry_radius_15)
-                    binding.tvGoodCount.text = it.review.good.length.toString()
+                    if(it.review.good.isNotEmpty()) {
+                        binding.tvWeekGoodContent.text =
+                            Editable.Factory.getInstance().newEditable(it.review.good)
+                        binding.tvWeekGoodContent.setBackgroundResource(R.drawable.rectangle_cherry_radius_15)
+                        binding.tvGoodCount.text = it.review.good.length.toString()
+                    }
+                    else {
+                        binding.tvWeekGoodContent.setBackgroundResource(R.drawable.remind_write_textbox)
+                        binding.tvWeekGoodContent.text = null
+                        binding.tvGoodCount.text = "0"
+                    }
                 } else {
                     binding.tvWeekGoodContent.setBackgroundResource(R.drawable.remind_write_textbox)
+                    binding.tvWeekGoodContent.text = null
                     binding.tvGoodCount.text = "0"
                 }
 
                 if (it.review.bad != null) {
-                    binding.tvWeekBadContent.text =
-                        Editable.Factory.getInstance().newEditable(it.review.bad)
-                    binding.tvWeekBadContent.setBackgroundResource(R.drawable.rectangle_cherry_radius_15)
-                    binding.tvBadCount.text = it.review.bad.length.toString()
+                    if(it.review.bad.isNotEmpty()) {
+                        binding.tvWeekBadContent.text =
+                            Editable.Factory.getInstance().newEditable(it.review.bad)
+                        binding.tvWeekBadContent.setBackgroundResource(R.drawable.rectangle_cherry_radius_15)
+                        binding.tvBadCount.text = it.review.bad.length.toString()
+                    }
+                    else {
+                        binding.tvWeekBadContent.setBackgroundResource(R.drawable.remind_write_textbox)
+                        binding.tvBadCount.text = "0"
+                        binding.tvWeekBadContent.text = null
+                    }
                 } else {
                     binding.tvWeekBadContent.setBackgroundResource(R.drawable.remind_write_textbox)
                     binding.tvBadCount.text = "0"
+                    binding.tvWeekBadContent.text = null
                 }
 
                 if (it.review.next != null) {
-                    binding.tvNextWeekContent.text =
-                        Editable.Factory.getInstance().newEditable(it.review.next)
-                    binding.tvNextWeekContent.setBackgroundResource(R.drawable.rectangle_cherry_radius_15)
-                    binding.tvNextWeekCount.text = it.review.next.length.toString()
+                    if(it.review.next.isNotEmpty()) {
+                        binding.tvNextWeekContent.text =
+                            Editable.Factory.getInstance().newEditable(it.review.next)
+                        binding.tvNextWeekContent.setBackgroundResource(R.drawable.rectangle_cherry_radius_15)
+                        binding.tvNextWeekCount.text = it.review.next.length.toString()
+                    }
+                    else {
+                        binding.tvNextWeekContent.setBackgroundResource(R.drawable.remind_write_textbox)
+                        binding.tvNextWeekContent.text = null
+                        binding.tvNextWeekCount.text = "0"
+                    }
                 } else {
                     binding.tvNextWeekContent.setBackgroundResource(R.drawable.remind_write_textbox)
+                    binding.tvNextWeekContent.text = null
                     binding.tvNextWeekCount.text = "0"
                 }
             } else {

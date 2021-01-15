@@ -100,28 +100,15 @@ class RemindDetailWriteActivity : BaseActivity<ActivityRemindDetailWriteBinding,
 
     private fun initWriteCompleteButton() {
         binding.btWriteComplete.setOnClickListener {
-            if(binding.etRemindText.text.isEmpty()){
-                viewModel.postReview(
-                    ReqReviewAdd(
-                        intent.getLongExtra("start", 0),
-                        intent.getLongExtra("end", 0),
-                        Calendar.getInstance().timeInMillis,
-                        intent.getIntExtra("subType", 0),
-                        ""
-                    )
+            viewModel.postReview(
+                ReqReviewAdd(
+                    intent.getLongExtra("start", 0),
+                    intent.getLongExtra("end", 0),
+                    Calendar.getInstance().timeInMillis,
+                    intent.getIntExtra("subType", 0),
+                    binding.etRemindText.text.toString()
                 )
-            }
-            else {
-                viewModel.postReview(
-                    ReqReviewAdd(
-                        intent.getLongExtra("start", 0),
-                        intent.getLongExtra("end", 0),
-                        Calendar.getInstance().timeInMillis,
-                        intent.getIntExtra("subType", 0),
-                        binding.etRemindText.text.toString()
-                    )
-                )
-            }
+            )
             finish()
         }
     }
