@@ -2,6 +2,7 @@ package org.mydaily.ui.view
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -70,6 +71,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, UserViewModel>() {
     }
 
     private fun replaceDailyFragment() {
+        supportFragmentManager.popBackStack()
         replace(R.id.container_main, dailyFragment)
         binding.tvTitle.visibility = View.GONE
         binding.ivLogo.visibility = View.VISIBLE
@@ -87,6 +89,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, UserViewModel>() {
     }
 
     private fun replaceMyPageFragment() {
+        supportFragmentManager.popBackStack()
         replace(R.id.container_main, myFragment)
         binding.tvTitle.text = getString(R.string.my_page)
         binding.tvTitle.visibility = View.VISIBLE
@@ -96,6 +99,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, UserViewModel>() {
     }
 
     private fun replaceGoalFragment() {
+        supportFragmentManager.popBackStack()
         replace(R.id.container_main, goalFragment)
         binding.tvTitle.text = getString(R.string.menu_goal)
         binding.ivLogo.visibility = View.GONE
