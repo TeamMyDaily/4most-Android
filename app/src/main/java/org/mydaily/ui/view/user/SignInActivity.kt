@@ -53,10 +53,13 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, UserViewModel>() {
         if(getAutoLogin() && getUserToken() != ""){
             //Log.e("SEULGI", "onStart ${getKeywordExist()}")
             if(getKeywordExist()){
+                //Log.e("SEULGI", "SignIn startMainActivity")
                 startMainActivity()
-            }else {
-                startKeywordListActivity()
             }
+/*            else {
+                //Log.e("SEULGI", "SignIn startKeywordListActivity")
+                //startKeywordListActivity()
+            }*/
         }
     }
 

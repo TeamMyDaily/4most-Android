@@ -32,6 +32,7 @@ class UserViewModel(private val repo: UserRepo): BaseViewModel() {
                     response: retrofit2.Response<ResSignIn>
                 ) {
                     if(response.isSuccessful){
+                        Log.e("SEULGI postSignIn ", response.body().toString())
                         if(response.body()?.data?.keywordsExist == true){
                             _signInEvent.postValue(Event("keywordsExist"))
                         }else {
@@ -59,6 +60,7 @@ class UserViewModel(private val repo: UserRepo): BaseViewModel() {
                     response: retrofit2.Response<ResSignUp>
                 ) {
                     if(response.isSuccessful){
+                        Log.e("SEULGI postSignUp ", response.body().toString())
                         _signUpEvent.postValue(Event(true))
                     }else {
                         _toastMessage.postValue(Event("회원가입에 실패하였습니다"))

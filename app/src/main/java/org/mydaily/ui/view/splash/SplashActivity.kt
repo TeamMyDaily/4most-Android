@@ -2,6 +2,7 @@ package org.mydaily.ui.view.splash
 
 import android.animation.Animator
 import android.content.Intent
+import android.util.Log
 import kotlinx.android.synthetic.main.activity_splash.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
@@ -34,6 +35,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, KeywordViewModel>() {
             }
 
             override fun onAnimationEnd(animation: Animator?) {
+                //Log.e("SEULGI", "splash"+FourMostPreference.getFirstVisit())
                 if (FourMostPreference.getFirstVisit()) {
                     startActivity(Intent(this@SplashActivity, ServiceExplainActivity::class.java))
                 } else {
