@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.keyword.KeywordSelectActivity">
+        tools:context=".ui.view.keyword.guide.KeywordSelectActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_keyword_select_activity"

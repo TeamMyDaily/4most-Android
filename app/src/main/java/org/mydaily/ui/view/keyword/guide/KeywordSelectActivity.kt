@@ -1,4 +1,4 @@
-package org.mydaily.ui.view.keyword
+package org.mydaily.ui.view.keyword.guide
 
 import android.app.AlertDialog
 import android.content.Intent

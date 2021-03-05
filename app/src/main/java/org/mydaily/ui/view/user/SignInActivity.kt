@@ -16,7 +16,7 @@ import org.mydaily.data.local.FourMostPreference.setKeywordExist
 import org.mydaily.databinding.ActivitySignInBinding
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.view.MainActivity
-import org.mydaily.ui.view.keyword.KeywordListActivity
+import org.mydaily.ui.view.keyword.guide.KeywordGuideSelectFragment
 import org.mydaily.ui.viewmodel.UserViewModel
 import org.mydaily.util.EventObserver
 import org.mydaily.util.LoginPatternCheckUtil
@@ -160,7 +160,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, UserViewModel>() {
     }
 
     private fun startKeywordListActivity() {
-        startActivity(Intent(this, KeywordListActivity::class.java))
+        startActivity(Intent(this, KeywordGuideSelectFragment::class.java))
         finish()
     }
 }

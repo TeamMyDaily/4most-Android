@@ -116,7 +116,7 @@
     <string name="already_exist">이미 생성 된 단어에요!</string>
     <string name="korean_keyboard">"^[ㄱ-ㅎ가-힣 \u318D\u119E\u11A2\u2022\u2025\u00B7\uFE55]*$"</string>
 
-    <!--KeywordListActivity-->
+    <!--KeywordGuideSelectFragment-->
     <string name="keyword_setting">키워드 설정하기</string>
     <string name="what_is_important_thing_to_you">삶에서 중요하게\n생각하는 가치는 무엇인가요?</string>
     <string name="choose_eight">먼저 8개의 키워드를 선택해보세요!</string>
@@ -146,7 +146,7 @@
     <string name="what_kind_of_person">자기 분야에서 만큼은 탁월했던 사람\n가까운 주변 사람들에게 사랑 받는 사람</string>
 
     <!--KeywordSelectActivity-->
-    <string name="keyword_select">키워드 선택하기</string>
+    <string name="keyword_select">키워드 선택</string>
     <string name="choose_four">선택한 가치 중에서\n더 중요한 것을 골라보세요</string>
     <string name="maximum_four">최종 키워드를 최대 4개까지 골라보세요!</string>
     <string name="up_to_four">4개까지 선택 가능해요!</string>

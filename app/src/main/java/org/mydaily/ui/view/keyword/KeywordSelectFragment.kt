@@ -4,7 +4,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.FragmentKeywordSelectBinding
 import org.mydaily.ui.base.BaseFragment
+import org.mydaily.ui.view.keyword.guide.KeywordGuideSelectFragment
 import org.mydaily.ui.viewmodel.KeywordViewModel
+import org.mydaily.util.extension.replace
 
 class KeywordSelectFragment : BaseFragment<FragmentKeywordSelectBinding, KeywordViewModel>() {
     override val layoutResourceId: Int
@@ -24,8 +26,8 @@ class KeywordSelectFragment : BaseFragment<FragmentKeywordSelectBinding, Keyword
     }
 
     private fun initClickEvent() {
-        binding.tvSelectMethod.setOnClickListener {
-
+        binding.tvFollowGuide.setOnClickListener {
+            replace(R.id.container_keyword, KeywordGuideSelectFragment())
         }
     }
 }

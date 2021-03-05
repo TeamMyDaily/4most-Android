@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDaily"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.view.keyword.KeywordActivity"></activity>
+        <activity android:name=".ui.view.keyword.KeywordActivity"
+            android:exported="true"/>
         <activity android:name=".ui.view.splash.service.ServiceExplainActivity" />
         <activity
             android:name=".ui.view.splash.SplashActivity"
@@ -35,15 +36,11 @@
             android:name=".ui.view.keyword.KeywordAddActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui.view.keyword.KeywordListActivity"
-            android:exported="true"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
             android:name=".ui.view.keyword.popup.KeywordPopupActivity"
             android:exported="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.view.keyword.KeywordSelectActivity"
+            android:name=".ui.view.keyword.guide.KeywordSelectActivity"
             android:exported="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
