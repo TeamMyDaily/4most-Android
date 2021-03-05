@@ -40,10 +40,6 @@
             android:exported="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ui.view.keyword.guide.KeywordGuideSelectDeepFragment"
-            android:exported="true"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
             android:name=".ui.view.task.detail.TaskDetailActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
