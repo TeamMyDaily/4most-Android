@@ -68,7 +68,7 @@
     <string name="remind_back_really">정말 뒤로가시겠어요?</string>
     <string name="remind_back_alert">뒤로가기를 누르시면 작성 중인 내용이\n사라지고 이전 페이지로 돌아갑니다.</string>
     <string name="remind_back_edit_alert">뒤로가기를 누르시면 수정사항이\n삭제되고 이전 페이지로 돌아갑니다.</string>
-    <string name="remind">회고</string>    
+    <string name="remind">회고</string>
     <string name="remove">삭제하기</string>
     <string name="cancel">취소하기</string>
     <string name="back">뒤로가기</string>
@@ -195,4 +195,12 @@
     <string name="splash_explain1">내 삶의 지향점이 될\n가치관을 정해보세요</string>
     <string name="splash_explain2">가치관에 가까워지기 위한\n일상의 행동을 기록해보세요</string>
     <string name="splash_explain3">한 주간의 행동을 회고하면서\n더 나은 내일을 꿈꿔보세요</string>
+
+
+    <!--Keyword-->
+    <string name="menu_create_keyword">키워드 생성</string>
+    <string name="msg_select_keyword_method">핵심가치를 정하기 위한\n방법을 선택해주세요!</string>
+    <string name="msg_follow_guide">가이드 따라가기</string>
+    <string name="msg_add_myself">직접 추가하기</string>
+
 </resources>
