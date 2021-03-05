@@ -1,16 +1,16 @@
-package org.mydaily.ui.view.keyword
+package org.mydaily.ui.view.keyword.method
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
-import org.mydaily.databinding.FragmentKeywordSelectBinding
+import org.mydaily.databinding.FragmentKeywordMethodBinding
 import org.mydaily.ui.base.BaseFragment
 import org.mydaily.ui.view.keyword.guide.KeywordGuideSelectFragment
 import org.mydaily.ui.viewmodel.KeywordViewModel
 import org.mydaily.util.extension.replace
 
-class KeywordSelectFragment : BaseFragment<FragmentKeywordSelectBinding, KeywordViewModel>() {
+class KeywordMethodFragment : BaseFragment<FragmentKeywordMethodBinding, KeywordViewModel>() {
     override val layoutResourceId: Int
-        get() = R.layout.fragment_keyword_select
+        get() = R.layout.fragment_keyword_method
     override val viewModel: KeywordViewModel by viewModel()
 
     override fun initView() {

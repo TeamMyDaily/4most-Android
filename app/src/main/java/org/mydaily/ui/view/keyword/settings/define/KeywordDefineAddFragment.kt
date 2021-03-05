@@ -1,4 +1,4 @@
-package org.mydaily.ui.view.keyword.settings
+package org.mydaily.ui.view.keyword.settings.define
 
 import android.os.Bundle
 import android.util.Log

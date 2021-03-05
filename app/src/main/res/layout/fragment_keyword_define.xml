@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.keyword.settings.KeywordDefineFragment">
+        tools:context=".ui.view.keyword.settings.define.KeywordDefineFragment">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_keyword_define"

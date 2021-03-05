@@ -1,10 +1,10 @@
 package org.mydaily.ui.view.keyword.settings
 
-import android.util.Log
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordSettingsBinding
 import org.mydaily.ui.base.BaseActivity
+import org.mydaily.ui.view.keyword.settings.priority.KeywordPriorityFragment
 import org.mydaily.ui.viewmodel.KeywordViewModel
 import org.mydaily.util.extension.replace
 

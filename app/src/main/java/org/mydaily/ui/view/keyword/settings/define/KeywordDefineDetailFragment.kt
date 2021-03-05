@@ -1,4 +1,4 @@
-package org.mydaily.ui.view.keyword.settings
+package org.mydaily.ui.view.keyword.settings.define
 
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel

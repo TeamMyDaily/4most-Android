@@ -1,9 +1,8 @@
-package org.mydaily.ui.view.keyword.settings
+package org.mydaily.ui.view.keyword.settings.define
 
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.mydaily.R
