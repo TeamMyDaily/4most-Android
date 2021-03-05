@@ -68,7 +68,7 @@
     <string name="remind_back_really">정말 뒤로가시겠어요?</string>
     <string name="remind_back_alert">뒤로가기를 누르시면 작성 중인 내용이\n사라지고 이전 페이지로 돌아갑니다.</string>
     <string name="remind_back_edit_alert">뒤로가기를 누르시면 수정사항이\n삭제되고 이전 페이지로 돌아갑니다.</string>
-    <string name="remind">회고</string>    
+    <string name="remind">회고</string>
     <string name="remove">삭제하기</string>
     <string name="cancel">취소하기</string>
     <string name="back">뒤로가기</string>
@@ -116,7 +116,7 @@
     <string name="already_exist">이미 생성 된 단어에요!</string>
     <string name="korean_keyboard">"^[ㄱ-ㅎ가-힣 \u318D\u119E\u11A2\u2022\u2025\u00B7\uFE55]*$"</string>
 
-    <!--KeywordListActivity-->
+    <!--KeywordGuideSelectFragment-->
     <string name="keyword_setting">키워드 설정하기</string>
     <string name="what_is_important_thing_to_you">삶에서 중요하게\n생각하는 가치는 무엇인가요?</string>
     <string name="choose_eight">먼저 8개의 키워드를 선택해보세요!</string>
@@ -145,8 +145,8 @@
     <string name="off_fun">퇴근 후 관심사가 비슷한 사람들과\n내가 가진 취미, 강점을 나누면서 소통하는 삶</string>
     <string name="what_kind_of_person">자기 분야에서 만큼은 탁월했던 사람\n가까운 주변 사람들에게 사랑 받는 사람</string>
 
-    <!--KeywordSelectActivity-->
-    <string name="keyword_select">키워드 선택하기</string>
+    <!--KeywordGuideSelectDeepFragment-->
+    <string name="keyword_select">키워드 선택</string>
     <string name="choose_four">선택한 가치 중에서\n더 중요한 것을 골라보세요</string>
     <string name="maximum_four">최종 키워드를 최대 4개까지 골라보세요!</string>
     <string name="up_to_four">4개까지 선택 가능해요!</string>
@@ -195,4 +195,12 @@
     <string name="splash_explain1">내 삶의 지향점이 될\n가치관을 정해보세요</string>
     <string name="splash_explain2">가치관에 가까워지기 위한\n일상의 행동을 기록해보세요</string>
     <string name="splash_explain3">한 주간의 행동을 회고하면서\n더 나은 내일을 꿈꿔보세요</string>
+
+
+    <!--Keyword-->
+    <string name="menu_create_keyword">키워드 생성</string>
+    <string name="msg_select_keyword_method">핵심가치를 정하기 위한\n방법을 선택해주세요!</string>
+    <string name="msg_follow_guide">가이드 따라가기</string>
+    <string name="msg_add_myself">직접 추가하기</string>
+
 </resources>
