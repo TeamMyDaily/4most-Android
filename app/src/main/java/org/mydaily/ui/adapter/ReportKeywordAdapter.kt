@@ -11,12 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import org.mydaily.R
 import org.mydaily.data.model.network.response.ResReportGet
 import org.mydaily.databinding.ItemKeywordListBinding
-import org.mydaily.ui.view.remind.OnItemClick
+import org.mydaily.ui.view.remind.ReportFragment
 
-class ReportKeywordAdapter(private val context: Context, listener : OnItemClick) : RecyclerView.Adapter<ReportKeywordAdapter.ViewHolder>() {
+class ReportKeywordAdapter(private val context: Context) : RecyclerView.Adapter<ReportKeywordAdapter.ViewHolder>() {
     private lateinit var binding: ItemKeywordListBinding
     var data = mutableListOf<ResReportGet.Data.Result>()
-    private val mCallback = listener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         binding = DataBindingUtil.inflate(LayoutInflater.from(context),
@@ -35,9 +34,9 @@ class ReportKeywordAdapter(private val context: Context, listener : OnItemClick)
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: ResReportGet.Data.Result, pos : Int) {
-            val tasknum = data.taskCnt.toString()
+            val taskNum = data.taskCnt.toString()
             binding.reportlistdata = data
-            binding.tvTasknum.text = "총 "+tasknum+"개"
+            binding.tvTasknum.text = "총 "+taskNum+"개"
             binding.tvRate.text = data.taskSatisAvg
             binding.tvRate.setTextColor(ContextCompat.getColor(context, R.color.carrot))
 
@@ -49,8 +48,8 @@ class ReportKeywordAdapter(private val context: Context, listener : OnItemClick)
                 }
             })//시크바 터치 prevent
 
-            binding.root.setOnClickListener{
-                mCallback.onClick(data.Id, data.keyword)
+            binding.root.setOnClickListener {
+                ReportFragment().containerClick(data.Id, data.keyword)
             }
 
         }

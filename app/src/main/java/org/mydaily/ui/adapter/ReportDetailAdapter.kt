@@ -18,7 +18,7 @@ class ReportDetailAdapter(private val context: Context, private val keyword: Str
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         binding = DataBindingUtil.inflate(
-            LayoutInflater.from(context),
+            LayoutInflater.from(parent.context),
             R.layout.item_report_list, parent, false)
         return ViewHolder(binding)
     }
@@ -51,8 +51,7 @@ class ReportDetailAdapter(private val context: Context, private val keyword: Str
 
         private fun dateConvert(date : String): String {
             val from = SimpleDateFormat("yyyy-MM-dd").parse(date)
-            val to = SimpleDateFormat("yyyy. MM. dd").format(from)
-            return to
+            return SimpleDateFormat("yyyy. MM. dd").format(from)
         }
     }
 

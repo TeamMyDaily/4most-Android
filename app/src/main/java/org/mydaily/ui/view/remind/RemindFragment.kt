@@ -28,7 +28,7 @@ class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
     private val nowCalendar = Calendar.getInstance(Locale.KOREA)
 
     private var startCalendar: Calendar = Calendar.getInstance(Locale.KOREA).apply {
-        set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
+        set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)//
         set(Calendar.HOUR, 0)
         set(Calendar.MINUTE, 0)
         set(Calendar.SECOND, 0)
@@ -148,7 +148,7 @@ class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
     }
 
     private fun createViewPager() {
-        var tab_label = listOf(getString(R.string.report), getString(R.string.remind))
+        var tabLabel = listOf(getString(R.string.report), getString(R.string.remind))
         var fragmentList = listOf(ReportFragment(), RemindFragment())
         val remindAdapter = RemindViewPagerAdapter(this)
         remindAdapter.fragmentList = fragmentList
@@ -156,7 +156,7 @@ class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
         vp_remind.adapter = remindAdapter
 
         TabLayoutMediator(tb_remind, vp_remind) { tab, position ->
-            tab.text = tab_label[position]
+            tab.text = tabLabel[position]
         }.attach()
 
         binding.vpRemind.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -176,10 +176,13 @@ class RemindFragment : BaseFragment<FragmentRemindBinding, RemindViewModel>() {
     }
 
     private fun dateInit() {
+        if(nowCalendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {//일요일일때는~ 다음주로 인식되서..
+            startCalendar.add(Calendar.DATE, -7)
+            endCalendar.add(Calendar.DATE, -7)
+            nowCalendar.add(Calendar.DATE, - 1)//일단 임시로 토요일로 변경
+        }
         binding.tvDate.text = CalendarUtil.convertCalendarToWeekString(startCalendar)
         convertDateStatus()
-
-        //값전달
     }
 
     override fun onStart() {

@@ -10,6 +10,10 @@ import org.mydaily.ui.adapter.ReportKeywordAdapter
 import org.mydaily.ui.base.BaseFragment
 import org.mydaily.ui.viewmodel.RemindViewModel
 
+interface OnItemClick {
+    fun onClick(value : Int, keyword : String)
+}
+
 class ReportFragment : BaseFragment<FragmentReportBinding, RemindViewModel>(), OnItemClick {
     override val layoutResourceId: Int
         get() = R.layout.fragment_report
@@ -56,7 +60,7 @@ class ReportFragment : BaseFragment<FragmentReportBinding, RemindViewModel>(), O
     }
 
     private fun createReportAdapter() {
-        reportKeywordAdapter = activity?.let { ReportKeywordAdapter(it, this) }!!
+        reportKeywordAdapter = ReportKeywordAdapter(requireContext())
         binding.rcvReport.adapter = reportKeywordAdapter
         binding.rcvReport.layoutManager = LinearLayoutManager(activity)
     }
@@ -71,5 +75,9 @@ class ReportFragment : BaseFragment<FragmentReportBinding, RemindViewModel>(), O
             .beginTransaction()
             .replace(R.id.container_main, reportDetailFragment)
             .addToBackStack(null).commit()
+    }
+
+    public fun containerClick(id: Int, keyword: String) {
+        return onClick(id, keyword)
     }
 }
