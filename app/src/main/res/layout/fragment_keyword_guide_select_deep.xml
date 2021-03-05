@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.keyword.guide.KeywordSelectActivity">
+        tools:context=".ui.view.keyword.guide.KeywordGuideSelectDeepFragment">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_keyword_select_activity"
@@ -40,6 +40,7 @@
             android:id="@+id/sv_keyword_select"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_select_four_finish"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +50,7 @@
                 android:id="@+id/cl_in_scrollview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="70dp">
+                android:paddingBottom="56dp">
 
                 <TextView
                     android:id="@+id/tv_choose_four"
@@ -118,31 +119,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_work_four" />
 
-                <TextView
-                    android:id="@+id/tv_my_word_four"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="48dp"
-                    android:text="@string/my_word"
-                    android:textColor="@color/burnt_sienna"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/cg_work_four"
-                    app:layout_constraintTop_toBottomOf="@id/cg_work_four" />
-
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/cg_my_word_four"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:paddingHorizontal="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_my_word_four">
-
-
-                </com.google.android.material.chip.ChipGroup>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 

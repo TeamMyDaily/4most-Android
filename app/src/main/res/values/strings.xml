@@ -145,7 +145,7 @@
     <string name="off_fun">퇴근 후 관심사가 비슷한 사람들과\n내가 가진 취미, 강점을 나누면서 소통하는 삶</string>
     <string name="what_kind_of_person">자기 분야에서 만큼은 탁월했던 사람\n가까운 주변 사람들에게 사랑 받는 사람</string>
 
-    <!--KeywordSelectActivity-->
+    <!--KeywordGuideSelectDeepFragment-->
     <string name="keyword_select">키워드 선택</string>
     <string name="choose_four">선택한 가치 중에서\n더 중요한 것을 골라보세요</string>
     <string name="maximum_four">최종 키워드를 최대 4개까지 골라보세요!</string>

@@ -8,6 +8,7 @@ import org.mydaily.R
 import org.mydaily.databinding.FragmentKeywordGuideSelectBinding
 import org.mydaily.ui.base.BaseFragment
 import org.mydaily.ui.viewmodel.KeywordViewModel
+import org.mydaily.util.extension.replace
 
 
 class KeywordGuideSelectFragment : BaseFragment<FragmentKeywordGuideSelectBinding, KeywordViewModel>() {
@@ -24,6 +25,9 @@ class KeywordGuideSelectFragment : BaseFragment<FragmentKeywordGuideSelectBindin
 
     override fun initView() {
         initToolbar()
+        binding.tvWhatIsImportant.setOnClickListener {
+            replace(R.id.container_keyword, KeywordGuideSelectDeepFragment())
+        }
     }
 
     override fun initBeforeBinding() {
