@@ -15,7 +15,7 @@
         <!-- Customize your theme here. -->
         <item name="android:textColor">@color/mainBlack</item>
         <item name="android:overScrollMode">never</item>
-        <item name="fontFamily">@font/noto_sans</item>
+        <item name="fontFamily">@font/notosans</item>
     </style>
 
     <style name="MyDailyChipTextStyleAppearance">
