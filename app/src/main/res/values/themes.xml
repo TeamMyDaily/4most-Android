@@ -42,4 +42,10 @@
     <style name="BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
         <item name="android:textSize">8sp</item>
     </style>
+
+    <style name="MyDailyToolBarTextStyle" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">@color/cod_gray</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
 </resources>
