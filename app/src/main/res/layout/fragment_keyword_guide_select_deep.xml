@@ -13,7 +13,7 @@
         tools:context=".ui.view.keyword.guide.KeywordGuideSelectDeepFragment">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tb_keyword_select_activity"
+            android:id="@+id/tb_keyword_guide_deep"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/white"
@@ -42,7 +42,7 @@
             app:layout_constraintBottom_toTopOf="@+id/btn_select_four_finish"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tb_keyword_select_activity">
+            app:layout_constraintTop_toBottomOf="@+id/tb_keyword_guide_deep">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_in_scrollview"
@@ -59,6 +59,7 @@
                     android:text="@string/choose_four"
                     android:textSize="25sp"
                     android:textFontWeight="900"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

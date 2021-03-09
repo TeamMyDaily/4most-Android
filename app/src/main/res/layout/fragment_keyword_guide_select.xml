@@ -59,6 +59,7 @@
                     android:textColor="@color/cod_gray"
                     android:textSize="25sp"
                     android:textFontWeight="900"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
