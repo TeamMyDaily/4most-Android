@@ -16,6 +16,7 @@
         <item name="android:textColor">@color/mainBlack</item>
         <item name="android:overScrollMode">never</item>
         <item name="fontFamily">@font/notosans</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="MyDailyChipTextStyleAppearance">
@@ -27,6 +28,7 @@
     <style name="MyDailyButtonStyle" parent="Widget.AppCompat.Button">
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/selector_btn_sign_in</item>
     </style>
