@@ -38,16 +38,16 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
 
     override fun initBeforeBinding() {
         binding.lifecycleOwner = this
-        viewModel.getLifeWord()
-        viewModel.getWorkWord()
+/*        viewModel.getLifeWord()
+        viewModel.getWorkWord()*/
     }
 
     override fun initAfterBinding() {
-        observeLifeWordList()
-        observeWorkWordList()
+/*        observeLifeWordList()
+        observeWorkWordList()*/
     }
 
-    private fun observeLifeWordList() {
+/*    private fun observeLifeWordList() {
         viewModel.lifeWordList.observe(this, {
             keywordListForDuplicated.addAll(it)
         })
@@ -57,7 +57,7 @@ class KeywordAddActivity : BaseActivity<ActivityKeywordAddBinding, KeywordViewMo
         viewModel.workWordList.observe(this, {
             keywordListForDuplicated.addAll(it)
         })
-    }
+    }*/
 
     private fun initToolbar() {
         setSupportActionBar(binding.tbKeywordAddActivity)

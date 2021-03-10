@@ -29,9 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/menu_create_keyword"
-                android:textColor="@color/cod_gray"
-                android:textSize="21sp"
-                android:textStyle="bold" />
+                style="@style/MyDailyToolBarTextStyle"/>
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -42,6 +40,8 @@
             android:text="@string/msg_select_keyword_method"
             android:textColor="@color/mainBlack"
             android:textSize="25sp"
+            android:textFontWeight="900"
+            android:textStyle="bold"
             android:layout_marginTop="48dp"
             android:layout_marginHorizontal="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,6 +59,8 @@
             android:gravity="center"
             android:textColor="@color/mainBlack"
             android:textSize="25sp"
+            android:textFontWeight="900"
+            android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/tv_select_method" />
 
         <TextView
@@ -72,6 +74,8 @@
             android:text="@string/msg_add_myself"
             android:textColor="@color/mainBlack"
             android:textSize="25sp"
+            android:textFontWeight="900"
+            android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/tv_follow_guide" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
