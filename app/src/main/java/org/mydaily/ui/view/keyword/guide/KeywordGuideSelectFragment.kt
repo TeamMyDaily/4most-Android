@@ -1,133 +1,113 @@
 package org.mydaily.ui.view.keyword.guide
 
 import android.app.AlertDialog
+import android.content.Intent
 import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipDrawable
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.FragmentKeywordGuideSelectBinding
 import org.mydaily.ui.base.BaseFragment
+import org.mydaily.ui.view.keyword.popup.KeywordPopupActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
-import org.mydaily.util.extension.replace
+import org.mydaily.util.extension.createKeywordChip
+import org.mydaily.util.extension.popBackStack
+import org.mydaily.util.extension.replaceAndAddBackStack
 
 
-class KeywordGuideSelectFragment : BaseFragment<FragmentKeywordGuideSelectBinding, KeywordViewModel>() {
-
-    private var clickedChipCount: Int = 0
-    private var addedMyWord = arrayListOf<String>()
-    private var selectedLifeWord = arrayListOf<String>()
-    private var selectedWorkWord = arrayListOf<String>()
-    private var selectedMyWord = arrayListOf<String>()
+class KeywordGuideSelectFragment :
+    BaseFragment<FragmentKeywordGuideSelectBinding, KeywordViewModel>() {
 
     override val layoutResourceId: Int
         get() = R.layout.fragment_keyword_guide_select
-    override val viewModel: KeywordViewModel by viewModel()
+    override val viewModel: KeywordViewModel by sharedViewModel()
 
     override fun initView() {
         initToolbar()
-        binding.tvWhatIsImportant.setOnClickListener {
-            replace(R.id.container_keyword, KeywordGuideSelectDeepFragment())
+        initClickEvent()
+        initChipGroup()
+    }
+
+    override fun initBeforeBinding() { }
+
+    override fun initAfterBinding() { }
+
+    private fun initToolbar() {
+        binding.tbKeywordGuideSelect.setNavigationOnClickListener { popBackStack() }
+        binding.tbKeywordGuideSelect.setOnMenuItemClickListener {
+            if (it.itemId == R.id.menu_help) {
+                startActivity(Intent(requireActivity(), KeywordPopupActivity()::class.java))
+            }
+            true
         }
     }
 
-    override fun initBeforeBinding() {
-        binding.lifecycleOwner = viewLifecycleOwner
-        viewModel.getLifeWord()
-        viewModel.getWorkWord()
+    private fun initClickEvent() {
+        binding.btnSelectFinish.setOnClickListener {
+            replaceAndAddBackStack(
+                R.id.container_keyword,
+                KeywordGuideSelectDeepFragment(),
+                "Guide2"
+            )
+        }
     }
 
-    override fun initAfterBinding() {
-        observeLifeWordList()
-        observeWorkWordList()
-    }
+    private fun initChipGroup() {
+        val listener : (it: Chip) -> (Unit) = {
+            val clickedChipCount = viewModel.selectedLifeWordList.size + viewModel.selectedWorkWordList.size
+            if (it.isChecked) {
+                when (clickedChipCount) {
+                    8 -> {
+                        it.isChecked = false
+                        showAlertDialog()
+                    }
+                    7 -> {
+                        addKeywordList(it.text as String)
+                        binding.btnSelectFinish.isEnabled = true
+                    }
+                    else -> {
+                        addKeywordList(it.text as String)
+                    }
+                }
+            } else {
+                removeKeywordList(it.text as String)
+                if (clickedChipCount < 8) {
+                    binding.btnSelectFinish.isEnabled = false
+                }
+            }
+        }
 
-    private fun initToolbar() {
+        for (life in viewModel.lifeWordList) {
+            binding.cgLife.addView(createKeywordChip(life, listener) )
+        }
 
+        for (life in viewModel.workWordList) {
+            binding.cgWork.addView(createKeywordChip(life, listener) )
+        }
     }
 
     private fun addKeywordList(text: String) {
-        if (viewModel.lifeWordList.value!!.contains(text)) {
-            selectedLifeWord.add(text)
-        } else if (viewModel.workWordList.value!!.contains(text)) {
-            selectedWorkWord.add(text)
-        } else if (addedMyWord.contains(text)) {
-            selectedMyWord.add(text)
+        if (viewModel.lifeWordList.contains(text)) {
+            viewModel.selectedLifeWordList.add(text)
+        } else if (viewModel.workWordList.contains(text)) {
+            viewModel.selectedWorkWordList.add(text)
         }
     }
 
     private fun removeKeywordList(text: String) {
-        if (viewModel.lifeWordList.value!!.contains(text)) {
-            selectedLifeWord.remove(text)
-        } else if (viewModel.workWordList.value!!.contains(text)) {
-            selectedWorkWord.remove(text)
-        } else if (addedMyWord.contains(text)) {
-            selectedMyWord.remove(text)
+        if (viewModel.lifeWordList.contains(text)) {
+            viewModel.selectedLifeWordList.remove(text)
+        } else if (viewModel.workWordList.contains(text)) {
+            viewModel.selectedWorkWordList.remove(text)
         }
     }
 
-    private fun floatingDialog() {
+    private fun showAlertDialog() {
         AlertDialog.Builder(context)
             .setTitle(R.string.up_to_eight)
             .setMessage(R.string.too_many_keyword_selected)
             .setPositiveButton("확인", null)
             .create()
             .show()
-    }
-
-
-    private fun observeLifeWordList() {
-        viewModel.lifeWordList.observe(this, { list ->
-            for (str in list) {
-                binding.cgLife.addView(createChip(str))
-            }
-        })
-    }
-
-    private fun observeWorkWordList() {
-        viewModel.workWordList.observe(this, { list ->
-            for (str in list) {
-                binding.cgWork.addView(createChip(str))
-            }
-        })
-    }
-
-    private fun createChip(str: String): Chip {
-        val chipDrawable = ChipDrawable.createFromAttributes(
-            requireContext(),
-            null,
-            0,
-            R.style.Widget_MaterialComponents_Chip_Choice
-        )
-        return Chip(requireContext()).apply {
-            text = str
-            setChipDrawable(chipDrawable)
-            setChipBackgroundColorResource(R.color.selector_chip)
-            setTextAppearance(R.style.MyDailyChipTextStyleAppearance)
-            setRippleColorResource(android.R.color.transparent)
-            setOnClickListener {
-                it as Chip
-                if (isChecked) { //주황색일 때
-                    clickedChipCount++
-                    if (clickedChipCount >= 9) {
-                        binding.btnSelectFinish.isEnabled = true
-                        it.isChecked = false
-                        clickedChipCount--
-                        floatingDialog()
-                    } else if (clickedChipCount == 8) {
-                        addKeywordList(it.text as String)
-                        binding.btnSelectFinish.isEnabled = true
-                    } else {
-                        addKeywordList(it.text as String)
-                        binding.btnSelectFinish.isEnabled = false
-                    }
-                } else {
-                    clickedChipCount--
-                    if (clickedChipCount < 8) {
-                        binding.btnSelectFinish.isEnabled = false
-                    }
-                    removeKeywordList(it.text as String)
-                }
-            }
-        }
     }
 }

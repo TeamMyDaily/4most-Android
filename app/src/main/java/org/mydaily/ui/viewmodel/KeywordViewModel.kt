@@ -19,13 +19,18 @@ import retrofit2.Response
 
 class KeywordViewModel(private val repo: KeywordRepo) : BaseViewModel() {
 
-    private val _lifeWordList = MutableLiveData<List<String>>()
-    val lifeWordList: LiveData<List<String>>
-        get() = _lifeWordList
+    val lifeWordList: List<String> = listOf(
+    "신뢰", "행복", "배려", "다양성", "감사", "인내", "경험", "용서", "정의", "긍정", "건강", "자유", "나눔", "자신감", "도전", "풍요로움",
+    "양심", "부", "정직", "변화"
+    )
 
-    private val _workWordList = MutableLiveData<List<String>>()
-    val workWordList: LiveData<List<String>>
-        get() = _workWordList
+    val workWordList: List<String> = listOf(
+        "몰입", "열정", "배움", "결과", "과정", "소통", "효율성", "성취", "인정", "보람", "성장", "탁월함", "혁신", "협력", "성실", "책임", "본질", "완벽", "실천", "목적의식"
+    )
+
+    val selectedLifeWordList : MutableList<String> = mutableListOf()
+    val selectedWorkWordList : MutableList<String> = mutableListOf()
+    val selectedWordList : MutableList<String> = mutableListOf()
 
     private val _toastMessage = MutableLiveData<Event<String>>()
     val toastMessage: LiveData<Event<String>> = _toastMessage
@@ -49,21 +54,6 @@ class KeywordViewModel(private val repo: KeywordRepo) : BaseViewModel() {
 
     var isDefineSet = arrayOf(false,false,false,false)
     var selectedKeywordIds = mutableListOf<Int>()
-
-    fun getLifeWord() {
-        val tempList = listOf(
-            "신뢰", "행복", "배려", "다양성", "감사", "인내", "경험", "용서", "정의", "긍정", "건강", "자유", "나눔", "자신감", "도전", "풍요로움",
-            "양심", "부", "정직", "변화"
-        )
-        _lifeWordList.value = tempList
-    }
-
-    fun getWorkWord() {
-        val tempList = listOf(
-            "몰입", "열정", "배움", "결과", "과정", "소통", "효율성", "성취", "인정", "보람", "성장", "탁월함", "혁신", "협력", "성실", "책임", "본질", "완벽", "실천", "목적의식"
-        )
-        _workWordList.value = tempList
-    }
 
     fun postKeywordSelect(keywords: List<String>) {
         repo.postKeywordSelect(ReqKeywordSelect(keywords = keywords))

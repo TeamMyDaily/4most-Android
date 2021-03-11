@@ -6,7 +6,7 @@ import org.mydaily.databinding.FragmentKeywordMethodBinding
 import org.mydaily.ui.base.BaseFragment
 import org.mydaily.ui.view.keyword.guide.KeywordGuideSelectFragment
 import org.mydaily.ui.viewmodel.KeywordViewModel
-import org.mydaily.util.extension.replace
+import org.mydaily.util.extension.replaceAndAddBackStack
 
 class KeywordMethodFragment : BaseFragment<FragmentKeywordMethodBinding, KeywordViewModel>() {
     override val layoutResourceId: Int
@@ -27,7 +27,7 @@ class KeywordMethodFragment : BaseFragment<FragmentKeywordMethodBinding, Keyword
 
     private fun initClickEvent() {
         binding.tvFollowGuide.setOnClickListener {
-            replace(R.id.container_keyword, KeywordGuideSelectFragment())
+            replaceAndAddBackStack(R.id.container_keyword, KeywordGuideSelectFragment(), "Guide1")
         }
     }
 }

@@ -13,7 +13,7 @@
         tools:context=".ui.view.keyword.guide.KeywordGuideSelectDeepFragment">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tb_keyword_select_activity"
+            android:id="@+id/tb_keyword_guide_deep"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/white"
@@ -29,9 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/keyword_select"
-                android:textColor="@color/cod_gray"
-                android:textSize="21sp"
-                android:textStyle="bold" />
+                style="@style/MyDailyToolBarTextStyle"/>
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -44,7 +42,7 @@
             app:layout_constraintBottom_toTopOf="@+id/btn_select_four_finish"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tb_keyword_select_activity">
+            app:layout_constraintTop_toBottomOf="@+id/tb_keyword_guide_deep">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_in_scrollview"
@@ -60,6 +58,7 @@
                     android:layout_marginTop="48dp"
                     android:text="@string/choose_four"
                     android:textSize="25sp"
+                    android:textFontWeight="900"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -83,6 +82,7 @@
                     android:text="@string/attitude_for_life"
                     android:textSize="16sp"
                     android:textStyle="bold"
+                    android:textFontWeight="900"
                     app:layout_constraintStart_toStartOf="@id/tv_subtitle"
                     app:layout_constraintTop_toBottomOf="@id/tv_subtitle" />
 
@@ -101,12 +101,12 @@
                     android:id="@+id/tv_work_four"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="48dp"
                     android:text="@string/attitude_for_work"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/cg_life_four"
+                    android:textFontWeight="900"
+                    app:layout_constraintStart_toStartOf="@+id/tv_life_four"
                     app:layout_constraintTop_toBottomOf="@id/cg_life_four" />
 
                 <com.google.android.material.chip.ChipGroup
@@ -129,11 +129,8 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="16dp"
             android:text="@string/select_finish"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="@color/white"
             android:enabled="false"
-            android:background="@drawable/selector_btn_sign_in"
+            style="@style/MyDailyButtonStyle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
