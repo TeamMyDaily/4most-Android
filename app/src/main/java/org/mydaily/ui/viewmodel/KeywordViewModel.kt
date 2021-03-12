@@ -31,6 +31,7 @@ class KeywordViewModel(private val repo: KeywordRepo) : BaseViewModel() {
     val selectedLifeWordList : MutableList<String> = mutableListOf()
     val selectedWorkWordList : MutableList<String> = mutableListOf()
     val selectedWordList : MutableList<String> = mutableListOf()
+    val addWordList : MutableList<String> = mutableListOf()
 
     private val _toastMessage = MutableLiveData<Event<String>>()
     val toastMessage: LiveData<Event<String>> = _toastMessage

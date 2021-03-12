@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -10,10 +10,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.keyword.add.KeywordAddActivity">
+        tools:context=".ui.view.keyword.add.KeywordAddDetailFragment">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tb_keyword_add_activity"
+            android:id="@+id/tb_keyword_add_Fragment"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/white"
@@ -43,14 +43,16 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tb_keyword_add_activity">
+            app:layout_constraintTop_toBottomOf="@id/tb_keyword_add_Fragment">
 
             <TextView
-                android:id="@+id/tv_is_there"
+                android:id="@+id/tv_what_is_important"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:textFontWeight="900"
                 android:layout_marginTop="48dp"
+                android:text="@string/what_is_your_important_word"
                 android:textColor="@color/cod_gray"
                 android:textSize="25sp"
                 android:textStyle="bold"
@@ -59,15 +61,15 @@
 
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/tv_direct_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/please_add_yourself"
-                android:textColor="@color/cod_gray"
+                android:textColor="@color/mainBlack"
                 android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_is_there"
-                app:layout_constraintTop_toBottomOf="@id/tv_is_there" />
+                app:layout_constraintStart_toStartOf="@+id/tv_what_is_important"
+                app:layout_constraintTop_toBottomOf="@id/tv_what_is_important" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -125,14 +127,16 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/tv_errortext"
+                android:id="@+id/tv_error_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/there_is_space"
                 android:textColor="@color/persimmon"
+                android:textFontWeight="400"
                 android:textSize="12sp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toTopOf="@+id/et_keyword_input_layout"
-                app:layout_constraintEnd_toEndOf="@id/et_keyword_input_layout" />
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@+id/et_keyword_input_layout"
+                app:layout_constraintTop_toBottomOf="@+id/et_keyword_input_layout" />
 
             <ImageButton
                 android:id="@+id/btn_error_icon"
@@ -141,7 +145,7 @@
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/ic_error"
                 android:clickable="false"
-                android:visibility="gone"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@id/et_keyword_input_layout"
                 app:layout_constraintEnd_toEndOf="@id/et_keyword_input_layout"
                 app:layout_constraintTop_toTopOf="@id/et_keyword_input_layout" />
