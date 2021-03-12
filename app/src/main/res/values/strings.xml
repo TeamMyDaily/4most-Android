@@ -104,11 +104,13 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <!--KeywordAddActivity-->
+    <!--KeywordAddFragment-->
     <string name="keyword_add">키워드 추가</string>
-    <string name="is_there_no_word">찾으시는 가치가\n없으신가요?</string>
+    <string name="what_is_your_important_word">삶에서 중요하게\n생각하는 가치는 무엇인가요?</string>
+    <string name="four_important_value">삶의 핵심가치를 최대 4개까지 정해보세요!</string>
     <string name="please_add_yourself">가치관에 맞는 키워드를 직접 추가해주세요!</string>
     <string name="keyword_guide">키워드 가이드\n공백 없이 최대 5글자까지 가능해요.\n명사 형태를 추천해요.</string>
+    <string name="btn_choice_complete">키워드 선택완료</string>
     <string name="btn_add">키워드 추가하기</string>
     <string name="input_value">가치를 입력해주세요.</string>
     <string name="there_is_space">잠깐! 공백이 있어요!</string>
