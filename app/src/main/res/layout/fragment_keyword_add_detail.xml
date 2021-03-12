@@ -4,7 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <import type="android.view.View"/>
+        <variable
+            name="isNotVisible"
+            type="java.lang.Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -134,7 +137,7 @@
                 android:textColor="@color/persimmon"
                 android:textFontWeight="400"
                 android:textSize="12sp"
-                android:visibility="invisible"
+                android:visibility="@{isNotVisible? View.INVISIBLE : View.VISIBLE}"
                 app:layout_constraintEnd_toEndOf="@+id/et_keyword_input_layout"
                 app:layout_constraintTop_toBottomOf="@+id/et_keyword_input_layout" />
 
@@ -145,7 +148,7 @@
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/ic_error"
                 android:clickable="false"
-                android:visibility="invisible"
+                android:visibility="@{isNotVisible? View.INVISIBLE : View.VISIBLE}"
                 app:layout_constraintBottom_toBottomOf="@id/et_keyword_input_layout"
                 app:layout_constraintEnd_toEndOf="@id/et_keyword_input_layout"
                 app:layout_constraintTop_toTopOf="@id/et_keyword_input_layout" />

@@ -33,9 +33,6 @@
             android:name=".ui.view.goal.detail.GoalAddActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.view.keyword.add.KeywordAddActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
             android:name=".ui.view.keyword.popup.KeywordPopupActivity"
             android:exported="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
