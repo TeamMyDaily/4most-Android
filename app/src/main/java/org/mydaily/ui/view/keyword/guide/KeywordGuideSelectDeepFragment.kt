@@ -28,16 +28,18 @@ class KeywordGuideSelectDeepFragment :
 
     override fun onResume() {
         super.onResume()
+        initChipData()
         observeWordList()
     }
 
-    private fun showAlertDialog() {
-        AlertDialog.Builder(context)
-            .setTitle(R.string.up_to_four)
-            .setMessage(R.string.think_more)
-            .setPositiveButton(getString(R.string.okay), null)
-            .create()
-            .show()
+    private fun initChipData() {
+        binding.apply {
+            cgLifeFour.clearCheck()
+            cgWorkFour.clearCheck()
+            cgLifeFour.removeAllViews()
+            cgWorkFour.removeAllViews()
+            btnSelectFourFinish.isEnabled = false
+        }
     }
 
     private fun observeWordList() {
@@ -51,6 +53,15 @@ class KeywordGuideSelectDeepFragment :
                 binding.cgWorkFour.addView(createKeywordChip(life, chipListener))
             }
         }
+    }
+
+    private fun showAlertDialog() {
+        AlertDialog.Builder(context)
+            .setTitle(R.string.up_to_four)
+            .setMessage(R.string.think_more)
+            .setPositiveButton(getString(R.string.okay), null)
+            .create()
+            .show()
     }
 
     private val chipListener: (it: Chip) -> (Unit) = {

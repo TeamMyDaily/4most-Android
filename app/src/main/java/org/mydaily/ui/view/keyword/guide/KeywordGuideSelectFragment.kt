@@ -32,6 +32,21 @@ class KeywordGuideSelectFragment :
 
     override fun initAfterBinding() { }
 
+    override fun onResume() {
+        super.onResume()
+        initChipData()
+    }
+
+    private fun initChipData() {
+        binding.btnSelectFinish.isEnabled = false
+        binding.cgLife.clearCheck()
+        binding.cgWork.clearCheck()
+
+        viewModel.selectedLifeWordList.value!!.clear()
+        viewModel.selectedWorkWordList.value!!.clear()
+        viewModel.selectedWordList.clear()
+    }
+
     private fun initClickEvent() {
         binding.btnSelectFinish.setOnClickListener {
             viewModel.viewPagerPosition.value = KeywordViewModel.KEYWORD_GUIDE_DEEP_POSITION

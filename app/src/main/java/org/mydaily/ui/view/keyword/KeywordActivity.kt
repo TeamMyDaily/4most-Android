@@ -79,6 +79,7 @@ class KeywordActivity : BaseActivity<ActivityKeywordBinding, KeywordViewModel>()
         viewModel.viewPagerPosition.observe(this) {
             binding.vpKeyword.currentItem = it
             binding.tbKeyword.menu.findItem(R.id.menu_help).isVisible = (it == 1 || it == 2)
+
         }
     }
 }
