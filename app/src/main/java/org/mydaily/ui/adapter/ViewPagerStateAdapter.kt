@@ -7,14 +7,9 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 class ViewPagerStateAdapter(fragmentManager: FragmentManager) :
     FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-    private val fragmentList = mutableListOf<Fragment>()
+    var fragments = listOf<Fragment>()
 
-    fun setFragmentList(list: List<Fragment>) {
-        fragmentList.clear()
-        fragmentList.addAll(list)
-    }
+    override fun getItem(position: Int): Fragment = fragments[position]
 
-    override fun getItem(position: Int): Fragment = fragmentList[position]
-
-    override fun getCount(): Int = fragmentList.size
+    override fun getCount(): Int = fragments.size
 }

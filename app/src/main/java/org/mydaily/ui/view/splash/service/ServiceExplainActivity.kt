@@ -7,11 +7,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.data.local.FourMostPreference
 import org.mydaily.databinding.ActivityServiceExplainBinding
-import org.mydaily.ui.adapter.ServiceExplainViewPagerAdapter
+import org.mydaily.ui.adapter.ViewPagerStateAdapter
 import org.mydaily.ui.base.BaseActivity
-import org.mydaily.ui.view.keyword.popup.KeywordPopupFirstFragment
-import org.mydaily.ui.view.keyword.popup.KeywordPopupSecondFragment
-import org.mydaily.ui.view.keyword.popup.KeywordPopupThirdFragment
 import org.mydaily.ui.view.user.SignInActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
 
@@ -19,7 +16,7 @@ class ServiceExplainActivity : BaseActivity<ActivityServiceExplainBinding, Keywo
     override val layoutResourceId: Int
         get() = R.layout.activity_service_explain
 
-    private lateinit var viewpagerAdapter: ServiceExplainViewPagerAdapter
+    private lateinit var viewpagerAdapter: ViewPagerStateAdapter
 
     override val viewModel: KeywordViewModel by viewModel()
 
@@ -53,7 +50,7 @@ class ServiceExplainActivity : BaseActivity<ActivityServiceExplainBinding, Keywo
     }
 
     private fun initViewPager() {
-        viewpagerAdapter = ServiceExplainViewPagerAdapter(supportFragmentManager)
+        viewpagerAdapter = ViewPagerStateAdapter(supportFragmentManager)
         viewpagerAdapter.fragments = listOf(
             ServiceExplainFirstFragment(),
             ServiceExplainSecondFragment(),

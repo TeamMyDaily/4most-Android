@@ -65,14 +65,12 @@ class KeywordActivity : BaseActivity<ActivityKeywordBinding, KeywordViewModel>()
 
     private fun initViewPager() {
         viewPagerAdapter = ViewPagerStateAdapter(supportFragmentManager)
-        viewPagerAdapter.setFragmentList(
-            listOf(
-                methodFragment,
-                guideFragment1,
-                guideFragment2,
-                addFragment,
-                addDetailFragment
-            )
+        viewPagerAdapter.fragments = listOf(
+            methodFragment,
+            guideFragment1,
+            guideFragment2,
+            addFragment,
+            addDetailFragment
         )
         binding.vpKeyword.adapter = viewPagerAdapter
     }
