@@ -12,36 +12,15 @@
         android:layout_height="match_parent"
         tools:context=".ui.view.keyword.guide.KeywordGuideSelectFragment">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tb_keyword_guide_select"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            android:elevation="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/menu_keyword_list"
-            app:navigationIcon="@drawable/ic_btn_arrow_left">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/keyword_select"
-                style="@style/MyDailyToolBarTextStyle"/>
-
-        </androidx.appcompat.widget.Toolbar>
-
         <ScrollView
             android:id="@+id/sv_keyword_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_select_finish"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tb_keyword_guide_select">
+            app:layout_constraintBottom_toTopOf="@+id/btn_select_finish">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_in_sv"

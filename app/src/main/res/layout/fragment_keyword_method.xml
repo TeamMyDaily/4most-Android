@@ -12,27 +12,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.view.keyword.method.KeywordMethodFragment">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tb_keyword_add_activity"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            android:elevation="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/ic_btn_arrow_left">
-
-            <TextView
-                android:id="@+id/tv_keyword_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/menu_create_keyword"
-                style="@style/MyDailyToolBarTextStyle"/>
-
-        </androidx.appcompat.widget.Toolbar>
-
         <TextView
             android:id="@+id/tv_select_method"
             android:layout_width="0dp"
@@ -46,7 +25,7 @@
             android:layout_marginHorizontal="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tb_keyword_add_activity" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_follow_guide"

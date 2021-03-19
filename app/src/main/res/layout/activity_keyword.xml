@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="org.mydaily.ui.viewmodel.KeywordViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,14 +14,45 @@
         android:layout_height="match_parent"
         tools:context=".ui.view.keyword.KeywordActivity">
 
-        <androidx.fragment.app.FragmentContainerView
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_keyword"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            android:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/menu_keyword_list"
+            app:navigationIcon="@drawable/ic_btn_arrow_left">
+
+            <TextView
+                android:id="@+id/tv_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@{viewModel.toolbarText}"
+                style="@style/MyDailyToolBarTextStyle"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <org.mydaily.ui.view.custom.NonSwipeViewPager
+            android:id="@+id/vp_keyword"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tb_keyword" />
+
+<!--        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/container_keyword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -2,6 +2,7 @@ package org.mydaily.ui.view.keyword.guide
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.util.Log
 import com.google.android.material.chip.Chip
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,7 +24,6 @@ class KeywordGuideSelectFragment :
     override val viewModel: KeywordViewModel by sharedViewModel()
 
     override fun initView() {
-        initToolbar()
         initClickEvent()
         initChipGroup()
     }
@@ -32,29 +32,15 @@ class KeywordGuideSelectFragment :
 
     override fun initAfterBinding() { }
 
-    private fun initToolbar() {
-        binding.tbKeywordGuideSelect.setNavigationOnClickListener { popBackStack() }
-        binding.tbKeywordGuideSelect.setOnMenuItemClickListener {
-            if (it.itemId == R.id.menu_help) {
-                startActivity(Intent(requireActivity(), KeywordPopupActivity()::class.java))
-            }
-            true
-        }
-    }
-
     private fun initClickEvent() {
         binding.btnSelectFinish.setOnClickListener {
-            replaceAndAddBackStack(
-                R.id.container_keyword,
-                KeywordGuideSelectDeepFragment(),
-                "Guide2"
-            )
+            viewModel.viewPagerPosition.value = KeywordViewModel.KEYWORD_GUIDE_DEEP_POSITION
         }
     }
 
     private fun initChipGroup() {
         val listener : (it: Chip) -> (Unit) = {
-            val clickedChipCount = viewModel.selectedLifeWordList.size + viewModel.selectedWorkWordList.size
+            val clickedChipCount = viewModel.selectedLifeWordList.value!!.size + viewModel.selectedWorkWordList.value!!.size
             if (it.isChecked) {
                 when (clickedChipCount) {
                     8 -> {
@@ -77,28 +63,28 @@ class KeywordGuideSelectFragment :
             }
         }
 
-        for (life in viewModel.lifeWordList) {
+        for (life in KeywordViewModel.lifeWordList) {
             binding.cgLife.addView(createKeywordChip(life, listener) )
         }
 
-        for (life in viewModel.workWordList) {
+        for (life in KeywordViewModel.workWordList) {
             binding.cgWork.addView(createKeywordChip(life, listener) )
         }
     }
 
     private fun addKeywordList(text: String) {
-        if (viewModel.lifeWordList.contains(text)) {
-            viewModel.selectedLifeWordList.add(text)
-        } else if (viewModel.workWordList.contains(text)) {
-            viewModel.selectedWorkWordList.add(text)
+        if (KeywordViewModel.lifeWordList.contains(text)) {
+            viewModel.selectedLifeWordList.value!!.add(text)
+        } else if (KeywordViewModel.workWordList.contains(text)) {
+            viewModel.selectedWorkWordList.value!!.add(text)
         }
     }
 
     private fun removeKeywordList(text: String) {
-        if (viewModel.lifeWordList.contains(text)) {
-            viewModel.selectedLifeWordList.remove(text)
-        } else if (viewModel.workWordList.contains(text)) {
-            viewModel.selectedWorkWordList.remove(text)
+        if (KeywordViewModel.lifeWordList.contains(text)) {
+            viewModel.selectedLifeWordList.value!!.remove(text)
+        } else if (KeywordViewModel.workWordList.contains(text)) {
+            viewModel.selectedWorkWordList.value!!.remove(text)
         }
     }
 
