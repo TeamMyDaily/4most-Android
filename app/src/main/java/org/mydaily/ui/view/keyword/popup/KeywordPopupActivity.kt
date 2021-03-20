@@ -5,7 +5,7 @@ import androidx.viewpager.widget.ViewPager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
 import org.mydaily.databinding.ActivityKeywordPopupBinding
-import org.mydaily.ui.adapter.KeywordPopupViewPagerAdapter
+import org.mydaily.ui.adapter.ViewPagerStateAdapter
 import org.mydaily.ui.base.BaseActivity
 import org.mydaily.ui.viewmodel.KeywordViewModel
 
@@ -14,7 +14,7 @@ class KeywordPopupActivity : BaseActivity<ActivityKeywordPopupBinding, KeywordVi
         get() = R.layout.activity_keyword_popup
     override val viewModel: KeywordViewModel by viewModel()
 
-    private lateinit var viewpagerAdapter: KeywordPopupViewPagerAdapter
+    private lateinit var viewpagerAdapter: ViewPagerStateAdapter
 
     override fun initView() {
         initBtnVisibility()
@@ -47,7 +47,7 @@ class KeywordPopupActivity : BaseActivity<ActivityKeywordPopupBinding, KeywordVi
     }
 
     private fun initViewPager() {
-        viewpagerAdapter = KeywordPopupViewPagerAdapter(supportFragmentManager)
+        viewpagerAdapter = ViewPagerStateAdapter(supportFragmentManager)
         viewpagerAdapter.fragments = listOf(
             KeywordPopupFirstFragment(),
             KeywordPopupSecondFragment(),

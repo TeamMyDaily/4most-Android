@@ -12,31 +12,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.view.keyword.add.KeywordAddFragment">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tb_keyword_add_Fragment"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            android:elevation="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/ic_btn_arrow_left">
-
-
-            <TextView
-                android:id="@+id/tv_keyword_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/keyword_add"
-                android:textColor="@color/cod_gray"
-                android:textSize="21sp"
-                android:textStyle="bold" />
-
-
-        </androidx.appcompat.widget.Toolbar>
-
         <TextView
             android:id="@+id/tv_what_is_important"
             android:layout_width="wrap_content"
@@ -49,7 +24,7 @@
             android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tb_keyword_add_Fragment" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_life_important_value"

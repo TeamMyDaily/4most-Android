@@ -19,17 +19,12 @@ import retrofit2.Response
 
 class KeywordViewModel(private val repo: KeywordRepo) : BaseViewModel() {
 
-    val lifeWordList: List<String> = listOf(
-    "신뢰", "행복", "배려", "다양성", "감사", "인내", "경험", "용서", "정의", "긍정", "건강", "자유", "나눔", "자신감", "도전", "풍요로움",
-    "양심", "부", "정직", "변화"
-    )
+    val toolbarText = MutableLiveData("키워드 생성")
+    val viewPagerPosition = MutableLiveData(KEYWORD_METHOD_POSITION)
 
-    val workWordList: List<String> = listOf(
-        "몰입", "열정", "배움", "결과", "과정", "소통", "효율성", "성취", "인정", "보람", "성장", "탁월함", "혁신", "협력", "성실", "책임", "본질", "완벽", "실천", "목적의식"
-    )
+    val selectedLifeWordList : MutableLiveData<MutableList<String>> = MutableLiveData(mutableListOf())
+    val selectedWorkWordList : MutableLiveData<MutableList<String>> = MutableLiveData(mutableListOf())
 
-    val selectedLifeWordList : MutableList<String> = mutableListOf()
-    val selectedWorkWordList : MutableList<String> = mutableListOf()
     val selectedWordList : MutableList<String> = mutableListOf()
     val addWordList : MutableList<String> = mutableListOf()
 
@@ -188,5 +183,20 @@ class KeywordViewModel(private val repo: KeywordRepo) : BaseViewModel() {
 
     companion object {
         private val TAG = KeywordViewModel::class.java.simpleName
+
+        val lifeWordList: List<String> = listOf(
+            "신뢰", "행복", "배려", "다양성", "감사", "인내", "경험", "용서", "정의", "긍정", "건강", "자유", "나눔", "자신감", "도전", "풍요로움",
+            "양심", "부", "정직", "변화"
+        )
+
+        val workWordList: List<String> = listOf(
+            "몰입", "열정", "배움", "결과", "과정", "소통", "효율성", "성취", "인정", "보람", "성장", "탁월함", "혁신", "협력", "성실", "책임", "본질", "완벽", "실천", "목적의식"
+        )
+
+        const val KEYWORD_METHOD_POSITION = 0
+        const val KEYWORD_GUIDE_POSITION = 1
+        const val KEYWORD_GUIDE_DEEP_POSITION = 2
+        const val KEYWORD_ADD_POSITION = 3
+        const val KEYWORD_ADD_DETAIL_POSITION = 4
     }
 }

@@ -19,18 +19,13 @@ class KeywordAddDetailFragment : BaseFragment<FragmentKeywordAddDetailBinding, K
 
     override fun initView() {
         initSetting()
-        initToolbar()
         keywordInput()
         keywordAdd()
     }
 
-    override fun initBeforeBinding() {
+    override fun initBeforeBinding() { }
 
-    }
-
-    override fun initAfterBinding() {
-
-    }
+    override fun initAfterBinding() { }
 
     private fun keywordInput() {
         var sameKeyword: String
@@ -68,10 +63,6 @@ class KeywordAddDetailFragment : BaseFragment<FragmentKeywordAddDetailBinding, K
 
             override fun afterTextChanged(s: Editable?) {}
         })
-    }
-
-    private fun initToolbar() {
-        binding.tbKeywordAddFragment.setNavigationOnClickListener { popBackStack() }
     }
 
     private fun keywordAdd() {

@@ -19,28 +19,18 @@ class KeywordAddFragment : BaseFragment<FragmentKeywordAddBinding, KeywordViewMo
     private val keywordAddAdapter = KeywordAddAdapter()
     override fun initView() {
         initPlusButton()
-        initToolbar()
         setRecyclerView()
         keywordAddEvent()
         keywordSelectCompleteIsEnabled()
     }
 
-    override fun initBeforeBinding() {
+    override fun initBeforeBinding() { }
 
-    }
-
-    override fun initAfterBinding() {
-
-    }
-
-    private fun initToolbar() {
-        binding.tbKeywordAddFragment.setNavigationOnClickListener { popBackStack() }
-    }
-
+    override fun initAfterBinding() { }
 
     private fun keywordAddEvent() {
         binding.clPlusValue.setOnClickListener {
-            replaceAndAddBackStack(R.id.container_keyword, KeywordAddDetailFragment(), "Add2")
+            viewModel.viewPagerPosition.value = KeywordViewModel.KEYWORD_ADD_DETAIL_POSITION
         }
     }
 
