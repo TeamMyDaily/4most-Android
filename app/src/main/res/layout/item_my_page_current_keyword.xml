@@ -21,9 +21,12 @@
             android:id="@+id/tv_priority_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginVertical="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:text="@{number}"
+            android:textFontWeight="500"
             android:textColor="@color/mainLightOrange"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -36,13 +39,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
+            android:textFontWeight="500"
             android:text="@{keyword.name}"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tv_priority_num"
             app:layout_constraintStart_toEndOf="@+id/tv_priority_num"
-            app:layout_constraintTop_toTopOf="@+id/tv_priority_num"
             tools:text="아웃풋" />
 
-       </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

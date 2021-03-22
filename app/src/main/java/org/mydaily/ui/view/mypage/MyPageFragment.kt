@@ -4,35 +4,50 @@ import android.content.Intent
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayoutMediator
+import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.mydaily.R
-import org.mydaily.data.local.FourMostPreference
+import org.mydaily.data.model.network.request.ReqKeywordPriority
 import org.mydaily.databinding.FragmentMyPageBinding
-import org.mydaily.ui.adapter.ViewPagerAdapter
+import org.mydaily.ui.adapter.KeywordPriorityAdapter
+import org.mydaily.ui.adapter.MyPageCurrentKeywordAdapter
 import org.mydaily.ui.base.BaseFragment
-import org.mydaily.ui.viewmodel.UserViewModel
-import org.mydaily.util.extension.shortToast
+import org.mydaily.ui.view.custom.MyPageBottomSheetDialog
+import org.mydaily.ui.viewmodel.KeywordViewModel
 
-class MyPageFragment : BaseFragment<FragmentMyPageBinding, UserViewModel>() {
+class MyPageFragment : BaseFragment<FragmentMyPageBinding, KeywordViewModel>(), MyPageBottomSheetDialog.OnPriorityClick {
     override val layoutResourceId: Int
         get() = R.layout.fragment_my_page
-    override val viewModel: UserViewModel by viewModel()
+    override val viewModel: KeywordViewModel by viewModel()
 
+    private val myPageCurrentKeywordAdapter = MyPageCurrentKeywordAdapter()
+    private val myPageKeywordPriorityAdapter = KeywordPriorityAdapter()
+    private val dividerItemDecoration: DividerItemDecoration by lazy{
+        DividerItemDecoration(requireContext(),LinearLayoutManager.VERTICAL).apply {
+            setDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.divider_recyclerview)!!)
+        }
+    }
 
     override fun initView() {
         setHasOptionsMenu(true)
-        initViewPager()
-        binding.tvUser.text = FourMostPreference.getUserName() + getString(R.string.of_user)
+        initRecyclerView()
+        initClickEvent()
     }
 
     override fun initBeforeBinding() {
-
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 
     override fun initAfterBinding() {
+        observeTaskKeyword()
+    }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getTaskKeyword()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -52,21 +67,58 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, UserViewModel>() {
         }
     }
 
-    private fun initViewPager() {
-        val tabLabel = listOf("기록키워드", "키워드 목록")
-        val myPageKeywordAdapter = ViewPagerAdapter(this)
-        myPageKeywordAdapter.fragmentList = listOf(MyPageCurrentKeywordFragment(), MyPageKeywordListFragment())
+    private fun initRecyclerView() {
+        binding.isCurrentKeywordListVisible = true
 
-        binding.vpMypage.adapter = myPageKeywordAdapter
+        binding.layoutMyPageCurrentKeywordList.rvCurrentKeywordList.apply {
+            adapter = myPageCurrentKeywordAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+            addItemDecoration(dividerItemDecoration)
+        }
 
-        TabLayoutMediator(binding.tbMypage, binding.vpMypage){tab, position->
-            tab.text = tabLabel[position]
-        }.attach()
+        binding.layoutMyPageCurrentKeywordPriority.rvCurrentKeywordListPriority.apply {
+            adapter = myPageKeywordPriorityAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+            addItemDecoration(dividerItemDecoration)
+        }
+    }
 
-        binding.vpMypage.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
+    private fun initClickEvent() {
+        binding.ibModify.setOnClickListener {
+            MyPageBottomSheetDialog(this).show(childFragmentManager, "keyword")
+        }
+
+        binding.layoutMyPageCurrentKeywordPriority.tvAppointPriority.setOnClickListener {
+            binding.ibModify.isEnabled = true
+            val temp = mutableListOf<ReqKeywordPriority.Keyword>()
+            var i=1
+            for(data in myPageKeywordPriorityAdapter.data){
+                temp.add(ReqKeywordPriority.Keyword(data, i++))
+            }
+            viewModel.postKeywordPriority(temp)
+            viewModel.getTaskKeyword()
+            binding.isCurrentKeywordListVisible = true
+        }
+    }
+
+    override fun onClick(value: Boolean) {
+        binding.isCurrentKeywordListVisible = value
+        binding.ibModify.isEnabled = false
+    }
+
+    private fun observeTaskKeyword() {
+        viewModel.taskKeywordList.observe(viewLifecycleOwner, {
+            myPageCurrentKeywordAdapter.data = it
+            if(it.isEmpty()) {
+                binding.isKeywordEmpty = true
+                binding.constraintLayout2.visibility = View.INVISIBLE
             }
         })
+        viewModel.keywordStringList.observe(viewLifecycleOwner, {
+            myPageKeywordPriorityAdapter.data = it
+        })
     }
+
 }

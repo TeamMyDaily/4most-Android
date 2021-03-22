@@ -12,7 +12,7 @@
         android:paddingVertical="32dp">
 
         <LinearLayout
-            android:id="@+id/ll_keyword_define"
+            android:id="@+id/ll_keyword_reset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -23,69 +23,42 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_report"
-                android:layout_marginStart="24dp"
+                android:src="@drawable/ic_compass"
+                android:layout_marginStart="30dp"
                 app:tint="@color/mainBlack" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:text="키워드 정의/수정"
+                android:text="@string/important_value_reset"
                 android:textSize="15sp" />
 
         </LinearLayout>
 
 
         <LinearLayout
-            android:id="@+id/ll_task_keyword_add"
+            android:id="@+id/ll_priority_set"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
             android:gravity="center_vertical"
-            android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ll_keyword_define">
+            app:layout_constraintTop_toBottomOf="@+id/ll_keyword_reset">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:src="@drawable/ic_pin_off"
+                android:layout_marginStart="30dp"
+                android:src="@drawable/ic_pin_black"
                 app:tint="@color/mainBlack" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:text="기록키워드 등록"
-                android:textSize="15sp" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/ll_keyword_delete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:layout_marginTop="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ll_task_keyword_add">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:src="@drawable/ic_trash"
-                app:tint="@color/mainBlack" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:text="키워드 삭제"
+                android:text="@string/priority_setting"
                 android:textSize="15sp" />
 
         </LinearLayout>
@@ -95,12 +68,12 @@
             android:id="@+id/line"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#F2F2F2"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="17dp"
+            android:background="#F2F2F2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ll_keyword_delete" />
+            app:layout_constraintTop_toBottomOf="@+id/ll_priority_set" />
 
 
         <LinearLayout
@@ -116,14 +89,14 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="34dp"
                 android:src="@drawable/ic_x"
                 app:tint="@color/mainBlack" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="36dp"
                 android:text="닫기(취소)"
                 android:textSize="15sp" />
 

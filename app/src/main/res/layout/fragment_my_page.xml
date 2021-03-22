@@ -4,6 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="temp"
+            type="int" />
+
+        <variable
+            name="isCurrentKeywordListVisible"
+            type="Boolean" />
+
+        <variable
+            name="isKeywordEmpty"
+            type="Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,59 +34,124 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/tv_user"
+                android:id="@+id/tv_my_goal_find"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/of_user"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="24dp"
+                android:textFontWeight="700"
+                android:text="@string/my_goal_find"
                 android:textColor="@color/white"
                 android:textSize="25sp"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_user_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lets_find_destination"
-                android:textColor="@color/white"
-                android:textSize="25sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_user"
-                app:layout_constraintTop_toBottomOf="@+id/tv_user" />
 
             <ImageView
                 android:id="@+id/iv_character_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="52dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_user_info"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/image_mypage" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <TextView
+            android:id="@+id/tv_life_important_value"
+            android:textFontWeight="700"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/life_important_value"
+            android:textSize="18dp"
+            android:textColor="@color/persimmon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_top" />
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tb_mypage"
+        <ImageButton
+            android:id="@+id/ib_modify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="@{isKeywordEmpty ? View.GONE : View.VISIBLE}"
+            android:background="@drawable/selector_btn_modify"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_top" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabGravity="start"
-            app:tabMode="scrollable"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_life_important_value">
+
+            <include
+                android:id="@+id/layout_my_page_current_keyword_list"
+                layout="@layout/layout_my_page_current_keyword_list"
+                android:visibility="@{isCurrentKeywordListVisible ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:temp="@{1}" />
+
+            <include
+                android:id="@+id/layout_my_page_current_keyword_priority"
+                layout="@layout/layout_my_page_current_keyword_priority"
+                android:visibility="@{isCurrentKeywordListVisible ? View.GONE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:temp="@{1}"
+                tools:visibility="gone" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/iv_character_no_keyword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="121dp"
+            android:visibility="@{isKeywordEmpty ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cl_top"
-            app:tabTextAppearance="@style/CustomTabText" />
+            app:srcCompat="@drawable/image_createdkeyword" />
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/vp_mypage"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tb_mypage" />
+        <TextView
+            android:id="@+id/tv_no_keyword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textFontWeight="400"
+            android:textSize="12sp"
+            android:textColor="@color/mainGray"
+            android:visibility="@{isKeywordEmpty ? View.VISIBLE : View.GONE}"
+            android:gravity="center"
+            android:layout_marginTop="24dp"
+            android:text="@string/no_keyword_plus_please"
+            app:layout_constraintEnd_toEndOf="@+id/iv_character_no_keyword"
+            app:layout_constraintStart_toStartOf="@+id/iv_character_no_keyword"
+            app:layout_constraintTop_toBottomOf="@+id/iv_character_no_keyword" />
+
+        <ImageButton
+            android:id="@+id/ib_plus"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/ic_plus"
+            android:visibility="@{isKeywordEmpty ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="@+id/tv_no_keyword"
+            app:layout_constraintStart_toStartOf="@+id/tv_no_keyword"
+            app:layout_constraintTop_toBottomOf="@+id/tv_no_keyword" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
