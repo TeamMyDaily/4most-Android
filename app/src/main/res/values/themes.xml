@@ -17,6 +17,7 @@
         <item name="android:overScrollMode">never</item>
         <item name="fontFamily">@font/notosans</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialogStyle</item>
     </style>
 
     <style name="MyDailyChipTextStyleAppearance">
@@ -49,5 +50,15 @@
         <item name="android:textSize">21sp</item>
         <item name="android:textColor">@color/cod_gray</item>
         <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+
+    <style name="BottomSheetDialogStyle"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/ModalStyle</item>
+    </style>
+
+    <style name="ModalStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/rectangle_white_card_radius_15</item>
     </style>
 </resources>
