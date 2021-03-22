@@ -4,9 +4,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import org.mydaily.data.model.domain.KeywordPriority
-import org.mydaily.data.model.network.request.ReqKeywordPriority
-import org.mydaily.databinding.ItemKeywordPriorityBinding
 import org.mydaily.databinding.ItemMyPageKeywordPriorityBinding
 import java.util.*
 
