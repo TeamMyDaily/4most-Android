@@ -1,16 +1,19 @@
 package org.mydaily.ui.view.custom
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import org.mydaily.R
 import org.mydaily.databinding.LayoutModalBottomSheetMyPageBinding
-import org.mydaily.util.extension.shortToast
 
-class MyPageBottomSheetDialog : BottomSheetDialogFragment() {
+class MyPageBottomSheetDialog() : BottomSheetDialogFragment() {
 
     private lateinit var binding: LayoutModalBottomSheetMyPageBinding
+    private lateinit var mOnPriorityClick : OnPriorityClick // 콜백
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,18 +22,33 @@ class MyPageBottomSheetDialog : BottomSheetDialogFragment() {
     ): View? {
         binding = LayoutModalBottomSheetMyPageBinding.inflate(inflater, container, false)
 
-        binding.llTaskKeywordAdd.setOnClickListener {
-            requireContext().shortToast("서비스 준비중입니다")
+        binding.llKeywordReset.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            builder.apply {
+                setTitle(getString(R.string.important_value_reset))
+                setMessage(getString(R.string.important_value_reset_detail))
+                setPositiveButton(
+                    getString(R.string.change)
+                ) { dialogInterface: DialogInterface?, i: Int -> }
+                setNegativeButton(getString(R.string.cancel)) { dialogInterface: DialogInterface?, i: Int -> dismiss() }
+            }.show()
+            dismiss()
         }
-        binding.llKeywordDefine.setOnClickListener {
-            requireContext().shortToast("서비스 준비중입니다")
-        }
-        binding.llKeywordDelete.setOnClickListener {
-            requireContext().shortToast("서비스 준비중입니다")
+        binding.llPrioritySet.setOnClickListener {
+            mOnPriorityClick.onClick(false)
+            dismiss()
         }
         binding.llCancle.setOnClickListener {
             dismiss()
         }
         return binding.root
+    }
+
+    interface OnPriorityClick {
+        fun onClick(value : Boolean)
+    }
+
+    fun callbackSetter(mCallBack : OnPriorityClick) {
+        mOnPriorityClick = mCallBack
     }
 }
