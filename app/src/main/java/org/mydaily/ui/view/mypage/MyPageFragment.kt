@@ -87,7 +87,9 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, KeywordViewModel>(), 
 
     private fun initClickEvent() {
         binding.ibModify.setOnClickListener {
-            MyPageBottomSheetDialog(this).show(childFragmentManager, "keyword")
+            val myPageBottomSheetDialog = MyPageBottomSheetDialog()
+            myPageBottomSheetDialog.callbackSetter(this)
+            myPageBottomSheetDialog.show(childFragmentManager, "keyword")
         }
 
         binding.layoutMyPageCurrentKeywordPriority.tvAppointPriority.setOnClickListener {
@@ -111,10 +113,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, KeywordViewModel>(), 
     private fun observeTaskKeyword() {
         viewModel.taskKeywordList.observe(viewLifecycleOwner, {
             myPageCurrentKeywordAdapter.data = it
-            if(it.isEmpty()) {
-                binding.isKeywordEmpty = true
-                binding.constraintLayout2.visibility = View.INVISIBLE
-            }
+            binding.isKeywordEmpty = it.isEmpty()
         })
         viewModel.keywordStringList.observe(viewLifecycleOwner, {
             myPageKeywordPriorityAdapter.data = it

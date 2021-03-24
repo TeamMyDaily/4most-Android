@@ -10,10 +10,10 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.mydaily.R
 import org.mydaily.databinding.LayoutModalBottomSheetMyPageBinding
 
-class MyPageBottomSheetDialog(mCallBack : OnPriorityClick) : BottomSheetDialogFragment() {
+class MyPageBottomSheetDialog() : BottomSheetDialogFragment() {
 
     private lateinit var binding: LayoutModalBottomSheetMyPageBinding
-    private val mOnPriorityClick = mCallBack // 콜백
+    private lateinit var mOnPriorityClick : OnPriorityClick // 콜백
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,5 +46,9 @@ class MyPageBottomSheetDialog(mCallBack : OnPriorityClick) : BottomSheetDialogFr
 
     interface OnPriorityClick {
         fun onClick(value : Boolean)
+    }
+
+    fun callbackSetter(mCallBack : OnPriorityClick) {
+        mOnPriorityClick = mCallBack
     }
 }
