@@ -20,7 +20,9 @@ class KeywordGuideSelectDeepFragment :
 
     override val viewModel: KeywordViewModel by sharedViewModel()
 
-    override fun initView() { }
+    override fun initView() {
+        initClickEvent()
+    }
 
     override fun initBeforeBinding() { }
 
@@ -29,7 +31,13 @@ class KeywordGuideSelectDeepFragment :
     override fun onResume() {
         super.onResume()
         initChipData()
-        observeWordList()
+    }
+
+    private fun initClickEvent() {
+        binding.btnSelectFourFinish.setOnClickListener {
+            // 선택한 단어 전달
+            //Log.e("KeywordGuideSelectDeep", viewModel.selectedWordList.toString())
+        }
     }
 
     private fun initChipData() {
@@ -40,20 +48,14 @@ class KeywordGuideSelectDeepFragment :
             cgWorkFour.removeAllViews()
             btnSelectFourFinish.isEnabled = false
         }
+        for (life in viewModel.selectedLifeWordList) {
+            binding.cgLifeFour.addView(createKeywordChip(life, chipListener))
+        }
+        for (life in viewModel.selectedWorkWordList) {
+            binding.cgWorkFour.addView(createKeywordChip(life, chipListener))
+        }
     }
 
-    private fun observeWordList() {
-        viewModel.selectedLifeWordList.observe(viewLifecycleOwner){ list->
-            for (life in list) {
-                binding.cgLifeFour.addView(createKeywordChip(life, chipListener))
-            }
-        }
-        viewModel.selectedWorkWordList.observe(viewLifecycleOwner){ list->
-            for (life in list) {
-                binding.cgWorkFour.addView(createKeywordChip(life, chipListener))
-            }
-        }
-    }
 
     private fun showAlertDialog() {
         AlertDialog.Builder(context)
@@ -66,7 +68,7 @@ class KeywordGuideSelectDeepFragment :
 
     private val chipListener: (it: Chip) -> (Unit) = {
         if (it.isChecked) {
-            if (viewModel.selectedWordList.size >= 5) {
+            if (viewModel.selectedWordList.size >= 4) {
                 binding.btnSelectFourFinish.isEnabled = true
                 it.isChecked = false
                 showAlertDialog()

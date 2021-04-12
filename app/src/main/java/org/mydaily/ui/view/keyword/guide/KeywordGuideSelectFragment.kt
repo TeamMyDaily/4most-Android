@@ -42,8 +42,8 @@ class KeywordGuideSelectFragment :
         binding.cgLife.clearCheck()
         binding.cgWork.clearCheck()
 
-        viewModel.selectedLifeWordList.value!!.clear()
-        viewModel.selectedWorkWordList.value!!.clear()
+        viewModel.selectedLifeWordList.clear()
+        viewModel.selectedWorkWordList.clear()
         viewModel.selectedWordList.clear()
     }
 
@@ -55,7 +55,7 @@ class KeywordGuideSelectFragment :
 
     private fun initChipGroup() {
         val listener : (it: Chip) -> (Unit) = {
-            val clickedChipCount = viewModel.selectedLifeWordList.value!!.size + viewModel.selectedWorkWordList.value!!.size
+            val clickedChipCount = viewModel.selectedLifeWordList.size + viewModel.selectedWorkWordList.size
             if (it.isChecked) {
                 when (clickedChipCount) {
                     8 -> {
@@ -89,17 +89,17 @@ class KeywordGuideSelectFragment :
 
     private fun addKeywordList(text: String) {
         if (KeywordViewModel.lifeWordList.contains(text)) {
-            viewModel.selectedLifeWordList.value!!.add(text)
+            viewModel.selectedLifeWordList.add(text)
         } else if (KeywordViewModel.workWordList.contains(text)) {
-            viewModel.selectedWorkWordList.value!!.add(text)
+            viewModel.selectedWorkWordList.add(text)
         }
     }
 
     private fun removeKeywordList(text: String) {
         if (KeywordViewModel.lifeWordList.contains(text)) {
-            viewModel.selectedLifeWordList.value!!.remove(text)
+            viewModel.selectedLifeWordList.remove(text)
         } else if (KeywordViewModel.workWordList.contains(text)) {
-            viewModel.selectedWorkWordList.value!!.remove(text)
+            viewModel.selectedWorkWordList.remove(text)
         }
     }
 

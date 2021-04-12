@@ -22,8 +22,8 @@ class KeywordViewModel(private val repo: KeywordRepo) : BaseViewModel() {
     val toolbarText = MutableLiveData("키워드 생성")
     val viewPagerPosition = MutableLiveData(KEYWORD_METHOD_POSITION)
 
-    val selectedLifeWordList : MutableLiveData<MutableList<String>> = MutableLiveData(mutableListOf())
-    val selectedWorkWordList : MutableLiveData<MutableList<String>> = MutableLiveData(mutableListOf())
+    val selectedLifeWordList : MutableList<String> = mutableListOf()
+    val selectedWorkWordList : MutableList<String> = mutableListOf()
 
     val selectedWordList : MutableList<String> = mutableListOf()
     val addWordList : MutableList<String> = mutableListOf()
